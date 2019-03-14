@@ -1,7 +1,7 @@
 % This file was created with JabRef 2.10.
 % Encoding: Cp1252
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Template Citations
 @Article{Askvall1985,
   Title                    = {Computer supported reading vs. reading text on paper: A comparison of two reading situations},
   Author                   = {S. Askvall},
@@ -77,3 +77,1502 @@
 @comment{jabref-entrytype: Webpage: req[url;year] opt[LastChecked]}
 @comment{jabref-entrytype: Game: req[title;publisher;year] opt[Url;developer;level;LastChecked]}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% START
+
+% Literature Search: Gains, thresholds and comfort - Google Scholar database
+@article{schmitz2018you,
+  title={You spin my head right round: Threshold of limited immersion for rotation gains in redirected walking},
+  author={Schmitz, Patric and Hildebrandt, Julian and Valdez, Andr{\'e} Calero and Kobbelt, Leif and Ziefle, Martina},
+  journal={IEEE transactions on visualization and computer graphics},
+  volume={24},
+  number={4},
+  pages={1623--1632},
+  year={2018},
+  publisher={IEEE},
+  notes={
+ Introduction
+   * Besides establishing detection thresholds, it is also important to know when the user's immersion breaks.
+   * Paper hypothesizes that degree of unnoticed manipulation is significantly different from the detection threshold when the user is immersed in a task
+      * (Distractors can help improve immersion, giving the user a task like playing a game also makes them more immersed)
+   * Previous research on thresholds for the allowed degree of motion manipulation has measured perceptual detection thresholds in controlled psychophysical experiments.
+      * While this is a useful basic metric to establish a lower bound on the allowed degree of redirection, the paper argues that additional metrics are required to judge redirection techniques in real world applications
+   * Proposes the threshold of limited immersion (TLI) as a complementary metric.
+   * Paper presents results of three studies
+      * a study on the methodical development of a paradigm to assess the TLI
+      * a study to apply the method for measuring TLI using slowly varying rotational gains during a search and collect task
+      * the third study is a control/baseline measurement of cybersickness induced by the experimental setup with no redirection applied
+Related Work
+   * Contains sections on Spatial Compression Methods, Human Factors and Perception, Terminology: Presence and Immersion, Detection Thresholds and Breaks in Presence, Cybersickness
+   * Cybersickness
+      * Cybersickness occurs because of conflicts between the visual and vestibular system, because the users do not (yet) possess mechanisms to maintain postural stability, or because adverse input tricks the body into thinking that it ingested something poisonous. 
+      * Gender, age or prior exposure account for emergence of cybersickness
+      * Women due to their larger field of view have to handle more visual input in comparison to men
+         * (would this correlate with Bjørn's thoughts that FoV might affect redirection?)
+         * (Regardless, the FoV of the screen would be the same for both genders though)
+      * immersion should be seen as a third dimension after detection and cybersickness thresholds
+Hypotheses and Logic of Empirical Procedure
+   * Authors believe that no single spatial compression method will cover everything. A synergistic combination of different redirection methods is necessary
+   * Two existing methods to assess how much redirection we can do is Detection Thresholds(DT) and breaks in presence(BIP)
+      * DT is measured in a controlled setting using a established 2AFC paradigm for measuring psychophysical thresholds. 
+      * BIP are generally measured through verbal exclamation. They capture the point in time where the presence degrades from a high to low state
+   * Threshold of limited immersion
+      * requires a measurement procedure where participants actively report an effect, even if they are not directly informed about it
+      * users are not asked if they can reliably detect a manipulation, but rather when they actually feel that a manipulation interferes with the quality of their experience
+      * TLI should be seen as a complimentary metric for detection thresholds
+   * (Sample sizes are somewhat small: (1: 16, 2: 35, 3: 10). Given that it is a VR experiment, it is hard to criticize that though. What the population was and how it was sampled is not mentioned though)
+Experiments
+   * Samsung GearVR used for measurement
+      * (Not ideal due to the 60hz refresh rate and not being connected to powerful hardware)
+   * 3m x 4m tracking area
+   * Headphones with ambient noise was used as being without made it easier to detect when the users were close to a wall
+   * Subjects were not informed beforehand that their rotation would be manipulated, only that they might get nauseous and that they should feel free to quit the experiment if they felt too uncomfortable. They could take a break at any time and were offered sweets and water
+   * No compensation was given. Participants with a history of epilepsy and pregnant women were excluded
+Experiment 1
+   * Participants would press a button if the virtual environment "felt strange or unnatural"
+   * Semi structured interviews after the experiment to examine in detail why the button was pressed and informed the participant about the rotational gains.
+   * a fair amount of participants seem to have struggled to understand when to report inconsistencies. They were thus asked to mention it verbally instead of pressing a button if they noticed anything. 
+      * they were also asked to think aloud 
+   * In the end, there were some limitations with the results that the authors wanted to address for the next iteration.
+Experiment 2
+   * Pre questionnaire, VR task and post questionnaire
+   * to check whether individual factors had impact on thresholds for rotational gains the paper measured
+      * demographical data like age, gender, education and pupil distance
+      * personality factors like self efficacy with technology and the ability of mental rotation using the paper folding test
+      * VR related factors like the tendency to percieve immersion, experience with VR/AR technology, tolerance towards nausea inducing activities like reading when being driven by a car
+   * Results show that TLI is not equivalent to the detection threshold. 
+   * users were not really disturbed by high gains
+   * Individual TLI is pretty diverse
+   * (I dont feel like they described the definition for the TLI well enough for me to understand it)
+   * In general, there seems to be a individual robustness to rotary manipulation
+General discussion
+   * TLI is assessed by adapting how a break of immersion is reported.
+   * With the final procedure, subjects reported the break in immersion as soon as they noticed it, which was validated by applying the method and interviewing participants about their reporting behaviour after the experiment. 
+   * High gains do not break immersion as easily as gains below 1
+   * The control experiment did not yield any significant cybersickness so cybersickness in general for experiment 2 was attributed to rotational gain. 
+Limitations
+   * more than half of the trials ended up at a gain of 2.0 is unsatisfying. There has to be some biased factors due to that
+   * slowly decreasing and increasing rotational gain does not allow for a direct comparison with the established detection thresholds. 
+   * the proposed method of assessing TLI is arguably too time consuming and costly. Thinking aloud requires too much attention of the examiner. 
+   * there might be examiner bias when using this procedure. 
+   * the sample was too homogenous
+Conclusion
+  * TLI was proposed. 
+  * users report a subjective break in immersion without being informed about the applied manipulation. 
+  * findings contribute to spatial compression by proposing an additional quality of user experience. This helps understanding the limitations of effective spatial compression with respect to user diversity and enables larger virtual environments to be explored in limited spaces
+    * (does it enable larger virtual environments to be explored in limited spaces though? To my understanding this just provided an additional quality measure with its fair share of limitations) 
+  * (I spent way too much time reading this + writing notes (~4 hours) so some optimizing might be in order)
+    * (Focus on abstract/introduction/conclusion first)
+  }
+}
+
+@inproceedings{hildebrandt2018get,
+  title={Get Well Soon! Human Factors’ Influence on Cybersickness After Redirected Walking Exposure in Virtual Reality},
+  author={Hildebrandt, Julian and Schmitz, Patric and Valdez, Andr{\'e} Calero and Kobbelt, Leif and Ziefle, Martina},
+  booktitle={International Conference on Virtual, Augmented and Mixed Reality},
+  pages={82--101},
+  year={2018},
+  organization={Springer},
+  notes = {
+  (Just a side note, a fair amount of the authors here are part of the first paper as well)
+  Abstract
+   * predictors for cybersickness are not sufficiently explored when redirection is applied
+   * User study was conducted with semi-structured interviews to get quantitative and qualitative results in this domain. 
+   * Results show that cybersickness arises, but also eases ten minutes after the exposure
+      * (Both me and PMS were sick for several hours after Bjørn's experiment though!)
+   * Quantitative results show that a tolerance for cybersickness might be related to self-efficacy constructs and therefore be learnable or trainable
+   * Qualitative results indicate that cybersickness is dependent on factors like intensity and duration
+  Introduction
+   * Influence of human factors on cybersickness is examined
+  Related Work
+   * The sensory conflict theory suggests that a mismatch between diferent sensory subsystems causes symptoms of cybersickness
+     * While commonly employed to explain symptoms, the theory has been criticized for it’s lack of predictive power
+   * Experience with VR can be a factor in cybersickness
+   * Scene complexity and realism can increase discomfort
+   * Distractors
+      * Dynamically moving objects or agents are used to block the path of the user and induce a turning motion. 
+      * Scene manipulations while the user is distracted also works
+   * (The studies of Steinicke et al and Razzaque et all are brought up in a lot of these RW papers)
+  Methods
+   * Experiment design was equivalent to the one described in Schmitz et al's study
+   * Sample of 52 participants
+      * 12 participants aborted the experiment before getting to the final condition due to cybersickness
+   * Participants were informed that they should stop the experiment if they felt uncomfortable, but were not informed of the redirection technique
+  Discussion
+   * sample was homogenous
+   * previous findings that women tend to be more susceptible to cybersickness was replicated
+      * authors dont know if this is reporting bias or not
+  Conclusion
+   * Experiment consisted of collecting virtual pillars as long as they percieve motion as natural
+      * (This is pretty similar to the first study they did)
+   * Before, right after and 10 minutes after were the times where cybersickness was measured using the SSQ method
+   * Authors came to the conclusion that cybersickness and limited immersion are thresholds that need to be considered when implementing redirected walking algorithms
+      * (This paper came after their study in the threshold on limited immersion)
+  * (Both of the papers by these authors used dynamic gains so they did not really look at specific threshold levels that would keep the user comfortable)
+  * (They keep mentioning that women might get cybersickness more easily than men due to having a wider field of view, but the monitor itself has the same field of view for both. Do they mean it in the relation that the "projection" of everything is slightly different due to the difference in physical field of view?)
+  * (They also forgot to mention what VR headset they used for testing, but I would imagine this is the same as their previous study which used a Samsung Gear VR. This still isn't exactly the best hardware to test with)
+  }
+}
+
+@mastersthesis{fuglestad2018redirected,
+  title={Redirected Walking, an Investigation into Noticeable, but Usable Gains and the Role of Hardware in Threshold Detection},
+  author={Fuglestad, Bj{\o}rn N{\o}dland},
+  year={2018},
+  school={NTNU},
+  notes= {Bjørn's master thesis
+   * (Mentions that a different approach to measuring detection thresholds would be preferred)
+  }
+}
+
+@inproceedings{norouzi2018assessing,
+  title={Assessing Vignetting as a Means to Reduce VR Sickness During Amplified Head Rotations},
+  author={Norouzi, Nahal and Bruder, Gerd and Welch, Greg},
+  year={2018},
+  booktitle={SAP},
+  abstract={
+  *  Redirected and amplified head movements have the potential to
+provide more natural interaction with virtual environments (VEs)
+than using controller-based input, which causes large discrepancies
+between visual and vestibular self-motion cues and leads to
+increased VR sickness. 
+  * However, such amplified head movements
+may also exacerbate VR sickness symptoms over no amplification.
+Several general methods have been introduced to reduce VR sickness
+for controller-based input inside a VE, including a popular
+vignetting method that gradually reduces the field of view.
+  * In this paper, we investigate the use of vignetting to reduce VR
+sickness when using amplified head rotations instead of controllerbased
+input. We also investigate whether the induced VR sickness
+is a result of the user’s head acceleration or velocity by introducing
+two different modes of vignetting, one triggered by acceleration and
+the other by velocity. 
+   * Our dependent measures were pre and post
+VR sickness questionnaires as well as estimated discomfort levels
+that were assessed each minute of the experiment. Our results show
+interesting effects between a baseline condition without vignetting,
+as well as the two vignetting methods, generally indicating that
+the vignetting methods did not succeed in reducing VR sickness for
+most of the participants and, instead, lead to a significant increase.
+We discuss the results and potential explanations of our findings.
+  },
+  notes= {
+  * (sample of 15 people might make it a bit hard to draw the conclusion that Vignetting(Adapting FOV) makes people more sick, even though the majority did better without)
+Introduction
+  * "Comfort Modes" have been used in the gaming industry to reduce VR sickness for controller-based input
+     * Includes gradual reduction of FOV,(sometimes called vignetting) as well as blurring of the view and rotation snapping techniques.
+     * Google Earth VR also makes use of a similar vignetting method for its comfort mode. 
+     * All these comfort modes have primarily been used for controller based input. This paper looks into whether it is as useful amplified head rotations.
+     * Two vignette methods presented which are based on velocity and accelleration
+        * (Aren't the comfort modes static FOV reductions though? Might dynamically changing the FOV result in more confusion/sickness?)
+        * (edit: seems like related work has made use of variable FOV reductions to some success when using controller-based input)
+Related Work
+   * Detectability of the rotation amplification and its relationship with different FOVs has been the focus of several researchers(see paper for these citations). 
+   * VR sickness/cybersickness has many similarities with simulator sickness and motion sickness although different people experience it differently based on their level of susceptibility to it. 
+      * Eye strain, stomach awareness, dizziness, nausea and headaches are common symptoms of VR sickness
+   * Age, gender and illness might separately affect how susceptible one is to VR sickness.
+   * Research has shown that smaller FOVs is positively correlated with reduction in VR sickness. It also reduces the user's sense of presence though
+      * Bolas et al. patented the approach to gradually reduce the FOV only in situations that are known to cause VR sickness, such as when using a controller based input
+      * Fernandes and Feiner tried vignette-based FOV reduction depending on angular velocity speed up. Reduction in discomfort was significant for controller-based input.
+   * Based on the anecdotal results of some previous studies. The authors were interested in seeing whether velocity or acceleration based vignetting had a significant effect on VR sickness during amplified head rotations. 
+Implementation
+   * rotation gains were only applied for yaw rotations(y axis)
+Experiment
+   * 18 participants were recruited
+      * all affiliated with the related institution
+      * (no mention of sampling method)
+      * 3 participants were removed as they had variables affecting their test results like being too sensitive to the VE and being rather exhausted before starting. 
+      * final sample: 15 participants
+   * HTC Vive used for the experiment
+   * (General description of technology used is pretty good here compared to other papers at least. I wont mention the details here as it isn't necessarily relevant for the literature review though)
+   * A virtual butterfly was used as a visual target to communicate rotation tasks
+      * (This could kind of count as a distractor)
+Experiment Methods
+   * Three conditions
+      * Control condition without vignetting, velocity based vignetting and acceleration based vignetting
+      * order of conditions were randomized over the three consequtive days that the experiment took place
+         * (sounds good)
+         * The participants also had to rank their preferred one from the three they tried
+   * VR sickness, discomfort, presence, preference and task performance were measured with the following:
+      * SSQ to measure the level of VR sickness. This was filled out before and after each condition
+      * DS(discomfort score) to measure the participants' sense of discomfort after each minute of the experience. (Asking the participant in the VE to answer how sick they felt on a scale from 0 to 10). This was answered verbally
+      * SUS(Slater-Usoh-Steed) to measure sense of presence. This questionnaire was filled out after each condition
+      * PR(preferred method of interaction): a ranking of each method 
+      * PE: percentage of time when each participant was able to see the butterfly in their visual field.
+         * This is an objective measure of whether the conditions had an effect on the task performance
+    * Qualitative feedback was also gathered after the experiment where the participants were asked to give their impression of what might have caused them the discomfort.
+       * (in this regard, it kind of makes sense to have a lower sample size as a lot of time was spent with each of them)
+    * A gain of 3 on the yaw was used to allow participants to rotate 360 degrees without rotating their body at all
+       * This was done to elicit noticeable sensory conflicts between the visual and vestibuar system for all users independent of their individual sensitivity threshold. 
+Results
+   * Sample is split into two groups
+      * Group 1 with 11 participants that only showed detriments in terms of discomfort when using vignetting
+      * Group 2 with 4 participants that had benefits in either vignetting conditions
+   * (full results are seen in the paper)
+Discussion
+   * Authors were surprised to see that the majority experienced significantly more VR sickness for the vignette methods. 
+   * They believe it is related to the differences in how we explore and visually scan a VE when using our heads compared to a hand held controller
+   * Anecdotal observation: none of the participants noticed that head rotations were amplified.
+      * It was surprising to see this since the gain was very high and far above the detection thresholds
+Conclusion
+   * To summarize, the results indicate that neither velocity or acceleration based vignetting help with reduction of VR sickness and instead lead to a significant increase in sickness symptoms for 11/15 participants. 
+  }
+}
+
+@inproceedings{azmandian2015physical,
+  title={Physical Space Requirements for Redirected Walking: How Size and Shape Affect Performance.},
+  author={Azmandian, Mahdi and Grechkin, Timofey and Bolas, Mark T and Suma, Evan A},
+  booktitle={ICAT-EGVE},
+  pages={93--100},
+  year={2015},
+  abstract={
+   * Redirected walking provides a compelling solution to explore large virtual environments in a natural way. However, research literature provides few guidelines regarding trade-offs involved in selecting size and layout for physical tracked space. 
+   * We designed a rigorously controlled benchmarking framework and conducted two simulated user experiments to systematically investigate how the total area and dimensions of the tracked space affect performance of steer-to-center and steer-to-orbit algorithms. 
+   * The results indicate that minimum viable size of physical tracked space for these redirected walking algorithms is approximately 6m×6m with performance continuously improving in larger tracked spaces. 
+   * At the same time, no “optimal” tracked space size can guarantee the absence of contacts with the boundary. We also found that square tracked spaces enabled best overall performance with steer-to-center algorithm also performing well in moderately elongated rectangular spaces. 
+   * Finally, we demonstrate that introducing translation gains can provide a useful boost in performance, particularly when physical space is constrained. 
+   * We conclude with the discussion of potential applications of our benchmarking toolkit to other problems related to performance of redirected walking platforms.
+  },
+  notes={
+  Introduction
+   * Redirected walking provides better cognitive maps of the environment, albeit at a limited cost of some cognitive load on the user. It does not interfere with navigation and spatial cognition either. 
+     * (citations for these might be worth reading)
+   * The goal of this paper is to evaluate the physical space requirements for RW while controlling for the most salient factors that may affect RW performance. 
+     * The goal is to shed light on the optimal tradeoff between cost and performance for tracked space requirements
+  Related work
+   * Razzaque et al. introduced the concept of redirected walking
+   * RW algorithms can be categorised into reactive or predictive algorithms
+      * Reactive assumes no knowledge of the VE or future user direction. It relies on current travel direction, speed and position relative to the physical tracked space to steer the user. 
+         * Examples of reactive algorithms are Steer to Center(S2C) and Steer to Orbit(S2O) which were initially proposed by Razzaque et al and later improved by Hodgson and Bachmann.
+      * Predictive algorithms try to take advantage of the previous behaviour of the user and the structure of the VE to forecast user movement into the future.
+         * These algorithms usually optimize the choice of steering action by searching among possible outcomes and applying different options in a near-term time horizon. 
+   * The work of Peck et al. demonstrates that reset-like periodic reorientations may be enough to explore large VE's without other RW techniques.
+   * The layout of the physical tracked space is a practical issue in a RW setup. 
+   * Existing literature does not provide clear guidance when it comes to physical space requirements for a RW setup. 
+   * S2C might beat S2O in one type of VE while another might be the opposite. 
+  Our Approach
+   * S2C and S2O primarily used as they are applicable to any given VE without needing to make assumptions. 
+   * Effects of combining rotation, curvature and translation gains are investigated. 
+      * translation gains + S2O/S2C
+   * Common reset method used which stopped users at the boundary of the tracked space and reoriented them towards the center
+      * (they did not specifically specify what the method is called though)
+   * Simulated user approach
+      * (this kind of disregards human factors though, doesn't it? This might not give accurate performance measurements)
+   * everything implemented in Unity as a interactive framework
+   * 2 experiments
+      * 1: looking at square tracked spaces and the effect on RW performance
+      * 2: looks at the differences between rectangular tracked spaces that have the same area, but differ in dimensions
+  Experiment 1: what is the optimal tracked space size?
+   * 5 RW algorithms used
+      * S2C: injecting small visual rotations to steer the user towards the center of the tracked space. Implementation was based on the modified version introduced by Hodgson and Bachmann
+      * S2O: similar to S2C, but the heuristic is to steer the user so they orbit around the center of the tracked space
+      * CTG(center based translation gain): slowing down the user when they were moving away from the center of the tracked space. Based on unnoticeable threshold estimate by Steinicke et al. translation gain was set to 14 percent
+      * Combined Algorithms (S2C+CTG, S2O+CTG): straightforward combination of the two
+      * Control Condition: no redirection
+   * Performance measurement
+      * Checking the reset count is a good way to see how good the RW technique performs. 
+   * S2C and S2O are not very effective in small tracked spaces
+      * S2O requires at least 15 meters to get 10 percent effectiveness relative to no redirection and to outperform CTG
+      * S2C requires at least 6 meters to achieve 10 percent effectiveness and to outperform CTG
+      * In intermediate tracked spaces between 16-31 meters S2O outperforms S2C in a Long Walk path scenario(Walking in a infinite straight line)
+  Experiment 1: discussion
+   * Minimum viable tracked space requirements in a long walk scenario
+      * S2C requires a tracked space of at least 6m x 6m for 10 percent relative effectiveness to no redirection
+      * S2O needs a larger tracked space than S2C 
+      * Translation gain relaxes the requirements a bit by effectively making the tracked space "bigger"
+   * Data suggests 31m x 31m tracked space is enough to achieve infinite straight line walking in VR for any of the algorithms. 
+      * This is in line with the earlier 30m x 30m estimate by Razzaque et al. and 35m x 35m by Hodgson and Bachmann
+   * Near perfect performance was achieved by S2O in a tracked space of 22m x 22m. 
+   * For very large spaces, it does not matter whether you use S2O or S2C
+   * S2C is best for smaller/intermediate spaces (under 15m x 15m)
+   * In practice, most tracked spaces are unlikely to exceed 10m x 10m so a fair amount of resets will be expected
+      * Therefore, it is critical to design reset and reorientation mechanisms to seamlessly integrate into overall virtual reality experience.
+         * (Which is exactly what distractors are aimed at)
+   * For small tracked spaces combining S2C/S2O with translation gain provides a significant boost in effectiveness. 
+      * Further research is needed to fully understand the effect of applying both curvature and translation gain though.
+      * the primary concern is that using both might make it more noticeable
+  Experiment 2: what is the optimal shape of the tracking space?
+   * S2O and S2O+CTG performs best in square tracked spaces
+   * CTG by itself does not appear to be sensitive to tracking space shape
+   * In general: square shaped tracking spaces are the best choice across all algorithms
+  Conclusions:
+   * there is no single "optimal" size of a tracked space at least for reactive algorithms. 
+   * It is prudent to concentrate on defining and achieving an acceptable level of resets and integration them more naturally into the experience. 
+   * at 10m x 10m tracked space S2C reduces the number of resets vs no redirection by 27 percent. S2C+CTG meanwhile achieves the reduction by 46 percent
+   * Square shaped tracking spaces are most suitable for redirection. Moderately elongated rectangular shapes are also fine
+   * The study is a bit limited since it did not use real world users.
+      * A more complete understanding of RW would require to assess the impact on the user in terms of perceptual and cognitive load as well as the levels of simulator sickness. 
+      * In the future the authors want to include these features to predict the user's comfrot level across various algorithms
+         * (This varies a lot on the individual though I would imagine)
+   * (In general this paper can be used as a argument for working on distractors)
+   * (Side note: these are the authors that made the redirected walking toolkit for Unity. They have a separate paper for it as well)
+  }
+}
+
+@article{sun2018towards,
+  title={Towards virtual reality infinite walking: dynamic saccadic redirection},
+  author={Sun, Qi and Patney, Anjul and Wei, Li-Yi and Shapira, Omer and Lu, Jingwan and Asente, Paul and Zhu, Suwen and McGuire, Morgan and Luebke, David and Kaufman, Arie},
+  journal={ACM Transactions on Graphics (TOG)},
+  volume={37},
+  number={4},
+  pages={67},
+  year={2018},
+  publisher={ACM},
+  notes={
+    Abstract
+       * Makes use of small redirections during the moment of temporary blindness that occurrs during a eye saccade.
+       * Dynamic path planning on the GPU that can avoid static and dynamic obstacles. 
+       * Subtle gaze direction methods tailored for VR perception are proposed
+          * (Sounds like distractors)
+    Intro
+       * 
+    Method
+       * Subtle Gaze Direction
+          * Works in the same spirit as distractors. 
+          * Encouraging larger and frequent eye saccades through stimuli that appears in the peripheral vision.  
+             * (A state of the art usage of implicit distractors, making use of salience)
+             * Adding additional luminance to already salient regions or objects once they are in the peripheral vision. 
+       * Azmandian's Redirected Walking Toolkit is in use
+          * (Nice!)
+   * Scales well with larger room sizes even if it works fine in roomscale. 
+   * (Ultimately, this is worth putting into the distractor table)
+  }
+}
+
+@article{langbehn2018blink,
+  title={In the blink of an eye: leveraging blink-induced suppression for imperceptible position and orientation redirection in virtual reality},
+  author={Langbehn, Eike and Steinicke, Frank and Lappe, Markus and Welch, Gregory F and Bruder, Gerd},
+  journal={ACM Transactions on Graphics (TOG)},
+  volume={37},
+  number={4},
+  pages={66},
+  year={2018},
+  publisher={ACM},
+  notes={
+     exploits change blindness by doing redirections during eye blinks. 
+     can work as a supplement to existing redirection gains
+     50\% improvement with unnoticeable manipulations. 
+     Could be possible to trigger eye blinks through bright lights or virtual elements flying towards the eyes
+        (Also very much within the field of implicit distractors)
+  
+  }
+}
+
+@article{nilsson201815,
+  title={15 Years of Research on Redirected Walking in Immersive Virtual Environments},
+  author={Nilsson, Niels Christian and Peck, Tabitha and Bruder, Gerd and Hodgson, Eri and Serafin, Stefania and Whitton, Mary and Steinicke, Frank and Rosenberg, Evan Suma},
+  journal={IEEE computer graphics and applications},
+  volume={38},
+  number={2},
+  pages={44--56},
+  year={2018},
+  publisher={IEEE},
+  notes={
+  * mentions that there is little documentation of the effectiveness of narrative interventions
+  
+  }
+}
+
+@inproceedings{nguyen2018discrete,
+  title={Discrete scene rotation during blinks and its effect on redirected walking algorithms},
+  author={Nguyen, Anh and Kunz, Andreas},
+  booktitle={Proceedings of the 24th ACM Symposium on Virtual Reality Software and Technology},
+  pages={29},
+  year={2018},
+  organization={ACM},
+  notes={
+     * Another blink related study
+     * ALso presents a few new reset techniques. 
+  }
+}
+
+% Literature Search: Gains, thresholds and comfort - IEEEXplore
+@ARTICLE{5072212, 
+author={F. Steinicke and G. Bruder and J. Jerald and H. Frenz and M. Lappe}, 
+journal={IEEE Transactions on Visualization and Computer Graphics}, 
+title={Estimation of Detection Thresholds for Redirected Walking Techniques}, 
+year={2010}, 
+volume={16}, 
+number={1}, 
+pages={17-27}, 
+abstract={
+In immersive virtual environments (IVEs), users can control their virtual viewpoint by moving their tracked head and walking through the real world. Usually, movements in the real world are mapped one-to-one to virtual camera motions. With redirection techniques, the virtual camera is manipulated by applying gains to user motion so that the virtual world moves differently than the real world. Thus, users can walk through large-scale IVEs while physically remaining in a reasonably small workspace. In psychophysical experiments with a two-alternative forced-choice task, we have quantified how much humans can unknowingly be redirected on physical paths that are different from the visually perceived paths. We tested 12 subjects in three different experiments: (E1) discrimination between virtual and physical rotations, (E2) discrimination between virtual and physical straightforward movements, and (E3) discrimination of path curvature. In experiment E1, subjects performed rotations with different gains, and then had to choose whether the visually perceived rotation was smaller or greater than the physical rotation. In experiment E2, subjects chose whether the physical walk was shorter or longer than the visually perceived scaled travel distance. In experiment E3, subjects estimate the path curvature when walking a curved path in the real world while the visual display shows a straight path in the virtual world. Our results show that users can be turned physically about 49 percent more or 20 percent less than the perceived virtual rotation, distances can be downscaled by 14 percent and upscaled by 26 percent, and users can be redirected on a circular arc with a radius greater than 22 m while they believe that they are walking straight.
+}, 
+keywords={gesture recognition;motion estimation;virtual reality;redirected walking techniques;immersive virtual environments;virtual camera;two-alternative forced choice task;detection thresholds estimation;Legged locomotion;Virtual environment;Cameras;Navigation;Large-scale systems;Displays;Tracking;Psychology;Humans;Testing;Virtual reality;virtual locomotion;redirected walking.;Adult;Computer Graphics;Computer Simulation;Female;Gait;Humans;Imaging, Three-Dimensional;Middle Aged;Models, Theoretical;Orientation;Psychomotor Performance;Sensory Thresholds;User-Computer Interface;Walking;Young Adult}, 
+doi={10.1109/TVCG.2009.62}, 
+ISSN={1077-2626}, 
+month={Jan},
+notes={
+   * (Steinicke et al.'s paper on detection threshold estimation which has been cited a fair bit in previously read papers.)
+  Introduction
+   * Article presents a series of experiments where the authors have quantified how much humans can be redirected without seeing inconsistensies between real and virtual motions. 
+  Related work
+   * Yaw is the most often manipulated rotation for redirected walking (there are a lot of citations for this statement)
+  Experiments
+   * 10m x 7m darkened laboratory room
+   * 3DVisor Z800 800x600 60hz HMD 
+      * (Pretty old stuff)
+   * Software ran at 30fps
+   * Ambient noise provided with headphones or equivalent to prevent auditory feedback from the real world
+      * (This is useful to keep in mind)
+   * Participants walked around a 3D city environment
+   * 14 participants
+   * 2AFC task where the participant is forced to answer whether the rotation was smaller or greater than the real world counterpart
+      * Asking "was this greater or not?" might introduce a bias to say no when the participant is unsure, hence using greater or smaller to avoid this problem. 
+   * (specifics on how the thresholds are defined is mentioned in the paper, but I dont feel like I can sum them up in a easy manner so it might be best to just reread this section("Participants") if necessary)
+  Experiment 1: discrimination between virtual and physical rotation
+   * subjects were instructed to rotate on a physical spot and their rotation was mapped to a corresponding virtual rotation with gains applied
+   * (this experiment is in general pretty similar to one of the experiments Bjørn did on newer hardware)
+   * the subject would have to rotate 90 degrees virtually to look at a ball that was on eye height. 
+   * range of 0.5-1.5 gains were tested in steps of 0.1. Each gain was tested 10 times in randomized order
+   * subjects can be turned about 49 percent more or 20 percent without noticing the difference
+   * In summary, the experiment showed that the subjects could not discriminate physical from virtual rotations over the reported range of gains
+  Experiment 2: discrimination between virtual and physical straightforward movement
+   * seeing whether the subjects could detect translation gain
+   * subjects can be manipulated physically by about 14 percent for downscaling and 26 percent for upscaling 
+   * Subjects have a tendency to underestimate travel distances in virtual worlds which coincides with the asymmetry in the results. 
+  Experiment 3: discrimination of path curvature
+   * subjects were instructed to walk in a straight line in the VE while they were manipulated to walk in a curve
+   * Having the subjects walk 2m first before starting to manipulate curve gain was done to avoid them walking in a triangle rather than a curve
+   * Subjects can be reoriented by 13 degrees to the left or to the right after a walking distance of 5m. This corresponds to walking along a circular arc with the radius of ~22m. If you then have a lab with 40m x 40m size it should be possible to infinitely walk in a circle while the subject believes they are moving forward in a straight line. 
+  Conclusion and Discussion
+   * Subjects tolerate far greater gains when they are not aware of the manipulation, in particular when they are engaged in other primary tasks.
+   * An earlier study by the authors found that a curvature gain of 0.64 was noticeable, but not very distracting which results in a circular arc with a 3.3m radius. This is far more practical. 
+   * The thresholds proposed in this article provide the lower and upper bounds for the sensitivity towards redirected walking.  
+     * But in most cases, much greater gains can be applied without the user noticing. 
+   * Peck et al. used virtual objects like a butterfly in front of the user to distract them from reorientation. This allowed far larger manipulations.
+     * (Their paper is probably pretty relevant to read)
+}
+}
+
+@INPROCEEDINGS{8446225, 
+author={A. Nguyen and Y. Rothacher and A. Kunz and P. Brugger and B. Lenggenhager}, 
+booktitle={2018 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)}, 
+title={Effect of Environment Size on Curvature Redirected Walking Thresholds}, 
+year={2018}, 
+volume={}, 
+number={}, 
+pages={645-646}, 
+abstract={
+Redirected walking (RDW) refers to a number of techniques that enable users to explore a virtual environment larger than the real physical space. 
+These techniques are based on the introduction of a mismatch in rotation, translation and curvature between the virtual and real trajectories, quantified as rotational, translational and curvature gains. 
+When these gains are applied within certain thresholds, the manipulation is unnoticeable and immersion is maintained. Existing studies on RDW thresholds reported a wide range of threshold values. 
+These differences could be attributed to many factors such as individual differences, walking speed, or environment settings. 
+In this paper, we propose a study to investigate one of the environment settings that could potentially influence curvature RDW thresholds: the environment size. The detailed description of the study is also provided, where the adaptive, 2-alternative forced choice method is used to identify the detection thresholds.}, 
+keywords={Legged locomotion;Visualization;Optical sensors;Integrated optics;Virtual environments;Adaptive optics}, 
+doi={10.1109/VR.2018.8446225}, 
+ISSN={}, 
+month={March},
+notes={
+   * (This paper might have some correlations with the results of azmandian2015physical, although that study is about physical space while this is about virtual space)
+  Introduction
+   * Real walking in a VE has been proven to have better fidelity and immersion
+   * It does not seem like detection thresholds are constant as they vary largely between individuals and context settings. Various researchers ended up with various threshold results. 
+   * It is therefore important to understand the factors that have an effect on RDW thresholds. 
+  Related Work
+   * Walking speed seems to have a result on sensitivity to curvature gain (Neth et al)
+   * Steinicke et al have tried to do a threshold identification study where they tested different visual appearances on the environment and applied textures of different visual density to create different amounts of optical flow
+      * Users seem to be less sensitive to RDW when the amount of optical flow is small. (This means simpler scenes are better I would imagine. This paper is probably worth reading as well)
+      * Paludan et al tried to vary the number of objects in the scene to investigate the effects of visual density on rotation gain thresholds. 
+         * They could not establish a relationship between visual density and rotaion gain thresholds
+      * High visual density creates higher optical flow though which means that these two studies contradict each other. 
+         * But there are differences in the design of the environment in the two studies so it is hard to conclude whether optical flow has a effect on RDW thresholds. 
+      * Hodgson et al remarked that users found it easier to notice curvature gains in an aisle than compared to a forest. This might suggest that the dimension of the environment plays a role in detection of RDW. 
+      * Thus this study looks into environment size and seeing how it factors into RDW detection thresholds
+         * (There are more differences between an aisle and a forest than just dimensions though :p. Visual density is probably pretty different between the two as well. Optical flow and visual density might be seen as slightly different though as textures could also play a role into optical flow, but they do not play a part into the density of objects in a scene)
+  User Study
+   * two scenes corresponding to two room size conditions were designed to be as plain as possible to remove any confounding effects of optical flow. 
+   * both scenes had a red target which was located 7.5m from the starting position of the user. 4 surrounding walls with simple shading and no textures were also present
+   * The width of the room is 10m in one condition and 2m in the other
+   * The length of the room is 10m for both. 
+   * walking speed is controlled by asking the users to follow a certain step sound as velocity can affect the curvature RDW thresholds
+      * (This does not sound very practical though. It would diminish the user experience to not be able and move around at their own pace)
+      * The frequency of this step sound is generated by a equation provided by Dean. 
+      * 2AFC method used where each trial makes the user walk to the target 2 times. 
+         * In one of the two walks, curvature gain is applied and the order is randomized between trials. The next value of curvature gain is calculated by a Bayesian adaptive method called "QUEST" by Watson and Pelli
+   * Oculus DK2 with built in SMI eye tracker. Inside out tracking used for moving around
+      * (Not the ideal hardware for roomscale walking)
+   * A cover is added to prevent the users from seeing the floor.
+   * Scenes are designed in Unity to run at a 75hz framerate. Setup is powered by a backpack-mounted notebook.
+   * Tracking space is 12m x 6m
+  Results
+    * 60 subjects were recruited from the university market place and paid 15CHF/hour for their participation
+       * (This is not ideal as it might give biased results. If you are going to give them some compensation, give it to them after the experiment without them knowing about it beforehand. ~15 dollars per hour were given out)
+    * 30 participants were exposed to the 2m wide room and the other 30 to the 10m wide room.
+       * The same number of men/women were used for each room size condition
+    * The results did not show a significant effect of room size on curvature RDW thresholds.
+  Discussion
+    * It was surprising to find out that a rooms dimension did not significantly affect curvature gain thresholds. This contradicts with the observations of Hodgson et al where subjects recognized curvature gains more in an aisle compared to an open room.
+       * (Was this not a aisle compared to a forest though? This is not the same as the isolated width different rooms of this study.)
+    * One possible explanation for this finding could be that it is not the room dimensions, but the amount of optical flow generated by the scene or a combination of room dimensions and optical flow
+       * (This seems more likely, yes)
+    * Optical flow in both scenes was similar due to no textures
+    * might be better to go for a within-subject design where each subjects thresholds are measured in both room size conditions rather than between-subject design.
+  Conclusion
+    *  environment size does not have a significant effect on curvature gain thresholds. Possibly due to lack of optical flow. Further study is required to identify the factors of the environment on RDW thresholds. 
+}
+}
+
+@INPROCEEDINGS{5759454, 
+author={C. T. Neth and J. L. Souman and D. Engel and U. Kloos and H. H. Bülthoff and B. J. Mohler}, 
+booktitle={2011 IEEE Virtual Reality Conference}, 
+title={Velocity-dependent dynamic curvature gain for redirected walking}, 
+year={2011}, 
+volume={}, 
+number={}, 
+pages={151-158}, 
+keywords={avatars;helmet mounted displays;velocity dependent dynamic curvature gain;redirected walking;virtual environment;head mounted display;virtual city model;dynamic gain controller;avatar controller;virtual space;mean walked distance;Legged locomotion;Avatars;Sensitivity;Virtual environment;Particle measurements;Cybernetics;Atmospheric measurements}, 
+doi={10.1109/VR.2011.5759454}, 
+ISSN={2375-5334}, 
+month={March},
+abstract={
+Redirected walking techniques allow people to walk in a larger virtual space than the physical extents of the laboratory.
+We describe two experiments conducted to investigate human sensitivity to walking on a curved path and to validate a new redirected walking technique. 
+In a psychophysical experiment, we found that sensitivity to walking on a curved path was significantly lower for slower walking speeds (radius of 10 meters versus 22 meters). 
+In an applied study, we investigated the influence of a velocity-dependent dynamic gain controller and an avatar controller on the average distance that participants were able to freely walk before needing to be reoriented. 
+The mean walked distance was significantly greater in the dynamic gain controller condition, as compared to the static controller (22 meters versus 15 meters). 
+Our results demonstrate that perceptually motivated dynamic redirected walking techniques, in combination with reorientation techniques, allow for unaided exploration of a large virtual city model.
+},
+notes={
+   * Users seem to be less sensitive to curvature gains when walking slower
+   * (Makes use of NPCs as a distractor so it probably is worth a full read)
+ Introduction and motivation
+   * Previous studies had issues as they used predetermined paths and had to stop frequently to reorientate when the boundaries was reached. 
+   * This paper presents two experiments with the aim to improve state of the art RDW for unaided free exploration.
+   * Experiment 1 made use of psychophysics methods to look at the sensitivity of humans to walking on a curved path at various speeds with a light weight HMD setup.
+   * Experiment 2 extended the state of the art dynamic gain controller for RDW. 
+     * Addition:  making the gain controller dependent on the speed of the user and to add avatars as a possible tool for additional redirection
+        * (Distractors should probably be seen as a separate component than being part of a dynamic gains controller though?)
+   * New measure for RDW techniques presented: the distance the participant can walk before needing to use an unnatural reorientation technique. 
+   * The second experiment demonstrated that participants could walk unaided for a virtual kilometre in a small tracking hall by using the extended dynamic gain controller. 
+ Related Work
+   * Several studies have reported that people tend to walk slower in virtual environments
+      * (That would make sense since nobody wants to run into a wall :p)
+   * Steinicke et al. also found that ~20 percent scaling up in translation gain seems to be fine. 
+   * "Seven League boots" metaphor: only forward motion is amplified by a factor of 10.
+   * Change blindness can also be used to manipulate the virtual world then the use is not watching if the accuracy of the virtual world does not matter as much.
+   * Peck et al.'s study on ROT's found that moving distractors like a butterfly and rotational gains was experienced as a more natural and preferred way of forced reorientation. 
+ Experiment 1
+   * To measure curvature DT's the participants were made to walk on paths with different curvatures. DT's for three different walking speeds were measured.
+   * Controlling both the curvature and walking speed was handled by modelling a floating sphere in the virtual world. Participants were instructed to follow this sphere at a given distance. Feedback on their distance was provided via the colour of the sphere. 
+   * Virtual world was rotated with with the sphere in a way so that participants always had the impression that they were walking along a straight line. 
+   * after each trial the participants were asked whether they felt like they walked on a left handed or right handed curve. 
+   * Position and orientation of the sphere + participants were recorded for further analysis. 
+   * 6 hours per participant including breaks
+      * (Yikes!)
+      * SSQ answered before and after each session
+   * 12 participants
+   * FOV of 32 degrees x 24 degrees
+      * (Rather small, this paper is a bit older though so the VR technology was not very mature. Regardless, FOV might play a role into redirection)
+   * psychometric functions and points of subjective equality (PSE) used to determine thresholds. 
+   * People are significantly less sensitive towards walking on a curved path when walking slower. 
+ Experiment 2: Implementation of a Dynamix RDW gain controller for free exploration
+   *  The results from experiment 1 was used to model a RDW controller which extends the dynamic gain controller described by Engel et al. and Steinicke et al. 
+   * Rotational, translational, curvature and time dependent rotational gain was implemented.
+   * rotation gain is scaled in relation to the spatial position and the head orientation of the participant. 
+   * Translation gain was scaled up to a factor of 2 since Steinicke et al. mention that people often underestimate the distance they walk in VR
+   * The world was rotated by 1 degree per second to allow a small yet constant redirection(time dependent rotation gain)
+   * S2O style of redirection 
+ Experiment 2: Avatar redirection support
+   * A possibly more natural ROT would be to use virtual humans instead of a stop sign with freeze turn style functionality. 
+   * There are several rings of distance in social interactions: (public, social, personal and intimate)
+   * This concept holds true to virtual worlds as well according to Wilcox et al. and Llobera et al. 
+   * Two type of avatar distractors
+      * One avatar is created to walk in front of the user with its distance depending on the user's walking velocity. If the user is walking fast then the avatar will be closer as a means to slow the user down which in turn allows for higher curvature gain. 
+      * The second avatar placed a avatar directly ourside of the user's viewing frustrum when the user is approaching the boundaries of the walking area. By walking into the scene and intersecting the straight path of the user this avatar aims to initiate collision avoiding behaviour from the user. The additional movement when trying to avoid the avatar can be exploited for RDW algorithms.
+  Experiment 2: Evaluation of Dynamic RDW
+    * Measure of success: The distance a person can walk without having to use a ROT. 
+    * (an idea for distractors working in similar manner to the ones presented here would be to make a game where the player is supposed to get to a goal, but they have to avoid the constantly moving animals that try to block your path)
+    * The improvement in distance that could be walked with the dynamic gain controller was significant compared to the static gain controller. 
+       * It did not come at the cost of an increase in SSQ values either. 
+    * The used curvature gains were higher than the previously established detection thresholds, but the participants did not seem to notice it. 
+       * (They would corellate with the fact that they probably were more immersed due to distractors and focused on other things instead of the distraction itself. One of the other papers here mentions that gains can be far higher than the detection thresholds if the user is engaged with a primary task)
+    * Additional research is needed where participants are given a goal directed task, which will likely encourage them to walk to closer to normal speed. 
+    * The newly created concept of using avatars for redirection did not lead to a significant rise in walkable distance before needing a ROT. 
+       * The reason for the fact that the implemented avatars may not have decreased the distances between reorientations might be that the users walked slowly when exploring the city.  
+       * The intersecting avatar must not have attracted as much attention as the authors had hoped. 
+          * This could be due to the fact that the slowing down avatar was always present, and so the intersecting one was competing for attention. 
+          * Further research is needed in order to use avatars are more natural ROT. 
+  Conclusions
+    * Experiment 1 showed that people are significantly less likely to notice that they walk in a curved path when they walk slower
+    * Experiment 2 showed that dynamic curvature gain allowed for more distance travelled between ROT's compared to static gains. 
+       * Curvature gain was also dependent on walking speed here. Lower speeds = higher gains
+       * simulator sickness was not increased by the dynamic controller
+       * Avatars were not successful. 
+}
+}
+
+@ARTICLE{7833190, 
+author={E. Langbehn and P. Lubos and G. Bruder and F. Steinicke}, 
+journal={IEEE Transactions on Visualization and Computer Graphics}, 
+title={Bending the Curve: Sensitivity to Bending of Curved Paths and Application in Room-Scale VR}, 
+year={2017}, 
+volume={23}, 
+number={4}, 
+pages={1389-1398}, 
+keywords={cameras;gait analysis;virtual reality;curved walking path;virtual reality;VR;redirected walking;RDW manipulation;near-natural walking;virtual environment;VE;virtual camera;human sensitivity;worst-case scenario;Legged locomotion;Sensitivity;Virtual environments;Cameras;Visualization;Space vehicles;Human computer interaction;Virtual reality;redirected walking;room-scale;bending gains}, 
+doi={10.1109/TVCG.2017.2657220}, 
+ISSN={1077-2626}, 
+month={April},
+abstract={
+Redirected walking (RDW) promises to allow near-natural walking in an infinitely large virtual environment (VE) by subtle manipulations of the virtual camera. Previous experiments analyzed the human sensitivity to RDW manipulations by focusing on the worst-case scenario, in which users walk perfectly straight ahead in the VE, whereas they are redirected on a circular path in the real world. The results showed that a physical radius of at least 22 meters is required for undetectable RDW. However, users do not always walk exactly straight in a VE. So far, it has not been investigated how much a physical path can be bent in situations in which users walk a virtual curved path instead of a straight one. Such curved walking paths can be often observed, for example, when users walk on virtual trails, through bent corridors, or when circling around obstacles. In such situations the question is not, whether or not the physical path can be bent, but how much the bending of the physical path may vary from the bending of the virtual path. In this article, we analyze this question and present redirection by means of bending gains that describe the discrepancy between the bending of curved paths in the real and virtual environment. Furthermore, we report the psychophysical experiments in which we analyzed the human sensitivity to these gains. The results reveal encouragingly wider detection thresholds than for straightforward walking. Based on our findings, we discuss the potential of curved walking and present a first approach to leverage bent paths in a way that can provide undetectable RDW manipulations even in room-scale VR.
+},
+notes={
+   * Analyses sensitivity to bending gains in cases where the user is moving in a curved path in a VE.
+   * Results reveal wider detection thresholds than for straightforward walking
+ 
+ Introduction
+   * Real walking has advantages in terms of the user's sense of presence, navigational tasks, cognitive map building, spatial knowledge and cognitive demands. 
+   * Most research has looked into straight virtual paths and not bending ones. 
+   * A new kind of redirection method is introduced in this article which is based on bending gains that define discrepancies between physical and virtual paths in situations where both are bent
+   * the following is included:
+      * definition and implementation of bending gains
+      * estimation of detection thresholds for these gains
+      * a first approach to leverage curved path layouts for walking in room-scale VR.
+ Related Work
+   * Suma et al. presented a taxonomy of different redirection and reorientation techniques ranging from subtle to overt, and discrete to continuous. 
+   * Hodgson et al. added a steer to multiple centers algorithm which extends Razzaque et al.'s steer to multiple target algorithm. 
+   * Zhang et al. have developed heuristics to dynamically adjust RDW gains to guide the user in the best direction.
+   * Despite the large body of literature, there is no solution for applying undetectable RDW in small laboratories and room scale VR without additional overt reorientation phases. 
+ Bending Gains
+   * Bending gains are similar to curvature gains as they combine walking and rotations, but are applied to curved paths instead of straight paths. 
+   * This is achieved by combining curvature and rotation gains. 
+   * Redirection is only applied to curved paths. 
+ Psychophysical Experiment
+   * 15 participants
+     * Students or members of the local department of informatics, who obtained class credit for their participation
+        * (just give them chocolate or something after the experiment is done!)
+   * 60 minutes per participant
+   * Vive HMD
+   * room was darkened during the experiment to reduce the perception of the real world
+   * 4x5 full-factorial within-subjects experimental design.
+   * 80 trials
+   * Curves of 1.25m and 2.5m
+      * Because these would fit into the roomscale VR setup
+ Procedure:
+   * 2AFC is a standard psychophysical procedure
+ Results/Discussion:
+   * bending gains of ~3.5 can be applied without users being able to reliably detect it. 
+   * Detection thresholds suggest that it could be bent up to 4.35. 
+ Room scale VR application
+   * the broader detection thresholds observed in the experiment means that it becomes more reasonable to leverage this type of curved walking in smaller workspaces. 
+ Real world walking config
+   * Constraints of bending gains
+     * It must be possible that a user can walk infinitely on a curved path with the same curvature direction
+     * The curves must provide intersections at joint point at which the user can change their direction. At the join points, the curves must satisfy G^0 geometric continuity. I.e. the curves touch in the joint point
+     * two curves at each joint must satisfy G^1 geometric continuity, i.e, curves share a common tangent direction at joint points
+     * curves should provide a minimal bending, and therefore use a maximal possible radius approcimating a straight path in a room scale VR setup.
+     * (There are too many constraints here for designers to think about when making a VE. It does not seem very practical outside of controlled lab experiments)
+ Limitations
+   * relies on predefined paths in the VE
+   * walking freely is not possible
+   * (Too much of a "on rails" solution)
+   * VE paths are limited to curved paths. 
+ Conclusion
+   * A new RDW concept was introduced which is based on guiding users to walk on curved paths. 
+   * Bending gains was defined
+   * Users are less aware of redirection manipulations while walking on curved paths in contrast to traditional redirected walking with curvature gains, when users walk straight in the VE.
+   * Application approach for bending gain in room scale VR was presented. 
+   * Bending gains allows the use of RDW in room scale VR without using interruptions or overt reorientation phases. 
+     * Albeit this induces some limitations on the design of the VE
+   * https://github.com/klngbhn/RDW_CurvedPathConfigurator - Algorithms used and open source libraries. 
+}
+}
+
+@INPROCEEDINGS{8446216, 
+author={L. Kruse and E. Langbehn and F. Steinicke}, 
+booktitle={2018 IEEE Conference on Virtual Reality and 3D User Interfaces (VR)}, 
+title={I Can See on My Feet While Walking: Sensitivity to Translation Gains with Visible Feet}, 
+year={2018}, 
+volume={}, 
+number={}, 
+pages={305-312}, 
+abstract={
+* Redirected walking allows users to explore immersive virtual environments by real walking even when the physical tracking space is limited. 
+* Redirected walking is usually implemented via translation gains, rotation gains, and curvature gains, while previous research was focused on identifying detection thresholds for such manipulations. 
+* To our knowledge, all previous experiments were conducted without a visual self-representation of the user in the virtual environment, in particular, without showing the user's feet. 
+* In this paper, we address the question if the virtual self-representation of the user's feet changes the detection thresholds for translation gains. 
+* Furthermore, we consider the influence of the holisticness of the visual stimulus, i. e., the type of virtual environment. 
+* Therefore, we conducted an experiment to identify detection thresholds for translation gains under three different conditions: (i) without visible virtual feet and (ii) with visible virtual feet both in a high fidelity visually rich virtual environment, and (iii) with visible virtual feet in a low cue virtual environment. 
+* The results revealed the range of detection thresholds for translations gains, which cannot be detected by the user when the feet are visible. 
+* Furthermore, the results show a significant difference between the two types of environment. 
+* Our findings suggest that the virtual environment is more important for manipulation detection than the visual self-representation of the user's feet.
+}, 
+keywords={Legged locomotion;Visualization;Foot;Virtual environments;Tracking;Cameras;Avatars;Locomotion;redirected walking;translation gains.: H.5.1 [Information Interfaces and Presentation]: Multimedia Information Systems―Artificial;augmented;and virtual realities;I.3.7 [Computer Graphics]: Three-Dimensional Graphics and Realism―Virtual reality}, 
+doi={10.1109/VR.2018.8446216}, 
+ISSN={}, 
+month={March},
+notes={
+   * (There might be some useful information on how a VE should be designed with RW in mind here)
+ Introduction
+   * Translation gain feels a bit more natural if the movement is faster than the physical world (due to underestimation)
+   * When full body tracking is available, an issue that occurs is that the virtual body also needs to be redirected 
+   * This might impact the detectability of RDW since manipulations might be more obvious
+ Related Work
+   * 
+ Experiment
+   * Hypothesises
+      * H1: the range of translation gains, which can be applied unnoticeable to the user, is smaller when the user is able to see a visual representation of their feet.
+      * H2: the range of translation gains, which can be applied unnoticeable to the user, is smaller when the VE provides more motion visual cues
+      * H3: The sense of presence will be lowest in the VE which provides less motion visual cues.
+   * 20 participants
+   * class credit obtained for participation
+      * (The authors at this university really like this method)
+   * 75 min per participant
+   * Vive HMD
+   * The model of the virtual foot had a size of 25.5cm
+      * (Would this technically not feel more natural if it was scaled to the participant?)
+ Methods
+   * 3x9 within subjects design. 
+      * 3 combinations of the environment and feet tracking was tested
+         * Condition 1: no virtual feet in a high fidelity visually rich VE. 
+            * (It did not seem very high fidelity from the images :p. For a 2018 paper this is far from "high fidelity", it is closer to something from the ps2/gc generation)
+         * Condition 2: visible virtual feet in a high fidelity visually rich VE
+         * Condition 3: visible virtual feet in a low cue VE
+      * 9 different translation gains per condition
+      * Condition 3 was there to help shed light on whether it is the feet or the VE that has an effect if condition 1 and condition 2 had significantly different results
+      * 2AFC questions
+         * (seems to be the standard)
+ Results/Discussion
+   * it was easier to detect the manipulations when participants could see their feet
+      * the statistical test was not able to confirm this though so H1 cannot be confirmed
+   * Estimating walking speed was easier in the richer scene. Optical flow seems to play a part
+      * (Compare results here with other papers that looked into VE effects). 
+      * (TLDR: translation gains DT's are wider when the scene is less rich in visuals)
+   * Low cue environment lead to a lower presence score
+}
+}
+
+% Distractors - Google Scholar
+@inproceedings{chen2017towards,
+  title={Towards imperceptible redirected walking: integrating a distractor into the immersive experience},
+  author={Chen, Haiwei and Fuchs, Henry},
+  booktitle={Proceedings of the 21st ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games},
+  pages={22},
+  year={2017},
+  organization={ACM},
+  notes={
+  Abstract
+    * Distractors can be distracting from the main activity in the virtual world
+    * Instead, the authors introduce the notion of a distractor that is integrated into the main activity of the virtual world
+       * In this case, a fire breathing dragon into a immersive adventure game
+    * This way, no special instructions for RDW are needed and the user can just go about with their tasks
+    * 17/24 users maintained the illusion of unconstrained walking in a ~5mx5m region
+ Introduction and Related Work
+    * Peck et al designed Improved Redirection with Distractors (IRD)
+       * Their experiment indicated that IRD might have a lower impact on the sense of presence compared to physical intervention.
+          * The problem in their study was that the user had to be trained to always follow/look at the humming bird when it showed up
+       * (Peck and co are pretty influential when it comes to the introduction of distractors so there is a degree of extra stuff to cite from what they have done in terms of background)
+       * As such it the experience might be more immersive if the distractor is integrated well enough into the experience. 
+          * To navigate a large VE in a small physical space the user should not need to be aware of redirection and thus be interrupted by instructions that break the sense of presence.
+          * To test this theory, a algorithm based on IRD was implemented for  VR game. 
+ Redirection with Integrated Distraction
+    * the RDW system is composed of a redirection algorithm and a distractor algorithm
+       * the redirection algorithm simply tries to redirect the user so they dont travel out of the tracked space
+       * Since the user might not turn their heads fast enough or frequently enough to achieve good enough redirection a distractor is triggered whenever the user approaches the edge of the physical space until sufficient redirection is accomplished. 
+       * Redirection algorithm is based on a modified steer to center IRD algorithm proposed by peck et al. 
+          * Rotation gain values were adopted from Steinicke et al's findings that rotation gain is imperceptible when it is 30 percent more or less than head rotation
+             * (This might not necessarily work out today as newer hardware has resulted in different detection thresholds as per Bjørn's research)
+       * Distractor algorithm
+          * The choice of distractor, virtual objects or characters that are part of the experience must be considered for their capability to attract attention. 
+          * Choosing a dragon in a interactive game has an advantage in the degree that the users are implicitly compelled to look at it. 
+          * The distractor is only active when redirection is most needed. 
+          * A safe circle is determined from the center of the tracked space.
+             * If the user walks outside of this circle, the distractor is triggered
+             * If v(future) from the users position does not intersect with the safe circle, the distractor is triggered as well
+                * (v(future) is defined as their future walking direction)
+                * (Their forward direction I guess?)
+                * (To clarify it is a heuristic for trying to get to the goal from their current position)
+ Experiment Design
+    * The goal of the game is to reach a destination.
+    * Participants are not told that they are being redirected prior to the study
+    * To ensure that the subjects were unaware of redirection a full basketball court was used for conducting the study
+    * lighthouse trackers were placed around the court, but in reality only two of them were turned on
+    * Vive HMD
+    * the goal was to reach a pile of gold at the other end of the house while defending against a fire breathing dragon with a water pistol. 
+    * participants were free to choose their route to the gold
+Results
+   * the dragon managed to prevent 17/24 subjects from leaving the tracked space without any intervention from the researchers
+   * 71 percent success rate.
+  }
+}
+
+@inproceedings{chen2017supporting,
+  title={Supporting free walking in a large virtual environment: imperceptible redirected walking with an immersive distractor},
+  author={Chen, Haiwei and Fuchs, Henry},
+  booktitle={Proceedings of the Computer Graphics International Conference},
+  pages={22},
+  year={2017},
+  organization={ACM},
+  notes= {
+  * (Much of the same stuff as the previous paper. This one is a tad bit more comprehensive)
+ Introduction and Related Work
+  * When redirected properly the user does not notice the rotation from redirection.
+     * (Even then, I dont feel like having high gains that are noticeable means that the redirection is inproper. It can be used to more comfortably allow the user to rotate by 360 degrees in the virtual environments through less physical extertion)
+  * A limitation of previous RDW systems is that they rely on methods like training, giving verbal warnings and turning off the display to prevent users from moving out of the tracked space. 
+  * Not particularly good for the sense of presence
+  * How well RDW can support free navigation in large open virtual environments has been largely unexplored
+  * Peck's design was weakened by the necessity of training and verbal instructions to look at the distractor during the experience
+  * Immersive deterrent was also used to further prevent the users from moving out of the tracked space. 
+     * These are virtual objects that occupy the space near an edge
+     * (This can definitely be useful to think of)
+  * Authors speculate that if the distractor and deterrent are well integrated, then the immersion will be kept at a maximum level. 
+  * Distractor/Deterrent examples
+     * virtual house tours
+        * Distractor: house agent that introduces each part of the house
+        * Deterrent: people or pets who live there
+     * virtual tourism 
+        * Distractor: tour guide
+        * Deterrent: other tourists
+ System
+   * Same as previous paper. Gotta get to the pile of gold while fighting the dragon by spraying it with enough water
+   *  For simplicity the prediction of the user's future movement is set to always point to the goal destination as it is not expected that the users move in a reverse direction
+      * (As mentioned later on by the authors, this is somewhat of a limitation as well)
+      * (Just a quick game idea: 
+            a "turn based RPG"(or something similar with "random" battles) where you can freely explore, but random battles are triggered when you approach the physical borders as a distractor. When a fight is triggered, the player is not allowed to move outside of set boundaries(the deterrent). The placement of the enemies and so on can then be used to sufficiently make the user turn around so their previous "forward" direction now is free for movement again)
+   * (This is literally the previous paper, but slightly more comprehensive :p. Different requirements for different conferences I guess)
+   * The dragon distractor will rotate around the user within the field of view 
+      * (this sounds kinda contradictory :p. If something rotates around the user it might go out of the field of view)
+      * (looking at the figure from the previous paper, it seems like the distractor moves in a circle/ellipse in front of the user to keep their attention)
+      * if shot by water the fire will be temporarily extinguished 
+   * A deterrent is placed on the edge of the tracked area that is closest to the user when the distractor is active
+      * In this case, the deterrent is a wall of fire when the dragon is breathing fire. 
+      * If the user walks into the fire, the display will immediately turn red to prevent them from advancing further
+ User Studies
+   * two IRB approved user studies to test two hypotheses about the performance of their system
+      * 1. the system is able to redirect subjects in a large open VE to walk to a distant goal without the need to instruct them to turn their heads, stop or any other special instruction about RDW. 
+      * 2. the system allows the subjects to travel along different paths to the goal
+   * To test the first hypothesis, the authors analyzed the estimated walking distances as well as whether any intervention was required
+      * (why do they measure walking distances though? If the user is immersed it should not matter how far they think they walk or how much they actually travel as long as they dont go outside the boundaries and dont need any outside intervention to prevent it)
+   * the 2nd hypothesis was tested by collecting data of tracked positions. These paths are then visualized for each subject . 
+   * Effectiveness of distractor measured by the percentage of time distraction is required during the experience, average rotaional gain applied during distraction and the subjects report on whether they found the distractor to interrupt their experience. 
+ Experiment Design
+   * study 1 had 24 subjects
+      * (I guess the first paper covered study 1)
+   * study 2 was an improved version of study 1 
+      * 10 subjects
+      * Made use of a VR backpack instead of a desktop PC
+      * The VE was an outdoor scene this time which matched the size of the basketball court. 
+ Results and Discussion
+   * Most issues with failed subjects was related to tethering
+      * Usage of VR backpack helped solve this issue in the 2nd study. 
+   * 17/24 disagreed that the dragon was interrupting the experience
+   * The distractor was more effective in cases where it managed to stop the subjects from walking when it was active
+      * (This is useful to consider)
+ Conclusion and Future Work
+   * Overall the results suggest that the system created the illusion of free walking in a large open VE most of the time
+   * Major limitation was that it always assumed that the user would walk towards the goal. 
+     * Thus entirely free walking is not supported
+   * Another problem with the design was that the distractor and deterrent did not effectively turn or stop some users due to their intrusive nature
+  }
+}
+
+@inproceedings{sra2018vmotion,
+  title={VMotion: Designing a Seamless Walking Experience in VR},
+  author={Sra, Misha and Xu, Xuhai and Mottelson, Aske and Maes, Pattie},
+  booktitle={Proceedings of the 2018 on Designing Interactive Systems Conference 2018},
+  pages={59--70},
+  year={2018},
+  organization={ACM},
+  notes={
+ Abstract:
+   * Redirection often require rapid head rotation, sometimes induced by distractors for everything to work.
+   * design methodology presented for redirection that takes advantage of inattentional blindness
+   * less dizziness was shown to take place when using methods presented in this paper
+ Introduction:
+   * If the user cannot naturally move and engage with a VE the presence might break. 
+   * Research suggests that users navigate best when they have vestibular and proprioceptive system feedback from instances like real walking.
+   * Locomotion techniques that stimulate these systems are also less likely to cause VR sickness compared to other interfaces that do not stiulate them
+       * (Citations given)
+   * Resets can disrupt the experience. Presence and immersion can be compromised.
+   * Peck et al.'s distractor's usefulness is weakened as it disrupts the experience and requires the user to be trained to follow it. 
+   * General purpose distractors that effectively serve their purpose, but intrude upon the scenario context, interrupt the flow of the narrative and can break the user's sense of presence
+   * These problems can be overcome by integrating distractors into the narrative and making them part of the main activity in the virtual world
+      * (This is an important statement. Can be used for arguing the importance of integrating distractors into the experience)
+   * In this study's design, the distractors are what make the experience interactive and engaging. 
+      * Hence they are now referred to as attractors(in this paper forwards)
+   * Makes use of inattentional blindness[11] and some aspects of how the human visual system[37] functions to design interaction which allows for imperceptible rotation when needed. 
+   * Unlike previous distractor based methods(Peck's improved redirection with distractors), the authors' methods do not use continuous VE rotation. 
+   * Inattentional blindness
+      * the user does not perceive items that are in plain view when they are focused on a different task. 
+   * Four visibility control techniques presented to work with embedded attractors
+      * Reduced field of view
+         * (How do their results relate to the vignetting study?)
+      * Limited viewing distance
+      * tilted viewing angle 
+      * shallow depth of field
+      * (These all sound like they could affect immersion or sense of presence negatively though)
+ Related Work
+   * Perception
+      * Magicians have been exploiting the limits of perception and attention for centuries. 
+      * Research indicates that 3D perception of position and orientation is largely affected by reference objects in the field of view
+         * (lots of things could correspond with this statement)
+            * (redirection being less effective at high fov)
+            * (optical flow, scene density etc)
+      * Hence, the fewer reference elements there are in the scene, the harder it will be to perceive changes in the background. 
+      * motion perception is exploited through the visibility control techniques
+      * difference between change blindness and inattentional blindness
+         * the former is the failure to notice an obvious change in a scene from befpre
+         * the latter is the failure to notice something that doesn't fit in plain view.
+ Design methodology
+   * Embedded Context-Sensitive Distractors
+      * coherent with the narrative and related user interactions with the VE
+      * attractors like a bird in a park or an enemy in a battle scene do not feel out of place. 
+      * This of course requires designing the experience with the distractors/attactors in mind
+   * Visibility control techniques
+      * virtual scene is rotated when the user is performing a task
+      * reduced field of view
+         * this requires users to look through devices or small openings that are appropriate for the tasks they need to perform
+            * (oh, this definitely sound a lot more well integrated than the initial impression)
+         * looking through a binocular or telescope limits the FOV and can make it hard to notice the scene rotation
+      * Limited viewing distance
+         * using fog, dust, blowing leaves, heavy snow or rain to reduce the distance one can see. 
+         * this removes visual reference points from the scene which can make scene rotation imperceptible. 
+         * Mixed with nearby attractors this can provide another opportunity to rotate the VE.
+      * Tilted viewing angle
+         * looking towards the clear sky or any background that has a limited number of objects which can act as reference points. Using an attractor to make the user look up or down fits this purpose. 
+         * reading a book or inspecting an insect or any other object close to a plain background
+      * Shallow Depth of Field
+         * a foreground object can be a distractor while the blurred background allows for VE rotation
+      * In both limited viewing distance and shallow depth of field, background reference points are masked. 
+    * Three example scenarios where the four methods + attractors could work
+       * Treasure Hunt
+          * Users follow a map to the treasure which would require them to stay on a predetermined path
+          * Attractors would be objects that provide clues to the location of treasure, puzzles or tasks. 
+             * (what if the user keeps staring at the map while moving forwards until they leave the tracking space and hit a wall though?)
+       * Job Simulator extension
+       * Pokemon like game
+         * walking along a fixed path through a forest to collect things.
+         * trees or insect swarms would serve to affect visibility. 
+ Implementation
+   * A game where the user has to walk from point A to B then to C
+       * (This does not sound like it would allow free exploration though)
+   * The player is a naturalist that goes around in a small park for collecting data on birds and bugs.  
+   * Reorientations
+      * Whenever the user leaves the safe area, a task relevant attractor is spawned causing the user to stop and interract. 
+      * 3.5m x 3.5m tracking space
+      * VE rotated by 90 degrees when a attractor is active
+      * (generally it feels like this requires a lot of predefined paths though. Free exploration seems to be harder)
+      * Directionally constant need based rotation contrasts directionally variable and continuous rotation
+         * When the user approaches a boundary the desired direction the scene wants to be after reorientation has already been determined based on the user's position, approach angle and future direction. 
+         * Directionally constant rotation: a method to insert desired rotation that does not change the direction once it starts rotating.
+         * When the user turns to the desired direction while interacting with the environment the VE rotates half as fast. If the user turns in the opposite direction, scene rotation is 1.5 times faster. 
+         * Compared to Peck's distractors that always move in one direction, this method introduced asymmetric rotations that allow both the user and the attractors to move in any direction. 
+      * Rotation only happens during interaction with attractors 
+      * Since continuous redirection is not applied it is possible to calculate the minimum number or reorientations that are needed.
+    * Binoculars example
+       * Limited FOV method
+       * For as long as the user looks through them, scene rotation is active and halted whenever the user stops looking through binoculars.
+       * The bird that one can look at disappears when the VE is rotated by 90 degrees
+ Evaluation
+   * Questionnaires
+      * Demographic questions and previous VR experience
+      * SSQ
+      * SUS
+      * Open Ended question on whether they found anything unusual
+   * In order to eliminate the carryover effect between questions about presence, the demographic questions were interspersed with other questions as suggested by[25]
+ Results
+    * Limited viewing distance was most effective
+    * reorientation was generally effective
+ Discussion
+   * No experimenter intervention was required to keep users in the tracked space
+   * two participants (both experienced 3D gamers) noticed the rotation
+   * Inattentional blindness when paired with an appropriate attractor can successfully create a natural walking experience in a small space
+   * participants with experience in games seem to have reported higher sensitivity to reorientation*
+ Strategies for embedding attractors
+   * attractors can be thought of as the moving elements in a scene while static objects or objects that interact with attractors form the essence of visibility control. 
+   * visibility control methods serve to reduce the noticeability of the reorientation while the user is engaged in interaction with a distractor/attractor. 
+   * the design of visibility control approaches should stay separated from the design of attractors for lending more flexibility and variety in the creation of interaction mechanics. 
+   * traditional redirection methods that involve continuous scene rotation can become annoying if the tracking space is very small which is the case for most roomscale setups[19]. 
+   * average users get bored if the same reorientation technique repeats more than 5 times which reduces the sense of presence. 
+   * using different types of model for the same distractor can also help.
+   * the obviousness of world rotation is decreased when using the embedded techniques
+   * eliciting inattentional blindness with functional/interactive attractors and visibility manipulation leads to users overlooking the rotation of the virtual world.
+ Limitations and future work
+   * designing integrated techniques is time costly. 
+   * users may disregard the attractor and exit the tracked area
+      * a warning system can help with it
+   * current design focuses on scenarios with predetermined paths
+Conclusion
+   * embedded context sensitive reorientation can improve the VR experience, resulting in high sense of presence, significantly reduced dizziness and reduced noticeability of scene rotation. 
+   * (generally, I think the general ideas at play here seem to be on point. Adding more types of visibility techniques would probably help though. Allowing for more free exploration would be preferable although it has been mentioned as future work)
+  }
+}
+
+@inproceedings{peck2011evaluation,
+  title={An evaluation of navigational ability comparing Redirected Free Exploration with Distractors to Walking-in-Place and joystick locomotion interfaces},
+  author={Peck, Tabitha C and Fuchs, Henry and Whitton, Mary C},
+  booktitle={Virtual Reality Conference (VR), 2011 IEEE},
+  pages={55--62},
+  year={2011},
+  organization={IEEE},
+  notes={
+  * 
+  }
+}
+
+@inproceedings{peck2010improved,
+  title={Improved redirection with distractors: A large-scale-real-walking locomotion interface and its effect on navigation in virtual environments},
+  author={Peck, Tabitha C and Fuchs, Henry and Whitton, Mary C},
+  booktitle={Virtual Reality Conference (VR), 2010 IEEE},
+  pages={35--38},
+  year={2010},
+  organization={IEEE},
+  notes= {
+  * no predefined waypoints required for IRD
+  * IRD is based on steer to center
+     * Predicted user path is based on the average user heading direction over the past second
+  * Rotation rate is doubled while a distractor is active since previous results suggests that users are less aware of redirection when focusing on visual distractors (cites 2009 paper from Peck)
+     * (I feel like Steinicke or someone else also mentioned this so there probably is some correllations here when citing this specific statement)
+  * old school vr hmd tech used
+  * A ghost distractor that the use has been instructed to follow
+  }
+}
+
+@article{peck2009evaluation,
+  title={Evaluation of Reorientation Techniques and Distrators for Walking in Large Virtual Environments},
+  author={Peck, Tabitha C and Fuchs, Henry and Whitton, Mary C},
+  journal={IEEE Transactions on Visualization and Computer Graphics},
+  volume={15},
+  number={3},
+  pages={383},
+  year={2009},
+  publisher={NIH Public Access},
+  notes={
+  * 
+  }
+}
+
+% Citations from related work sections of other papers
+@inproceedings{suma2012taxonomy,
+  title={A taxonomy for deploying redirection techniques in immersive virtual environments},
+  author={Suma, Evan A and Bruder, Gerd and Steinicke, Frank and Krum, David M and Bolas, Mark},
+  booktitle={Virtual Reality Short Papers and Posters (VRW), 2012 IEEE},
+  pages={43--46},
+  year={2012},
+  organization={IEEE}
+}
+
+@inproceedings{razzaque2001redirected,
+  title={Redirected walking},
+  author={Razzaque, Sharif and Kohn, Zachariah and Whitton, Mary C},
+  booktitle={Proceedings of EUROGRAPHICS},
+  volume={9},
+  pages={105--106},
+  year={2001},
+  organization={Citeseer}
+}
+
+@inproceedings{steinicke2008moving,
+  title={Moving towards generally applicable redirected walking},
+  author={Steinicke, Frank and Bruder, Gerd and Ropinski, Timo and Hinrichs, Klaus},
+  booktitle={Proceedings of the Virtual Reality International Conference (VRIC)},
+  pages={15--24},
+  year={2008},
+  organization={IEEE Press}
+}
+
+@article{hodgson2013comparing,
+  title={Comparing four approaches to generalized redirected walking: Simulation and live user data},
+  author={Hodgson, Eric and Bachmann, Eric},
+  journal={IEEE transactions on visualization and computer graphics},
+  volume={19},
+  number={4},
+  pages={634--643},
+  year={2013},
+  publisher={IEEE},
+  notes={
+  * S2C, S2O, S2MT(multiple targets), S2MC(multiple+center) tested 
+  * S2C outperformed all other algorithms in terms of mean and maximum distance from center, number of wall contacts and mean rates of redirection.
+ Intro
+  * both simulated and user tests
+ Generalized RDW Algorithms
+  * Specifics of the various ones are mentioned 
+  * S2O can work a bit better when walking in long straight paths
+  }
+}
+
+@book{razzaque2005redirected,
+  title={Redirected walking},
+  author={Razzaque, Sharif},
+  year={2005},
+  publisher={University of North Carolina at Chapel Hill},
+  notes={
+  * S2C, S2O, S2MT introduced here
+  }
+}
+
+@inproceedings{azmandian2016redirected,
+  title={The redirected walking toolkit: a unified development platform for exploring large virtual environments},
+  author={Azmandian, Mahdi and Grechkin, Timofey and Bolas, Mark and Suma, Evan},
+  booktitle={Everyday Virtual Reality (WEVR), 2016 IEEE 2nd Workshop on},
+  pages={9--14},
+  year={2016},
+  organization={IEEE}
+}
+
+@inproceedings{williams2007exploring,
+  title={Exploring large virtual environments with an HMD when physical space is limited},
+  author={Williams, Betsy and Narasimham, Gayathri and Rump, Bjoern and McNamara, Timothy P and Carr, Thomas H and Rieser, John and Bodenheimer, Bobby},
+  booktitle={Proceedings of the 4th symposium on Applied perception in graphics and visualization},
+  pages={41--48},
+  year={2007},
+  organization={ACM},
+  notes={Introduces the various reset methods}
+}
+
+% APW Papers
+@inproceedings{nielsen2016missing,
+  title={Missing the point: an exploration of how to guide users' attention during cinematic virtual reality},
+  author={Nielsen, Lasse T and M{\o}ller, Matias B and Hartmeyer, Sune D and Ljung, Troels and Nilsson, Niels C and Nordahl, Rolf and Serafin, Stefania},
+  booktitle={Proceedings of the 22nd ACM Conference on Virtual Reality Software and Technology},
+  pages={229--232},
+  year={2016},
+  organization={ACM},
+  notes={
+  Abstract
+     * VR limits filmmakers ability to guide the audience's attention
+     * A taxonomy of guiding the attention of users is presented
+     * a study that compares two such approaches with a control condition devoid of guidance is presented
+        * one approach guides users by controlling their body's orientation
+        * the other implicitly directs their attention by encouraging them to follow a firefly with their gaze
+            * (Very much in line with other distractors)
+            * (The concept of a virtual distractor can in that regard have more use cases than just in redirected walking)
+     * Results revealed interesting, but statistically insignificant data.
+        * Indications that assuming control of the users action may negatively influence presence 
+           * (you dont say :P)
+        * Firefly was preferred
+           * (Maybe a taxonomy of distractors would be worthwhile to make? Or simply extending the proposed one here I guess)
+  Introduction
+     * traditionally, filmmakers have relied on four cinematic techniques for guiding the audience's attention, eliciting curiosity and suspense, and adding expressive qualities
+        * cinematography
+           * capturing a scene with a camera
+        * mise-en-scène
+           * everything presented in front of the camera
+        * sound
+        * editing
+    * each of these pose their own unique challenge within cinematic VR
+    * it is not possible to rely on cinematogrophy as the camera is controlled by the user
+    * This leaves three options that are different, but not mutually exclusive
+       * 1. progression of the story is halted until the user's head or gaze direction is pointing in the right direction
+       * 2. events and objects are dynamically presented within the field of view of the user
+       * 3. the filmmaker uses cues to steer the user's attention towards relevant events and objects (using mise-en-scene and sound)
+  Taxonomy
+    * visual salience (perceptual properties that make visual objects stand out from their surroundings) has been used to direct attention in a number of applications including AR. 
+    * Factors that are believed to influence salience include
+       * luminance contrast
+       * edge or line orientation
+       * color
+       * motion
+       * stereo disparity
+    * the contrast between these features and the environment creates salience
+       * (In addition I would probably say that the purpose of said visual object in relation to the VE also has some effect)
+    * inspired by Suma et al.'s taxonomy
+       * particularly when it comes to subtle and overt redirection techniques
+    
+    ************************ Taxonomy description
+    * differentiation between cues that guide the user's attention by explicitly communicating a given event or object is deserving of attention (explicit cues), and cues that implicitly directs the user's attention towards elements in the VE(implicit cues).
+    * there is also a distinguishment between cues that are causally rooted within the VE(diegetic cues) and cues that are external to this world(nondiegetic cues)
+       * diegetic cues are perceptible to other characters inhibiting the VE
+          * (i.e. a dragon attacks a village and the villager npcs + the player notice it)
+       * nondiegetic cues are only viewable by the user
+          * (i.e. arrow that points which direction you should rotate in)
+    * finally, there is a destinction between cues based on whether or not they limit the user's ability to interact within the VE by preventing them from performing certain actions or by assuming control of their actions in the VE
+       * This is closer to traditional filmmaking and cinematogrophy.
+       * (Not really something we see a lot of in RDW)
+    * (I think this taxonomy can be applied to current research within RDW distractors and be used to map out what has been done)
+    *************************** Taxonomy permutations and examples
+    * explicit diegetic cues
+       * limiting interaction
+          * i.e. as a passenger on a guided tour you are forced to observer specific locations and events
+       * allowing interaction
+          * virtual characters that through dialogue or gestures point to relevant elements in the VE, or diegetic signs that serve the same purpose 
+             * (like having a volcano explode!). 
+       * a HUD *may* qualify as being diegetic in examples like being inside a cockpit and visible to the pilot as it is part of the virtual world
+    * explicit nondiegetic cues
+       * a HUD might however also qualify as an explicit nondiegetic cue that does not limit interaction
+          * (like my earlier given HUD arrow example)
+       * limited interaction example
+          * a system that prevents the user from reaching places devoid of narrative content
+          * similar to the Vive's chaperone safety system
+    * implicit diegetic cues
+       * limits interaction
+          * environmental constraints like virtual objects or characters that force the user to change path or gaze direction
+              * (the walking agents in one of the distractor papers from RPP)
+       * allows interaction
+          * Any salient object in the environment that catches the user's attention without explicitly informing the user that they should change focus would qualify as an implicit diegetic cue that does not restrain interaction. 
+              * (the butterfly used by Peck et al. in their 2009 redirection study)
+    * implicit nondiegetic cues
+       * limits interaction
+          * systems that assume control of the viewpoint in a manner that is not feasible in the VE
+             * translating a stationary user or rotating a user who is sitting in a non-swivelling chair
+             * (However, a minecart or a theme park ride would be a diegetic counterpart to this. Would it not?)
+    ***********************************
+    
+  User Study
+     * 3 conditions compared
+     * Forced rotation 
+        * virtual body is always pointing in the direction of where things happen
+        * the actual head can still move and look around though
+        * implicit nondiegetic guidance that limits the user's freedom to interact
+     * Firefly
+        * user can freely look around
+        * small firefly offers clues as to where the user should focus
+        * implicit diegetic guidance that does not limit interaction
+     * Control condition
+        * no guidance
+     * 45 participants
+     * between subjects design
+     * VR experience made in Unity
+     * Oculus DK2 used
+     * participants were seated in a non-swivelling chair
+        * only head rotation was possible
+     * SUS questionnaire used to assess subjective sense of presence
+
+  Results/Discussion
+    * no statistical significant difference in subjective sense of presence
+       * borderline significant though
+    * use of questionnaires to measure presence has been brought into question
+    * future studies would benefit from including behavioural and physiological measures of presence
+    * future studies would benefit from more complex scenes as well as elaborate measures of recollection and visual attention(eye tracking metrics)
+    
+  Conclusion
+    * it might be fruitful for future taxonomies to be informed by the theories of audiovisual salience
+    * firefly was seen as more helpful
+  }
+}
+
+@inproceedings{suma2011leveraging,
+  title={Leveraging change blindness for redirection in virtual environments},
+  author={Suma, Evan A and Clark, Seth and Krum, David and Finkelstein, Samantha and Bolas, Mark and Warte, Zachary},
+  booktitle={Virtual Reality Conference (VR), 2011 IEEE},
+  pages={159--166},
+  year={2011},
+  organization={IEEE},
+  notes={
+  Abstract
+     * change blindness redirection presented
+     * no usage of gains, but redirects by modifying the environment
+     * 1/77 participants noticed the changes in the scene
+     * (I feel like it has been mentioned somewhere else, but this kind of limits your design of the VE as you have to design it in a way that supports change blindness and the ideal case is mostly indoor environments. I get the feeling like this is another niche redirection case like bending gains. Distractors need to be context relevant, but they can at least be designed as components of game mechanics or similarly and thus work in a larger variety of circumstances)
+  Introduction
+     * Real walking has been shown to provide advantages over other locomotion techniques including
+        * a greater sense of presence
+        * more efficient travel
+        * superior performance on search tasks
+        * benefits for memory and cognition
+     * (Useful citeable stuff for RDW introductions)
+     * Change blindness redirection does impose a few constraints regarding scene geometry and user motion. 
+  Previous Work
+     * 
+  Change Blindness Redirection
+     * processing strategies to explain change blindness have been suggested
+        * 1. people will rely on their first impressions of an environment
+        * 2. the initial mental representation will be overwritten
+        * 3. conflicting features will be combined
+     * experiments have shown at least that if the visual field is occluded during scene changes, it is very hard to notice that a change has happened when vision is restored.
+        * (poster experiment is relevant here I guess)
+     * the redirection makes use of doorway switches to make the user walk around in a building while making good use of the physical tracking space
+     * Environment is designed to be explored by visiting each room in order. Skipping a room means that the redirection technique fails
+        * (Not particularly good for freely moving around in a bigger space)
+     * redirected walking also assumes that the user follows a particular path
+        * (that depends entirely on the simplicity of your RDW implementation. There is research into free exploration with RDW. This argument does not hold up in the current day and age at least.)
+  Experiment 1: Initial study
+     * the goal of the experiment was to determine
+        * how well users could notive scene changes
+        * whether they were able to form a coherent mental map of the dynamic VE
+        * whether it is necessary to distract users to make them less sensitive to scene changes
+           * (Well this is interesting!)
+        * to probe the issue, the inclusion of a working memory task was varied as a independent variable
+     * 37 participants
+     * research credit was offered for participating
+        * (meh)
+     * Participants had the goal of walking around the virtual office and turn on all the computer screens. Furthermore they were randomly assigned to one of the following between-subjects conditions
+        * distraction
+           * each pc screen displayed a picture of a unique object, presented in a random order. Participants were told that they should remember these and would be tested afterwards
+           * the cognitive load imposed by the working memory task would distract participants and potentially cause scene changes to be less noticeable
+        * exploration
+           * no memory test was given
+    * experience with 3D games might also influence effectiveness of redirection so this was investigates as a between subjects variable as well
+    * old school VR equipment used
+    * Methods
+       * effectiveness of change blindness was assessed through several real questions embedded in a list of decoy phenomena similar to an approach taken by Peck et al. (during their evaluation of reorientation techniques)
+          * they were asked "did you notice anything unnatural or odd about your virtual experience? Please rate the following statements. Please note that these phenomena may or may not have happened".
+          * (Useful to think of)
+       * debriefing at the end
+  Experiment 2: follow-up study
+     * higher FOV was tested with. 
+     * wider FOV results in more accurate distance perception
+        * (Does this interfere with Steinicke's thresholds for translation gain?)
+     * 40 participants
+     * more or less the same as experiment 1, but there was a wide FOV and narrow FOV condition
+     * Discussion
+        * the single office map suggests that most participants stuck with their first impressions of the environment which is one of the suggested hypotheses to explain change blindness
+   }
+}
+
+@inproceedings{grechkin2015towards,
+  title={Towards context-sensitive reorientation for real walking in virtual reality},
+  author={Grechkin, Timofey and Azmandian, Mahdi and Bolas, Mark and Suma, Evan},
+  booktitle={Virtual Reality (VR), 2015 IEEE},
+  pages={185--186},
+  year={2015},
+  organization={IEEE},
+  notes={
+  Motivation:
+     * introduces rotate-and-walk technique which is designed to an efficient alternative to existing alternatives
+  Reorientation techniques
+     * redirection with distractors relies exclusively on rotation gains
+        * (This statement is rather outdated and not true)
+     * rotate-and-walk combines rotation gains with other redirection methods
+        * (Peck already did this though, didn't she? She had a modified Steer to Center presented in improved redirected walking with distractors iirc)
+     * Makes use of temporary objectives to guide the user towards it instead of their actual goal.
+     * relies on heuristics
+  Planning for reorientation
+     * tips for designing reorientation procedures
+        * if you are about to move into a fast paced phase, it might be best to preemptively reorient the user
+        * avoid using the same orientation procedure repeatedly
+            * A large repertoire of reorientation techniques is preferred
+  }
+}
+
+@article{sitzmann2018saliency,
+  title={Saliency in VR: How do people explore virtual environments?},
+  author={Sitzmann, Vincent and Serrano, Ana and Pavel, Amy and Agrawala, Maneesh and Gutierrez, Diego and Masia, Belen and Wetzstein, Gordon},
+  journal={IEEE transactions on visualization and computer graphics},
+  volume={24},
+  number={4},
+  pages={1633--1642},
+  year={2018},
+  publisher={IEEE},
+  notes={
+  * Search term: ("cinematic VR" AND "attention")
+  
+Abstract:
+  * Gaze and head orientation data analysed
+  * Looking into saliency
+
+Introduction
+  * A detailed understanding of visual attention in VR will inform future designs of user interfaces, eye tracking tech and other key aspects of VR.
+  * seated and normal VR conditions
+  * desktop condition too
+
+Related Work
+  * Much stuff related to gaze behaviour and human attention
+
+Data Capture
+  * 22 high resolution VR panoramas
+  *    (There isn't exactly any movement in those though)
+
+VR Saliency prediction
+   * (probably not as relevant)
+
+Discussion
+* Insights (Pretty big sample (~150))
+    * the distribution of salient regions in the scene has a significant impact on how viewers explore a scene: the fewer salient regions, the faster user attention gets directed towards any of them and the more concentrated their attention is;
+       * (Useful!)
+  }
+}
+
+@inproceedings{rothe2018guiding,
+  title={Guiding the Viewer in Cinematic Virtual Reality by Diegetic Cues},
+  author={Rothe, Sylvia and Hu{\ss}mann, Heinrich},
+  booktitle={International Conference on Augmented Reality, Virtual Reality and Computer Graphics},
+  pages={101--117},
+  year={2018},
+  organization={Springer},
+  notes={
+
+  Abstract
+     * Investigates three methods for implicitly guiding the attention of the viewer
+        * lights
+        * movement
+        * sounds
+
+Results (Small sample though, so might not be as valuable)
+    * Objects with sounds attract more attention that without
+    * Objects with sounds can guide the viewing direction even if the sound is not spatial
+    * moving objects or lights can guide the viewing direction even without any sounds
+    * difficult to guide the viewer at the start of a new scene
+    * non-moving lights had no effects in our tests.
+    *
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Google Scholar - ("redirected walking") AND ("threshold" OR "thresholds") - After 2018
+@article{waldow2018textures,
+  title={Do Textures and Global Illumination Influence the Perception of Redirected Walking Based on Translational Gain?},
+  author={Waldow, Kristoffer and Fuhrmann, Arnulph and Gr{\"u}nvogel, Stefan M},
+  journal={IEEE VR Posters},
+  year={2018},
+  notes= {
+  * Checking the effects of textures and global illumination on translation gains
+     * (Seems kinda dumb to test this on translation gain of all things. Curvature or rotation would make far more sense)
+  * Detection thresholds did not change in a textured or globally illuminated VE
+  }
+}
+
+@inproceedings{nguyen2018individual,
+  title={Individual differences and impact of gender on curvature redirection thresholds},
+  author={Nguyen, Anh and Rothacher, Yannick and Lenggenhager, Bigna and Brugger, Peter and Kunz, Andreas},
+  booktitle={Proceedings of the 15th ACM Symposium on Applied Perception},
+  pages={5},
+  year={2018},
+  organization={ACM},
+  notes={
+  * previous game experience has no significant advantage in detection redirection
+  * men are more sensitive to redirection than women
+  * simulator sickness score had no significant increase depending on gender
+  }
+}
+
+@inproceedings{rietzler2018rethinking,
+  title={Rethinking Redirected Walking: On the Use of Curvature Gains Beyond Perceptual Limitations and Revisiting Bending Gains},
+  author={Rietzler, Michael and Gugenheimer, Jan and Hirzle, Teresa and Deubzer, Martin and Langbehn, Eike and Rukzio, Enrico},
+  booktitle={2018 IEEE International Symposium on Mixed and Augmented Reality (ISMAR)},
+  pages={115--122},
+  year={2018},
+  organization={IEEE},
+  notes={
+  * higher gains can be used without breaking things and making people sick, even if they notice them
+     * (Relevant to Bjørn's findings)
+  }
+}
+
+@article{bolling2019shrinking,
+  title={Shrinking Circles: Adaptation to Increased Curvature Gain in Redirected Walking},
+  author={B{\"o}lling, Luke and Stein, Niklas and Steinicke, Frank and Lappe, Markus},
+  journal={IEEE transactions on visualization and computer graphics},
+  year={2019},
+  publisher={IEEE},
+  notes={
+  
+  
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Supervisor papers
+@article{strauss1994grounded,
+  title={Grounded theory methodology},
+  author={Strauss, Anselm and Corbin, Juliet},
+  journal={Handbook of qualitative research},
+  volume={17},
+  pages={273--85},
+  year={1994}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Misc
+@misc{unityHomepage,
+title={Unity Engine - Homepage},
+howpublished={\url{https://unity3d.com/}},
+note={(Last Visited on 07.12.2018)}
+}
+
+@misc{githubHomepage,
+title={GitHub - Homepage},
+howpublished={\url{https://github.com/}},
+note={(Last Visited on 07.12.2018)}
+}
+
+@misc{projectRepository,
+title={Ensemble Retriever - Project Repository},
+howpublished={\url{https://github.com/hedvik/EnsembleRetriever-ProjectRepository}}
+}

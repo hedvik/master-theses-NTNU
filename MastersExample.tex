@@ -16,6 +16,8 @@
 %\usepackage[pdftex]{graphicx, hyperref}   % For cross references in pdf
 \usepackage{graphicx}
 \usepackage{hyperref}   % For cross references in pdf
+\usepackage{svg}
+\usepackage{pdfpages}
 
 % For smart references 
 %    use \cref{label} and Caption and Number will be added automatically
@@ -32,8 +34,8 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{gnuplottex} %miktex option if using miktex on windows
-\usepackage{rotating}
-
+\usepackage{tabularx}
+\usepackage[figuresright]{rotating}
 
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 \definecolor{darkred}{rgb}{0.5,0.0,0}
@@ -110,10 +112,16 @@
 
 
 \include{inc/introduction} % includes latex files from the same directory
-\include{inc/packages} % could be called Methodology or methods or any filename 
-\include{inc/structure} % could be results
+\include{inc/relatedwork}
+\include{inc/generalmethods} 
 \include{inc/implementation}
-\include{inc/discussion}
+\input{inc/ex1methods}
+\input{inc/ex1results}
+\input{inc/ex1discussion}
+\input{inc/ex2methods}
+\input{inc/ex2results}
+\input{inc/ex2discussion}
+\include{inc/generaldiscussion}
 \include{inc/conclusion}
 
 \ifthenelse{\boolean{HarvardCitations}}{%
@@ -125,7 +133,8 @@
 \bibliography{MastersExample}
 
 \appendix
-\include{inc/rawdata}
+\input{inc/terminology.tex}
+\input{inc/NSDApproval.tex}
 %\include{inc/timetable}
 
 \end{document}
