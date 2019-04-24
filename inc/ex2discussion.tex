@@ -1,1 +1,30 @@
 \section{Discussion}
+
+* Some initial musings (HALFWAYS THROUGH EX 2): The total number of reorientations may not be significantly different, but the number of times alignments happen and the time needed to align makes AC2F more time efficient and accurate in relation to the goal it wants to reorient you to
+* This provides potential benefits in (the next section): 
+
+\subsection{Minimising The Risk of Cybersickness Buildup With Distractors}
+* Assuming the results provide some good insight into this:
+* If the difference between alignment and interaction time with a distractor is large enough, a possibility would be to decrease the strength of gains as the user will not start to move around again until they have finished interaction. 
+* As long as it is possible to align the user by the time they are done, we can decrease the strength of gains and as a result potentially be below the individual thresholds that may trigger cybersickness. 
+   * Now this would result in exposure towards rotation gains over a longer period of time than if the gains are strong and align early. Whether strong gains early and no gains aligned or whether continuous weaker gains over a longer time period is optimal is hard to say and would require further study.\todo{Hey, Add me to future work!}
+   * Given the possibilities for adaptation effects, the continuous solution might be better as it better adapts the user to the redirected environment. Ultimately it is hard to say though. 
+   * While some adaptation style effects were experienced for positive rotation gains in Experiment 1, it is hard to say how much 0 gains during alignment affected the adaptation
+ 
+\subsection{Relationships Between Alignment Fail Rates and Mean Number of Resets}
+
+* One would expect that the higher fail rate of S2C only would have some effects on the rest of the data that was collected in the experiment. Why is it not?
+   * Slightly Slower walking speed for S2C Only might be the reason for why those participants on average spent a few extra seconds of walking
+   
+   * It may be that while the reorientation itself was not entirely complete, it was close enough to avoid the player moving into the reset bounds of any nearby walls. 
+   * There may be some effect, but the smaller sample size and low amount of resets that happen per participant makes it hard to actually see this. 
+   * At the end of the day, this is just idle speculation. if a user in a corner is reoriented to walk parallel to a wall rather than towards the centre, they will avoid the reset but have a slightly lower amount of time needed until they hit the next distractor or reset assuming they walk straight.
+      * It may also be that being reoriented in this manner allows S2C to produce a longer curve for the user to walk on compared to starting towards the centre. This could be one of the reasons for why there is no significant difference in the number of resets \todo{I might be onto something there}
+      * When aligned towards the centre, the effective application of curvature gains is essentially halved as it wont be applied again until you pass the centre
+      * If you instead point parallel with a wall, you wont lose out on the curvature gain application that you otherwise would if you were aligned with the centre
+      
+      * While the fail rate is higher, it may mean that it manages this more optimal curve more frequently than S2C+AC2F, but it also manages more unoptimal curves, resulting in a similar mean due to inconsistency
+      * It would be interesting to compare the actual paths that participants travelled to look deeper into this.
+         * RDW toolkit technically has visualisations for this implemented, but not the actual data storage of the path. Implementing a solution for this would allow for this thing to be tested
+      * If the user on the other hand is roughly on the middle of one wall, then being redirected towards the centre would most likely be better.
+      * As such, it may be that we should dynamically create the alignment goal heuristics depending on where the actual distractor or reset happens. 

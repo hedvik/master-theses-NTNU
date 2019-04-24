@@ -1,9 +1,22 @@
 \chapter{Experiment 2: Effectiveness of Distractors}
 
 \section{Method}
-\todo{Important thing to consider: How to structure the control condition. Does it consist of 0 redirection, the nondistractor thresholds that were calculated in experiment 1 or S2C only instead of S2C+AC2F(most likely)?}
+* S2C vs. S2C+AC2F
+* Distractors work for both of course, but it would be interesting to see whether the predictive method is better or not. 
+
+* Relative effectiveness?
+   * Counting the number of reorientation events in total
+   * Number of Distractors + Number of Regular resets that happen outside of battles
+* Might not be as useful as it should be similar between conditions. Will have to take a look at the data and see what makes most sense to compare outside of alignment
+
+
+\subsection{Hypotheses}
+* 1: Relative effectiveness
+* 2: Effectiveness in terms of future path alignment. How big is the difference?
 
 \subsection{Data Collection}
+* Similar to experiment 1? Recording each frame
+
    * For each distractor:
       * distractor++
       * distractorType
@@ -22,8 +35,51 @@
    * Experiment time between tutorial finish and starting the boss fight with the mountain king
       * (To be able and normalise number of resets relative to time spent walking around in the open world)
       * Should probably not count time playing with distractors as they might choose shield upgrade first. Recording time spent walking is more reasonable.
-   * Virtual + Real Path
+   * Virtual + Real Path (was actually not implemented in the toolkit)
    * Chosen Player Upgrades and their levels
       * Higher damage upgrades means that less time is spent defeating enemy distractors. It could correlate with higher reset counts if the redirection is insufficient as a result of the distractor finishing earlier.
+
+\subsection{Data Post Processing}
+   * Number of resets should only be recorded when outside of AC2F (Easy Way)
+   * In SPSS LAG from Misc can check the value of the previous row
+   * Can thus compute a value of 1 when reset activated and previous row had ResetActive as 0 using LAG(ResetActive)
    
+   * OR
+   * Discard resets that happened within 10 seconds after a distractor has triggered (Hard way, more accurate)
+      * Can pattern match whenever timespentwalking turns into zero or distractoractive becomes 1
+      * Then we can create a variable with a value for that a distractor has been triggered
+      * new deltaTime variable that only exists when distractor is active
+      * can then accumulate deltaTime until it is 10 then discard any resets that happen in this space
+   
+   * Participant 1 and 2 had some calibration problems
+      * Participant 1 had 1 reset that should have triggered
+      * Participant 2 had 2 resets that should have triggered
+      * Eventually if I am unsure, I might have to exclude these two due to the issues
+      * \todo{Will have to see how much of an outlier they become when the experiment complete}
+
+
 \subsection{Sample}
+
+\subsection{Changes in Ensemble Retriever between Experiment 1 and 2}
+   * List all
+   * Walking distance reduced to make for a slightly shorter experiment
+   * MK health halved
+   * Tutorial no longer mentions anything related to experiment 1
+   * Extra plane was added to the floor in hall of the mountain king
+      * To reduce the effect of walking on thin air at one point
+   * Floor calibrated better for the hall of the mountain king as it was a bit higher than it should be, making some participant notice that they felt lower than they should be. 
+   * Buffer between reset and distractor triggering has been increased by 0.5m so that resets trigger 0.5m away from the wall and distractors trigger 1.5m away from the wall, rather than at 1m. 
+      * As it was observed that when participants got more comfortable and walked faster, they would be able to stop in time after triggering a distractor before also triggering a reset. This does of course reduce the size of the walking space slightly, but should result in less forced reorientations.
+   * The tutorial has slightly less text as additional information that is only needed for experiment 1 is removed automatically when doing this experiment
+   * The contrabass and later phases of the mountain king have been sped up as participants were unhappy with the slow speed of it
+   * S2C Dampening enabled again
+   * Firefly colour changes after being visited so players can see what they have visited 
+   \todo{Double check git history in case I missed anything}
+
+
+\subsection{Changes in Experiment Environment}
+   * The whole lost lighthouse mess and its effects
+   * \todo{add picture of the new lighthouse setup}
+   
+\subsection{Data Post Processing}
+* Post processing steps and details in Section~\ref{sec:ex2postprocessingdetails}.

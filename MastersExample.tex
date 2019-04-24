@@ -68,7 +68,21 @@
 % This will appear in text \com{Lecuters comment} and be visible unless you uncomment
 % the renewcommand line.
 
-\newcommand{\todo}[1]{{\color{green}#1}} % items to do
+\newcounter{margincomment}
+\newcommand{\writeinmargin}[1]{\refstepcounter{margincomment} \{\themargincomment\} \leavevmode\marginpar{\small\em \{\themargincomment\}: #1}}
+
+% Comments
+\newcommand{\cmt}[1]{
+    %{\color{red}* \q{{\textbf{CMT: #1}}}}
+    \writeinmargin{{\color{red}CMT: #1}}
+}
+
+\newcommand{\todo}[1]{
+    %{\color{blue} TODO: #1}
+    \writeinmargin{{\color{green}TODO: #1}}
+}
+
+%\newcommand{\todo}[1]{{\color{green}#1}} % items to do
 %\renewcommand{\todo}[1]{} %remove starting % to remove items to do
 
 \newcommand{\n}[1]{{\color{blue}#1}} % other comment
@@ -134,6 +148,9 @@
 
 \appendix
 \input{inc/terminology.tex}
+\input{inc/reproduction.tex}
+\input{inc/appDemographicsQuestionnaire.tex}
+\input{inc/appInformationSheets.tex}
 \input{inc/NSDApproval.tex}
 %\include{inc/timetable}
 

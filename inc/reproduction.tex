@@ -1,0 +1,122 @@
+\chapter{Reproducing The Experiments} \label{app:reproduction}
+* All the necessary steps needed to reproduce the experiment
+
+\section{Before Starting}
+* Room setup
+* Software Setup
+* Hardware Setup
+
+\section{Experiment 1}
+* What do you have to do to run it?
+* What information were participants given?
+
+\subsection{Participant Information}\label{sec:ex1information}
+
+\subsection{Data Recording/Data Format}
+* Data is recorded as a series of frames.
+
+\begin{description}
+   \item[ParticipantID: ] The unique identifier for the current participant. Integer format, increments per participant. 
+   \item[GainDetected: ] Whether a gain was detected this frame
+   \item[DeltaPosMagnitude: ] The strength of movement that the participant has moved between frames
+   \item[DeltaDir: ] The angle that the participant's head has rotated on the vertical axis between frames
+   \item[DeltaTime: ] The time between frames in seconds
+\end{description}
+* After this a variety of columns are dedicated whether specific elements have been active or not this frame. The values are 1 if true or 0 if false.
+* These binary columns stop after the CurvatureGainApplied column. 
+
+* Then:
+\begin{description}
+   \item[CurrentRotationGainAgainst: ] Current negative rotation gain. Read as a percentage
+   \item[CurrentRotationGainWith: ] Current positive rotation gain. Read as a percentage
+   \item[CurrentCurvatureRadius: ] Current curvature radius. Read in metres. 
+\end{description}
+
+* Then ratios. These only contain data when GainDetected == 1. The various ratio columns make up the ratio of gains that were applied in the last half second once the detection button was pressed
+
+* Remaining columns:
+\begin{description}
+   \item[MostLikelyDetectedGain: ] The value of the gain that had the largest ratio at the time of detection. Can be 0 in a few cases which are further discussed in Section~\ref{sec:ex1postprocessing}
+   \item[TimeSinceExperimentStart: ] The time in seconds since the participant finished the tutorial and started playing
+   \item[AlgorithmCategory: ] Categorical variable for the currently active algorithm. 0 for S2C and 1 for AC2F.
+   \item[AppliedGainCategory: ] Categorical variable for the currently applied gain. -1 for none, 0 for neg rot, 1 for pos rot, 2 for curvature gain
+   \item[DistractorCategory: ] Categorical variable for what current distractor is active. (0 = None, 1 = Contrabass, 2 = Oboe, 3 = Harpsichord, 4 = Violin, 5 = Glockenspiel)
+   \item[MostLikelyDetectedGainCategory: ] Categorical variable for the type of gain that most likely was detected. Same labels as AppliedGainCategory.
+\end{description}
+
+\todo{Could extract one line from the data and use it as an example}
+
+\subsection{Data Post Processing}\label{sec:ex1postprocessingdetails}
+* While SPSS was used for processing, this section will primarily focus on the thought process behind the detections to be more applicable for other statistics software as well. 
+
+* Section~\ref{sec:ex1postprocessing} in methods mentions four potential cases for when the MostLikelyDetectedGain value is at 0. This section will go through how to process steps 1 and 4 into proper detection values. 
+
+* This post processing step is primarily used for rotation gain detections as these are a bit more complex to deal with than curvature detections as they can vary between their original value and 0 in cases like being aligned under AC2F. 
+
+* MostLikelyDetectedGain can either be updated through these two post processing steps or it could be handled in a copy of the variable (recommended for the sake of keeping history)
+
+\subsubsection{Extracting Additional Rotation Gain Detections for Case 1}
+  * Case summary: The user detected a rotation gain, but by the time they pressed the button, AC2F had already aligned them and rotation gains were disabled.
+
+  * First: CurrentRotationGainAgainst and With are both set to 0 whenever the user has been aligned. This can be a bit problematic for post processing so the first step is to create a copy of these variables that simply repeat the last value of the gains before alignment zeroes happen. This will make it easier to extract rotation gains down the line. 
+
+  * There are two different approaches that can be used to extract rotation gains with a value of 0 in case 1. The first is simpler, but less effective while the second is a bit more complex, but should provide more additional detections. 
+
+  * Alternative 1: Using the MostLikelyDetectedGainCategory variable:
+     * Selection: Gain Detected = 1 AND MostLikelyDetectedGain = 0 AND CurrentRotationGainAgainst = 0 AND MostLikelyDetectedGainCategory != -1
+     * CurrentRotationGainAgainst and With will both be 0 in this case. It does not matter which one is used for selection. 
+     * MostLikelyDetectedGainCategory can then be used to figure out which gain was applied. The value of it will be the gain type that had the largest ratio within the 0.5 second buffer. By using this variable, we can then set the value of the extracted gain to that of the relevant gain from the first step. 
+     * This is the simplest approach, but may not provide as many additional detections as the next one. 
+     
+  * Alternative 2: Using the included ratios (a bit more of a detailed approach)
+     * Selection: Gain Detected = 1 AND MostLikelyDetectedGain = 0 AND CurrentRotationGainAgainst = 0 AND NoGainRatioDuringDetection != 1
+     * This will provide cases where the majority of the ratio says no gains were applied, but the 2nd largest ratio can be used to determine the correct gain. 
+     * We can then check which of the two ratios for rotation gains were largest and use this highest one to determine which rotation gain actually was detected
+
+\subsubsection{Extracting Additional Rotation Gain Detections for Case 4}
+  * Case summary: The user detected a rotation gain, but pressed the button slightly late after finishing a head rotation so the 0.5 second buffer primarily points towards that no gains were applied. 
+
+  * This will need to be handled in a similar way to working with ratios from dealing with case 1
+  * Selection: Gain Detected = 1 AND MostLikelyDetectedGain = 0 AND CurrentRotationGainAgainst != 0 AND NoGainRatioDuringDetection != 1
+  * In this case, gains are still active so we want to make sure that CurrentRotationGainAgainst or With reflect this. It does not matter which one is used. 
+  * Similar to alternative 2 from case 1, we can then extract a rotation gain value depending on which of the two that had the largest ratio.
+
+\section{Experiment 2}
+* What do you have to do to run it?
+* What information were participants given?
+
+\subsection{Participant Information}
+
+\subsection{Data Recording/Data Format}
+
+  * What is recorded?
+  * How can it be understood?
+
+\begin{description}
+   \item[ParticipantID:] Unique ID for the participant.
+   \item[GroupID:] The ID of the condition that the participant was placed in. (0 = S2C Only/Control Group, 1 = S2C+AC2F/Experiment Group).
+   \item[TimeSinceExperimentStart:] The time in seconds since the participant finished the tutorial and started playing. Accumulates over time. 
+   \item[TimeSpentWalking:] The time in seconds that the participant has spent walking. Accumulates over time while no distractors are active. 
+   \item[NumberOfResets:] The number of resets that have happened so far. It is incremented on the frame that a reset has been triggered. 
+   \item[NumberOfDistractors:] The number of distractors that have been triggered so far. Works in a similar fashion to NumberOfResets.
+   \item[IsResetActive:] A binary value that either is 0 if no reset was active on a given frame or a series of 1's for as long as a reset has been active. 
+   \item[IsDistractorActive:] Similar to IsResetActive, but for distractors instead.
+   \item[CurrentlyActiveDistractorType:] Categorical variable for what current distractor is active. (0 = None, 1 = Contrabass, 2 = Oboe, 3 = Harpsichord, 4 = Violin, 5 = Glockenspiel)
+   \item[AlignmentComplete:] Binary variable that is set to 1 whenever the user's future path has been aligned with the centre of the physical space. Value is reset back to 0 after the distractor that resulted in the alignment has been defeated. 
+   \item[AlignedThisFrame:] Set to 1 on the frame that alignment to the centre of the room has happened. This makes it easy to find all the times where the user has been aligned and gather additional information.
+   \item[TimeTakenUntilAlignment:] The time in seconds needed for a distractor to align the user's future path to the physical room centre. This variable only consists of a proper value when AlignedThisFrame is 1 and is 0 otherwise. 
+   \item[DistractorDefeatedThisFrame:] Similar to AlignedThisFrame, but is set to 1 on the frame that a distractor has been defeated instead. 
+   \item[TimeTakenToDefeatDistractor:] Consists of the time in seconds needed to defeat the currently active distractor. This variable only has a value other than 0 when DistractorDefeatedThisFrame is 1. 
+   \item[CurrentPlayerShieldLevel:] The current level of the player's shield. 
+   \item[CurrentPlayerBatonLevel:] The current level of the player's baton. 
+   \item[DeltaPos:] The strength of movement that the participant has moved between frames. To be more specific it is the magnitude of DeltaPos. 
+   \item[DeltaDir:] The angle that the participant's head has rotated on the vertical axis between frames.
+   \item[DeltaTime:] The time between frames in seconds.
+\end{description}
+
+
+\subsection{Data Post Processing}\label{sec:ex2postprocessingdetails}
+  * Discarding resets that happen due to participants moving too much around while fighting
+  * LAG Function to detect reset activation patterns
+ 
+ * TimeSinceExperimentStart will uniquely always be 0 one time per participant. It can be used to filter out cases where one might want to grab one row per participant

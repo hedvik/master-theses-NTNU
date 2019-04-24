@@ -1,10 +1,6 @@
 \chapter{Discussion}
 \label{chap:discussion}
 
-The results you have collected and the process you when through to develop the project have been presented earlier.  This Chapter is used to talk about your interpretations of results or the process. It might be a discussion of the language you used.  A tool that you started to use but then stopped using for some reason.  It could give insight into the evolution of your process.
-
-\todo{ give more examples of discussions}
-
 \section{Limitations of AC2F}
 * If a user finishes a distractor right before they reach a point they wish to go to, then decide to turn 180 degrees virtually and walk back they will have to trigger another distractor or reset. Could be annoying
    * In general, the current position sample heuristic works well enough as a generic heuristic, but more predictive ones would likely work better. 
@@ -12,6 +8,41 @@ The results you have collected and the process you when through to develop the p
 \section{Salience and Distraction}
 * Looking at the paper that mentioned salience distribution has effect on focus and attention
    * The bright glowing mushrooms in the environment which are meant to provide some scene illumination might have an effect 
+   * Some participants mentioned using the mushrooms as reference points for trying to detect redirection
    * Even then, in night time scenes it should probably be somewhat expected to see various salient elements
       * For the sake of lighting and such
    * Further studies into strength of distraction could be interesting in the context of RDW
+   * Mushrooms could be considered as contributing optical flow due to their salience
+
+\section{The Ideal Timing For Switching Redirection Algorithms}
+* Throughout both experiments one observation that has been noted is how participants move after finishing a distractor enemy.
+* Some participants start to move right after a distractor has been defeated while some stand and wait for their death animation to finish as the fireflies only appear after this. 
+* As the current solution only switches to the S2C algorithm after the death animation is finished this has a potential to cause some issues:
+   * If the user starts moving while the distractor death animation still is in progress this means that no curvature gains are applied to their walking as AC2F is still active until the animation is finished. This results in less effective redirection.
+   * Another problem is that the magnitude ''cooldown'' also only starts counting once the solution switches back to S2C, potentially meaning that the user might end up hitting a reset instead of a distractor as it has not tracked how much they walked prior to the switch. This is not ideal either.
+* One option would be to do this switch as soon as a distractor's health reaches zero, but this also has a potential flaw
+   * If the redirection has not aligned the future path of the user with the centre, then S2C might not be able to properly handle this as it is not quite as predictive
+
+* In general, one solution would be to choose the timing dynamically
+   * If the user's future path already is aligned with the centre, we can immediately switch to S2C once a distractor has been defeated
+   * If not, we can still try to keep AC2F active for a little longer to potentially align the user better with the centre of the room. 
+   * Starting to record the magnitude of the player's movement should most likely be as soon as it is detected that the user starts moving. It might still accumulate slightly if they stand still and do some minor head movements, but ideally the recording could for example start if the movement threshold for applying curvature gains is hit. 
+      * Either that or simply going for another option to set the cooldown for a distractor to avoid it potentially happening right after one has been finished if the user moves a tiny bit back and forth at their current position\todo{Make sure this problem is clarified in implementation and argued for why I go with the magnitude solution over others}
+    
+* If AC2F as an algorithm supported curvature gains, then this would have been less of an issue. At that point it would likely not be necessary to use the S2C algorithm as AC2F could take care of everything. If it were to be fully feature complete like this it would be closer to the ''modified S2C'' that Peck et al. + Chen and Fuchs have mentioned. 
+   * Of course this would increase the complexity of the algorithm a bit, which was outside of the resource budget and scope that was available for this thesis. 
+
+\section{Effectiveness of Integration From a Game Design Point of View}
+
+* In general good, but the frequency of enemy encounters could be considered as annoying for smaller room sizes
+   * Could be mitigated by having more variety in the distractors that the players can fight. Not just 5
+   * The amount of time fighting versus moving is skewed towards the fighting part.
+   * Looking at data from experiment 2, the fights could either be shorter with the currently estimate gains or the gains themselves could be lower to fill the whole battle time before aligning. 
+      * Both have their ups and downsides. It's a matter of priority
+
+\section{The challenges of various human factors/Practical Challenges For Distractors in RDW}
+* Movement during battles
+* Stopping speeds
+     * Making the participant stop when needed so they dont walk into the reset
+        * Might need to better utilise deterrents
+            * Ended up being outside of the small scope for this project

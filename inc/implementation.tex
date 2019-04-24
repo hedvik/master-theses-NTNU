@@ -6,7 +6,7 @@ This chapter consists of implementation details for all relevant redirected walk
 
 \section{Open Source Repository - GitHub}
 The source code and project assets for Ensemble Retriever can be found in a publicly available GitHub Repository~\cite{projectRepository}. It should be noted that the game itself is an extension of a small prototype that was previously developed for the IMT4894 - Advanced Project Work course. This prototype consisted of no redirected walking elements and simply featured a battle in VR against an angry contrabass enemy. The majority of the source code has needed to be rewritten or refactored to facilitate a more generic architecture that supports the larger scope of the current game.  
-
+\todo{briefly mention what the prototype actually contained}
 \subsection{Licensing and Attribution}
 \todo{not sure whether it should be in this chapter or general methods}
 
@@ -23,7 +23,7 @@ Anyone who is interested in reusing or extending the project need to follow the 
 \begin{itemize}
     \item All instrument 3D models
     \item The virtual environment
-\end{itemize}
+\end{itemize}\todo{Reusing the project as is is most likely fine, but further extension for these elements might not be allowed}
 Extension or reuse of these assets are not permitted in other work and need to be replaced as the permission was given to reuse these assets for this project specifically. All other assets were developed specifically for the Ensemble Retriever game and include:
 \begin{itemize}
     \item All game logic + extensions to the Redirected Walking Toolkit
@@ -35,10 +35,10 @@ Extension or reuse of these assets are not permitted in other work and need to b
 These elements of the game are under a MIT License and allows for reuse/extension as long as the license terms are held. 
 
 \section{Development Environment}
-* Unity 2018.3
+* Unity 2018.3.5f1
 * Visual Studio 2017
 * SteamVR
-* A HTC Vive for VR setup. 
+* Mersenne Twister Library for cases where high quality randomness is necessary.
 \todo{Might have its place in general mehods}
 
 \section{Redirected Walking Toolkit - Extended Code Architecture}
@@ -67,18 +67,33 @@ Each of these will be further detailed in the following sections.
 * 1.5m away from wall = distractor
 * 1m buffer between distractor trigger and reset
 
+
 \section{The ''Align Centre to Future'' Redirector}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/graphs/AC2F.png}
+  \caption[Align Centre to Future Algorithm Example]{AC2F aims to choose the rotation gains that brings the physical centre to head ($CtH$) vector in alignment with the future virtual walking direction ($F$) of the user. The user's current facing direction ($D$) is not used other than setting the value of $F$ as the algorithm starts. The origin of this reorientation is at the position of the user ($O$)}
+  \label{fig:ac2f}
+\end{figure}
+
+* The way that the real world ''rotates'' depends on what gain is applied to the user and what direction they are moving their head in. 
+   * The optimal gain is directly calculated at runtime, but it is technically possible to just choose one depending on the direction you want to rotate relative to what direction the user's head moves in
+
+
+* Figure~\ref{fig:ac2f}
 * Code specific implementation details. 
 * Based on what Peck et al. + Chen and Fuchs have mentioned in their work. 
    * No source code was available from their work, as such AC2F is somewhat based on Azmandian et al.'s S2C implementation, but the final result is fairly different from S2C.
 
-\section{The ''Pause - Turn - Centre'' Resetter}
+
+\section{The ''Pause - Turn - Centre'' Resetter}\label{sec:pauseturncentre}
 * Inspired by freeze turn (CITE creator)
 * Also takes inspiration from what Sra et al. have mentioned
    * Limiting visibility makes changes less noticable
    * In this case, the virtual world is "paused", resulting in a rotation gain of 0, but this is masked by mostly fading it to black and overlaying a representation of the physical space on top. 
 * Clipping problem
    * How is it solved?
+       * Double camera solution, forcing different depth levels so one camera always will draw over what the other does
    * What are the pros/cons of this solution?
       * Easy to implement
       * Costs some performance
@@ -110,7 +125,7 @@ This section provides an outline of the flow of Ensemble Retriever and how the g
 
 Ensemble Retriever starts off with a tutorial that teaches the player the basics of the game. It provides information on the context/story, the player's goal, how to deal with reorientation resets, how to fight enemies and what to do if they are lost. In experiment 1, the tutorial also provides information on what the player should do if they notice they are being redirected. 
 
-After the tutorial is finished, the game transitions to a walking phase where the player tries to reach the ''Hall of The Mountain King'' while being encouraged to visit three green fireflies that provide hints which will be relevant for a later part of the game. As the player walks around in this phase, distractor enemies will appear once they hit the maximum safe distance away from the centre. These enemies need to be defeated to progress and award experience points that the player can use to either upgrade the size of their contrabass shield or the damage that their conducting baton does. The walking phase of Ensemble Retriever is finished once the player enters the portal to the ''Hall of The Mountain King''.
+After the tutorial is finished, the game transitions to a walking phase where the player tries to reach the ''Hall of The Mountain King'' while being encouraged to visit three green fireflies that provide hints which will be relevant for a later part of the game. As the player walks around in this phase, distractor enemies will appear once they hit the maximum safe distance away from the centre. These enemies need to be defeated to progress and award experience points that the player can use to either upgrade the size of their contrabass shield or the damage that their conducting baton does. It should be noted that the fireflies fade away during battles to prevent their salience from potentially affecting the attention of the player since this could result in lower concentration~\cite{sitzmann2018saliency}. The walking phase of Ensemble Retriever is finished once the player enters the portal to the ''Hall of The Mountain King''. 
 
 Once the player enters the ''Hall of The Mountain King'', any redirection gains are disabled. This is to allow the player to spend the last few minutes of the game getting used to normal head rotations before taking off the HMD. Inside the hall, the player has to answer a multiple choice quiz which asks questions based on the previous hints that could have been acquired from fireflies in the walking phase. The quiz itself cannot be failed, but the final score that the player is given ties with how many correct answers they give. The quiz itself has three questions in total.
 
@@ -205,4 +220,8 @@ Finally, we have ''The Glockenspiel'' which is seen in Figure~\ref{fig:glockensp
    * An elevator could for example be used for it
    * Anything in general that limits visibility or vision of the target destination can technically be used to create context sensitive reorientation in the same vein as this.
       * Very similar to what Sra et al. have already discussed in terms of limiting visibility for redirection and reorientation
-      
+
+\section{Disabling Redirected Walking Towards The End of an Experience}
+* Throughout the final stretch of the game, redirection gains are disabled as a means of helping participants get used to normal head rotations before taking off the HMD.
+* How effective this approach is, would of course need to be further tested in a separate study, but it should at least help somewhat normalise the head rotations for the user before finishing.
+* Might not be easy to integrate with every solution, but in the case of Ensemble Retriever since the final portion is just to fight the Mountain King, there wont be much more movement involved so it is fine. 
