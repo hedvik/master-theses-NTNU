@@ -67,7 +67,7 @@ Once the participant presses a button on their controller to signify that they n
 Already established methods like Steinicke et al.'s~\cite{5072212} make use of multiple buttons where the user for example can notify whether they noticed that their head rotation was larger or lower than in reality. The reasoning for instead opting for a one button procedure is that it should be as simple as possible for the user to notify that they have detected something. In the case of standard estimation procedures, the entire focus of the participant is on the experiment itself, making multiple buttons feasible. In the case of this experiment though, the user is playing through a game and it would not be ideal to require additional mental processing when they already are engaged and focused on something else. Doing otherwise would detract from the point of using distractors as the focus of the user primarily should be on those. 
 
 \subsection{Performance Data Collection}
-As the participants play through Ensemble Retriever, the software itself collects a large variety of analytical data per frame. The general thought process behind recording data every frame is to provide insight into the whole runtime of the experiment and allow for deeper analysis if necessary around detection events. This data collection consists of data like the strength of gains at any given frame, whether a distractor was active, which distractor was active, whether a gain was detected and so on. The full list and a description for each piece of data that is collected can be found in Appendix~\ref{app:reproduction} as it is too long to reasonably mention in this section.
+As the participants play through Ensemble Retriever, the software itself collects a large variety of analytical data per frame. The general thought process behind recording data every frame is to provide insight into the whole runtime of the experiment and allow for deeper analysis if necessary around detection events. This data collection consists of data like the strength of gains at any given frame, whether a distractor was active, which distractor was active, whether a gain was detected and so on. The full list and a description for each piece of data that is collected can be found in Section~\ref{sec:ex1dataformat} as it is too long to reasonably mention in this section.
 
 \subsection{Participant Sample}
 * Intro
@@ -82,12 +82,32 @@ As the participants play through Ensemble Retriever, the software itself collect
 
 In total, 22 participants took part in Experiment 1. One of these includes the author of the thesis. 
 
+\subsubsection{Sample Demographics}
+* The demographics questionnaire that participants answered can be found in Appendix~\ref{app:demographicsQuestionnaire}.
+
+\todo{Mentioning general demographics without analysing it in relation the rest of the data works fine in Methods, right? In the sense of giving an overview of the sample that is}
+
+* Primarily within the age range of 18-24 years.
+* 20 males, 2 females
+* Only one had any optical corrections that had to be removed while using the HMD
+   * In their case, not using optical corrections was the preferred way to enjoy VR
+* 7 out of 22 had prior experience with projects using redirected walking
+* Figure~\ref{fig:ex1PriorVRExperience} shows a histogram over the Likert scale answers for prior VR experience. In general a pretty wide variety of experience. 
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/Experiment1VRExperienceHisto.png}
+    \caption[Histogram on Prior VR Experience of Participants in Experiment 1]{This histogram shows the frequencies of what values participants provided in the demographics questionnaire of experiment 1 in terms of prior VR experience.}
+    \label{fig:ex1PriorVRExperience}
+\end{figure}
+
 \subsubsection{Information and Consent}
 * Brief information summary
 * Specific details on what information participants were given can be found in Section~\ref{sec:ex1information}.
+* Consent sheets can be found in Appendix~\ref{app:informationconsent}.
 
 \subsubsection{Cancellation, Interruptions and Miscellaneous Information}
-One of the participants had to cancel the experiment due to cybersickness. It should be noted that this participant mentioned they could easily get motion sickness which cybersickness is a form of~\cite{mousavi2013review}. As such, it likely had some effect on why this was the only participant needing to cancel the experiment. This participant also mentioned that they mistakenly pressed the detection button a number of time. Due to this, they have been excluded from the sample, resulting in a sample of 21 participants. 
+One of the participants had to cancel the experiment due to cybersickness. It should be noted that this participant mentioned they could easily get motion sickness which cybersickness can be considered a form of~\cite{mousavi2013review}. As such, it likely had some effect on why this was the only participant needing to cancel the experiment. This participant also mentioned that they mistakenly pressed the detection button a number of time. Due to this, they have been excluded from the sample, resulting in a sample of 21 participants. 
 
 Two participants in the experiment did not manage to fully finish the Ensemble Retriever due to the following reasons:
 \begin{enumerate}
@@ -100,24 +120,7 @@ The data for these two participants is still included in the sample as the inter
     * Four participants did not provide any detection data
       * Inexperience with VR for some meant they did not have much of a reference point for redirection
       * Some did also misunderstand the task they had to do while playing
-      
-\subsubsection{Sample Demographics}
-* The demographics questionnaire that participants answered can be found in Appendix~\ref{app:demographicsQuestionnaire}.
-
-\todo{Mentioning general demographics without analysing it in relation the rest of the data works fine in Methods, right? In the sense of giving an overview of the sample that is}
-
-* Primarily within the age range of 18-24 years.
-* Only one had any optical corrections that had to be removed while using the HMD
-   * In their case, not using optical corrections was the preferred way to enjoy VR
-* 7 out of 21 had prior experience with projects using redirected walking
-* Figure~\ref{fig:ex1PriorVRExperience} shows a histogram over the Likert scale answers for prior VR experience. In general a pretty wide variety of experience. 
-
-\begin{figure}[tbph]
-    \centering
-    \includegraphics[width=0.75\textwidth]{figures/graphs/Experiment1VRExperienceHisto.png}
-    \caption[Histogram on Prior VR Experience of Participants in Experiment 1]{This histogram shows the frequencies of what values participants provided in the demographics questionnaire of experiment 1 in terms of prior VR experience.}
-    \label{fig:ex1PriorVRExperience}
-\end{figure}
+     
 
 \subsection{Experiment Environment/Room}
 \begin{figure}[tbph]

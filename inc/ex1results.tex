@@ -138,8 +138,23 @@ Since the data is not normally distributed, it is not possible to use standard t
 * Negative Rot Threshold
    * While there was a significant difference, the large variability of the detections makes it very hard to conclude how accurate the detection thresholds would be. It might therefore be safer to estimate this threshold as the lower bounded mean for AC2F.
 
-\subsection{Additional Insights}
-* Demographical data, correlations for these
+\subsection{Demographical Insights}
+* Testing correlation between demographical data and the sample of detected rotation gains
+   * Primarily because the curvature gain data is not worth comparing due to how most participants first noticed it at 2.5 then clicked until they stopped noticing. 
+* Spearman's rho used instead of pearson as the detection data is not fully normally distributed
+* Correlation matrix can be seen in Figure~\ref{fig:ex1demogcorrelationmatrix}
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/graphs/DemographicalCorrelations.png}
+    \caption[Experiment 1 Demographical Correlation Matrix]{Correlation matrix for the demographical data in experiment 1 and the rotation gains that were detected. N values are 213 as there were 213 rotation gain detections.}
+    \label{fig:ex1demogcorrelationmatrix}
+\end{figure}
+
+* Mention significant correlations
+
+\subsubsection{Prior VR Experience and Rotation Gain Detections}
+* Look deeper at Prior VR Experience
 
 \subsection{Summary}
 \begin{table}[h!]
@@ -174,3 +189,5 @@ Adaptation: Positive Rotation Gains & The data does appear to point towards a po
 \end{table}
 
 * A contextual summary of how the various variables from Chapter~\ref{chap:relatedWork} relate to this experiment can be found in Table~\ref{table:ex1VariableSummary}. It also includes some potentially new and relevant variables based on the results that have been shown. \todo{Estimation Method and Pos Rot Adaptation are new in this case. Might eventually just move estimation method as a variable to related work and mention how Bjørn made use of both incremental gains and regular 2AFC method.}
+
+\subsubsection{Qualitative Feedback}

@@ -1,4 +1,6 @@
 \section{Discussion}
+* Check latest notes with Simon and Christopher before writing. 
+
 
 * Some initial musings (HALFWAYS THROUGH EX 2): The total number of reorientations may not be significantly different, but the number of times alignments happen and the time needed to align makes AC2F more time efficient and accurate in relation to the goal it wants to reorient you to
 * This provides potential benefits in (the next section): 
@@ -10,7 +12,10 @@
    * Now this would result in exposure towards rotation gains over a longer period of time than if the gains are strong and align early. Whether strong gains early and no gains aligned or whether continuous weaker gains over a longer time period is optimal is hard to say and would require further study.\todo{Hey, Add me to future work!}
    * Given the possibilities for adaptation effects, the continuous solution might be better as it better adapts the user to the redirected environment. Ultimately it is hard to say though. 
    * While some adaptation style effects were experienced for positive rotation gains in Experiment 1, it is hard to say how much 0 gains during alignment affected the adaptation
- 
+
+\subsection{Improvements to the Data Processing Approach}
+* Instead of counting 10 seconds from the start, maybe it would be better to count 10 seconds backwards from the end. It may be that either condition still consist of some type 2 unintentional resets that were mentioned in Section~\ref{sec:ex2postprocessing}. This would have been quite a bit more challenging in terms of post processing, but if changes in the software data recording to accommodate this were to be made. Very little post processing would actually be needed. The need to do this post processing step in the first place came from observing human factors and behaviour that I had hoped I had mitigated from experiment 1 by increasing the size of the buffer between distractor start and stop. While it in general mitigated the number of unintentional resets, it did not fully stop them from happening. The risk of making this buffer too large would also be that the actual play space would become smaller and more annoying for participants as they would trigger distractors more often. 
+
 \subsection{Relationships Between Alignment Fail Rates and Mean Number of Resets}
 
 * One would expect that the higher fail rate of S2C only would have some effects on the rest of the data that was collected in the experiment. Why is it not?
@@ -28,3 +33,4 @@
          * RDW toolkit technically has visualisations for this implemented, but not the actual data storage of the path. Implementing a solution for this would allow for this thing to be tested
       * If the user on the other hand is roughly on the middle of one wall, then being redirected towards the centre would most likely be better.
       * As such, it may be that we should dynamically create the alignment goal heuristics depending on where the actual distractor or reset happens. 
+        * (For straight walking scenarios)
