@@ -94,27 +94,29 @@ Before looking at the processed data sample, it is first necessary to understand
     \label{fig:AlignmentTimesWithoutPenalties}
 \end{figure}
 
-* Above two box plots show the spread of alignment times with and without cases that have been added a penalty for failing
-
-   * Mean times without penalties
-      * S2C Only: 22.55
-      * S2C+AC2F: 22.85
-   * Mean times with penalties for clarity:
-      * S2C Only: 30.91 seconds
-      * S2C+AC2F: 25.34 seconds
+Finally, the boxplot showcasing the spread of alignment times with failure penalties can be seen in Figure~\ref{fig:alignmentTimesWithPenalties}. The mean time taken to align the user towards the centre in this case is 30.91 seconds for S2C Only and 25.34 seconds for S2C+AC2F. As a supplement, the spread of alignment times for only successful cases can be seen in Figure~\ref{fig:AlignmentTimesWithoutPenalties}. If failure penalties are disregarded, the mean time needed for alignment is 22.55 seconds for S2C Only and 22.85 for S2C+AC2F. 
 
 \subsubsection{Hypothesis Testing}
-* Will be testing with failure penalties included.
-* Shapiro-Wilk: 
-   * S2C Only: p < 0.001
-   * S2C+AC2F: p < 0.001
-   * None of the data is normally distributed
-   * MWU Mean Ranks:
-      * U = 2948.500, p = 0.276
-
-* Supports null hypothesis. Despite this it should be noted that the fail rates are different in terms of percentages. 
+In order to test $H_{0_2}$, the data sample including failure penalties will be used. A Shapiro-Wilk normality test was first conducted on the alignment time data. This provided $p < 0.001$ for both conditions and as such, neither is normally distributed. As such, the non-parametric Mann-Whitney U test is used for significance testing. The comparison is done with mean ranks as the shapes in Figure~\ref{fig:alignmentTimesWithPenalties} are fairly different. This results in $U = 2948.500. p = 0.276$, meaning that the test cannot find any statistically significant difference in alignment times. This means that the $H_{0_2}$ null hypothesis is supported. Despite this, it should be noted that the alignment fail rates for the two conditions are different and that the S2C+AC2F condition consisted of $15.8\%$ more successful alignments compared to S2C Only. 
 
 \subsection{Demographical Insights}
+
+
+Two correlation matrices have been generated from the demographical data in relation to the primary data that is relevant for the hypotheses that have been tested. The Spearman's Rho correlation test has been used to generate the correlation matrices as some of the data is not normally distributed. These correlation matrices can be seen in Figure~\ref{fig:ex2correlation1} and \ref{fig:ex2correlation2}. The correlation test is split into two matrices primarily due to differences in data structure between some of the variables. 
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/Ex2Correlations1.png}
+    \caption[Demographical Correlation Matrix 1 for Experiment 2]{Correlation matrix between various demographical variables and relevant variables in Experiment 2.}
+    \label{fig:ex2correlation1}
+\end{figure}
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/Ex2Correlations2.png}
+    \caption[Demographical Correlation Matrix 2 for Experiment 2]{Correlation matrix between the time needed to align participants to the centre of the physical space and various demographical variables in Experiment 2.}
+    \label{fig:ex2correlation2}
+\end{figure}
 
 \subsubsection{Qualitative Feedback}
 
