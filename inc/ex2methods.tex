@@ -1,8 +1,10 @@
 \chapter{Experiment 2: Effectiveness of Distractors}
 This chapter consists of the Method, Results and Discussion components for Experiment 2. The experiment itself focuses on various effectiveness metrics for the developed redirected walking solution. 
 
+\todo{Make sure the structure is somewhat similar between ex1 and ex2}
+
 \section{Method}
-As part of developing the extension to the redirected walking toolkit, one of the implemented components was the AC2F algorithm. Since AC2F makes use of more predictive information compared to S2C, it would be interesting to see whether this provides a more effective solution when using distractors. As such, this experiment compares two different conditions. The first makes use of S2C only throughout an entire playthrough of Ensemble Retriever while the other uses S2C during walking and AC2F during the standing distractor battles. The redirection gains employed in this experiment are derived from the estimated thresholds in Chapter~\ref{chap:ex1}. 
+As part of developing the extension to the redirected walking toolkit, one of the implemented components was the AC2F algorithm. Since AC2F makes use of more predictive information compared to S2C, it would be interesting to see whether this provides a more effective solution when using distractors. As such, this experiment compares two different conditions. The first makes use of S2C only throughout an entire playthrough of Ensemble Retriever while the other uses S2C during walking and AC2F during the standing distractor battles. The redirection gains employed in this experiment are derived from the estimated thresholds in Chapter~\ref{chap:ex1}. This playthrough of Ensemble Retriever is also somewhat shorter than in Experiment 1, taking roughly 15-20 minutes instead of \textasciitilde30 minutes in hopes that it would make it easier to gather participants. 
 
 This section consists of the related methods that have been used to measure and test the effectiveness of employing AC2F when using distractors. 
 
@@ -28,7 +30,7 @@ Experiment 2 employs a similar data collection procedure to Experiment 1. It rec
 \subsection{Data Post Processing}\label{sec:ex2postprocessing}
 One problem that can affect the results for testing both hypotheses is what could be considered as ''unintentional resets''. These are resets that can happen during distractor battles in two different ways:
 \begin{enumerate}
-    \item If the user is walking fast enough, the buffer between a distractor triggering and a reset triggering might be too small, so by the time the user stops they have reached the boundary for triggering a reset. This means that the user is almost instantly aligned to the physical centre. 
+    \item If the user is walking fast enough, the buffer between a distractor triggering and a reset triggering might be too small. By the time the user stops after triggering a distractor, they have reached the boundary for triggering a reset as well. This means that the user is almost instantly aligned to the physical centre. 
     \item If the user moves around a lot during battles they risk triggering a reset since they already are close to the physical bounds while fighting. 
 \end{enumerate}
 
@@ -41,21 +43,33 @@ In order to decide the length of this time buffer it is first necessary to under
 
 Given the minimum distractor duration of 18.28 seconds and the need for some buffer, the post processing uses a time of 10 seconds. This means that any resets that happened within the first 10 seconds of a distractor spawning become discarded from the analysis. A walkthrough for the entire post processing procedure can be found in Section~\ref{sec:ex2postprocessingdetails}.
 
+\subsubsection{Adding Penalties for Failed Alignments}
+One element that may differ between algorithms is the rate of failed alignments. Failed alignments are in this case defined as the failure to align the user's future virtual path to the centre of the physical room throughout the lifetime of a distractor. Given that these failure cases may be different between the two conditions it is necessary to factor them into the hypothesis testing in some way. For this thesis, the problem is handled by providing a time penalty whenever an algorithm fails to align the user properly when testing $H_{0_2}$. This way, each spawned distractor results in either a successful or unsuccessful alignment time which can be factored into the data analysis. The value for the time penalty is chosen to be the average time needed to defeat a distractor, which in this case was 54.86 seconds. The reasoning for choosing the average time needed to defeat a distractor is that average successful alignment times primarily were within the scope of \textasciitilde23 seconds. The average time taken to defeat a distractor is thus sizeably different compared to the successful alignment times and should provide a reasonable skew in the data if there is a large difference in fail rates. 
+
+\todo{Is the argumentation for using the average as penalty good enough?}
+
+\subsection{Changes in Experiment Environment}\label{sec:ex2environmentchanges}
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.25\textwidth]{figures/images/experiment2EnvironmentChanges.jpg}
+    \caption[Changes in Experiment Environment for Experiment 2]{This image shows the alternative lighthouse setup that had to be made as the original ceiling mounted lighthouse disappeared before Experiment 2 started. Instead of a ceiling mounted solution, this setup makes use of a glass mounted lighthouse.}
+    \label{fig:ex2changedLighthouse}
+\end{figure}
+
+There was a 2 week period between Experiment 1 and 2. During this time, one of the ceiling mounted HTC Vive lighthouses disappeared from the experiment setup with no trace or information on where it had gone. As such, it was necessary to setup a new lighthouse in a slightly different configuration. This can be seen in Figure~\ref{fig:ex2changedLighthouse}. The disappearance of the original lighthouse was discovered on the weekend before the experiment started and as such, only limited amounts of room calibration testing was possible. This did create some calibration related problems for two participants. In particular, the reset boundaries became too wide for certain walls and resulted in resets not triggering. These calibration problems were fixed with a software workaround as soon as they were discovered and as such only affected two participants. The number of times the resets failed to trigger for each of these two were also noted down so they could be included with post processing. 
+
 \subsection{Sample}
-* Intro
-* Participants from experiment 1 were allowed to take part in experiment 2 as well if they wanted to
-
+This section consists of information on how the participant sample was acquired, an overview of the demographics in the sample, what information participants were given and miscellaneous information. 
+   
 \subsubsection{Sampling Procedure}
+The sampling procedure for Experiment 2 was the same as with Experiment 1. It consisted of advertisement by supervisors during lectures, information posters that were  placed around campus, advertisement on the local NTNU Discord\footnote{\url{https://discordapp.com/}} server and general convenience sampling. It should be noted that participants who already took part in Experiment 1 were still allowed to participate in Experiment 2.
 
-The sampling procedure for Experiment 2 was the same as with Experiment 1. It consisted of advertisement by supervisors during lectures, information posters that were  placed around campus, advertisement on the local NTNU Discord server and general convenience sampling. Participants were once again compensated with some chocolate for their time. In total 15 participants signed up for Experiment 2, albeit only 13 of these showed up. These 13 were randomly distributed between the two conditions using the same Mersenne Twister library~\cite{MersenneTwisterLibraryLink} that previously has been mentioned throughout Chapter~\ref{chap:implementation}. This resulted in 7 participants for the control/S2C only condition and 6 in the experimental/S2C+AC2F condition. 
+A variety of time slots were assigned to a doodle poll~\footnote{\url{https://doodle.com/}} where participants could sign up with an alias for whatever time slot best fit their schedule. Participants were once again compensated with some chocolate for their time, albeit with less than in Experiment 1 since the amount of time spent for this experiment is shorter. In total 15 participants signed up for Experiment 2, albeit only 13 of these showed up. These 13 were randomly distributed between the two conditions using the same Mersenne Twister library~\cite{MersenneTwisterLibraryLink} that previously has been mentioned throughout Chapter~\ref{chap:implementation}. This resulted in 7 participants for the control/S2C only condition and 6 in the experimental/S2C+AC2F condition. 
+
+Acquiring participants for this experiment was generally more challenging as many students mentioned they already were fatigued by constantly taking part in the experients of various master students. As such, a similar sample size to Experiment 1 was not possible to achieve within the same amount of sampling time. 
 
 \subsubsection{Sample Demographics}
-
-* Primarily within the age range of 18-24
-* All males
-* One had to remove optical corrections
-* 11/13 had previous experience with redirected walking experiments
-* Spread of VR Experience: Figure~\ref{fig:ex2PriorVRExperience}
+The sample itself primarily consisted of students within the age range of 18-24 years. Everyone in the sample were male and only one had to remove any optical corrections while participating. 11/13 participants had previous experience with redirected walking experiments due to a larger overlap from participants who already had taken part in Experiment 1. The general spread of VR experience is not quite as well distributed in this sample as compared to Experiment 1. This can be seen in Figure~\ref{fig:ex2PriorVRExperience} where most participants answered with ''1'' and ''5'' on a Likert scale in terms of their prior VR experience.
 
 \begin{figure}[tbph]
     \centering
@@ -65,41 +79,56 @@ The sampling procedure for Experiment 2 was the same as with Experiment 1. It co
 \end{figure}
 
 \subsubsection{Information and Consent}
-* Brief information summary
-* Specific details on what information participants were given can be found in Section~\ref{sec:ex2information}.
-* Consent sheets can be found in Appendix~\ref{app:informationconsent}.
+In terms of information and consent, participants were given a sheet that was very similar to the one in Experiment 1. Both information/consent sheets can be seen in Appendix~\ref{app:informationconsent}. Participants were also given some oral information before playing through Ensemble Retriever. This can be summarised as follows:
+\begin{itemize}
+    \item A very brief summary of what redirected walking is was given if necessary.
+    \item If the participant experienced any form of cybersickness at any point they were instructed to mention this so that the experiment could be stopped.
+    \item Participants were encouraged to not walk too quickly for their own safety's sake.
+    \item Participants were informed that the room tracking might fail for the controllers at times, if so they just need to wiggle it in the air for the problem to resolve.
+    \item Participants were told they should be mindful of the tethered cable.
+    \item Participants were told that they should not move too much around during battles to avoid potentially moving into walls. 
+\end{itemize}
 
+The specific details and wording that was used for this oral information can be found in Section~\ref{sec:ex2information}.
 
 \subsubsection{Miscellaneous Information and Issues}
-Section~\ref{sec:ex2environmentchanges}.
-   * Participant 1 and 2 had some calibration problems
-      * Participant 1 had 1 reset that should have triggered
-      * Participant 2 had 2 resets that should have triggered
-      * Eventually if I am unsure, I might have to exclude these two due to the issues
-      
-\subsection{Changes in Ensemble Retriever between Experiment 1 and 2}
-   * List all
-   * Walking distance reduced to make for a slightly shorter experiment
-   * MK health halved
-   * Tutorial no longer mentions anything related to experiment 1
-   * Extra plane was added to the floor in hall of the mountain king
-      * To reduce the effect of walking on thin air at one point
-   * Floor calibrated better for the hall of the mountain king as it was a bit higher than it should be, making some participant notice that they felt lower than they should be. 
-   * Buffer between reset and distractor triggering has been increased by 0.5m so that resets trigger 0.5m away from the wall and distractors trigger 1.5m away from the wall, rather than at 1m. 
-      * As it was observed that when participants got more comfortable and walked faster, they would be able to stop in time after triggering a distractor before also triggering a reset. This does of course reduce the size of the walking space slightly, but should result in less forced reorientations.
-   * The tutorial has slightly less text as additional information that is only needed for experiment 1 is removed automatically when doing this experiment
-   * The contrabass and later phases of the mountain king have been sped up as participants were unhappy with the slow speed of it. Oboe is a bit faster too
-   * S2C Dampening enabled again
-   * Firefly colour changes after being visited so players can see what they have visited 
-   * Distractor Magnitude cooldown updated from 1.75 to 1.5
-   * The estimated thresholds from experiment 1 are now in use when playing through ER. 
-   \todo{Double check git history in case I missed anything}
+As mentioned in Section~\ref{sec:ex2environmentchanges}, there were some problems related to the room calibration of the new lighthouse setup that had to be done. This affected participants 1 and 2 in particular where participant 1 experienced one failed reset while participant 2 experienced two failed resets. Failed resets in this case are defined as the reset not triggering when it should. In order to avoid potential skewing of data, the number of times that the resets failed to trigger have been added to these participants during the data post processing step which is mentioned in Section~\ref{sec:ex2postprocessing} and fully detailed in Section~\ref{sec:ex2postprocessingdetails}. 
 
+\subsection{Changes in Ensemble Retriever Between Experiment 1 and 2}
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/screenshots/HallOfTheMountainKingWithNewFloor.png}
+    \caption[Screenshot of the ''Hall of The Mountain King'' Post Experiment 1]{This screenshot from the Unity scene view shows the updated ''Hall of The Mountain King'' after finishing Experiment 1. Some additional flooring has been added due to participant feedback to make traversal more natural.}
+    \label{fig:mkhallWithFloor}
+\end{figure}
 
-\subsection{Changes in Experiment Environment}\label{sec:ex2environmentchanges}
-   * The whole lost lighthouse mess and its effects
-   * \todo{add picture of the new lighthouse setup}
-   * Had to quickly work around the problem and include a fix. 
-   
-\subsection{Data Post Processing}
-* Post processing steps and details in Section~\ref{sec:ex2postprocessingdetails}.
+A variety of things within Ensemble Retriever were changed between Experiment 1 and 2. The full change-log can be found in the project repository~\cite{projectRepository} by looking at the commit history, although this section will provide a summary of the changes that were implemented for Experiment 2. Some of these changes only apply when Experiment 2 is chosen as the active experiment in the software. These changes are marked with ''(EX2)'' while generic changes that apply to the entirety of Ensemble Retriever are marked with ''(ALL)''. The summary of changes are as follows:
+
+\begin{itemize}
+    \item Overall walking distance has been reduced to allow for a shorter experiment. (EX2)
+    \item The health of the Mountain King has been cut in half to allow for a shorter experiment. (EX2)
+    \item The tutorial does not provide any information on detection of redirection as this is only needed for Experiment 1. (EX2)
+    \item S2C dampening is re-enabled as it no longer can affect the main focus of data collection. (EX2)
+    \item The estimated detection thresholds from Experiment 1 are used as the redirection gains when playing. (EX2)
+    \item An extra plane was added to the floor in the ''Hall of The Mountain King''. (ALL)
+    \begin{itemize}
+        \item This was changed due to feedback as participants mentioned it was awkward to walk between the large holes between the rocks in the floor. The difference can be seen by comparing Figure~\ref{fig:mkhallWithWall} and \ref{fig:mkhallWithFloor}.
+    \end{itemize}
+    \item The floor in the ''Hall of The Mountain King'' has been better calibrated as the original calibration was lower than it should be, making some participants notice that their height was slightly inconsistent. (ALL)
+    \item The buffer between reset and distractor triggers has been increased by 0.5m. This means that resets trigger 0.5m away from physical walls while distractors trigger at 1.5m instead of the previous 1.0m. (ALL)
+    \begin{itemize}
+        \item The reasoning behind this is that there were observations during Experiment 1 where participants would gradually increase their walking speed as they became more comfortable with the experience. Towards the end, walking speeds were fast enough that there would not be a large enough buffer between distractor and reset triggers, making both trigger instead of only the distractor. By increasing the buffer, the effective size of the walking space is slightly reduced, but should decrease the number of situations where resets trigger right after the distractor itself.  
+    \end{itemize}
+    \item Distractors like the Contrabass, Oboe and certain phases of the ''Mountain King'' have increased projectile speeds. (ALL)
+    \begin{itemize}
+        \item This was based on participant feedback for certain projectile attacks taking too long to reach the player, and thus being frustratingly slow. 
+    \end{itemize}
+    \item The hint providing fireflies in the environment now change colours after the player has visited them. (ALL)
+    \begin{itemize}
+        \item This was implemented due to participant feedback as a means to make it easier for somewhat disoriented players to see which of the fireflies they already had visited. 
+    \end{itemize}
+    \item The Distractor trigger magnitude cooldown has been decreased from 1.75m to 1.5m. (ALL)
+    \begin{itemize}
+        \item This was primarily done due to observations of situations where participants would walk a larger distance right as the death animation of a distractor starts. By the time it was finished and the cooldown initiated, the participant was almost at the bounds of the physical space, resulting in a reset instead of a distractor trigger. 
+    \end{itemize}
+\end{itemize}

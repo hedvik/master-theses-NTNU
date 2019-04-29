@@ -119,6 +119,8 @@
   * Discarding resets that happen due to participants moving too much around while fighting
   * LAG Function to detect reset activation patterns
  
- * TimeSinceExperimentStart will uniquely always be 0 one time per participant. It can be used to filter out cases where one might want to grab one row per participant
+ * TimeSinceExperimentStart should uniquely always be 0 one time per participant.    
+    * It can be used to filter out cases where one might want to grab one row per participant
+    * There may of course be cases where it actually is not 0, so it is worth checking this before making use of it. It primarily worked in the case of this thesis, but it may not always be the case
 
 * Finding and adding penalties
