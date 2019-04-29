@@ -33,28 +33,91 @@ Two variables that potentially could have some effect on the the reset counts be
 
 A Shapiro-Wilk test was employed to check the normal distribution of these two variables. For the time spent walking, the test provided $p = 0.195$ for S2C Only and $p = 0.490$ for S2C+AC2F. Both conditions are as such normally distributed and a independent samples t-test was employed to look for statistically significant differences. The independent samples t-test yielded $t = 0.262, p = 0.798$ which means there is no statistical significance in terms of time spent walking. For clarity's sake, the mean walking time for S2C Only was 209.2 seconds and 202.0 seconds for S2C+AC2F. 
 
-In terms of the mean walking speed, the Shapiro-Wilk test provided $p = 0.472$ for S2C Only and $p = 0.847$ for S2C+AC2F, meaning that the data is normally distributed. As such, an independent samples t-test was employed to look for statistically significant differences. 
+In terms of the mean walking speed, the Shapiro-Wilk test provided $p = 0.472$ for S2C Only and $p = 0.847$ for S2C+AC2F, meaning that the data is normally distributed. As such, an independent samples t-test was employed to look for statistically significant differences. The independent samples t-test provided $t = -0.633, p = 0.540$ showing that there is no statistically significant difference for walking speeds either. For clarity's sake, the mean walking speed for S2C Only was 0.278 metres per second and 0.294 metres per second for S2C+AC2F.
 
-   * T-test: t = -0.633, p = 0.540 
-   * There is no statistical significance here either
-   * Mean walking speed for S2C Only = 0.278 metres per second
-   * Mean walking speed for S2C+AC2F = 0.294 metres per second
- 
 Since there is no statistically significant difference between the two conditions in terms of time spent walking or walking speed, further analysis will focus on the mean number of legitimate resets per participant. If there would have been a significant difference, a time or speed normalised variable would have needed to be calculated for comparisons. 
 
-\subsubsection{Mean Number of Resets for Participants Between Conditions}
-* Figure~\ref{fig:ex2resetMeans}.
+\subsubsection{Number of Resets for Participants Between Conditions}
+The mean number of resets that participants experienced between conditions can be seen in Figure~\ref{fig:ex2resetMeans}. To supplement the means, a boxplot of the same data can be seen in Figure~\ref{fig:ex2resetboxplot}. As a reminder, the data sample used for these graphs consists of legitimate resets only. Unintentional resets have been removed using the data post processing step as mentioned in Section~\ref{sec:ex2postprocessing}.
+
 \begin{figure}[tbph]
     \centering
     \includegraphics[width=0.75\textwidth]{figures/graphs/ResetMeans.png}
-    \caption[Mean Number of Resets Between Conditions]{This bar chart shows the mean number of resets that participants experienced between conditions.}
+    \caption[Mean Number of Resets Between Conditions for Experiment 2]{This bar chart shows the mean number of resets that participants experienced between conditions.}
     \label{fig:ex2resetMeans}
 \end{figure}
 
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/resetCountBoxPlot.png}
+    \caption[Boxplot on Number of Resets Per Participant Between Conditions for Experiment 2]{This boxplot shows the spread of resets counts that participants experienced between conditions.}
+    \label{fig:ex2resetboxplot}
+\end{figure}
+
 \subsubsection{Hypothesis Testing}
+Finally, in order to test $H_{0_1}$ it is first necessary to test the normality of the data. Using a Shapiro-Wilk test, the S2C Only condition yielded $p = 0.036$ while S2C+AC2F yielded $p = 0.096$. As such, the S2C Only condition is not normally distributed and a non-parametric significance test is needed. In this case, the Mann-Whitney U non-parametric significance test is used. 
+
+Looking at the boxplot in Figure~\ref{fig:ex2resetboxplot}, the overall shape of the distribution is fairly different between the two conditions. As such, the comparison in this case will be on mean ranks only. The Mann-Whitney U test results in $U = 12.500, p = 0.234$. As such, there is no statistically significant difference in terms of number of resets between the two conditions and $H_{0_1}$ is supported.
 
 \subsection{Alignment Time Effectiveness}
+The second null hypothesis to test is related to effectiveness in terms of time needed to align the user's future path towards the centre of the physical space. 
+
+\subsubsection{Alignment Failure Rates}
+Before looking at the processed data sample, it is first necessary to understand the differences in alignment failure rates between the two conditions. Participants in the S2C Only condition triggered 92 distractors in which 22 failed alignment. This results in a failure rate of $23.9\%$. Participants in the S2C+AC2F condition triggered 74 distractors in total and consisted of 6 failed alignments. This results in a failure rate of $8.1\%$. The time taken to defeat the distractor during these failed cases can be seen in Figure~\ref{fig:ex2failedDistractorTimeBoxplot} while the level of the participants' conducting baton during the failure can be seen in Figure~\ref{fig:ex2failedAlignmentBatonLevel}. As seen in Figure~\ref{fig:ex2failedAlignmentBatonLevel}, the S2C Only condition did fail in some cases where the participants' baton was at a lower level, meaning that some failures happened during longer battles. The S2C+AC2F condition on the other hand only failed when the participants' baton was at the maximum level, meaning the alignments failed during the shortest battles. 
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/failureDistractorDefeatTimeBoxplot.png}
+    \caption[Boxplot on Time Needed to Defeat Distractor During Failed Alignments]{This boxplot shows the spread of time in seconds needed to defeat a distractor during the times where alignment towards the centre of the room failed.}
+    \label{fig:ex2failedDistractorTimeBoxplot}
+\end{figure}
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/failureBatonLevelHistogram.png}
+    \caption[Histogram on Player Baton Level During Failed Alignments]{This histogram shows the frequencies of which level the participants' baton was at during failed alignment. Higher levels allows the player to deal more damage.}
+    \label{fig:ex2failedAlignmentBatonLevel}
+\end{figure}
+
+\subsection{Time Needed for Alignment Between Conditions}
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/boxplotAlignmentTimesWithPenalties.png}
+    \caption[Boxplot on Time Needed To Align Participants To Centre (Including Failure Penalties)]{This boxplot shows the spread of time needed to align participants towards the centre of the room. It includes the penalties that are given to cases of failed alignments.}
+    \label{fig:alignmentTimesWithPenalties}
+\end{figure}
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/boxplotAlignmentTimesWithoutPenalties.png}
+    \caption[Boxplot on Time Needed To Align Participants To Centre (Successful Cases Only)]{This boxplot shows the spread of time needed to align participants towards the centre of the room. In this case the data consists of only successful alignments.}
+    \label{fig:AlignmentTimesWithoutPenalties}
+\end{figure}
+
+* Above two box plots show the spread of alignment times with and without cases that have been added a penalty for failing
+
+   * Mean times without penalties
+      * S2C Only: 22.55
+      * S2C+AC2F: 22.85
+   * Mean times with penalties for clarity:
+      * S2C Only: 30.91 seconds
+      * S2C+AC2F: 25.34 seconds
+
+\subsubsection{Hypothesis Testing}
+* Will be testing with failure penalties included.
+* Shapiro-Wilk: 
+   * S2C Only: p < 0.001
+   * S2C+AC2F: p < 0.001
+   * None of the data is normally distributed
+   * MWU Mean Ranks:
+      * U = 2948.500, p = 0.276
+
+* Supports null hypothesis. Despite this it should be noted that the fail rates are different in terms of percentages. 
 
 \subsection{Demographical Insights}
 
 \subsubsection{Qualitative Feedback}
+
+\subsection{Summary}
+\subsubsection{$H_{0_1}$}
+\subsubsection{$H_{0_2}$}
