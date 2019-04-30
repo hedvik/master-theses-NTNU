@@ -1,5 +1,5 @@
 \section{Results}
-This part of the chapter provides the results of the experiment related to the two established hypotheses as well as insights gained from demographical information. Like with Experiment 1, data visualisation is provided by SPSS due to the large data file sizes. A significance level of 0.05 was used for all statistical tests. 
+This part of the chapter provides the results of the experiment related to the two established hypotheses as well as insights gained from demographical information. Like with Experiment 1, data visualisation is provided by SPSS due to the large data file sizes. A significance level of 0.05 was used for all statistical tests. For the sake of disclosure for any graphs that make use of participant ID's, the author's ID is 5. 
 
 \subsection{Relative Effectiveness}
 The first of the null hypotheses to be tested is effectiveness in terms of relative effectiveness. 
@@ -59,6 +59,8 @@ Finally, in order to test $H_{0_1}$ it is first necessary to test the normality 
 
 Looking at the boxplot in Figure~\ref{fig:ex2resetboxplot}, the overall shape of the distribution is fairly different between the two conditions. As such, the comparison in this case will be on mean ranks only. The Mann-Whitney U test results in $U = 12.500, p = 0.234$. As such, there is no statistically significant difference in terms of number of resets between the two conditions and $H_{0_1}$ is supported.
 
+Since there is no significant difference, the relative effectiveness between the two conditions has not been calculated.
+
 \subsection{Alignment Time Effectiveness}
 The second null hypothesis to test is related to effectiveness in terms of time needed to align the user's future path towards the centre of the physical space. 
 
@@ -97,29 +99,45 @@ Before looking at the processed data sample, it is first necessary to understand
 Finally, the boxplot showcasing the spread of alignment times with failure penalties can be seen in Figure~\ref{fig:alignmentTimesWithPenalties}. The mean time taken to align the user towards the centre in this case is 30.91 seconds for S2C Only and 25.34 seconds for S2C+AC2F. As a supplement, the spread of alignment times for only successful cases can be seen in Figure~\ref{fig:AlignmentTimesWithoutPenalties}. If failure penalties are disregarded, the mean time needed for alignment is 22.55 seconds for S2C Only and 22.85 for S2C+AC2F. 
 
 \subsubsection{Hypothesis Testing}
-In order to test $H_{0_2}$, the data sample including failure penalties will be used. A Shapiro-Wilk normality test was first conducted on the alignment time data. This provided $p < 0.001$ for both conditions and as such, neither is normally distributed. As such, the non-parametric Mann-Whitney U test is used for significance testing. The comparison is done with mean ranks as the shapes in Figure~\ref{fig:alignmentTimesWithPenalties} are fairly different. This results in $U = 2948.500. p = 0.276$, meaning that the test cannot find any statistically significant difference in alignment times. This means that the $H_{0_2}$ null hypothesis is supported. Despite this, it should be noted that the alignment fail rates for the two conditions are different and that the S2C+AC2F condition consisted of $15.8\%$ more successful alignments compared to S2C Only. 
+In order to test $H_{0_2}$, the data sample including failure penalties will be used. A Shapiro-Wilk normality test was first conducted on the alignment time data. This provided $p < 0.001$ for both conditions and as such, neither is normally distributed. As such, the non-parametric Mann-Whitney U test is used for significance testing. The comparison is done with mean ranks as the shapes in Figure~\ref{fig:alignmentTimesWithPenalties} are fairly different. This results in $U = 2948.500, p = 0.276$, meaning that the test cannot find any statistically significant difference in alignment times. This means that the $H_{0_2}$ null hypothesis is supported. Despite this, it should be noted that the alignment fail rates for the two conditions are different and that the S2C+AC2F condition consisted of $15.8\%$ more successful alignments compared to S2C Only. 
 
 \subsection{Demographical Insights}
-
-
 Two correlation matrices have been generated from the demographical data in relation to the primary data that is relevant for the hypotheses that have been tested. The Spearman's Rho correlation test has been used to generate the correlation matrices as some of the data is not normally distributed. These correlation matrices can be seen in Figure~\ref{fig:ex2correlation1} and \ref{fig:ex2correlation2}. The correlation test is split into two matrices primarily due to differences in data structure between some of the variables. 
 
-\begin{figure}[tbph]
+\begin{sidewaysfigure}[tbph]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/graphs/Ex2Correlations1.png}
+    \includegraphics[width=0.9\textwidth]{figures/graphs/Ex2Correlations1.png}
     \caption[Demographical Correlation Matrix 1 for Experiment 2]{Correlation matrix between various demographical variables and relevant variables in Experiment 2.}
     \label{fig:ex2correlation1}
-\end{figure}
+\end{sidewaysfigure}
 
 \begin{figure}[tbph]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/graphs/Ex2Correlations2.png}
+    \includegraphics[width=0.9\textwidth]{figures/graphs/Ex2Correlations2.png}
     \caption[Demographical Correlation Matrix 2 for Experiment 2]{Correlation matrix between the time needed to align participants to the centre of the physical space and various demographical variables in Experiment 2.}
     \label{fig:ex2correlation2}
 \end{figure}
 
 \subsubsection{Qualitative Feedback}
+In terms of qualitative feedback, this section provides a summary of the feedback that participants provided in the questionnaire. The summary is structured after the questions that did receive answers.
+
+\paragraph{Whether the Participants Found Any Bugs or Glitches}
+In general, some participants noted that they experienced loss of controller tracking at times. Other than that, no major bugs were experienced by participants.
+
+\paragraph{Whether the Participants Found the Experience Enjoyable}
+In general, the participants found the experience to be very enjoyable, although one noted that it was too long for their liking. 
+
+\paragraph{How the Participants Felt About the Redirection Techniques}
+Some participants did not notice any redirection, while others did notice it at certain times. The general feedback from participants that did notice the redirection at times was that it felt natural as it was not too strong. In terms of when participants noticed the redirection, it varied a bit. Some had an easier time noticing it in battle, while others found it more easy to notice while walking. The distribution of participants mentioning they noticed the redirection was equal between the two conditions (3 in S2C Only and 3 in S2C+AC2F). 
+
+\paragraph{Whether the Participants Had Any Problems Throughout Their Experience}
+The main feedback that was provided for this question was that the physical cable that the HTC Vive uses was rather frustrating to deal with. There were times where participants felt like they had gotten tangled up in the cable and needed to spent some time untangling themselves, somewhat breaking the immersion of the experience. Participants mentioned that the experience would have been substantially improved if integrated with wireless HMD's in the future. 
 
 \subsection{Summary}
+The following paragraphs will summarise the results that have been presented in relation to their relevant hypotheses.  
+
 \subsubsection{$H_{0_1}$}
+There was no statistically significant difference between the two conditions in terms of mean number of resets per participant (Mann-Whitney U: $U = 12.500, p = 0.234$). As such, no relative effectiveness was calculated and the $H_{0_1}$ null hypothesis is supported.
+
 \subsubsection{$H_{0_2}$}
+There was no statistically significant difference between the two conditions in terms of mean time taken to align participants to the centre of the room (Mann-Whitney U: $U = 2948.500, p = 0.276$). Despite this, it should be noted that the alignment failure rates between the two conditions were different. Using S2C together with the AC2F algorithm resulted in $15.8\%$ less alignment failures compared to using only S2C. While the $H_{0_2}$ null hypothesis is supported, the difference in alignment failure rates should be considered.

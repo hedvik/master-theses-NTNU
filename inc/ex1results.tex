@@ -2,6 +2,8 @@
 * Intro
 * Spss visualisation
 
+For the sake of disclosure for any graphs that make use of participant ID's, the author's ID is 16. 
+
 \subsection{Rotation Detections}
 * Starts with presenting the raw data of detections before outliers have been removed and post processing is finished. 
 
@@ -21,7 +23,6 @@
 * After finishing the post processing step mentioned in Section~\ref{sec:ex1postprocessing}:
    * Post Processing step added 52 additional detections
 * 213 rotation gain detections in total
-* While looking at the data, it should be noted that the author is participant 16
 
 \begin{figure}[tbph]
     \centering
@@ -65,8 +66,15 @@
     \label{fig:posRotRegLine}
 \end{figure}
 
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/rotationGainProgressionAuthor.png}
+    \caption[Line Chart Showing the Progression of Rotation Gains for Participant 16]{This line chart shows the progression of rotation gains over time for participant 16. Rotation gains gradually increase over time until they are detected, after which they are dropped by 50\%. Sections of time where gains are 0 are during distractor battles where the future virtual path has been aligned with the physical room centre.}
+    \label{fig:authorRotationProgression}
+\end{figure}
 
-* The finalised data can be seen in Figure~\ref{fig:rotationDetectionDataByAlgorithm}, where it is grouped by algorithm and Figure~\ref{fig:rotationDetectionDataByParticipant}, where it is grouped by participant ID. To provide some additional visualisation, a line chart showing the progression of detections between participants can be seen in Figure~\ref{fig:negativeRotationDetectionLineChart} and Figure~\ref{fig:positiveRotationDetectionLineChart}. Finally, individual scatter plots for negative/positive rotation gain detections with an included regression line can be found in Figure~\ref{fig:negRotRegLine} and Figure~\ref{fig:posRotRegLine}.
+
+* The finalised data can be seen in Figure~\ref{fig:rotationDetectionDataByAlgorithm}, where it is grouped by algorithm and Figure~\ref{fig:rotationDetectionDataByParticipant}, where it is grouped by participant ID. To provide some additional visualisation, a line chart showing the progression of detections between participants can be seen in Figure~\ref{fig:negativeRotationDetectionLineChart} and Figure~\ref{fig:positiveRotationDetectionLineChart}. A figure illustrating the incremental progression of rotation gains over time for participant 16 (the author) can be seen in Figure~\ref{fig:authorRotationProgression}. Finally, individual scatter plots for negative/positive rotation gain detections with an included regression line can be found in Figure~\ref{fig:negRotRegLine} and Figure~\ref{fig:posRotRegLine}. It should be noted that some participants are not shown in this graph as they did not provide any detection events. 
 
 \todo{Can present this in a table}
 * S2C Means
