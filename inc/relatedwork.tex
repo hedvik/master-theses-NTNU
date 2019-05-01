@@ -26,7 +26,7 @@ Translation gain is defined as a gain of translational movement in the virtual w
 
 Detection thresholds allow for the estimation of gains that can be applied without the user noticing them. As such, it has become a core of many other studies in the field. The taxonomy itself has since been extended by Suma et al.~\cite{suma2012taxonomy} to provide a more comprehensive look into additional redirection techniques. Outside of the three established redirection gains, an additional fourth type has recently been proposed by Langbehn et al.~\cite{7833190}. Their study presents the concept of bending gains which are similar to curvature gains but only applied whenever the user walks on a curve in the virtual world. 
 
-In terms of relevance to research questions, the estimation of detection thresholds is directly relevant to $R_1$ as it provides a means to find undetectable gains. Despite this, there are some problems with this method of estimation that make it rather unsuitable to use. In particular there are some ethical issues with the method which are further discussed in Section~\ref{sec:ethics}.\todo{Needs to be tied into why it is unsuitable to use with fully integrated distractors as well}
+In terms of relevance to research questions, the estimation of detection thresholds is directly relevant to $R_1$ as it provides a means to find undetectable gains. Despite this, there are some problems with this method of estimation that make it rather unsuitable to use. These are further mentioned in Section~\ref{sec:distractorUsageInLiterature}.
 
 \subsection{Background: Redirection Algorithms}
 In order to actually redirect a user, it is necessary to have a redirection algorithm. There are a variety of different redirection algorithms, but the two most common and generalised ones are as follows:
@@ -153,9 +153,9 @@ Visual salience is comprehensive enough to be its own topic, although Nielsen et
     \item Motion
     \item Stereo Disparity
 \end{itemize}
-One thing to note about these factors is that it is also important to consider how they contrast with the surrounding environment. Furthermore, the distribution of salient regions in a scene has a significant impact on how the user explores it as seen in a study by Sitzmann et al.~\cite{sitzmann2018saliency}. Their findings show that having few salient regions in a scene results in attention being shifted faster towards anything salient. As an additional effect, this attention is also more concentrated. This has been considered in the design of the virtual experience that is used for experiments 1 and 2 in this thesis.\todo{Should I also directly link to the section where I mention how this works or just the chapter?}
+One thing to note about these factors is that it is also important to consider how they contrast with the surrounding environment. Furthermore, the distribution of salient regions in a scene has a significant impact on how the user explores it as seen in a study by Sitzmann et al.~\cite{sitzmann2018saliency}. Their findings show that having few salient regions in a scene results in attention being shifted faster towards anything salient. As an additional effect, this attention is also more concentrated. This has been considered in the design of the virtual experience that is used for Experiment 1 and 2 in this thesis.
 
-\section{Usage of Distractors in the Literature}
+\section{Usage of Distractors in the Literature}\label{sec:distractorUsageInLiterature}
 The previously generated taxonomy has been used as a framework to map out the usage of distractors in the acquired sample of literature. This can be found in Table~\ref{table:DistractorsInLiterature}.
 
 \begin{sidewaystable}[p!]
@@ -220,7 +220,7 @@ Despite this limitation, there are still a variety of use cases that the estimat
 
 This discussion is primarily relevant to $R_1$ and the estimation of detection thresholds. In particular, this research makes use of the first example when discussing use cases for detection thresholds where two groups of thresholds are estimated in one experiment. The first group consists of baseline detection thresholds for the virtual experience when no concrete distractors are active, while the second includes detection thresholds for when a concrete distractor is active. This allows for direct comparisons on how the introduction of concrete distractors changes the noticeability of redirection. This method of comparison does come with one caveat though. Estimating two groups of detection thresholds in the same amount of time as one would estimate one group results in lower accuracy. Despite this, as detection thresholds in general cannot be taken as entirely accurate due to the number of variables that can potentially affect the result, some error should be acceptable. 
 
-\todo{Using DT's as guidelines has been mentioned by other researchers. cite them to increase claim validity. Some of the recent papers mention it I think}
+\todo{Using DT's as guidelines has been mentioned by other researchers. Try to double check which ones did and cite. CTRL + F ''individual'' in bibtex}
 
 \subsection{Use of Informed/Uninformed Participants For Redirection}
 Among the various variables that can affect the noticeability of redirection, one that could need some additional discussion is the awareness of redirection. Steinicke et al. mention in their study on detection thresholds that it was possible to increase unnoticeable redirection when the user is unaware of it~\cite{5072212}. This has since been part of various experiments within redirected walking. For example, all the current state of the art studies on distractors did not inform their participants of redirection before the experiment~\cite{sra2018vmotion, chen2017towards, chen2017supporting}. While this can provide higher unnoticeable gains, one important question to think of is how applicable this would be in the real world. 
