@@ -101,7 +101,33 @@ Finally, the boxplot showcasing the spread of alignment times with failure penal
 \subsubsection{Hypothesis Testing}
 In order to test $H_{0_2}$, the data sample including failure penalties will be used. A Shapiro-Wilk normality test was first conducted on the alignment time data. This provided $p < 0.001$ for both conditions and as such, neither is normally distributed. As such, the non-parametric Mann-Whitney U test is used for significance testing. The comparison is done with mean ranks as the shapes in Figure~\ref{fig:alignmentTimesWithPenalties} are fairly different. This results in $U = 2948.500, p = 0.276$, meaning that the test cannot find any statistically significant difference in alignment times. This means that the $H_{0_2}$ null hypothesis is supported. Despite this, it should be noted that the alignment fail rates for the two conditions are different and that the S2C+AC2F condition consisted of $15.8\%$ more successful alignments compared to S2C Only. 
 
-\subsection{Demographical Insights}
+\subsection{Supplementary Graphs: Head Rotation for Participant 5}
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/authorHeadRotationEx2.png}
+    \caption[Head Rotation Deltas for Participant 5 in Experiment 2]{This scatterplot shows the deltas in head rotation for the author while participating in Experiment 2.}
+    \label{fig:ex2headRotationAuthor}
+\end{figure}
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/ex2AuthorDeltaTime.png}
+    \caption[Delta Time for Participant 5 in Experiment 2]{This scatterplot shows delta time/frame latency throughout Experiment 2 for participant 5.}
+    \label{fig:ex2DeltaTimeAuthor}
+\end{figure}
+
+To provide some supplementary illustration for a discussion in Section~\ref{sec:orbitalCases}, a graph showing the changes in head rotation for the author while taking part in Experiment 2 can be seen in Figure~\ref{fig:ex2headRotationAuthor}. Since large fluctuations in frame latency between walking and distractor battles could have an effect on Figure~\ref{fig:ex2headRotationAuthor} an additional graph showing the frame latencies throughout the experiment can be seen in Figure~\ref{fig:ex2DeltaTimeAuthor}.
+
+\subsection{Supplementary Graph: Time Taken to Defeat Distractors and Player Baton Level}\label{sec:ex2distractorDefeatTimes}
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/TimeSpentOnDistractorDefeat.png}
+    \caption[Scatterplot Over Time Needed to Defeat Distractors in Experiment 2]{This scatterplot shows the time needed to defeat distractors among all participants throughout Experiment 2. It is grouped by baton level as higher levels result in higher damage and shorter battles.}
+    \label{fig:ex2TimeNeededToDefeatDistractorsScatter}
+\end{figure}
+To provide some supplementary information for a discussion in Section~\ref{sec:ex2MinimisingCybersickness}, a graph showing the time needed to defeat distractors in this experiment can be seen in Figure~\ref{fig:ex2TimeNeededToDefeatDistractorsScatter}. Furthermore, the mean time taken to defeat distractors when the participants' baton level was at the highest level was 44.21 seconds.
+
+\subsection{Demographic Insights}
 Two correlation matrices have been generated from the demographical data in relation to the primary data that is relevant for the hypotheses that have been tested. The Spearman's Rho correlation test has been used to generate the correlation matrices as some of the data is not normally distributed. These correlation matrices can be seen in Figure~\ref{fig:ex2correlation1} and \ref{fig:ex2correlation2}. The correlation test is split into two matrices primarily due to differences in data structure between some of the variables. 
 
 \begin{sidewaysfigure}[tbph]
