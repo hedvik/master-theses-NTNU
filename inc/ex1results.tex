@@ -1,16 +1,10 @@
 \section{Results}\label{sec:ex1results}
-* Intro
-* Spss visualisation
-
-For the sake of disclosure for any graphs that make use of participant ID's, the author's ID is 16. 
+This part of the chapter provides the results of the experiment related to the established $H_0$ hypothesis as well as insights from demographical data. Data visualisation for these results is provided by SPSS due to the large data file sizes. A significance level of 0.05 was used for all statistical tests. For the sake of disclosure for any graphs that directly mention participant ID's, the author's ID is 16. 
 
 \subsection{Rotation Detections}
-* Starts with presenting the raw data of detections before outliers have been removed and post processing is finished. 
-
-
+As the main focus of Experiment 1 was on detection thresholds, these first few sections are dedicated to presenting the graphs over detection events for participants as they played Ensemble Retriever. Detected rotation gains are initially presented with curvature radius detections following this.
 
 \subsubsection{Raw Rotation Detections Sample}
-* Figure~\ref{fig:rawRotationDetectionData}.
 \begin{figure}[tbph]
     \centering
     \includegraphics[width=0.75\textwidth]{figures/graphs/RawRotationDetections.png}
@@ -18,12 +12,9 @@ For the sake of disclosure for any graphs that make use of participant ID's, the
     \label{fig:rawRotationDetectionData}
 \end{figure}
 
+Before seeing the post processed sample of rotation gain detections it might be interesting to first see how the raw data looks like. This can be seen in Figure~\ref{fig:rawRotationDetectionData}. The various cases where detected gains are at a value of 0 is what the post processing step aimed to minimise. 
 
 \subsubsection{Finalised Rotation Detections Sample}
-* After finishing the post processing step mentioned in Section~\ref{sec:ex1postprocessing}:
-   * Post Processing step added 52 additional detections
-* 213 rotation gain detections in total
-
 \begin{figure}[tbph]
     \centering
     \includegraphics[width=0.75\textwidth]{figures/graphs/ProcessedRotationDetections.png}
@@ -73,21 +64,9 @@ For the sake of disclosure for any graphs that make use of participant ID's, the
     \label{fig:authorRotationProgression}
 \end{figure}
 
+The post processing step which was mentioned in Section~\ref{sec:ex1postprocessing} resulted in 52 additional rotation gain detection events. This results in a total of 213 rotation gain detections throughout the entire sample. The processed data can be seen in Figure~\ref{fig:rotationDetectionDataByAlgorithm}, where it is grouped by algorithm and Figure~\ref{fig:rotationDetectionDataByParticipant}, where it is grouped by participant ID. To provide some additional visualisation, a line chart showing the progression of detections between participants can be seen in Figure~\ref{fig:negativeRotationDetectionLineChart} and Figure~\ref{fig:positiveRotationDetectionLineChart}.
 
-* The finalised data can be seen in Figure~\ref{fig:rotationDetectionDataByAlgorithm}, where it is grouped by algorithm and Figure~\ref{fig:rotationDetectionDataByParticipant}, where it is grouped by participant ID. To provide some additional visualisation, a line chart showing the progression of detections between participants can be seen in Figure~\ref{fig:negativeRotationDetectionLineChart} and Figure~\ref{fig:positiveRotationDetectionLineChart}. A figure illustrating the incremental progression of rotation gains over time for participant 16 (the author) can be seen in Figure~\ref{fig:authorRotationProgression}. Finally, individual scatter plots for negative/positive rotation gain detections with an included regression line can be found in Figure~\ref{fig:negRotRegLine} and Figure~\ref{fig:posRotRegLine}. It should be noted that some participants are not shown in this graph as they did not provide any detection events. 
-
-\todo{Can present this in a table}
-* S2C Means
-   * Positive: 0.6479 (N = 43)
-   * Negative: -0.4631 (N = 101)
-
-* AC2F Means
-   * Positive: 0.5828 (N = 19)
-   * Negative: -0.3365 (N = 50)
-   
-* Means Independent From Algorithm
-   * Positive: 0.6279
-   * Negative: -0.4212
+ A figure illustrating the incremental progression of rotation gains over time for participant 16 (the author) can be seen in Figure~\ref{fig:authorRotationProgression}. Finally, individual scatterplots for negative/positive rotation gain detections with an included regression line can be found in Figure~\ref{fig:negRotRegLine} and Figure~\ref{fig:posRotRegLine}. It should be noted that some participants are not shown in these graphs as they did not provide any detection events. 
 
 \subsection{Curvature Detections}
 \begin{figure}[tbph]
@@ -96,13 +75,36 @@ For the sake of disclosure for any graphs that make use of participant ID's, the
     \caption[Finalised Detection Scatterplot For Curvature Gains, Grouped by Participant ID]{This scatterplot shows the finalised data of curvature gain detections and is grouped by participant ID. Curvature values in this case are defined as the radius of the curvature arc.}
     \label{fig:curvatureDetectionData}
 \end{figure}
-* Figure~\ref{fig:curvatureDetectionData}
 
+The various curvature gain detection events that happened during the walking phase of Ensemble Retriever can be seen in Figure~\ref{fig:curvatureDetectionData}.
 
-* S2C Mean
-   * Curvature Radius: 3.0978 (N = 78)
+\subsection{Mean Detection Thresholds}
+\begin{table}[!h]
+\centering
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
+Type of Gain & Mean Detection Threshold (N = Total Number of Detections) \\
+\hline
+S2C: Positive Rotation Gain & 0.6479 (N = 43) \\
+\hline
+S2C: Negative Rotation Gain & -0.4631 (N = 101) \\
+\hline
+AC2F: Positive Rotation Gain & 0.5828 (N = 19) \\
+\hline
+AC2F: Negative Rotation Gain & -0.3365 (N = 50) \\
+\hline
+Combined S2C+AC2F: Positive Rotation Gain & 0.6279 (N = 43+19) \\
+\hline
+Combined S2C+AC2F: Negative Rotation Gain & -0.4212 (N = 101+50) \\
+\hline
+S2C: Curvature Radius & 3.0978m (N = 78) \\
+\hline
+\end{tabularx}
+\caption[Experiment 1: Mean Detection Thresholds]{This table shows the various detection thresholds that were calculated as the mean of all detection events in each respective category.}
+\label{table:ex1DetectionThresholds}
+\end{table}
 
-
+The aggregated mean detection thresholds which have been generated out of the previously presented data can be seen in Table~\ref{table:ex1DetectionThresholds}. 
 
 \subsection{Test for Normality}
 *(Kinda methods)
@@ -196,7 +198,7 @@ Adaptation: Curvature Gains & The experiment employed a incremental gains method
 Adaptation: Positive Rotation Gains & The data does appear to point towards a potential adaptation towards positive rotation gains. The variability of negative rotation gain detections makes it hard to say whether this also is true for these. \\
 \hline
 \end{tabularx}
-\caption{Summary of variables from Chapter~\ref{chap:relatedWork} with some additions and how experiment 1 relates to these.}
+\caption[Experiment 1: Summary Over Contextual Variables in Relation To Detection Thresholds]{Summary of variables from Chapter~\ref{chap:relatedWork} with some additions and how Experiment 1 relates to these.}
 \label{table:ex1VariableSummary}
 \end{table}
 

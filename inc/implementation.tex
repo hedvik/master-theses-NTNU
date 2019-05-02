@@ -34,13 +34,6 @@ Extension or reuse of these assets are not permitted in other work and need to b
 \end{itemize}
 These elements of the game are under a MIT License and allows for reuse/extension as long as the license terms are held. 
 
-\section{Development Environment}
-* Unity 2018.3.5f1
-* Visual Studio 2017
-* SteamVR
-* Mersenne Twister Library for cases where high quality randomness is necessary.
-\todo{Might have its place in general mehods}
-
 \section{Redirected Walking Toolkit - Extended Code Architecture}
 As part of developing Ensemble Retriever, Azmandian et al's Redirected Walking Toolkit~\cite{azmandian2016redirected} has been extended to support the usage of distractors and any other interfacing that the game has required. A chart showing the general additions to the toolkit's architecture can be found in Figure~\todo{ADD/MAKE ME}. The general thought process throughout the development of these extensions was to not do any major changes to the toolkit itself for the sake of keeping its modular structure. If functionality could be build on top of parts of the toolkit, then inheritance was used. If any part of the toolkit required major changes, it would be copied to a separate file which these modifications were written in. As far as minor changes are concerned, these mostly consisted of changing some data access properties of variables to allow for easier communication between classes.
 
