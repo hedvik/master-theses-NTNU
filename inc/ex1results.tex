@@ -106,36 +106,24 @@ S2C: Curvature Radius & 3.0978m (N = 78) \\
 
 The aggregated mean detection thresholds which have been generated out of the previously presented data can be seen in Table~\ref{table:ex1DetectionThresholds}. 
 
-\subsection{Test for Normality}
-*(Kinda methods)
-   * Before deciding what statistical test to use for comparisons between Walking/Fighting conditions a test for normal distribution was used first
-   * As the dataset of detections for each gain is below 2000 elements, the Shapiro-Wilk test has been used for this
+\subsection{Test for Normality and Choice of Significance Test}
+Before performing any statistical significance tests on the data it is first necessary to test the normality of it. For this, the Shapiro-Wilk test was used on positive and negative rotation gain detections. There is no possibility to compare different conditions for curvature gains, and as such no normality test was performed on this data. 
 
-Shapiro-Wilk Test:
-   * Pos Rot Detections
-      * p < 0.001 for the S2C Category, while a p value of 0.295 for AC2F. S2C is thus not normally distributed while AC2F is
-   * Neg Rot Detections
-      * p < 0.001 for S2C, while a p = 0.015 for AC2F. Both are not normally distributed
-      
-   * Curvature Detections
-      * (Not really relevant as there is no comparisons to do with curvature gains)
+\subsubsection{Positive Rotation Gain Detection Normality}
+The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.295$ for the AC2F counterpart. The S2C category is thus not normally distributed while AC2F is. 
 
-Since the data is not normally distributed, it is not possible to use standard tests like the independent samples t-test.
+\subsubsection{Negative Rotation Gain Detection Normality}
+The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.015$ for AC2F. Both of these are thus not normally distributed.  
+
+\subsubsection{Choice of Significance Test}
+Since the data is not normally distributed, it is not possible to use standard tests like the independent samples t-test. Instead, the Mann-Whitney U non-parametric test is used as it does not have the same assumption of normally distributed data. 
    
 \subsection{Hypothesis Testing}
-* Significance level of 0.05
-
 * Shape test before doing Mann-Whitney U:
    * Negative Rot Gains do not have what I would consider a similar shape between S2C/AC2F
    * Positive Rot Gains do not have what I would consider a similar shape between S2C/AC2F either
    * Present figures of this
-* Independent observations is not a thing either. Each participant provides data in both groups. 
-* Meaning I would violate two of the assumptions for the MWU test if I used it.
-* Ultimately, MWU still ends up being used, but it should be noted that the power of it is decreased as a result. 
-
-* Mann-Whitney-U test is the best fit as data is not normally distributed
-   * BUT: Assumption 3 from \url{https://statistics.laerd.com/spss-tutorials/mann-whitney-u-test-using-spss-statistics.php} is violated as each participant is in both groups. It is ultimately impossible to have participants split between these two groups. 
-
+* Independent observations is not a thing either. Each participant provides data in both groups given the within subjects design.
 * Since the shape of the distributed data is different, the comparison in this case will be on mean ranks. 
 
 * Positive Rotation Gain Comparison
@@ -143,11 +131,7 @@ Since the data is not normally distributed, it is not possible to use standard t
 * Negative Rotation Gain Comparison
    * S2C mean detection threshold goes significantly lower than AC2F (U = 1639, p < 0.001)
    
-* Positive Rot Threshold
-   * Due to no significant differences, this is calculated as the mean of all positive detections
-   
-* Negative Rot Threshold
-   * While there was a significant difference, the large variability of the detections makes it very hard to conclude how accurate the detection thresholds would be. It might therefore be safer to estimate this threshold as the lower bounded mean for AC2F.
+
 
 \subsection{Demographic Insights}
 * Testing correlation between demographical data and the sample of detected rotation gains

@@ -19,18 +19,22 @@
 
 \subsection{Large variability in detections}
 * Can be many reasons for this
-* One limitation is users looking left and right repeatedly makes them notice that they are being redirected
+* One limitation is users looking left and right repeatedly makes them notice that they are being redirected. Participants mentioned it becoming far easier to notice when doing this
+
 * S2C dampening helps with this after finishing a distractor, AC2F does not have an equivalent at the present as you need most of the redirection initially, then it is turned off once aligned
 
 
 * There is definitely far less positive detections that negative ones, positive rot threshold is a tiny bit higher too (I think?)
 
-\subsection{Participant Feedback on Pause - Turn - Centre}
-* Generally positive
-* It felt natural and easy to use
-* Some mentioned that it took a little bit time to get used to though
-
 \subsection{Comparing The Results With Fuglestad's Study}
 \todo{Compare the difference in DT's between Bjørn's incremental and standard experiments. Argue that while the estimation method likely has an effect, so does the fact that users were distracted while performing the incremental experiment.}
 
 \subsection{Limitations of using Gain Caps}
+* Primarily curvature detection data was most affected by this. Rotation gains have a lot more inbetween data
+
+\subsection{Deciding on Which Estimated Thresholds to Use for Experiment 2}
+* Positive Rot Threshold
+   * Due to no significant differences, we use the mean of all positive detections
+   
+* Negative Rot Threshold
+   * While there was a significant difference, the large variability of the detections makes it very hard to conclude how accurate the detection thresholds would be. It might therefore be safer to estimate this threshold as the lower bounded mean for AC2F.
