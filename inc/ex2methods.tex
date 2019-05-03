@@ -94,7 +94,7 @@ The specific details and wording that was used for this oral information can be 
 \subsubsection{Miscellaneous Information and Issues}
 As mentioned in Section~\ref{sec:ex2environmentchanges}, there were some problems related to the room calibration of the new lighthouse setup that had to be done. This affected participants 1 and 2 in particular where participant 1 experienced one failed reset while participant 2 experienced two failed resets. Failed resets in this case are defined as the reset not triggering when it should. In order to avoid potential skewing of data, the number of times that the resets failed to trigger have been added to these participants during the data post processing step which is mentioned in Section~\ref{sec:ex2postprocessing} and fully detailed in Section~\ref{sec:ex2postprocessingdetails}. 
 
-\subsection{Changes in Ensemble Retriever Between Experiment 1 and 2}
+\subsection{Changes in Ensemble Retriever Between Experiment 1 and 2}\label{sec:changesBetweenExperiments}
 \begin{figure}[tbph]
     \centering
     \includegraphics[width=0.5\textwidth]{figures/screenshots/HallOfTheMountainKingWithNewFloor.png}
@@ -113,6 +113,10 @@ A variety of things within Ensemble Retriever were changed between Experiment 1 
     \item An extra plane was added to the floor in the ''Hall of The Mountain King''. (ALL)
     \begin{itemize}
         \item This was changed due to feedback as participants mentioned it was awkward to walk between the large holes between the rocks in the floor. The difference can be seen by comparing Figure~\ref{fig:mkhallWithWall} and \ref{fig:mkhallWithFloor}.
+    \end{itemize}
+    \item The sound effect volume for absorbing projectiles has been increased to avoid being drowned out by the music. (ALL)
+    \begin{itemize}
+        \item This was changed due to participant feedback. Some participants noted that the music during the battle with the Mountain King was a bit high so it was hard to clearly hear whenever they managed to absorb any projectiles. Hearing this audio is very useful when not directly looking in the direction the player is holding their hand. As such, the volume of the absorption sound effect was increased.
     \end{itemize}
     \item The floor in the ''Hall of The Mountain King'' has been better calibrated as the original calibration was lower than it should be, making some participants notice that their height was slightly inconsistent. (ALL)
     \item The buffer between reset and distractor triggers has been increased by 0.5m. This means that resets trigger 0.5m away from physical walls while distractors trigger at 1.5m instead of the previous 1.0m. (ALL)

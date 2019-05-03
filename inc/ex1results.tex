@@ -1,5 +1,5 @@
 \section{Results}\label{sec:ex1results}
-This part of the chapter provides the results of the experiment related to the established $H_0$ hypothesis as well as insights from demographical data. Data visualisation for these results is provided by SPSS due to the large data file sizes. A significance level of 0.05 was used for all statistical tests. For the sake of disclosure for any graphs that directly mention participant ID's, the author's ID is 16. 
+This part of the chapter provides the results of the experiment related to the established $H_0$ hypothesis as well as insights from demographical data. Data visualisation for these results is provided by SPSS due to the large data file sizes. A significance level of 0.05 was used for all statistical tests. For the sake of disclosure for any graphs that directly mention participant ID's, the author's ID is 16. In terms of presentation, the majority of the graphs will be comparing the S2C and AC2F algorithms as they respectively represent the walking and battle states in Ensemble Retriever.
 
 \subsection{Rotation Detections}
 As the main focus of Experiment 1 was on detection thresholds, these first few sections are dedicated to presenting the graphs over detection events for participants as they played Ensemble Retriever. Detected rotation gains are initially presented with curvature radius detections following this.
@@ -119,51 +119,91 @@ The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.01
 Since the data is not normally distributed, it is not possible to use standard tests like the independent samples t-test. Instead, the Mann-Whitney U non-parametric test is used as it does not have the same assumption of normally distributed data. 
    
 \subsection{Hypothesis Testing}
-* Shape test before doing Mann-Whitney U:
-   * Negative Rot Gains do not have what I would consider a similar shape between S2C/AC2F
-   * Positive Rot Gains do not have what I would consider a similar shape between S2C/AC2F either
-   * Present figures of this
-* Independent observations is not a thing either. Each participant provides data in both groups given the within subjects design.
-* Since the shape of the distributed data is different, the comparison in this case will be on mean ranks. 
-
-* Positive Rotation Gain Comparison
-   * No significant difference between S2C and AC2F: (U = 362.5, p = 0.478)
-* Negative Rotation Gain Comparison
-   * S2C mean detection threshold goes significantly lower than AC2F (U = 1639, p < 0.001)
-   
-
-
-\subsection{Demographic Insights}
-* Testing correlation between demographical data and the sample of detected rotation gains
-   * Primarily because the curvature gain data is not worth comparing due to how most participants first noticed it at 2.5 then clicked until they stopped noticing. 
-* Spearman's rho used instead of pearson as the detection data is not fully normally distributed
-* Correlation matrix can be seen in Figure~\ref{fig:ex1demogcorrelationmatrix}
+Before performing the Mann-Whitney U test it is first necessary to determine whether the shapes of the data between conditions is similar or not. 
+\subsubsection{Mann-Whitney U Shape Test}
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/PosRotationDetectionBoxplot.png}
+    \caption[Boxplot on Positive Rotation Detections in Experiment 1]{This boxplot shows the spread of detected gains between algorithms for positive rotation gains in Experiment 1.}
+    \label{fig:posRotEx1Boxplot}
+\end{figure}
 
 \begin{figure}[tbph]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/graphs/DemographicalCorrelations.png}
-    \caption[Experiment 1 Demographical Correlation Matrix]{Correlation matrix for the demographical data in experiment 1 and the rotation gains that were detected. N values are 213 as there were 213 rotation gain detections.}
+    \includegraphics[width=0.75\textwidth]{figures/graphs/NegRotationDetectionBoxplot.png}
+    \caption[Boxplot on Negative Rotation Detections in Experiment 1]{This boxplot shows the spread of detected gains between algorithms for negative rotation gains in Experiment 1.}
+    \label{fig:negRotEx1Boxplot}
+\end{figure}
+
+The shapes of the data can be seen in Figure~\ref{fig:posRotEx1Boxplot} and~\ref{fig:negRotEx1Boxplot}. In general, it does not seem as if the shape between the conditions is similar enough in either of the cases. As such, the Mann-Whitney U comparison will be on mean ranks. It should also be noted that the Mann-Whitney U test does have a assumption of independent observations that cannot be fulfilled due to the within subjects design of the experiment.
+
+\subsubsection{Mann-Whitney U Results}
+The results of the Mann-Whitney U provided a value of $U = 362.5, p = 0.478$ between S2C and AC2F conditions for positive rotation gains. This means that there is no significant differences between the states for these gains. For negative rotation gains, the statistical test resulted in $U = 1639, p < 0.001$, meaning that it is significantly harder to notice negative rotation gains in the walking state in Ensemble Retriever.
+
+\subsection{Demographic Insights}
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/graphs/DemographicalCorrelationsEx1.png}
+    \caption[Experiment 1 Demographic Correlation Matrix]{Correlation matrix for the demographic data in Experiment 1 and the rotation gains that were detected. N values are 213 as there were 213 rotation gain detections.}
     \label{fig:ex1demogcorrelationmatrix}
 \end{figure}
 
-* Mention significant correlations
+In order to look for demographic insights, a correlation analysis has been conducted. This analysis focuses on rotation gain detections and makes use of the Spearman's Rho correlation test as the detection data is not fully normally distributed. The correlation matrix can be seen in Figure~\ref{fig:ex1demogcorrelationmatrix}. The most interesting among these correlations is the positive correlation between prior VR experience and the strength of detected gains. As such, a deeper analysis has been conducted on this correlation to look for insights. 
 
 \subsubsection{Prior VR Experience and Rotation Gain Detections}
-* Look deeper at Prior VR Experience
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/PriorVRExperienceDetectionScatter.png}
+    \caption[Scatterplot on Rotation Gain Detections in Relation to Prior VR Experience]{This scatterplot shows the rotation gains that were detected in Experiment 1 and their relation to prior VR experience.}
+    \label{fig:rotationGainDetectionScatterVRExperience}
+\end{figure}
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/PosRotDetectionsByVRExperience.png}
+    \caption[Boxplot on Detected Positive Rotation Gains by VR Experience]{This boxplot shows the spread of detected positive rotation gains in relation to prior VR experience.}
+    \label{fig:posRotDetectionBoxplotVRExperience}
+\end{figure}
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/graphs/NegRotDetectionsByVRExperience.png}
+    \caption[Boxplot on Detected Negative Rotation Gains by VR Experience]{This boxplot shows the spread of detected negative rotation gains in relation to prior VR experience.}
+    \label{fig:negRotDetectionBoxplotVRExperience}
+\end{figure}
+
+A scatterplot on the strength of rotation gain detections in relation to prior VR experience can be seen in Figure~\ref{fig:rotationGainDetectionScatterVRExperience}. Boxplots for positive and negative gains can be seen in Figure~\ref{fig:posRotDetectionBoxplotVRExperience} and~\ref{fig:negRotDetectionBoxplotVRExperience}.
 
 
 \subsubsection{Qualitative Feedback}
+The participants also provided some written qualitative feedback through the post-test questionnaire. This section summarises the feedback that was provided on a question by question basis. 
+
+\paragraph{Whether the Participants Found Any Bugs or Glitches}
+Some participants experienced minor controller tracking problems when standing is certain areas of the physical tracking space. These were quickly resolved by holding their controllers up in the air. 
+
+\paragraph{Whether the Participants Found the Experience Enjoyable}
+In general, participants found the experience to be very positive. Despite this, some mentioned that the experience was rather long so fighting the same distractors over and over got a bit annoying towards the end.
+
+\paragraph{How the Participants Felt About the Redirection Techniques}
+When noticed, participants mentioned that the redirection felt rather odd initially. After a while, some participants got used to the effect and found it to be effective while others mentioned it was a bit awkward and annoying. 
+
+\paragraph{Whether the Participants Had Any Problems Throughout Their Experience}
+In general, participants mentioned that it was rather frustrating to untangle themselves from the HMD cable as they played. Three participants also mentioned that they experienced a mild amount of discomfort due to the redirection, but that they did not feel like it was enough to mention during the experiment. 
+
+\paragraph{Additional Comments From Participants}
+Other than the already mentioned feedback, participants did provide some additional comments on how they felt the experience could be improved. The majority of this feedback has been kept in mind when making changes for Experiment 2. In particular, participants wanted some of the distractors to fire slightly faster projectiles as some of the slower ones became a bit boring over time. The full list of software changes between Experiment 1 and 2 can be seen in Section~\ref{sec:changesBetweenExperiments}.
 
 \subsection{Summary}
 \begin{table}[h!]
 \centering
+\scalebox{0.9}{
 \begin{tabularx}{\textwidth}{|X|X|}
 \hline
 Variable & Context \\
 \hline
 Size + Shape of Physical Tracking Space & 5m x 5.75m rectangle \\
 \hline
-Optical Flow/Visual Density in VE & Low Poly Artstyle. Limited visual density outside of environmental trees and shining mushrooms. The walkable environment is fully open though. The player has to fight enemy distractors while exploring which move around the player and shoot various salient projectiles that might contribute to increased optical flow and visual density. See figures in Chapter~\ref{chap:implementation} for examples.\\
+Optical Flow/Visual Density in VE & Low Poly Artstyle. Limited visual density outside of environmental trees and shining mushrooms. The walkable environment is fully open. The player has to fight enemy distractors while exploring which move around the player and shoot various salient projectiles that might contribute to increased optical flow and visual density. See figures in Chapter~\ref{chap:implementation} for examples.\\
 \hline
 Hardware: HMD Field of View & HTC Vive. ~145 diagonal degrees FoV. \\
 \hline
@@ -173,7 +213,7 @@ Engagement/Distraction & The participants played through a VR game which consist
 \hline
 Awareness of Redirection & Participants were informed of redirection and the basics of redirected walking. The concept of distractors was not directly explained, but mentioned in the information/consent sheet. \\
 \hline
-Gender & 20M, 2F \\
+Gender & 20M, 2F (One among the 22 participants was excluded from the data analysis)\\
 \hline
 Estimation Method & Incrementally and randomly increasing one gain at random timesteps. Rotation gain is halved when detected, curvature radius is multiplied by 25\% when detected. \\
 \hline
@@ -181,9 +221,11 @@ Adaptation: Curvature Gains & The experiment employed a incremental gains method
 \hline
 Adaptation: Positive Rotation Gains & The data does appear to point towards a potential adaptation towards positive rotation gains. The variability of negative rotation gain detections makes it hard to say whether this also is true for these. \\
 \hline
-\end{tabularx}
+Prior VR Experience & While relatively hard to directly conclude with the current data sample, participants with the highest amount of VR experience were the most sensitive towards redirection. Those with no prior VR experience were among the least sensitive. It should also be noted that some participants who had no prior VR experience could not detect any redirection as well. \\
+\hline
+\end{tabularx}}
 \caption[Experiment 1: Summary Over Contextual Variables in Relation To Detection Thresholds]{Summary of variables from Chapter~\ref{chap:relatedWork} with some additions and how Experiment 1 relates to these.}
 \label{table:ex1VariableSummary}
 \end{table}
 
-* A contextual summary of how the various variables from Chapter~\ref{chap:relatedWork} relate to this experiment can be found in Table~\ref{table:ex1VariableSummary}. It also includes some potentially new and relevant variables based on the results that have been shown. \todo{Estimation Method and Pos Rot Adaptation are new in this case. Might eventually just move estimation method as a variable to related work and mention how Bjørn made use of both incremental gains and regular 2AFC method.}
+A contextual summary of how the various variables from Chapter~\ref{chap:relatedWork} relate to this experiment can be found in Table~\ref{table:ex1VariableSummary}. It also includes some potentially new and relevant variables based on the results that have been shown. In general, the results showed that negative rotation gains are significantly easier to detect during battles (Mann-Whitney U: $U = 1639, p < 0.001$), compared to when walking around. No significant difference could be found for positive rotation gains between the walking and battle states (Mann-Whitney U: $U = 362.5, p = 0.478$). 
