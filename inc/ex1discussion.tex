@@ -1,36 +1,21 @@
 \section{Discussion}
+This section focuses on discussing the previously presented results in Experiment 1.
 
-\todo{Look through experiment 1 notes in general for various insights and topics that can be discussed. Expect a good amount of discussion around the results and speculation on why they ended up as they did}
+\subsection{Rotation Gain Adaptation Effects}
+It is definitely interesting to see that there appears to be an adaptation effect for positive rotation gains, but not negative through the results. Research has already shown that adaptation effects can occur for curvature gains~\cite{bolling2019shrinking} and this has provided speculation into whether this would be true for other types of gains as well. The primary question lies in why the adaptation effect primarily happens with positive rotation gains and not negative. It may be that disabling redirection gains during alignment towards centre has some effect on adaptation and as such, might somewhat obfuscate the full adaptation effect. In the case of this experiment, the method of estimation might also have contributed to adaptation as it incrementally increases instead of randomly testing a range of gains. In order to more accurately test this adaptation effect, one approach could be to simply not disable gains during alignment. This would result in behaviour where gains dynamically change at a certain point from positive to negative and vice versa. The reasoning for this behaviour is that the algorithms will continuously overshoot and try to correct back towards alignment. As such, there may still be better approaches in terms of how to most accurately facilitate adaptation. 
+
+It would definitely be interesting to see future research on how this temporary gain disable affects adaptation effects. Another area that would be interesting to look deeper into is whether negative rotation gain adaptation is possible in certain scenarios. 
+
+\subsection{Individuality of Detection Thresholds/Events}
+When looking at the results of the experiment, one apparent detail that can be seen is how large the detection differences are on an individual level. This is in line with results from prior research~\cite{8446225, nguyen2018individual, schmitz2018you, fuglestad2018redirected} and should not come as particularly surprising. Despite this, the individuality of detection thresholds should definitely be considered when developing redirected walking experiences. By creating short and effective detection threshold calibrations, it could be possible to provide an optimised experience for individuals. As such, it would be interesting to see further research into calibration approaches that are short enough for users to employ, while effective enough to estimate thresholds with strong accuracy. 
+
+\subsection{Variability and Asymmetry in Detection Data}
+In Figure~\ref{fig:rotationDetectionDataByParticipant}, we can see that there is a large amount of variability in detection events, even on an individual level. There can be many reasons for this, but there is one in particular that participants mentioned as making it very easy to notice. If participants keep looking left and right repeatedly, it becomes easy to notice that they are being redirected. The reasoning for this is that it becomes simpler to notice that the head does not return to the same orientation between the head turns. This is something that the S2C algorithm can mitigate through its dampening component whenever the participant is looking towards the centre of the physical space. AC2F as an algorithm does not necessarily have the same solution, but disabling redirection gains during alignment temporarily stops this scenario from being possible. In any case, this is not a particularly simple problem to solve, but it might be possible to attempt detecting when repeated left/right head turns are used and decrease or disable redirection. 
+
+Other than variability, there is also an interesting asymmetry in terms of the number of detections that happen for positive and negative rotation gains. While it is not uncommon for positive rotation gain thresholds to be higher than negative ones in existing research, there is little to no information on the asymmetry of number of detections. This is primarily due to it not being possible to observe this effect when using the standard estimation method which the vast majority uses. It would be interesting to see further research into why the asymmetry is like this as positive rotation gains are harder to detect than negative ones in this case. This is some idle speculation, but it may be that the human brain is less susceptible to notice a redirection when they overshoot a target rotation, rather than undershooting it. Succeeding the target rotation may be vital and as such, result in harder to notice redirection as the additional overshooting could be considered as a bonus. In any case, further research into this topic would likely require more background within psychology and neuroscience to fully understand why the asymmetry happens. 
 
 \subsection{Curvature Gain Detection Patterns}
-* When noticed the player clicks several times until they stop noticing it. This creates the fairly rigid ladders of detection data as one participant continually presses and decreases the strength at a set rate from the minimum. 
-
-\subsection{Redirection Adaptability}
-* Will probably be relevant to discuss
-* Boelling et al. mentions there is some adaptivity effect at least for curvature gains. They would expect this to be true for other gains as well
-* Do we see an adaptivity effect or not?
-   * If no, it is likely that the alignment phases during AC2F limit adaptivity effects as gains are disabled at those times.
-* The estimation method may play a role
-* At the same time, once aligned AC2F disables gains completely, allowing the user to get used to normal head rotations again. This could counteract adaptivity effects
-
-\subsection{Individual detection thresholds}
-* Might be relevant to discuss
-* Creating calibrating scenarios in software that allows users to estimate their own thresholds
-
-\subsection{Large variability in detections}
-* Can be many reasons for this
-* One limitation is users looking left and right repeatedly makes them notice that they are being redirected. Participants mentioned it becoming far easier to notice when doing this
-
-* S2C dampening helps with this after finishing a distractor, AC2F does not have an equivalent at the present as you need most of the redirection initially, then it is turned off once aligned
-
-
-* There is definitely far less positive detections that negative ones, positive rot threshold is a tiny bit higher too (I think?)
-
-\subsection{Comparing The Results With Fuglestad's Study}
-\todo{Compare the difference in DT's between Bjørn's incremental and standard experiments. Argue that while the estimation method likely has an effect, so does the fact that users were distracted while performing the incremental experiment.}
-
-\subsection{Limitations of using Gain Caps}
-* Primarily curvature detection data was most affected by this. Rotation gains have a lot more inbetween data
+Another interesting part of the results were the patterns of curvature detection events. When looking at Figure~\ref{fig:curvatureDetectionData}, we can see a very rigid ladder structure in terms of the detected curvature gains. Upon closer inspection, it is possible to see that this ladder effect comes from having a participant continuously press the detection button until they stop to notice the curvature gains. Each press will increase the curvature radius and since all of these detections start at the minimum 2.5m radius, this ladder effect happens. The interesting thing is that the curvature gains are only detected when they are at the minimum radius while resulting in multiple detection events afterwards. It may be that simply noticing the curvature gains at one point increases the susceptibility to noticing it for a short time. This would explain why participants need to go through multiple detection events until it becomes unnoticeable again. The fact that all of these detections start at a curvature radius of 2.5m before the resulting ladder effect is unfortunate as it means the cap for curvature gains was set too high. It might have been more ideal to put it to the same minimum radius as the redirected walking toolkit allows, which would be 1m. This would be a lower risk in terms of potentially resulting in cybersickness than increasing caps for rotation gains. The reasoning for this is that the redirection effect is somewhat less immediate in strength due to slow walking speeds compared to head rotations which may be rather fast. 
 
 \subsection{Deciding on Which Estimated Thresholds to Use for Experiment 2}
 * Positive Rot Threshold
@@ -39,5 +24,12 @@
 * Negative Rot Threshold
    * While there was a significant difference, the large variability of the detections makes it very hard to conclude how accurate the detection thresholds would be. It might therefore be safer to estimate this threshold as the lower bounded mean for AC2F.
    
+\subsection{Comparing the Results With Fuglestad's Study}
+Since Fuglestad performed a similar incrementing gains experiment in his research~\cite{fuglestad2018redirected}, it would be worthwhile to compare his results with the ones from Experiment 1. In his research, Fuglestad employed an abstract distractor where participants had to shoot a variety of moving targets with an ingame gun. Fuglestad's threshold results were provided with Steinicke et al.'s gain semantics~\cite{5072212}, so for the sake of comparison they have been converted to the percentage-wise semantics of the redirected walking toolkit. Fuglestad achieved a $0.835$ threshold for positive rotation gains and $-0.31$ threshold for negative rotation gains. In terms of negative rotation gain thresholds, the results are rather similar if we consider the $-0.3365$ threshold which was employed for Experiment 2. The biggest difference is the positive rotation gain threshold as the one that was decided for use with Experiment 2 was a threshold of $0.6279$. This is a larger difference which warrant further discussion. The most apparent difference between Fuglestad's study and this experiment is that the redirection gain caps were set far higher. In Fuglestad's case, these were $4.0$ for positive rotation gains and $-0.9$ for negative. This is likely the largest contributor to this as Fuglestad's results showed many cases where positive rotation gain detections were in the higher end of the scale. This would skew the data in a way that is impossible for Experiment 1 as a $1.0$ cap was used for positive rotation gains. As a side effect, the participants in Fuglestad's study experienced a fair amount of cybersickness. It should be noted that researching this was intentional though as Fuglestad searched for differences between detection and discomfort thresholds.
+
+Outside of the differences in redirection gain caps, there are also differences in terms of potential optical flow, tracking space size and potential distraction/engagement which could have further effects. In any case, it is interesting to see that the results at least are similar in terms of negative rotation gains. Without being able to properly compare positive rotation gains though, there is limited amounts of speculation that can be done on this. 
+
+\subsection{Effect of AC2F Smoothing on Noticeability}
+* Some participants mentioned they noticed the slightly slippery smoothing that AC2F uses. There is definitely improvements that can be made to how AC2F handles smoothing. This might have been a contributing factor as to why it was easier to detect negative rotation gains during battles. 
 \subsection{Correlation Analysis Discussion}
 * It is hard to really draw too much information out of prior VR experience and detected rotation gains, but it appears the the participants that mentioned having the highest amount of VR experience also were the most sensitive ones. The ones answering 0 were among the most insensitive ones as well. Which would be reasonable
