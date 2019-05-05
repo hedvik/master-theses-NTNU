@@ -77,6 +77,14 @@ Each of these will be further detailed in the following sections.
 * Code specific implementation details. 
 * Based on what Peck et al. + Chen and Fuchs have mentioned in their work. 
    * No source code was available from their work, as such AC2F is somewhat based on Azmandian et al.'s S2C implementation, but the final result is fairly different from S2C.
+   
+   
+* Smoothing, moving between positive and negative gains
+   * Dealing with edge cases, stopping motions
+   * A threshold is needed to decide whenever a rotation is large enough to apply gains or not.
+      * Since the head naturally vibrates slightly as well as tracking not being completely perfect, we do not want to let participants experience rotation gains as their head is still.
+      * This threshold method does cause some issues if we completely disable gains at the end of a head rotation as it creates a jarring difference between applied gains and 0 gains.
+      * As such, it would be ideal to also smooth out the stopping motion of head rotations.
 
 
 \section{The ''Pause - Turn - Centre'' Resetter}\label{sec:pauseturncentre}
