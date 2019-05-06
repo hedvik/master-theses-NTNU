@@ -22,7 +22,14 @@ Translation gain is defined as a gain of translational movement in the virtual w
     \item[Curvature gain of 1 (radius = 1m):] The user has travelled on a quarter circle after $\frac{\pi}{2}$ meters in the real world while walking in a straight line virtually.
 \end{description}
 
-\todo{should probably still have a figure to illustrate how this all looks}
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/graphs/redirectionGains.png}
+    \caption[Illustrated Example of How Redirection Gains Function]{This illustrated example shows how the three primary gains in redirected walking function.}
+    \label{fig:redirectionGainsExample}
+\end{figure}
+
+Further illustration on how the different gains work can be seen in Figure~\ref{fig:redirectionGainsExample}.
 
 Detection thresholds allow for the estimation of gains that can be applied without the user noticing them. As such, it has become a core of many other studies in the field. The taxonomy itself has since been extended by Suma et al.~\cite{suma2012taxonomy} to provide a more comprehensive look into additional redirection techniques. Outside of the three established redirection gains, an additional fourth type has recently been proposed by Langbehn et al.~\cite{7833190}. Their study presents the concept of bending gains which are similar to curvature gains but only applied whenever the user walks on a curve in the virtual world. 
 
@@ -37,12 +44,11 @@ In order to actually redirect a user, it is necessary to have a redirection algo
 Both of these algorithms were originally presented by Razzaque~\cite{razzaque2005redirected} and have since been improved by Hodgson et al.~\cite{hodgson2013comparing}. The basis for these algorithms is to make use of rotation, curvature and translation gains in a manner that steers the user towards a desired point or direction. Among the two algorithms, S2C is generally believed to have the best performance, but S2O can perform better when large straight paths are travelled~\cite{hodgson2013comparing}. S2C has also been demonstrated to work particularly well for smaller physical spaces which is common for most virtual reality consumers today~\cite{azmandian2015physical}. 
 
 Among the various redirection algorithms that exist, the most relevant for this thesis is Peck et al.'s "Improved Redirection with Distractors (IRD)"~\cite{peck2010improved}. This is an extension of the S2C algorithm with one primary addition: it makes use of virtual distractors to reorient the user towards the centre of the physical space when approaching physical walls. The usage of virtual distractors in redirected walking is further detailed in Section~\ref{sec:relatedDistractors}.
-\todo{unsure about the placement of this last paragraph.}
 
 \subsection{Variables That Could Affect Redirected Walking and Detection Thresholds}
 One thing to note about detection thresholds and the efficiency of redirected walking is that there are a variety of variables that can impact these. All the potential variables that were found throughout the sample of literature can be found in Table~\ref{table:DTVariables}. Since each variable is only briefly presented, there is a fair amount of abbreviated and potentially new terminology in use. The usage of abbreviated terminology will also increase from this point onwards in the thesis. As such, a short description of these can be found in Appendix~\ref{app:terminology} for quick referencing.
 
-\begin{table}[h!]
+\begin{table}[!h]
 \centering
 \begin{tabularx}{\textwidth}{|m{2cm}|m{1.7cm}|m{10.1cm}|} 
 \hline
@@ -66,7 +72,7 @@ Awareness of Redirection & \cite{5072212} & If the user is not aware of the use 
 \hline
 Gender & \cite{nguyen2018individual} & Men seem to be more sensitive to curvature gains than women.\\
 \hline
-Adaptation: Curvature Gains & \cite{5072212, bolling2019shrinking} & Exposing users to curvature gains over a 20 minute period makes it harder to detect the gain. Similar effects might be possible for rotation, translation and bending gains.\\
+Adaptation: Curvature Gains & \cite{5072212, bolling2019shrinking, grechkin2016revisiting} & Exposing users to curvature gains over a 20 minute period makes it harder to detect the gain. Similar effects might be possible for rotation, translation and bending gains. Gradually increasing the strength of curvature gains appears to cause some adaptation.\\
 \hline
 \end{tabularx}
 \caption{Variables that can affect detection thresholds in redirected walking}
@@ -88,7 +94,7 @@ From the point of view of a virtual environment designer, it would not be ideal 
 Subjective sense of presence is a central part of virtual reality experiences. By properly immersing the user into a virtual world, it is possible to provide an engaging user experience. Subjective sense of presence can be negatively affected by a variety of techniques in redirected walking, which can compromise the overall experience of the user. 
 
 The first of these are high redirection gains. Similar to Fuglestad's research that shows a difference between noticeability and cybersickness thresholds, Schmitz et al. presented that presence/immersion breaks at a different threshold from detection~\cite{schmitz2018you}. This means that certain gains of redirection can be noticed without resulting in cybersickness increases or breaks in presence.
-Outside of redirection gains, another technique that can affect the subjective sense of presence is reorientation/resetting. Resetting techniques are fail-safes that are used whenever the user starts to exit the physical tracked space due to insufficient redirection~\cite{williams2007exploring}. An example of this would be to instruct the user to stop and rotate 360 degrees in the virtual world while they only rotate 180 degrees in reality due to applied rotational gains~\cite{suma2012taxonomy}. By doing so, the user is reoriented so that they no longer are in danger of leaving the tracked space. The problem with these types of techniques is that they are very intrusive and easily break any subjective sense of presence as the user has to temporarily stop what they were doing prior to resetting. 
+Outside of redirection gains, another technique that can affect the subjective sense of presence is forced reorientation/resetting. Resetting techniques are fail-safes that are used whenever the user starts to exit the physical tracked space due to insufficient redirection~\cite{williams2007exploring}. An example of this would be to instruct the user to stop and rotate 360 degrees in the virtual world while they only rotate 180 degrees in reality due to applied rotational gains~\cite{suma2012taxonomy}. By doing so, the user is reoriented so that they no longer are in danger of leaving the tracked space. The problem with these types of techniques is that they are very intrusive and easily break any subjective sense of presence as the user has to temporarily stop what they were doing prior to resetting. 
 
 Azmandian et al. mention that the average user should expect to have a physical tracking space that is 10m x 10m or lower and this results in a lot of resets as unnoticeable redirection is not sufficient. Therefore they suggest that the focus should be on improving existing reset/reorientation mechanisms and better integrate them into the experience to limit breaks in presence~\cite{azmandian2015physical}. Improved subjective sense of presence and improved redirection are among the main areas that distractors aim to improve~\cite{peck2009evaluation, peck2011evaluation} which are the focus of this thesis.
 
@@ -160,27 +166,28 @@ The previously generated taxonomy has been used as a framework to map out the us
 
 \begin{sidewaystable}[p!]
 \centering
+\scalebox{0.8}{
 \begin{tabularx}{\textwidth}{|m{2cm}|m{1.5cm}|m{2cm}|m{1.9cm}|m{2cm}|m{7.55cm}|} 
 \hline
 Distractor & Used in Study & Explicitness & Context Sensitivity & Distractor Type & Additional Relevant Elements\\
 \hline
-Floating Sphere & \cite{peck2009evaluation} & Explicit & Insensitive & Concrete & Non-diegetic, Has movement, Appears in front of user\\
+Floating Sphere & \cite{peck2009evaluation} & Explicit & Insensitive & Concrete & Non-diegetic, Has movement, Appears in front of user.\\
 \hline
-Butterfly & \cite{peck2009evaluation, norouzi2018assessing} & Explicit & Insensitive: \cite{peck2009evaluation},\newline Visually Integrated: \cite{norouzi2018assessing} & Concrete & Diegetic, Has Movement\\
+Butterfly & \cite{peck2009evaluation, norouzi2018assessing} & Explicit & Insensitive: \cite{peck2009evaluation},\newline Visually Integrated: \cite{norouzi2018assessing} & Concrete & Diegetic, Has Movement.\\
 \hline
-Ghost & \cite{peck2010improved} & Explicit & Visually\newline Integrated & Concrete & Diegetic, Has Movement, Appears in front of user\\
+Ghost & \cite{peck2010improved} & Explicit & Visually\newline Integrated & Concrete & Diegetic, Has Movement, Appears in front of user.\\
 \hline
-Hummingbird & \cite{peck2011evaluation, suma2012taxonomy} & Explicit & Insensitive & Concrete & Diegetic, Has Movement, Appears in front of user\\
+Hummingbird & \cite{peck2011evaluation, suma2012taxonomy} & Explicit & Insensitive & Concrete & Diegetic, Has Movement, Appears in front of user.\\
 \hline
-Horizontal Bars & \cite{peck2011evaluation} & Implicit & Fully\newline Integrated & Concrete & Diegetic, Static, Fades into view as user nears physical walls, Used as a deterrent\\
+Horizontal Bars & \cite{peck2011evaluation} & Implicit & Fully\newline Integrated & Concrete & Diegetic, Static, Fades into view as user nears physical walls, Used as a deterrent.\\
 \hline
-Temporary Objectives & \cite{grechkin2015towards} & Explicit & Undefined & Abstract & None\\
+Temporary Objectives & \cite{grechkin2015towards} & Explicit & Undefined & Abstract & None.\\
 \hline
-Moving NPCs & \cite{5759454} & Implicit & Fully\newline Integrated & Concrete & Diegetic, Has movement, Moves into view from the side or walks in front of the user, Used as a deterrent\\
+Moving NPCs & \cite{5759454} & Implicit & Fully\newline Integrated & Concrete & Diegetic, Has movement, Moves into view from the side or walks in front of the user, Used as a deterrent.\\
 \hline
-Flying Dragon & \cite{chen2017towards, chen2017supporting} & Explicit & Fully\newline Integrated & Concrete & Diegetic, Has movement, Moves towards user from current position when active, Can be considered as a attractor\\
+Flying Dragon & \cite{chen2017towards, chen2017supporting} & Explicit & Fully\newline Integrated & Concrete & Diegetic, Has movement, Moves towards user from current position when active, Can be considered as a attractor.\\
 \hline
-Flame Walls & \cite{chen2017towards, chen2017supporting} & Implicit & Fully\newline Integrated & Concrete & Diegetic, Static, Spawned by dragon when near physical walls, Used as a deterrent\\
+Flame Walls & \cite{chen2017towards, chen2017supporting} & Implicit & Fully\newline Integrated & Concrete & Diegetic, Static, Spawned by dragon when near physical walls, Used as a deterrent.\\
 \hline
 Watching Exotic Birds & \cite{sra2018vmotion} & Explicit & Fully\newline Integrated & Abstract & The activity itself consists of concrete disctractors(birds). These birds move across the sky and have to be viewed through a pair of binoculars.\\
 \hline
@@ -188,13 +195,14 @@ Observing Insects & \cite{sra2018vmotion} & Explicit & Fully\newline Integrated 
 \hline
 Observing Insect in a Piece of Amber & \cite{sra2018vmotion} & Explicit & Fully\newline Integrated & Abstract & The user has to hold a piece of amber towards the sky and rotate so they can find a viewing angle that allows them to see the insect inside.\\
 \hline
-Interacting with NPCs & \cite{sra2018vmotion} & Explicit & Fully\newline Integrated & Abstract & The user has to hold a conversation with a NPC which acts as a concrete distractor\\
+Interacting with NPCs & \cite{sra2018vmotion} & Explicit & Fully\newline Integrated & Abstract & The user has to hold a conversation with a NPC which acts as a concrete distractor.\\
 \hline
-\end{tabularx}
+Playing a target shooting minigame & \cite{fuglestad2018redirected} & Explicit & Fully Integrated & Abstract & The targets that move around could be considered as concrete distractors. \\
+\hline
+\end{tabularx}}
 \caption{List of all distractors that were used in the sample of literature, framed within the ''The Taxonomy of Distractors in Redirected Walking''}
 \label{table:DistractorsInLiterature}
 \end{sidewaystable}
-\todo{Could mention Bjørn's incremental gains estimation kind of made use of an abstract distractor}
 When looking at the current usage of distractors from the sample of literature, a few insights can be gained. Most distractors are explicit and the only instances that could be regarded as implicit were in cases of deterrents. Due to this, there are potentially unexplored areas when it comes to designing implicit distractors. As already mentioned in the description of the taxonomy, these can be rather challenging to design which is why we might not see them being used very often. Despite this, recent developments into redirected walking with eye tracking hardware makes use of techniques that closely resemble implicit distractors and could arguably be categorised among these. Some additional information on this can be found in the following section.
 
 The vast majority of distractors in this review were also diegetic. This means that there is room to explore non-diegetic distractors that are integrated into the experience. Non-diegetic distractors could for example be used as aids for the user in games or scenarios where extra contextual information is helpful. 
@@ -213,14 +221,11 @@ For this thesis, making use of eye tracking hardware is outside of the scope. Th
 Outside of potential inaccuracy problems, learning to use the eye tracking hardware also requires a fair amount of time. In order to include this technology within the thesis scope, it would have been preferable to learn to work with the hardware beforehand. Given how the hardware was just recently acquired, this was not possible.
 
 \section{External Validity of Estimated Detection Thresholds}
-
 Given the amount of variables that potentially could affect detection thresholds, it would be difficult to think of these as generalised thresholds. For example, the thresholds that Steinicke et al. initially estimated were thought of as a worst case scenario due to the isolated nature of the study~\cite{5072212}. As such, they should be considered as a baseline while higher redirection is possible due to a variety of variables like engagement or distraction. Despite this, Fuglestad's results have shown that this baseline might be significantly lower than that of Steinicke et al.'s estimations due to the potential effect of better hardware~\cite{fuglestad2018redirected}. As such, one might start to wonder what role detection thresholds can fulfil as their generalisability is limited by many factors.  
 
 Despite this limitation, there are still a variety of use cases that the estimation of detection thresholds could be applicable for. One of these would be as a tool to measure how much a variable can affect noticeability. By estimating baseline thresholds for a virtual experience and estimating a second group of thresholds whenever a variable is introduced or active, we can make direct comparisons in how the detection of redirection changes. As long as the context of the estimations is taken into account, detection thresholds can also provide a ballpark estimate for the expected amount of unnoticeable redirection. Given that similar contexts are employed by others, they should also receive similar results. If large volumes of detection thresholds were to be estimated across many different contexts and virtual environments, they might also help with providing an overview of the degrees which various variables can affect noticeability. 
 
 This discussion is primarily relevant to $R_1$ and the estimation of detection thresholds. In particular, this research makes use of the first example when discussing use cases for detection thresholds where two groups of thresholds are estimated in one experiment. The first group consists of baseline detection thresholds for the virtual experience when no concrete distractors are active, while the second includes detection thresholds for when a concrete distractor is active. This allows for direct comparisons on how the introduction of concrete distractors changes the noticeability of redirection. This method of comparison does come with one caveat though. Estimating two groups of detection thresholds in the same amount of time as one would estimate one group results in lower accuracy. Despite this, as detection thresholds in general cannot be taken as entirely accurate due to the number of variables that can potentially affect the result, some error should be acceptable. 
-
-\todo{Using DT's as guidelines has been mentioned by other researchers. Try to double check which ones did and cite. CTRL + F ''individual'' in bibtex}
 
 \subsection{Use of Informed/Uninformed Participants For Redirection}
 Among the various variables that can affect the noticeability of redirection, one that could need some additional discussion is the awareness of redirection. Steinicke et al. mention in their study on detection thresholds that it was possible to increase unnoticeable redirection when the user is unaware of it~\cite{5072212}. This has since been part of various experiments within redirected walking. For example, all the current state of the art studies on distractors did not inform their participants of redirection before the experiment~\cite{sra2018vmotion, chen2017towards, chen2017supporting}. While this can provide higher unnoticeable gains, one important question to think of is how applicable this would be in the real world. 
@@ -293,24 +298,34 @@ Azmandian et al. have provided a method to measure the effectiveness of redirect
 
 Breaks in presence and cybersickness are thresholds that can exist at higher gains than detection. Due to this, it would be reasonable to focus on the highest unnoticeable gains as the risk of negative impact on the experience for participants should be minimal. 
 
-\section{Distractors and their use in other VR areas}
-* Pain relief, should be notes on it somewhere
-* Guided attention in Cinematic VR
-* In general, the concept of distracting someone either for their own benefit or for entertainment can be employed in a very large variety of ways in many different fields of VR research. 
+\section{Usage of Distractors in Other VR Research Fields}
+While distractors are just one sub-field of redirected walking, there are definitely similar concepts used in other VR research fields as well. One of the already mentioned ones is using cues in cinematic VR as a means to guide the attention of the user towards areas of interest during watching~\cite{nielsen2016missing}. Another area where we can see the usage of distractors is in the medical field where they are used for pain relief~\cite{malloy2010effectiveness, knight2018virtual}. In this field, abstract distractors are used as a means to reduce the pain that patients experience under burn injury care, or to reduce experimental pain~\cite{malloy2010effectiveness}. Furthermore, using VR distractions has shown to significantly decrease the amount of reactive pain behaviour in comparison to traditional distraction methods~\cite{knight2018virtual}. 
 
-\section{Background: Game Technology}
-* The following sections will be used to provide additional context and background around topics that are relevant for other parts of the thesis like implementation and so on. 
-\todo{There's only really one I feel like really needs to be discussed so far. Might just make it into its own section}
+In general, we can see that the concept of distracting someone for either their own benefit or for entertainment can be employed in various ways in different fields of VR research.
 
-\subsection{Transformation Hierarchies}
-* Necessary background to understand how the Redirected Walking Toolkit has implemented redirected walking. 
+\section{Background: Transformation Hierarchies in Game Engines}
+As part of Chapter~\ref{chap:implementation}, there will be more technical implementation details on how the various redirected walking parts of the solution are implemented. In order to understand these technicalities as well as Azmandian et al.'s toolkit~\cite{azmandian2016redirected}, it is first necessary to provide some background on one important topic: Transformation hierarchies in game engines.
+
+A transformation hierarchy in computer games is a fairly simple concept, but can result in rather complex behaviour. The gist of a transformation hierarchy is that objects or entities can be parented to each other. When parented, the child will no longer be positioned directly in world space, but rather relative to its parent. As such, if a parent moves, so will all of its corresponding children which may have individual relative positions within the hierarchy. This does not only have to be in respect to position changes, but also scale and rotation. If we for example have a car object in a game with all the individual parts as children of a root node, then we can modify the position, rotation or scale of the root and it will propagate to each of the children. This way, we can rotate, re-position or scale the entire car by simply modifying the root node in the hierarchy.
 
 \section{Background: The Redirected Walking Toolkit}
-* General architecture and functionality of the toolkit. 
-* Related terms and context
-   * Negative/Positive Rotation Gain
-      * Negative/Positive Percentages instead of one multiplier that is 0 (Frozen), 0.0-1.0 (Slower Rotation), 1 (Normal Head Rotation), 1.0+ (Faster Rotation)
-   * Curvature Radius in metres as the definition for curvature gains rather than using the curvature of the arc using radians. 
-   * Resets
-   
-* Terminology that the toolkit uses will primarily be used forwards in the thesis for the sake of consistency with the development that happened using the toolkit. 
+Since the implemented solution for this thesis makes use of the redirected walking toolkit~\cite{azmandian2016redirected} as a base, it is first necessary to at least have an overview on it. 
+
+\subsection{How Redirected Walking is Implemented in the Toolkit}
+An interesting side effect of transformation hierarchies is the perception of change for the child nodes. This is essential to how redirected walking is implemented in the redirected walking toolkit. To best illustrate this effect, it is easiest to provide an example. Consider that we have a parent: \textbf{''Redirection Root''} with two children \textbf{''Camera''} and \textbf{''Physical Space''}. The camera can move around in the physical space and both children will always be correctly mapped with each other, regardless of how the parent's transformation changes. As children, from their perceived point of view, they are consistent with each other due to how transformation hierarchies function. The interesting part becomes if we place our virtual world outside of hierarchy that the root governs, or rather have root and virtual world on the same hierarchical level. 
+
+If we now rotate the redirection root, the children will have the perception that it is the virtual world itself that rotates, and not themselves. Despite what the children perceive, it is their redirection root parent that rotates and not the virtual world itself. This effect is the essence of how redirected walking is implemented in this case. Both curvature and rotation gains are implemented by injecting small amounts of rotation to the y-axis of the redirection root as the child camera moves and looks around. By doing so it is possible to create the perceived effect that the child camera rotates more or less in the virtual world, compared to the real one. 
+
+\subsection{Toolkit Terminology}
+The toolkit uses slightly different semantics and terminology compared to what we could consider as the standard set by Steinicke et al.~\cite{5072212}. For the sake of consistency with the toolkit itself, this terminology will be used forwards in the thesis. The terminology that is different and their equivalents is as follows:
+
+\subsubsection{Rotation Gains}
+The toolkit does not semantically think of rotation gains as a multiplier to head movement, but rather as a percentage increase or decrease which are respectively named positive and negative rotation gains. For example: a rotation gain multiplier of 2, meaning that head rotations are twice as fast in the virtual world would be the equivalent to a positive rotation gain of 1. In this case, it is a 100\% increase over the base rotation. A multiplier of 0 would respectively be equivalent to a negative rotation gain of -1, meaning that the head no longer can rotate on the y-axis.
+
+\subsubsection{Curvature Gains}
+Instead of defining curvature gains as a ratio relative to the radius of the circular arc, the redirected walking toolkit defines curvature gains as curvature radius. In this case, a curvature radius of 5m means that the user's curved path will be on the edge of a circle that has a radius of 5m. 
+
+\subsubsection{Forced Reorientation Techniques}
+''Forced reorientation techniques''/''ROTs'' are generally either called by this semantic name or simply as ''resets''. There is no direct consistency in the literature regarding which one researchers use, but the toolkit uses ''resets'' as the term for forced reorientation techniques. 
+
+\subsection{Toolkit Structure}
