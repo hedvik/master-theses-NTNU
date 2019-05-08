@@ -36,6 +36,7 @@
 \usepackage{gnuplottex} %miktex option if using miktex on windows
 \usepackage{tabularx}
 \usepackage[figuresright]{rotating}
+\usepackage[]{algpseudocode}
 
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 \definecolor{darkred}{rgb}{0.5,0.0,0}
@@ -77,13 +78,14 @@
     \writeinmargin{{\color{red}CMT: #1}}
 }
 
+
 \newcommand{\todo}[1]{
     %{\color{blue} TODO: #1}
     \writeinmargin{{\color{green}TODO: #1}}
 }
 
 %\newcommand{\todo}[1]{{\color{green}#1}} % items to do
-%\renewcommand{\todo}[1]{} %remove starting % to remove items to do
+%\renewcommand{\todo}[1]{} % Removing the commenting here removes all \todos in the thesis!
 
 \newcommand{\n}[1]{{\color{blue}#1}} % other comment
 %\renewcommand{\n}[1]{} %remove starting % to remove notes

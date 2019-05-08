@@ -20,9 +20,9 @@ Ensemble Retriever makes liberal use of royalty free assets as a means to fasten
 Anyone who is interested in reusing or extending the project need to follow the licensing terms that apply for all of these assets. There are also specific 3D models that were reused from a previous project with permission from their creator, Yjie Zhou. These can be found in the \emph{''Assets/Meshes/BlenderAssets/''} folder of the repository and include:
 \begin{itemize}
     \item All instrument 3D models
-    \item The virtual environment
-\end{itemize}\todo{Reusing the project as is is most likely fine, but further extension for these elements might not be allowed}
-Extension or reuse of these assets are not permitted in other work and need to be replaced as the permission was given to reuse these assets for this project specifically. All other assets were developed specifically for the Ensemble Retriever game and include:
+    \item The virtual environment, excluding the ''Hall of the Mountain King''
+\end{itemize}
+Extension of these assets are not permitted in other work and need to be replaced as the permission was given to reuse these assets for this project specifically. If the project is to be used for the sake of reproducible results, then these assets do not need to be replaced. All other assets were developed specifically for the Ensemble Retriever game and include:
 \begin{itemize}
     \item All game logic + extensions to the Redirected Walking Toolkit
     \item All animations
@@ -33,50 +33,73 @@ Extension or reuse of these assets are not permitted in other work and need to b
 These elements of the game are under a MIT License and allows for reuse/extension as long as the license terms are held. 
 
 \section{Redirected Walking Toolkit - Extended Code Architecture}
-As part of developing Ensemble Retriever, Azmandian et al's Redirected Walking Toolkit~\cite{azmandian2016redirected} has been extended to support the usage of distractors and any other interfacing that the game has required. A chart showing the general additions to the toolkit's architecture can be found in Figure~\todo{ADD/MAKE ME}. The general thought process throughout the development of these extensions was to not do any major changes to the toolkit itself for the sake of keeping its modular structure. If functionality could be build on top of parts of the toolkit, then inheritance was used. If any part of the toolkit required major changes, it would be copied to a separate file which these modifications were written in. As far as minor changes are concerned, these mostly consisted of changing some data access properties of variables to allow for easier communication between classes.
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/graphs/ToolkitExtension.png}
+    \caption[Extended Structure of the Redirected Walking Toolkit]{This illustration provides an overview on how the structure of the redirected walking toolkit has been extended. New additions are marked with the use of green outlines. The original structure can be seen in Figure~\ref{fig:rdwToolkitStructure}.}
+    \label{fig:rdwToolkitExtendedStructure}
+\end{figure}
 
-As seen in Figure~\todo{ADD/MAKE}, the toolkit has been extended with the following components:
+As part of developing Ensemble Retriever, Azmandian et al.'s Redirected Walking Toolkit~\cite{azmandian2016redirected} has been extended to support the usage of distractors and any other interfacing that the game has required. A chart showing the general additions to the toolkit's architecture can be found in Figure~\ref{fig:rdwToolkitExtendedStructure}. The general thought process throughout the development of these extensions was to not do any major changes to the toolkit itself for the sake of keeping its modular structure. If functionality could be built on top of parts of the toolkit, then inheritance was used. If any part of the toolkit required major changes, it would be copied to a separate file which these modifications were written in. As far as minor changes are concerned, these mostly consisted of changing some data access properties of variables to allow for easier communication between classes or bug fixes.
+
+To supplement the general overview in Figure~\ref{fig:rdwToolkitExtendedStructure}, the following list provides slightly more details on the exact extensions that have been implemented:
 \begin{itemize}
-    \item RedirectionManagerER which extends RedirectionManager to facilitate communication and management between new components
-    \item The ''Align Centre To Future''(AC2F) Redirector
-    \item The ''Pause - Turn - Centre'' Resetter
-    \item The Distractor Trigger System
-    \item ExperimentManager which handles data collection and experiment management
-    \item GainIncrementer which is used as part of experiment 1
+    \item RedirectionManagerER which extends RedirectionManager to facilitate communication and management between new components.
+    \item The ''Align Centre To Future''(AC2F) Redirector. This redirector is aimed to be used while standing still.
+    \item The ''Pause - Turn - Centre'' Resetter.
+    \item The Distractor Trigger System.
+    \item An Experiment Manager which handles data collection and experiment management.
+    \item A Gain Incrementer which is used as part of Experiment 1.
 \end{itemize}
 
 Each of these will be further detailed in the following sections. 
 
 \section{Managing The Extended Architecture}
-* RedirectionManagerER details in general
-* Overall structure and communication between components.
-* Switching between S2C and AC2F
-* Position sampling
+The RedirectionManagerER script~\cite{redirectionManagerER} works in a similar way to the base class it extends. It facilitates communication between all of the new distractor related components and a few other things. These include switching between S2C and AC2F whenever distractors trigger, sampling position changes to calculate future walking directions, checking for alignment with future path during distractor battles and some additional debug related functionality. In this case, the manager makes use of two redirectors which consists of the S2C and AC2F redirectors. S2C is used when walking due to its rather generic nature, while AC2F is used during distractor battles as it is more specialised in terms of how it redirects.
 
-* Double check these
-* 0.5m away from wall = reset
-* 1.5m away from wall = distractor
-* 1m buffer between distractor trigger and reset
+Distractors in general function very similarly to resetters. They have associated callbacks and triggers which can generically be extended for whatever use the developer needs. They also have their own trigger safe bounds which in general should happen somewhat earlier than what a reset would. It is necessary to keep in mind that once a distractor triggers, the user will need time to be able and stop walking without hitting the reset trigger bounds. The size of this buffer will mostly depend on the walking speed of users, but it is useful to try and find a balance in terms of the distance between these two bounds. The reasoning for this is that a large movable space before triggering any distractors would be preferable as they might trigger too often otherwise. 
 
+\section{Distractor Enemies}
+There is no directly generic script or class for distractors in the provided solution as there are very few strict guidelines on how these can be made. In general, a distractor is spawned by RedirectionManagerER whenever the user reaches the distractor trigger bounds. Its primary responsibility after being spawned is to notify the manager whenever it is finished so that the manager can call relevant callbacks and clean up after the distractor. Other than this, any behaviour could be programmed into the developed distractor. For Ensemble Retriever, all distractors extend a DistractorEnemy script~\cite{distractorEnemyScript} which handles this responsibility in conjunction with some generic enemy behaviour. In a more general solution though, some generic base distractor class would likely be present.
 
 \section{The ''Align Centre to Future'' Redirector}
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\textwidth]{figures/graphs/AC2F.png}
-  \caption[Align Centre to Future Algorithm Example]{AC2F aims to choose the rotation gains that brings the physical centre to head ($CtH$) vector in alignment with the future virtual walking direction ($F$) of the user. The user's current facing direction ($D$) is not used other than setting the value of $F$ as the algorithm starts. The origin of this reorientation is at the position of the user ($O$)}
+  \caption[Align Centre to Future Algorithm Example]{AC2F aims to choose the rotation gains that brings the physical centre to head ($CtH$) vector in alignment with the future virtual walking direction ($F$) of the user. The user's current facing direction ($D$) is not used other than setting the value of $F$ as the algorithm starts. The origin of this reorientation is at the position of the user ($O$).}
   \label{fig:ac2f}
 \end{figure}
 
-* The way that the real world ''rotates'' depends on what gain is applied to the user and what direction they are moving their head in. 
-   * The optimal gain is directly calculated at runtime, but it is technically possible to just choose one depending on the direction you want to rotate relative to what direction the user's head moves in
+The ''Align Centre to Future'' (shortened to AC2F) redirector is based on what Peck et al.~\cite{peck2010improved} as well as Chen and Fuchs~\cite{chen2017towards, chen2017supporting} have mentioned in terms of a modified future path driven S2C algorithm. Neither of their research provided any source code for how they modified S2C and as such, AC2F is loosely based on Azmandian et al.'s S2C implementation which is part of the redirected walking toolkit. AC2F relies on rotation gains and a alignment heuristic to align the user's future virtual path towards. The heuristic in this case is the centre of the physical space. An illustrated view on how the algorithm works can be seen in Figure~\ref{fig:ac2f}. The aim of the algorithm is to choose between negative or positive rotation gains in a way that results in closer alignment towards the heuristic. The source code for the algorithm can be found in the project repository~\cite{ac2fScript}.
 
+\subsection{Algorithm Pseudocode}
+The AC2F algorithm could roughly be summarised in the following simplified pseudocode:
+\begin{algorithmic}
+\State chosenInjection = 0;
+\If {(deltaHeadRotationAngle >= rotationThreshold)}
+    \State negativeRotationGainInjection = deltaHeadRotationAngle * negativeRotationGain;
+    \State positiveRotationGainInjection = deltaHeadRotationAngle * positiveRotationGain;
+    \State dotProductFromNegativeInjection = Dot(negativeRotationGainInjection * physicalCentreToHead, futureVirtualWalkingDirection);
+    \State dotProductFromPositiveInjection = Dot(positiveRotationGainInjection * physicalCentreToHead, futureVirtualWalkingDirection);
+    \If {(dotProductFromNegativeInjection < dotProductFromPositiveInjection)}
+        \State chosenInjection = negativeRotationGainInjection;
+    \Else
+        \State chosenInjection = positiveRotationGainInjection;
+    \EndIf
+\EndIf
+\State redirectionRoot.Inject(chosenInjection);
+\end{algorithmic}
+The gist of the algorithm is that it checks which of the two types of rotation gains that result in the best alignment towards the future walking direction. In this case, dot products are compared with an alignment goal of ''-1''. This is the dot product for when the the user's future path points in the opposite direction of a vector between the centre of the room and the user's head. Once a gain has been decided for use, it is injected to the root of the redirected walking hierarchy. The angle of this injection consists of the change in head rotation between two frames multiplied by the chosen gain.
 
-* Figure~\ref{fig:ac2f}
-* Code specific implementation details. 
-* Based on what Peck et al. + Chen and Fuchs have mentioned in their work. 
-   * No source code was available from their work, as such AC2F is somewhat based on Azmandian et al.'s S2C implementation, but the final result is fairly different from S2C.
-   
-   
+Given that these calculations run every frame, it may not necessarily be the best solution in terms of performance. Despite this, the implementation was chosen to work this way for the sake of readability and simplicity as the performance cost was negligible. 
+
+\subsubsection{Hypothetical Optimisation of AC2F}
+In the hypothetical case of it being necessary to optimise AC2F, there are a few useful technicalities that could be considered. One of these is that the algorithm always will rotate the redirected walking root in either a clockwise or counter clockwise fashion depending on which of these takes the shortest time. Head rotations will also either be in a clockwise or counter clockwise direction. Applying a positive rotation gain to a head rotation will result in the redirected walking root to rotate in the same clockwise/counter clockwise direction. This means that the root will rotate slightly with the head rotation. Applying a negative rotation gain on the other hand will result in the opposite clock direction, meaning that the root will rotate slightly against head rotation. 
+
+Given this behaviour, it is possible to skip dot product comparisons once the algorithm has decided whether to align in a clockwise or counter clockwise manner. In this case, there will always be a correct gain type to choose depending on which clock direction the head is rotating in.
+\todo{This stuff is a pain to explain with words. Explaining it with a figure is similarly complex unless I go into just one example. Some feedback on how understandable this is would be nice}
+
+\subsection{Smoothing}
 * Smoothing, moving between positive and negative gains
    * Dealing with edge cases, stopping motions
    * A threshold is needed to decide whenever a rotation is large enough to apply gains or not.
@@ -103,6 +126,11 @@ Each of these will be further detailed in the following sections.
 * All dynamic objects in the game use a specific pausable class as their parent. 
    * This includes any projectiles, distractors and other animated components.
 * The redirectionManager is then able to find a list of all objects that derive from this pausable class when resetting is necessary. It then triggers a callback for each of these so they can take care of pausing their own behaviour. 
+
+\section{Distractor Triggering}
+
+\section{Experiment Management}
+\subsection{Incrementing Gains in Experiment 1}
 
 \section{Supporting the Y axis in the RDW toolkit}
    * Basically a bugfix to the way the toolkit worked
