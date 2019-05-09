@@ -57,7 +57,7 @@ Each of these will be further detailed in the following sections.
 \section{Managing The Extended Architecture}
 The RedirectionManagerER script~\cite{redirectionManagerER} works in a similar way to the base class it extends. It facilitates communication between all of the new distractor related components and a few other things. These include switching between S2C and AC2F whenever distractors trigger, sampling position changes to calculate future walking directions, checking for alignment with future path during distractor battles and some additional debug related functionality. In this case, the manager makes use of two redirectors which consists of the S2C and AC2F redirectors. S2C is used when walking due to its rather generic nature, while AC2F is used during distractor battles as it is more specialised in terms of how it redirects.
 
-Distractors in general function very similarly to resetters. They have associated callbacks and triggers which can generically be extended for whatever use the developer needs. They also have their own trigger safe bounds which in general should happen somewhat earlier than what a reset would. It is necessary to keep in mind that once a distractor triggers, the user will need time to be able and stop walking without hitting the reset trigger bounds. The size of this buffer will mostly depend on the walking speed of users, but it is useful to try and find a balance in terms of the distance between these two bounds. The reasoning for this is that a large movable space before triggering any distractors would be preferable as they might trigger too often otherwise. 
+Distractors in general function very similarly to resetters. They have associated callbacks and triggers which can generically be extended for whatever use the developer needs. They also have their own trigger safe bounds which in general should happen somewhat earlier than what a reset would. It is necessary to keep in mind that once a distractor triggers, the user will need time to be able and stop walking without hitting the reset trigger bounds. The size of this buffer will mostly depend on the walking speed of users, but it is useful to try and find a balance in terms of the distance between these two bounds. The reasoning for this is that a large movable space before triggering any distractors would be preferable as they might trigger too often otherwise. This buffer was originally 0.5m, but has since been increased to 1m due to observations during Experiment 1.
 
 \section{Distractor Enemies}
 There is no directly generic script or class for distractors in the provided solution as there are very few strict guidelines on how these can be made. In general, a distractor is spawned by RedirectionManagerER whenever the user reaches the distractor trigger bounds. Its primary responsibility after being spawned is to notify the manager whenever it is finished so that the manager can call relevant callbacks and clean up after the distractor. Other than this, any behaviour could be programmed into the developed distractor. For Ensemble Retriever, all distractors extend a DistractorEnemy script~\cite{distractorEnemyScript} which handles this responsibility in conjunction with some generic enemy behaviour. In a more general solution though, some generic base distractor class would likely be present.
@@ -76,6 +76,7 @@ The ''Align Centre to Future'' (shortened to AC2F) redirector is based on what P
 The AC2F algorithm could roughly be summarised in the following simplified pseudocode:
 \begin{algorithmic}
 \State chosenInjection = 0;
+\Comment{Check if the change in rotation exceeds the threshold for applying gains}
 \If {(deltaHeadRotationAngle >= rotationThreshold)}
     \State negativeRotationGainInjection = deltaHeadRotationAngle * negativeRotationGain;
     \State positiveRotationGainInjection = deltaHeadRotationAngle * positiveRotationGain;
@@ -89,7 +90,7 @@ The AC2F algorithm could roughly be summarised in the following simplified pseud
 \EndIf
 \State redirectionRoot.Inject(chosenInjection);
 \end{algorithmic}
-The gist of the algorithm is that it checks which of the two types of rotation gains that result in the best alignment towards the future walking direction. In this case, dot products are compared with an alignment goal of ''-1''. This is the dot product for when the the user's future path points in the opposite direction of a vector between the centre of the room and the user's head. Once a gain has been decided for use, it is injected to the root of the redirected walking hierarchy. The angle of this injection consists of the change in head rotation between two frames multiplied by the chosen gain.
+The gist of the algorithm is that it checks which of the two types of rotation gains that result in the best alignment towards the future walking direction. In this case, dot products are compared with an alignment goal of \textasciitilde-1. This is the dot product for when the the user's future path points in the opposite direction of a vector between the centre of the room and the user's head. Once a gain has been decided for use, it is injected to the root of the redirected walking hierarchy. The angle of this injection consists of the change in head rotation between two frames multiplied by the chosen gain.
 
 Given that these calculations run every frame, it may not necessarily be the best solution in terms of performance. Despite this, the implementation was chosen to work this way for the sake of readability and simplicity as the performance cost was negligible. 
 
@@ -100,54 +101,77 @@ Given this behaviour, it is possible to skip dot product comparisons once the al
 \todo{This stuff is a pain to explain with words. Explaining it with a figure is similarly complex unless I go into just one example. Some feedback on how understandable this is would be nice}
 
 \subsection{Smoothing}
-* Smoothing, moving between positive and negative gains
-   * Dealing with edge cases, stopping motions
-   * A threshold is needed to decide whenever a rotation is large enough to apply gains or not.
-      * Since the head naturally vibrates slightly as well as tracking not being completely perfect, we do not want to let participants experience rotation gains as their head is still.
-      * This threshold method does cause some issues if we completely disable gains at the end of a head rotation as it creates a jarring difference between applied gains and 0 gains.
-      * As such, it would be ideal to also smooth out the stopping motion of head rotations.
+One problem with rotation gains is that switching between positive and negative gains with large differences makes it very easy to notice redirection. This problem can be mitigated with the use of smoothing components which can be added to redirection algorithms. Particularly, smoothing can be applied by interpolating from a positive gain injection to a negative whenever this change is needed and vice versa. This creates a more subdued and gradual change rather than quickly jumping from one type of gain to the other. The main challenge with smoothing rotation is that we cannot interpolate the actual gains themselves as these have to stay static. Instead, we need to interpolate the camera injections that happen which will vary frame by frame depending on how much the user's head moves. As such, standard interpolation which has a set start and stop value is not possible as our stop/target value to interpolate towards will change every frame. Instead, the implementation AC2F uses was found on the Unity Forums~\cite{smoothingFormula} which is smoothing solved using a differential equation. The formula for this interpolation with corresponding context is as follows:
 
+$$
+f = \frac{followerOldValue - targetOldValue + (targetNewValue - targetOldValue)}{(interpolationSpeed * t)}
+$$
+$$
+followerNewValue = \frac{targetNewValue - (targetNewValue - targetOldValue)}{(interpolationSpeed * t) + f * Exp(-interpolationSpeed * t)}
+$$
+\begin{description}
+    \item[followerOldValue:] The interpolated value this formula outputted during the prior frame.
+    \item[followerNewValue:] The new interpolated result which this formula outputs during the current frame.
+    \item[targetOldValue:] The value of the target during the prior frame. 
+    \item[targetNewValue:] The value of the target during the current frame.
+    \item[interpolationSpeed:] The speed of interpolation.
+    \item[t:] Input interpolation time. This is within the range of [0, 1]. 
+    \item[f:] An intermediary variable to split up the equation.
+\end{description}
+
+Using this formula allows for smooth interpolation between rotation gain types even though the target may change slightly every frame. 
+
+\subsubsection{Dealing With Edge Cases}
+The AC2F algorithm makes use of a threshold for head rotations before applying any gains. The reason for this threshold is to avoid applying gains when the head is relatively still, but still moving due to small head vibrations and tracking inaccuracies. This poses somewhat of a challenge in terms of how to deal with smoothing if it already is in progress and a head rotation goes below the threshold. One option would be to simply disable smoothing when this happens, but this creates an issue with a specific edge case. Whenever a user rotates with their body and head, the stopping motion results in a small bob towards the opposite direction. This small bob is below the threshold for applying gains and results in a rather jarring difference between applying gains and not applying them if we disable smoothing.
+
+To deal with this edge case, AC2F allows the smoothing component to continue until it is finished. This deals with this specific edge case, but still has some problems of its own which could be improved in the future. If a user moves with only their head instead of head and body, then the smoothing will result in a somewhat sliding rotation effect when the user stops their head. While this effect only lasts for less than half a second, it could still be considered as annoying or unwanted. Fixing this problem while still also dealing with the prior mentioned edge case would be ideal in terms of smoothing. 
 
 \section{The ''Pause - Turn - Centre'' Resetter}\label{sec:pauseturncentre}
-* Inspired by freeze turn (CITE creator)
-* Also takes inspiration from what Sra et al. have mentioned
-   * Limiting visibility makes changes less noticable
-   * In this case, the virtual world is "paused", resulting in a rotation gain of 0, but this is masked by mostly fading it to black and overlaying a representation of the physical space on top. 
-* Clipping problem
-   * How is it solved?
-       * Double camera solution, forcing different depth levels so one camera always will draw over what the other does
-   * What are the pros/cons of this solution?
-      * Easy to implement
-      * Costs some performance
-         * Especially if post processing is used. 4 cameras in total, each needing to do post processing is costly.
-            * There is some granularity here though. For example it is possible to control what PP is applied to the virtual/physical spaces. Less can be applied to the physical space as it is not seen as often.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/screenshots/pauseTurnCentreExample.png}
+  \caption[Pause - Turn - Centre Screenshot]{This screenshot shows the Pause - Turn - Centre resetter in action. The virtual world has been mostly faded away and paused while the user can normally look around in the representation of their physical space.}
+  \label{fig:pauseTurnCentreExample}
+\end{figure}
+
+As mentioned in Section~\ref{sec:choosingTheRightReset}, there are a variety of issues with current resetting techniques which limit their usefulness. To deal with these, a new resetter has been developed for this thesis which is called ''Pause - Turn - Centre''. This resetter takes inspiration from the Freeze - Turn resetter~\cite{williams2007exploring} as well as Sra et al.'s discussions on hiding noticeability through visibility limitation methods~\cite{sra2018vmotion}. The end result is somewhat different from Freeze - Turn with changes that aim to improve effectiveness and user experience. The source code for the resetter can be found in the project repository~\cite{pauseTurnCentre}.
+
+Whenever the Pause - Turn - Centre resetter triggers, it will quickly fade in a chaperone style boundary which represents the physical space. At the same time, a slightly transparent black layer will be used to fade out the virtual environment so it is only slightly visible. While this resetter is active, a negative rotation gain of -1 is used to effectively freeze the y-rotation of the user in the virtual world. Meanwhile, the user can still look around in the representation of the physical space with normal head rotation. As the name implies, components of Ensemble Retriever that exist within the virtual world are paused until the resetter has finished. The resetter finishes when the user looks towards the centre of the physical space, meaning their walking direction will be towards its centre. A screenshot showing the resetter after being triggered can be seen in Figure~\ref{fig:pauseTurnCentreExample}.
+
+The resulting behaviour avoids the issues that other resetters have in terms of cybersickness and sub-optimal reorientation. Cybersickness is minimised by obscuring the virtual world with a slightly transparent layer as vision limiting techniques decreases noticeability of redirection~\cite{sra2018vmotion}. It also allows the user to clearly see where the bounds of the physical space are. By instructing the user to look and move towards the centre of the room, there are no possibilities of becoming ''stuck'' between resets like when using 180 degree turns. The overall rotation that the user has to make is also smaller than 360 degrees, meaning that they will not be wrapped around any physical tethered cables which could cause issues. The trade-off for these improvements is the potential for this to be considered as more disruptive, but it could be argued that the improvements to safety, effectiveness and user comfort are worth this disruption.
+
+\subsection{Clipping Related Problems}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/screenshots/pauseTurnCentreClipping.png}
+  \caption[Pause - Turn - Centre Clipping Bug Screenshot]{This screenshot shows a prior bug that existed when using the Pause - Turn - Centre resetter. Virtual world geometry has in this case clipped into the representation of the physical space, resulting in rather confusing visuals as the virtual world is effectively paused during this time.}
+  \label{fig:pauseTurnCentreClippingBug}
+\end{figure}
+
+One issue that cropped up during the implementation of Pause - Turn - Centre can be seen in Figure~\ref{fig:pauseTurnCentreClippingBug}. If the representation of the physical space overlaps with other geometry from the virtual world, then this would cause some rather confusing visuals. This was due to the negative rotation gain of -1 being fully visible for this geometry. This problem has been solved in the following manner.
+
+Two separate cameras are employed. One of these renders the virtual world while the other renders everything that exists under the redirected walking root and could be considered as the physical space. By forcing the depth level of the physical space camera to always be closest, we can draw the physical space representation over everything else that exists in the virtual world. As such, even if geometry overlaps into the physical space, this can not be seen as the physical space representation will be drawn on top of it. This solution has a benefit and a drawback. It is simple to implement as forcing one camera to render on top of another is as simple as setting a depth value for the camera itself. The downside is that using multiple cameras in VR is rather performance costly as each camera must render twice for stereoscopic vision. As such, there are effectively four render cameras in use instead of two. This becomes a larger performance problem with post processing as this needs to apply to each camera. Despite this, there is some granularity as the post processing effects that are used can be tweaked for each individual camera. By doing so, it is possible to optimise away certain post processing effects from the rendering of the physical space representation as it will not be seen very often. 
 
 \subsection{Pausing the Game Using ''Pause - Turn - Centre''}
-* All dynamic objects in the game use a specific pausable class as their parent. 
-   * This includes any projectiles, distractors and other animated components.
-* The redirectionManager is then able to find a list of all objects that derive from this pausable class when resetting is necessary. It then triggers a callback for each of these so they can take care of pausing their own behaviour. 
-
-\section{Distractor Triggering}
-
+In order to properly pause relevant game objects in Ensemble Retriever with ''Pause - Turn - Centre'', it is necessary to define what is and is not pausable. This is solved by having all pausable dynamic objects extend a pausable class. By doing so, each dynamic object acquires access to some callbacks and pause state information. Pausing all pausables is handled by the RedirectionManagerER script where it generates a list of all pausable objects and triggers a related pause callback for these. It is then up to each individual pausable object to control their paused behaviour. This approach allows for selective pausing of virtual world objects while allowing things like the physical space representation and HMD tracking to still function. 
+ 
 \section{Experiment Management}
-\subsection{Incrementing Gains in Experiment 1}
+The experiments that have been conducted for this thesis are managed through two primary scripts: ExperimentDataManager~\cite{experimentDataManager} and GainIncrementer~\cite{gainIncrementer}. The ExperimentDataManager script takes care of all related data recording for Experiment 1 and 2 while the GainIncrementer script is used during Experiment 1 to incrementally and randomly increase gains. Further details on what and how data was recorded can be seen in Chapter~\ref{chap:ex1} and~\ref{chap:ex2} for Experiment 1 and 2 respectively. 
 
-\section{Supporting the Y axis in the RDW toolkit}
-   * Basically a bugfix to the way the toolkit worked
-   * an issue with the body follower not working with the Y axis. 
-   * This change was put into the toolkit itself as it was more of a bug rather than a major change.
+\section{Supporting the y-axis in the Redirected Walking Toolkit}
+As part of triggering relevant resets and other colliders, the redirected walking toolkit makes use of a ''head follower'' collider~\cite{headFollower} which represents the collider for the user's body. It will continuously be below the user's head position as the user moves around. One issue that was uncovered during development was that this functionality stopped working as intended if the redirected walking root changed y position. The reason for this is that the ''head follower'' collider did not take these changes into account and continuously attempted to place itself at a y-value of 0 in world space. This was not particularly flexible and as such, this functionality of the toolkit has been updated to support the y-axis. This is handled by having the collider place itself at a local position of 0 rather than in world space, meaning that it will always be below the user due to the transformation hierarchy it exists in. 
 
 \section{Game Design Overview of Ensemble Retriever} 
 \begin{figure}[tbph]
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/screenshots/HallOfTheMountainKingKindaLowRes.png}
+    \includegraphics[width=0.8\textwidth]{figures/screenshots/HallOfTheMountainKingKindaLowRes.png}
     \caption[Screenshot of the ''Hall of The Mountain King'']{This screenshot from the Unity scene view shows the ''Hall of The Mountain King'' with the quiz section that the player has to answer.}
     \label{fig:mkhallWithWall}
 \end{figure}
 
 \begin{figure}[tbph]
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/screenshots/HallOfTheMountainKing2KindaLowRes.png}
+    \includegraphics[width=0.8\textwidth]{figures/screenshots/HallOfTheMountainKing2KindaLowRes.png}
     \caption[Screenshot of the ''Hall of The Mountain King'' Without the Quiz Wall]{This screenshot from the Unity scene view shows the ''Hall of The Mountain King'' after the player has answered the quiz section in the game. This is where the Mountain King is fought.}
     \label{fig:mkhallWithoutWall}
 \end{figure}
@@ -156,14 +180,33 @@ In Ensemble Retriever, the player takes the role of a conductor whose goal is to
 The following sections provides a more detailed context on the game itself and how distractors have been fully integrated into the experience.
 
 \subsection{Virtual Environment}
-* \todo{More Pictures! This one might change right before ex 1 if it takes too long to walk so no need write this until after that}
-* Can show roughly how many metres the user has to walk to reach the portal etc. Top down views of the world relative to physical space and so on. 
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/screenshots/EnvironmentKindaLowRes.png}
+    \caption[Screenshot of the Environment in Ensemble Retriever]{This screenshot from the Unity scene view shows the virtual environment of Ensemble Retriever.}
+    \label{fig:ensembleRetrieverEnvironment}
+\end{figure}
+
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/screenshots/TopDownExperiment1Spawn.png}
+    \caption[Top Down Screenshot of Virtual Space That Players Walked Through]{This top down screenshot of the environment shows the walkable area that players walked through in Experiment 1. In this case, players started where the white square representing the physical space is and moved to the portal on the right. On their path they had to visit three small green fireflies. It should be noted that each small square in the grid is equivalent to 1m squares in real life.}
+    \label{fig:topDownViewOfEnvironment}
+\end{figure}
+
+The virtual environment that players walked through can be seen in Figure~\ref{fig:ensembleRetrieverEnvironment}. A top down view is also available in Figure~\ref{fig:topDownViewOfEnvironment}. If taking a straight line from the start to the end, players would need to walk \textasciitilde55m, although the actual distance is a bit longer as visiting the three fireflies also was necessary. 
 
 \subsection{Game Flow}
-\todo{Can probably add some pictures}
 This section provides an outline of the flow of Ensemble Retriever and how the game progresses throughout a play session. 
 
-Ensemble Retriever starts off with a tutorial that teaches the player the basics of the game. It provides information on the context/story, the player's goal, how to deal with reorientation resets, how to fight enemies and what to do if they are lost. In experiment 1, the tutorial also provides information on what the player should do if they notice they are being redirected. 
+\begin{figure}[tbph]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/screenshots/Tutorial.png}
+    \caption[Screenshot of the Tutorial in Ensemble Retriever]{This screenshot from Ensemble Retriever illustrates the tutorial that one of the ingame characters gives to the player.}
+    \label{fig:tutorial}
+\end{figure}
+
+Ensemble Retriever starts off with a tutorial that teaches the player the basics of the game. As seen in Figure~\ref{fig:tutorial}, the tutorial is provided to the player by one of the ingame characters. It provides information on the context/story, the player's goal, how to deal with reorientation resets, how to fight enemies and what to do if they are lost. In Experiment 1, the tutorial also provides information on what the player should do if they notice they are being redirected. The entire tutorial is voiced in case the text is not sufficiently readable.
 
 After the tutorial is finished, the game transitions to a walking phase where the player tries to reach the ''Hall of The Mountain King'' while being encouraged to visit three green fireflies that provide hints which will be relevant for a later part of the game. As the player walks around in this phase, distractor enemies will appear once they hit the maximum safe distance away from the centre. These enemies need to be defeated to progress and award experience points that the player can use to either upgrade the size of their contrabass shield or the damage that their conducting baton does. It should be noted that the fireflies fade away during battles to prevent their salience from potentially affecting the attention of the player since this could result in lower concentration~\cite{sitzmann2018saliency}. The walking phase of Ensemble Retriever is finished once the player enters the portal to the ''Hall of The Mountain King''. 
 
@@ -176,6 +219,8 @@ Once the quiz is finished, the player will have to fight against the ''Mountain 
     \item Quiz Score (How many correct quiz answers the player has gotten)
     \item Total Score
 \end{enumerate}
+
+A full playthrough of Ensemble Retriever by the author can be seen on YouTube~\cite{} for further illustration. \todo{Upload and link!}
 
 \section{Fully Integrating Distractors with Game Mechanics}
 \begin{figure}[tbph]
@@ -261,7 +306,10 @@ Finally, we have ''The Glockenspiel'' which is seen in Figure~\ref{fig:glockensp
    * Anything in general that limits visibility or vision of the target destination can technically be used to create context sensitive reorientation in the same vein as this.
       * Very similar to what Sra et al. have already discussed in terms of limiting visibility for redirection and reorientation
 
-\section{Disabling Redirected Walking Towards The End of an Experience}
+
+\section{Disabling Redirected Walking Towards the End of an Experience}
+\todo{Is capitalisation of ''End'' in the title correct here?}
+
 * Throughout the final stretch of the game, redirection gains are disabled as a means of helping participants get used to normal head rotations before taking off the HMD.
 * How effective this approach is, would of course need to be further tested in a separate study, but it should at least help somewhat normalise the head rotations for the user before finishing.
 * Might not be easy to integrate with every solution, but in the case of Ensemble Retriever since the final portion is just to fight the Mountain King, there wont be much more movement involved so it is fine. 

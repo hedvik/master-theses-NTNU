@@ -48,7 +48,7 @@ One potential issue that can arise with this type of method is that the particip
 \begin{itemize}
     \item Negative rotation gains cannot go lower than a value of -0.75. In this case, a gain of -1 would counteract any rotation on the y axis and give the impression of this axis being frozen. If we use Steinicke et al.'s rotation gain semantics~\cite{5072212}, this would be the equivalent of a 0.25 multiplier. 
     \item Positive rotation gains cannot exceed a value of 1. This is the same as the strength that is applied when using the 2:1 Turn reset method. If we use Steinicke et al.'s rotation gain semantics~\cite{5072212}, this would be the equivalent of a 2.0 multiplier. 
-    \item Curvature radius can not go lower than a value of 2.5m. A radius of 1m is the lowest that the Redirected Walking Toolkit can use in this scenario.\todo{Somewhat weak justification maybe? As far as I know, no other research have identified curvature gain thresholds lower than about 3m. Steinicke et al. mentions 3.3ish being noticeable, but usable for example(not a threshold per se)}. 
+    \item Curvature radius can not go lower than a value of 2.5m. A radius of 1m is the lowest that the Redirected Walking Toolkit can use in this scenario.\todo{Somewhat weak justification maybe? As far as I know, no other research have identified curvature gain thresholds lower than about 3m. Steinicke et al. mentions \textasciitilde3.3 being noticeable, but usable for example(not a threshold per se)}. 
 \end{itemize}
 
 Given the usage of caps in the experiment, there may be several detections which reach these limits during certain situations. In these cases, capped detection values point towards the possibility of being able to further increase redirection, but that the gain has been capped to avoid possible increases in cybersickness.
@@ -68,30 +68,26 @@ Already established methods like Steinicke et al.'s~\cite{5072212} make use of m
 As the participants play through Ensemble Retriever, the software itself collects a large variety of analytical data per frame. The general thought process behind recording data every frame is to provide insight into the whole runtime of the experiment and allow for deeper analysis if necessary around detection events. This data collection consists of data like the strength of gains at any given frame, whether a distractor was active, which distractor was active, whether a gain was detected and so on. The full list and a description for each piece of data that is collected can be found in Section~\ref{sec:ex1dataformat} as it is too long to reasonably mention in this section.
 
 \subsection{Participant Sample}
-* Intro
+This section consists of information on how the acquired participants were sampled, an overview of the demographics in the sample, what information participants were given and miscellaneous information. 
 
 \subsubsection{Sampling Procedure}
-* How were they sampled?
-   * Advertisement by supervisors during lectures
-   * Posters that were hanged up around school. 
-   * Advertisement on social media, particularly the local NTNU Programming Discord Server\todo{Footnote for discord}.
-   * Convenience sampling for the most part
-   * Doodle poll with timeslots. Signed up with alias
-* Compensation: Chocolate
+The sampling procedure for this experiment consisted of the following methods:
 
-In total, 22 participants took part in Experiment 1. One of these includes the author of the thesis. 
+\begin{enumerate}
+    \item The experiment was advertised by supervisors during lectures.
+    \item Posters advertising for the experiment were posted around campus.
+    \item Advertisement on the local NTNU. Discord\footnote{\url{https://discordapp.com/}} server.
+    \item Convenience Sampling.
+\end{enumerate}
+
+Participants were given access to a doodle poll\footnote{\url{https://doodle.com/}} where they could choose between a variety of time slots for when they wanted to partake in the experiment. Participants made use of aliases for this sign-up process. As compensation for participating, all participants received some chocolate. In total, 22 participants took part in Experiment 1. One of these includes the author of the thesis. 
 
 \subsubsection{Sample Demographics}
-* The demographics questionnaire that participants answered can be found in Appendix~\ref{app:demographicsQuestionnaire}.
+In order to provide some demographics insights, participants were asked to answer a post test questionnaire. The demographics questionnaire that participants answered can be found in Appendix~\ref{app:demographicsQuestionnaire}.
 
-\todo{Mentioning general demographics without analysing it in relation the rest of the data works fine in Methods, right? In the sense of giving an overview of the sample that is}
+The sample itself primarily consisted of students within the age range of 18-24 years. 22 of the participants identified as male while 2 identified as female. Among the participants, only one needed to remove any optical corrections to use the HMD. In this participants' case, it should be noted that this was their preferred way to enjoy VR and did not negatively impact their vision. 
 
-* Primarily within the age range of 18-24 years.
-* 20 males, 2 females
-* Only one had any optical corrections that had to be removed while using the HMD
-   * In their case, not using optical corrections was the preferred way to enjoy VR
-* 7 out of 22 had prior experience with projects using redirected walking
-* Figure~\ref{fig:ex1PriorVRExperience} shows a histogram over the Likert scale answers for prior VR experience. In general a pretty wide variety of experience. 
+7/22 participants have had prior experience with projects using redirected walking. Finally, Figure~\ref{fig:ex1PriorVRExperience} shows a histogram over the Likert scale answers for the prior VR experience of participants. 
 
 \begin{figure}[tbph]
     \centering
@@ -101,9 +97,19 @@ In total, 22 participants took part in Experiment 1. One of these includes the a
 \end{figure}
 
 \subsubsection{Information and Consent}
-* Brief information summary
-* Specific details on what information participants were given can be found in Section~\ref{sec:ex1information}.
-* Consent sheets can be found in Appendix~\ref{app:informationconsent}.
+In terms of information and consent, participants were given a information and consent sheet where written consent was necessary. This information sheet was also available to read during the sign-up process. The information/consent sheets can be found in Appendix~\ref{app:informationconsent} for additional details. Furthermore, participants were also given some oral information before playing through Ensemble Retriever. This can be summarised as follows:
+
+\begin{itemize}
+    \item A very brief summary of what redirected walking is was given if necessary.
+    \item If the participant experienced any form of cybersickness at any point they were instructed to mention this so that the experiment could be stopped.
+    \item Participants were encouraged to not walk too quickly for their own safety's sake.
+    \item Participants were informed that the room tracking might fail for the controllers at times, if so they just need to wiggle it in the air for the problem to resolve.
+    \item Participants were told they should be mindful of the tethered cable.
+    \item Participants were told that they should not move too much around during battles to avoid potentially moving into walls. 
+    \item Finally, participants were recommended to always keep a finger on the detection button so they could press it as soon as they noticed any redirection.
+\end{itemize}
+
+The specific details and wording that was used for this information can be found in Section~\ref{sec:ex1information}.
 
 \subsubsection{Cancellation, Interruptions and Miscellaneous Information}
 One of the participants had to cancel the experiment due to cybersickness. It should be noted that this participant mentioned they could easily get motion sickness which cybersickness can be considered a form of~\cite{mousavi2013review}. As such, it likely had some effect on why this was the only participant needing to cancel the experiment. This participant also mentioned that they mistakenly pressed the detection button a number of time. Due to this, they have been excluded from the sample, resulting in a sample of 21 participants. 
@@ -116,10 +122,7 @@ Two participants in the experiment did not manage to fully finish the Ensemble R
 
 The data for these two participants is still included in the sample as the interrupting moments happened late into the experiment. 
 
-    * Four participants did not provide any detection data
-      * Inexperience with VR for some meant they did not have much of a reference point for redirection
-      * Some did also misunderstand the task they had to do while playing
-     
+Finally, four participants did not provide any detection data at all. Two of these did not provide any detections as they did not notice being redirected. These were participants with no prior VR experience and as such, they mentioned that they had no prior reference points to use for detecting any unusual manipulations. The other two appear to have misunderstood which button to press on their controllers for detection despite the tutorial clearly labelling and showing which one to use. 
 
 \subsection{Experiment Environment/Physical Space}\label{sec:ex1physicalRoom}
 \begin{figure}[tbph]
