@@ -220,7 +220,7 @@ Once the quiz is finished, the player will have to fight against the ''Mountain 
     \item Total Score
 \end{enumerate}
 
-A full playthrough of Ensemble Retriever by the author can be seen on YouTube~\cite{} for further illustration. \todo{Upload and link!}
+A full playthrough of Ensemble Retriever by the author can be seen on YouTube~\cite{ERPlaythrough} for further illustration.
 
 \section{Fully Integrating Distractors with Game Mechanics}
 \begin{figure}[tbph]
@@ -294,22 +294,13 @@ The fourth distractor in Ensemble Retriever is ''The Violin'' which can be seen 
 \end{figure}
 Finally, we have ''The Glockenspiel'' which is seen in Figure~\ref{fig:glockenspielDistractor}. This distractor attacks the player by throwing projectiles that travel on a curve towards the player. The curve itself will intersect with the player at a roughly 90 degree angle to their left from where the projectile was fired. This facilitates more head rotation as the player needs to track the path that the projectile flies through before blocking. 
 
-\section{Employing Context Sensitive Resets: Teleporters}
-* Other researchers have looked into context sensitive reorientation outside of distractors haven't they? Double check!
-* Can draw some comparisons to Suma et al.'s change blindness redirection.
-   * Instead, in this case: it is possible to exploit the user's lack of knowledge with a future location to allow for reorientation. 
-* As the player enters the portal, their facing direction after being teleported is changed in a manner so that the path they have to walk to continue is back towards the room centre.
-* This is an example of an alternative context sensitive means of reorienting the user
-* While it cannot be expected that a game is sprinkled with teleporters everywhere, this can be seen as a useful tool to use once in a while if you want to move the player to different locations and environments
-* There are of course many other ways to also implement context sensitive resets. 
-   * An elevator could for example be used for it
-   * Anything in general that limits visibility or vision of the target destination can technically be used to create context sensitive reorientation in the same vein as this.
-      * Very similar to what Sra et al. have already discussed in terms of limiting visibility for redirection and reorientation
+\section{Employing Context Sensitive Reorientation: Teleporters}
+While distractors are one example of context sensitive reorientation, they are not necessarily the only ones that exist. There exists many other potential options that can reorient the user while still being context sensitive. This thesis in particular makes use of one such method: reorientation when using teleporters. In games, when using a teleporter it is common to be reoriented in a manner so that they will face towards the future direction they are expected to walk. If we slightly modify this concept, we can make use of it for reorientation. As the player enters a portal or teleporter, their facing direction after being teleported is changed in a manner that results in their future expected path to be towards the room centre. As an example in the Hall of The Mountain King, the player will be teleported to the edge of the room, meaning that there is only one direction they can walk in. By instantly reorienting the player during this teleportation it is possible to guarantee that this future direction will be through the centre of the physical space. 
+
+In a way, this could be seen as similar to Suma et al.'s change blindness redirection~\cite{suma2011leveraging}, although it does not require the virtual world to dynamically change. The only thing that changes before and after teleportation in this case is the orientation of the user. Of course, this approach is not very useful if the teleporter sends the user to an open space as the future walking direction could vary. This reorientation method would most likely be at its most useful for more narrow spaces where potential waking directions are limited. In any case, it is a useful tool to consider as an alternative to only using distractors or other resetters. In the future, we may have many different types of context sensitive reorientation methods outside of just distractors which all could exist together to create more varied experiences. For example, a cylindrical elevator which limits visibility could be used as a context sensitive reorientation. In this case, it could reorient the user by having a door appear which forces the user to travel through the room centre when leaving. As Sra et al. already have discussed~\cite{sra2018vmotion}, anything that obscures or limits visibility in one way or another can be used to reorient or redirect a user. 
 
 
 \section{Disabling Redirected Walking Towards the End of an Experience}
 \todo{Is capitalisation of ''End'' in the title correct here?}
 
-* Throughout the final stretch of the game, redirection gains are disabled as a means of helping participants get used to normal head rotations before taking off the HMD.
-* How effective this approach is, would of course need to be further tested in a separate study, but it should at least help somewhat normalise the head rotations for the user before finishing.
-* Might not be easy to integrate with every solution, but in the case of Ensemble Retriever since the final portion is just to fight the Mountain King, there wont be much more movement involved so it is fine. 
+One particular detail that is further worth clarifying with Ensemble Retriever is that the redirection gains are disabled once the Hall of the Mountain King is entered. The reasoning behind this is so that participants can get used to normal head rotations before taking off their HMD and finishing the experience. Given that adaptation towards redirection is possible~\cite{bolling2019shrinking, grechkin2016revisiting}, it might be ideal to allow users to adapt back towards normal head rotation before they take off their HMD to limit any disorientation symptoms. How effective this approach is on the other hand, has not been measured and would need to be further tested in future work. Regardless, it is something that likely should be considered when developing redirected walking experience to ease the user back into how real head rotation functions. This might not necessarily be as easy to integrate with every solution, but it works well in the case of Ensemble Retriever. Since the final battle with the Mountain King occurs in a space where little movement is needed, there is also little need for redirection.
