@@ -1,54 +1,55 @@
-\chapter{General Discussion}
-\label{chap:discussion}
+\chapter{General Discussion}\label{chap:discussion}
+This chapter consists of a more general discussion that is not directly tied to either of the two experiments. 
 
-\section{Limitations of AC2F}
-* If a user finishes a distractor right before they reach a point they wish to go to, then decide to turn 180 degrees virtually and walk back they will have to trigger another distractor or reset. Could be annoying
-   * In general, the current position sample heuristic works well enough as a generic heuristic, but more predictive ones would likely work better. 
+\section{Limitations of the Current AC2F Heuristic}
+While the AC2F algorithm has worked relatively well for Ensemble Retriever, it is worth considering the walking scenario that the algorithm has been used for. For Ensemble Retriever, the explorable space is large and open. This results in fairly straight paths between fireflies until the player reaches the final portal. Furthermore, the player does not really stop at any point and move in the opposite direction, which is favourable for the sampled future path heuristic. If the player on the other hand reaches a point and then decide to do a 180 degree virtual turn, the employed heuristic may not be as effective if they recently interacted with a distractor. In this case, a new distractor would need to be triggered or a reset would occur. 
+
+On the flip side, AC2F as an algorithm does not need to use a sampled future path heuristic. Any sort of directional heuristic could be used. As such, in more confined spaces it could be possible to use more predictive heuristics for AC2F instead of a sampled future path. In general, if there are situations where the developer knows the direction a user will take, it may be more effective to have some set heuristics which can be used. As far as a generic solution is concerned though, creating a heuristic out of sampled position changes is relatively simple and works well for open areas. 
    
 \section{Salience and Distraction}
-* Looking at the paper that mentioned salience distribution has effect on focus and attention
-   * The bright glowing mushrooms in the environment which are meant to provide some scene illumination might have an effect 
-   * Some participants mentioned using the mushrooms as reference points for trying to detect redirection
-   * Even then, in night time scenes it should probably be somewhat expected to see various salient elements
-      * For the sake of lighting and such
-   * Further studies into strength of distraction could be interesting in the context of RDW
-   * Mushrooms could be considered as contributing optical flow due to their salience
+One element which is worth some further discussion is the pre-existing salience in the virtual environment. As priorly mentioned in Chapter~\ref{chap:relatedWork}, current research has suggested that a larger distribution of salient elements in a scene decreases the effectiveness and focus on other salient objects~\cite{sitzmann2018saliency}. In general, the various salient elements in Ensemble Retriever could be summarised as such:
 
-\section{The Ideal Timing For Switching Redirection Algorithms}
-* Throughout both experiments one observation that has been noted is how participants move after finishing a distractor enemy.
-* Some participants start to move right after a distractor has been defeated while some stand and wait for their death animation to finish as the fireflies only appear after this. 
-* As the current solution only switches to the S2C algorithm after the death animation is finished this has a potential to cause some issues:
-   * If the user starts moving while the distractor death animation still is in progress this means that no curvature gains are applied to their walking as AC2F is still active until the animation is finished. This results in less effective redirection.
-   * Another problem is that the magnitude ''cooldown'' also only starts counting once the solution switches back to S2C, potentially meaning that the user might end up hitting a reset instead of a distractor as it has not tracked how much they walked prior to the switch. This is not ideal either.
-* One option would be to do this switch as soon as a distractor's health reaches zero, but this also has a potential flaw
-   * If the redirection has not aligned the future path of the user with the centre, then S2C might not be able to properly handle this as it is not quite as predictive
+\begin{itemize}
+    \item Environmental glowing mushrooms which always are visible.
+    \item Hint providing fireflies which only are visible outside of battles.
+    \item The portal that sends the player to the Hall of The Mountain King. 
+    \item Any distractors that the player battles.
+    \item The projectiles that a distractor fires at the player. 
+\end{itemize}
 
-* In general, one solution would be to choose the timing dynamically
-   * If the user's future path already is aligned with the centre, we can immediately switch to S2C once a distractor has been defeated
-   * If not, we can still try to keep AC2F active for a little longer to potentially align the user better with the centre of the room. 
-   * Starting to record the magnitude of the player's movement should most likely be as soon as it is detected that the user starts moving. It might still accumulate slightly if they stand still and do some minor head movements, but ideally the recording could for example start if the movement threshold for applying curvature gains is hit. 
-      * Either that or simply going for another option to set the cooldown for a distractor to avoid it potentially happening right after one has been finished if the user moves a tiny bit back and forth at their current position\todo{Make sure this problem is clarified in implementation and argued for why I go with the magnitude solution over others}
-    
-* If AC2F as an algorithm supported curvature gains, then this would have been less of an issue. At that point it would likely not be necessary to use the S2C algorithm as AC2F could take care of everything. If it were to be fully feature complete like this it would be closer to the ''modified S2C'' that Peck et al. + Chen and Fuchs have mentioned. 
-   * Of course this would increase the complexity of the algorithm a bit, which was outside of the resource budget and scope that was available for this thesis. 
+The salience provided by the mushrooms and portal could for example interfere with the salience that a distractor provides by itself and together with its projectiles. Some participants have also mentioned that they used the mushrooms as a reference point to detect redirection as it made detection easier. This could be a result of the salient mushrooms providing a larger degree of optical flow in an otherwise darker environment. This would also correspond somewhat with the speculation for as to why it was somewhat easier to notice negative rotation gains during battles as the distractors would create additional optical flow as well. One option to mitigate this would be to decrease the overall salience in the scene. Despite this, if we think practically and realistically, a darker scene or environment will usually consist of a certain amount of salient regions for the sake of illumination. As such, this should likely be kept in mind when working with such scenes. In any case, it would be interesting to see further research into how salience could affect optical flow and how this further could affect the noticeability of redirection.
+
+\section{The Ideal Timing for Switching Redirection Algorithms}\label{sec:idealAlgorithmTimingSwitch}
+Throughout both experiments, one observation of note was when participants started to move again after finishing a distractor battle. Most participants waited until the fireflies became visible again, meaning that the transition from AC2F to S2C was finished. Some participants on the other hand started to move as a distractor was still playing through its death animation. In the current solution, the switch from AC2F to S2C happens when this animation is finished. This means that if the player starts to move as this animation is playing, they will not be exposed to any curvature gains for a little while. Rotation gains will not be applied either if AC2F finished alignment either. This means that the effective redirection is decreased for a small space of time. 
+
+Another problem with starting to walk this early is that distractors have a distance cooldown that needs to be travelled before they can be spawned again. This cooldown only starts to tick down from movement after the switch from AC2F to S2C is finished. As a result, starting to move early might result in hitting a reset instead of a distractor as it still is on cooldown. This can happen as the cooldown did not track how much the player moved before the algorithm switch. One option to deal with this would be to switch algorithms as soon as a distractor's health reaches zero, but this also has a downside. If AC2F did not finish alignment, then this small remaining time could be used to apply further redirection and potentially complete alignment. 
+
+In general, a better solution could be to choose this timing in a more dynamic fashion. For example, if the future path already has been aligned, then the switch from AC2F to S2C could trigger instantly when a distractor's health reaches zero. If alignment has not happened on the other hand, the switch could be delayed like it currently is to have some additional time for finishing alignment. As far as the distance cooldown for distractors is concerned, it is likely best to start counting this one as soon as it is detected that the player has started to move again. This could be triggered by using a movement threshold to check whether the player has started to move or not.  
+
+If AC2F as an algorithm were to support curvature gains in the future, then this would not really require any changes to the timing of algorithm switches. At that point though, it might not be necessary to use S2C as an algorithm as AC2F could take care of everything. If AC2F supported curvature gains then it likely would have been closer to the mentioned ''modified S2C'' that Peck et al. + Chen and Fuchs have mentioned in their work~\cite{peck2010improved, chen2017towards, chen2017supporting}. This would of course increase the complexity of the algorithm by a little bit, which is why this was not implemented in this thesis as it was outside of the allocated resource budget.
 
 \section{Effectiveness of Integration From a Game Design Point of View}
+While Ensemble Retriever's fully integrated distractors have been fairly effective in terms of reorienting players away from physical walls, it is also worth to look at the integration from a game design point of view. 
 
-* In general good, but the frequency of enemy encounters could be considered as annoying for smaller room sizes
-   * Could be mitigated by having more variety in the distractors that the players can fight. Not just 5
-   * The amount of time fighting versus moving is skewed towards the fighting part.
-   * Looking at data from experiment 2, the fights could either be shorter with the currently estimate gains or the gains themselves could be lower to fill the whole battle time before aligning. 
-      * Both have their ups and downsides. It's a matter of priority
+In general, participants did enjoy the experience quite a lot. One in particular even mentioned: \todo{Insert quote here when NTNU's remote service isn't being a jerk}. Despite this, it was noticeable that participants got somewhat tired of facing the same distractors again and again towards the end of the experience. The frequency of distractors relative to the length of time spent on fighting them could also be a factor into this. This could be mitigated by having a larger variety of distractors that players can fight instead of just five varieties. Furthermore, introducing other types of distractors which are different from the battle ones could also decrease the monotony towards the end. 
 
-\section{The challenges of various human factors/Practical Challenges For Distractors in RDW}
-* Movement during battles
-* Stopping speeds
-     * Making the participant stop when needed so they dont walk into the reset
-        * Might need to better utilise deterrents
-            * Ended up being outside of the small scope for this project
+A more immediate solution that would not cost as many resources though would be to decrease the time spent on fighting distractors as mentioned in Section~\ref{sec:ex2MinimisingCybersickness}. While the distractor battles likely are the most engaging part of the experience, the time taken to reach the portal is relatively long. This is of course a limitation with having to perform experiment measurements and in a real world scenario the current implementation could have worked better if the overall walking distance was shorter. 
+
+From a game design point of view, a shorter experience would likely work better and in particular if the player does not have both their shield and baton at the maximum level by the end. This would emphasise player choice as players would need to choose their upgrades more carefully since they would not have all of them when fighting the Mountain King. This would allow players to either specialise in offence or defence depending on their personal preferences. While the current implementation allows the player to choose between upgrades when leveling up, the choices do not matter much as they will have a high enough level to unlock all the upgrades later on. Another option to further emphasise player choice would be to allow one final specialisation upgrade for either the shield or baton. The specialisation could in this case only be allowed to choose once regardless of how high the player's level is. This way, the player would need to choose which of their tools receives the final upgrade.  
+
+\section{Practical Challenges for Distractors in Redirected Walking}
+There has been a variety of practical challenges with distractors that have been observed while conducting Experiment 1 and 2. This section discusses these and provides some potential solutions. 
+
+\subsection{Movement During Battles}
+While most participants stood relatively still while fighting distractors, some also moved around quite a bit. This movement creates some challenges as distractor battles always will be roughly 1m away from any reset bounds and 1.5m away from physical walls. If a participant moves around a lot they might end up hitting a reset boundary which would be rather distracting to deal with in the heat of battle. While distractors and projectiles are paused during resets, it could still be considered as unwanted behaviour. The question then becomes: how do we limit the movement of certain players while they battle distractors? One potential option could be to make better use of deterrents to avoid having any players move further than 1m away from where their battle started. For example, certain objects could be strategically placed like the fire walls in Chen and Fuchs' research~\cite{chen2017towards, chen2017supporting} to deter the player from moving further. This was ultimately out of scope for the development of Ensemble Retriever, but could be considered as a potentially useful solution.  
+
+\subsection{Stopping Speeds}
+Another practical challenge is the buffer between reset and distractor trigger boundaries with respect towards walking and stopping speeds. Ideally, the player should have as much walkable space as possible without triggering a distractor and then an immediate reset. While a 1m buffer between the two bounds has worked relatively well in Experiment 2, there were still some cases where the buffer was too small. In a similar fashion to dealing with movement during battles, it might be possible to further increase the stopping speed of participants with effective use of deterrents. As an example: the contrabass distractor spawns and immediately boxes the player into some sort of battle arena. The player might then end up stopping a bit faster compared to the current situation where the distractor simply spawns a few metres in front of them. While it is not guaranteed that this would solve the problem, it should at least be expected that players stop slightly faster to avoid crashing into a close virtual obstacle.
+
+\subsection{Concrete Distractors in Confined Spaces}
+Finally, one apparent problem with concrete distractors that make use of of much movement is their use in more narrow or confined spaces. In Ensemble Retriever, this becomes an issue when fighting a distractor while close to the portal. In this case, there are potential situations where the distractor might end up moving into or behind the scenery as it rotates around the player. This behaviour is of course not wanted as it obscures vision towards the enemy and makes it harder to play. The question then becomes: how do we deal with distractors when the space around the player is more confined or narrow?
+
+This could potentially be solved by analysing and letting the distractors know when they are in a more narrow area. With this additional knowledge, the distractor could for example move slightly closer to the player or limit their movement abilities to better work with their current environment. Finding a generic solution in this case is probably hard given the context sensitive nature of fully integrated distractors. While generic solutions may be difficult to create for this, there are definitely context specific optimisations and solutions that can be developed. Outside of slightly more dynamic movement behaviour, it could be possible to have a set of distractors which specifically are aimed to work in more narrow spaces. If the game then detects that the player needs a distractor and is in a narrow space, it can spawn from this alternative distractor list to better suit the specific area. This way, it could also be possible to optimise how much the player moves their head around despite the limitations of the narrower space around them. 
             
-            
-\subsection{Participant Feedback on Pause - Turn - Centre}
-* Generally positive
-* It felt natural and easy to use
-* Some mentioned that it took a little bit time to get used to though
+\section{Participant Feedback on Pause - Turn - Centre}
+While it was not directly measured or focused on, some participants gave oral feedback on the Pause - Turn - Centre resetter. The general feedback was positive in that it felt natural and easy to use whenever needed although it took some time to get used to the resetter initially. Participants who moved a lot during battles managed to trigger a few resets while fighting. They mentioned that it was rather disruptive and disorienting when it happened, which is to be expected. As far as the various goals of Pause - Turn - Centre are concerned, it managed to safely reorient participants away from physical walls and did not result in any issues in terms of HMD cable wrapping. As far as participant feedback is concerned, none mentioned the reset as causing cybersickness. This is of course anecdotal though and would require a separate experiment to properly measure. In general though, no negative feedback was given in relation to Pause - Turn - Centre. 
