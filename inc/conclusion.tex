@@ -1,69 +1,75 @@
 \chapter{Conclusion}\label{chap:conclusion}
-* Summary
-* This was a pretty exploratory study into relatively unexplored waters
-   * Resulted in a lot of future work!
+To summarise, this thesis has focused on exploring various aspects of noticeability and effectiveness when using fully integrated distractors. The methods that were used for this were quite exploratory as the space of distractor research still is relatively unexplored. As a result, a fair amount of future work has been identified. As part of the exploration, the Ensemble Retriever VR game has been developed which makes use of fully integrated distractors. The source code for Ensemble Retriever is openly available~\cite{projectRepository}, making it valuable for both researchers and developers alike who wish to work with redirected walking. Together with Ensemble Retriever, the AC2F redirection algorithm has been developed as an alternative to S2C when standing relatively still. Furthermore, a new resetter: ''Pause - Turn - Centre'' has been developed with the aim to deal with the various shortcomings of existing resetting techniques. 
 
-What were the findings on different levels?
-   * What has the research provided insights on in
-      * The specific distractor/redirection level
-      * Redirected walking as a whole
-         * A new resetter
-         * Potential optimisation of heuristic redirection algorithms where the user is standing still
-         * Open Source Project using RDW
-      * General impact in VR
-      * ETC
+The Ensemble Retriever game has been used to conduct two experiments. The first of these focused on seeing whether there were any significant differences in redirection noticeability between two states: A general walking state and a battle state against an enemy distractor. The experiment did not find any significant differences in detection thresholds for positive rotation gains. On the other hand, it was significantly easier for participants to notice negative rotation gains when fighting enemy distractors. This challenges prior expectations that distractors could make it more difficult to notice redirection~\cite{5072212, schmitz2018you, sra2018vmotion} and warrants further research. Furthermore, an adaptation effect towards positive rotation gains has been observed which falls in line with B{\"o}lling et al.'s speculation that adaptation effects are possible for rotation gains~\cite{bolling2019shrinking}. This effect was not observed for negative rotation gains though. 
 
+The second experiment focused on testing the effectiveness of the AC2F algorithm. In this case a condition where S2C was employed when walking and AC2F was employed during distractor battles was compared to a control condition where S2C was used for both scenarios. The results showed that there was no significant difference in the mean number of resets that occurred between the two conditions. No significant difference could be found in terms of mean time needed for a successful alignment between the participants' future virtual path and the physical room centre either. Despite this, the experimental condition with S2C+AC2F resulted in $15.8\%$ less failure cases in terms of successful alignments towards physical space centre. This discrepancy has provided some valuable speculation for situations where the S2C algorithm could perform better than expected as well as potential optimisations for the AC2F algorithm during straight path walking scenarios. 
+
+The insights from this thesis could be used by future research to further our understanding of distractors and their role in redirected walking. By further delving into the topic of distractors and gaining a deeper understanding of their usage, we can create more immersive and engaging virtual experiences that seamlessly integrate redirected walking. By doing so, it becomes a natural extension of how we interact with virtual reality, allows for a higher subjective sense of presence~\cite{peck2009evaluation, peck2011evaluation} and provides an effective means of locomotion~\cite{razzaque2001redirected, peck2011evaluation}.
+
+\iffalse
+   * This has provided insights for more predictive algorithms that it may not always be ideal to align towards centre. Depends whether they switch between algorithms or not though
+\fi
 
 \section{Future Work}\label{sec:futurework}
-Where would the project go from here. While this section focuses on areas of future research that were detected through discussion and results, it may not guarantee that there are not already existing papers or research already looking into this. The literature sample for this thesis is not comprehensive enough to cover the entirety of the redirected walking space, but serves as an approximation in relation to the main topic of distractors within redirected walking. 
+While this section focuses on areas of future research that were detected through discussion and results, it may not guarantee that there are not already any existing papers or research looking into this. The literature sample for this thesis is not comprehensive enough to cover the entirety of the redirected walking space, but serves as an approximation in relation to the main topic of distractors within this space. The exploratory approach of this thesis means that many potential variables were at play due to the more realistic implementation and integration of distractors. As such, smaller and more controlled experiments on individual variables would be beneficial to fully understand the effects of some variables on others.
 
-* What can be improved
-* AC2F
-   * Could become more generic by adding support for walking around
-   * Smoothing can be improved
-   * Potential studies into the effect of smoothing solutions on detection thresholds
+\subsection{Improvements to AC2F}
+The first potential future work would be to further extend and improve the AC2F algorithm. In the current state it is primarily used when the user is standing still and interacting with a distractor. By extending it with the addition of curvature gains and support for movement the algorithm will be closer to what prior research has mentioned for their solutions~\cite{peck2010improved, chen2017towards, chen2017supporting}. The lack of available source code or full implementation details makes it challenging to approximate or implement the same solution as existing work has done. As such, any extensions to AC2F should remain openly available for the sake of future research and development. 
 
-* Looking deeper into the asymmetry between positive and negative rotation gains. 
+There is also work that can be done to improve the smoothing functionality of AC2F. A current limitation with the algorithm is the somewhat sliding rotation effect which can happen during head rotations that do not use the body. Being able to identify these cases could allow for some dynamic changes to smoothing behaviour. Another option would be to re-evaluate how smoothing is applied and finding better means to do so. 
 
-* Identifying the variables that affect why there is a significant difference that widens the detection thresholds when walking. (The data variability most likely has a pretty strong effect on why it is like it is for negative rot gains)
-   * Is expectation mismatch relevant when fighting as you do not have quite a set target to look at when walking?
-      * Goal directed looking
-   * Frame of reference
-      * Can the moving distractor be considered a frame of reference for redirection?
-      * This is of course anecdotal, but some participants mentioned using the glowing mushrooms as a frame of reference, but S2C still goes lower than AC2F on average on negative gains
-      * Optical flow/visual density generated by distractors
-         * Since some participants mentioned they used the glowing mushroom as a reference point to notice redirection, would a distractor work as one of these reference points?
-   * Differences in algorithms
-      * Smoothing solution for AC2F may be an effect
-      * If alignment as a concept is disabled from AC2F you will be able to apply more rotation gains to the participants during battles
-         * This would help with the asymmetry in number of detections between algorithms, more time would likely be spent with AC2F than S2C in terms of potential space to detect gains
-         * Might also result in stronger adaptation effects
-            * We would need further studies into how temporarily disabling gains affects adaptation effects
+\subsubsection{Optimising Alignment Heuristics for Straight Walking Path Scenarios}
+   * Primarily relevant if S2C is used in conjunction with a distractor redirection algorithm like AC2F
+   * Looking deeper into why reorientations using S2C may be better off doing a reorientation that is parallel to walls at times rather than towards the room centre
+      * Could be simulated with the toolkit for example to see whether relative effectiveness increases compared to 
 
-* How does salience impact optical flow? How does this then impact the noticeability of redirection?
+\subsection{The Asymmetry Between Positive and Negative Rotation Gains}
+The asymmetry between positive and negative rotation gains is a relatively interesting phenomenon which warrants further investigation. Additional background from psychology or neuroscience might help with enlightening what cognitive processes result in this difference. There could for example be some goal oriented processes that result in the asymmetry. In this case positive rotation gains will meet the goal looking direction and exceed it while negative gains fail to meet the goal. This expectation mismatch could have some effect, but further research is necessary to understand why and whether this is the case. 
+      
+\subsection{Further Research on Variables That Could Affect Noticeability}
+Given the results from Experiment 1, there may be additional unaccounted for variables that affected the measurements. Further research to identify new variables that affect noticeability would be beneficial. Having a frame of reference and its relation to optical flow is for example one area which could be investigated more deeply. Can a moving distractor in this case be considered as a frame of reference and does it make it easier to notice redirection? The results in this thesis seems to suggest so for negative rotation gains, but it is hard to draw any real conclusions due to the large data variability. Some participants have also mentioned using the glowing mushrooms as a frame of reference to more easily detect redirection. This is of course anecdotal, but may be a similar factor to the presence of a salient distractor. Another variable could be differences in smoothing solutions between algorithms. In cases where a redirected walking solutions uses multiple redirection algorithms, there may be minute differences in their smoothing solutions which may have some effect on noticeability. 
 
-* Improving data recording
-   * improving accuracy of variables, automating data post processing by handling this on the software side. 
+\subsubsection{How Smoothing Solutions Affect Redirection Noticeability} 
+Given that there are various methods to implement smoothing for redirection algorithms, it would be worth investigating how different smoothing solutions affect noticeability of redirection. By analysing and comparing different methods, it may be possible to find best practices in regards to what type of smoothing to implement. In this case it is important to consider what methods provide the best user comfort and any potential noticeability effects. 
 
-* Other interesting pathways
+\subsection{Effects of Temporarily Disabling Gains}
+While an adaptation effect was experienced for positive rotation gains in Experiment 1, it should be noted that gains were disabled at certain times throughout the experience. Once a distractor has aligned the user's future path towards the room centre, gains are disabled to keep the wanted orientation stable. Given that participants on average spent \textasciitilde20 seconds without any gains enabled during distractor battles, it may have had some effect on the strength of adaptation. This could for example be the reason why adaptation only was observed for positive rotation gains and not negative. In general, further research is necessary to understand how temporarily disabling redirection gains affect noticeability and potential adaptation effects.
+
+\subsection{Shorter Time Bursts of High Gains vs. Lower Gains Throughout an Entire Distractor Interaction}
+A related topic in terms of temporary gain disabling is the potential differences in comfort and cybersickness. It would be interesting to see further research on how a short burst of high gains with a period of disabled gains fares against a lower, but longer exposure to gains. It is likely that these will affect cybersickness in some manner and finding whether there is a difference and if so, how large it is could benefit the future of redirected walking. This way we can further inform our decisions on how we employ redirection in developed experiences.
+
+\subsection{Experiment Improvements}
+When looking back at the experiments themselves, there are definitely improvements that could be made on the data recording end. A large amount of data post processing was needed to acquire the necessary data to test all the hypotheses in Experiment 1 and 2. This data post processing could technically be automated and handled on the software side. Furthermore, there are improvements that can be made to the accuracy of recording certain variables. These are further discussed in Section~\ref{sec:improvingDataRecording}. 
+
+\subsection{Effectiveness of Disabling Redirection Gains Towards the End of a Virtual Experience}
+Another element which could benefit from further research is the concept of disabling redirection gains towards the end of a virtual experience. The primary reasoning behind this approach is to allow the user to get accustomed to normal head rotations before taking off their HMD. How effective or whether this approach is effective at all for mitigating disorientation effects requires further investigation.
+  
+\subsection{Whether Prior VR Experience Affects Noticeability}
+The results in this thesis suggests that prior VR experience has an effect on how noticeable redirection is. Future research could test this with additional empirical data to further investigate how it affects noticeability. It introduces some interesting questions like if a user's first few experiences with VR is with redirected walking only, will they adapt and normalise this as normal VR behaviour? If so, can they be further redirected than a normal user over time and how will they be affected by being exposed to normal head rotation in VR later on?
+
+\subsection{Effective and Short Measurements of Detection Thresholds for Individual and Practical Calibration}   
+There were large individual variances between participants in terms of detection thresholds which were seen in the results of Experiment 1. As such, there is room to improve and optimise how we estimate detection thresholds as it would be necessary to tailor gains to each individual's detection threshold. Standard methods that take 30+ minutes would not be feasible in the real world as users should not be expected to spend this much time on calibration alone. The primary optimisation for estimation that is needed in this case is time. 
+
+A cursory glance through the literature databases shows that at least there is some research on the topic of individualised calibration~\cite{hutton2018individualized}. Despite this, the research itself does not appear to be openly available and as such, makes it challenging to see how far this sub-field has come. 
+
+\subsection{Evaluation of the ''Pause - Turn - Centre'' Resetter in Respect to Other Resetters}
+Finally, there is additional evaluation that can be performed on the Pause - Turn - Centre resetter which was introduced in this thesis. There are a variety of factors which could see further comparisons with other existing reset techniques. These include:
+
+\begin{itemize}
+    \item The cybersickness effects of Pause - Turn - Centre vs. existing resetters.
+    \item The safety of using Pause - Turn - Centre vs. existing resetters.
+    \item The intrusiveness of using Pause - Turn - Centre vs. existing resetters.
+    \item The effective distance travelled between resets when using Pause - Turn - Centre vs. existing resetters. This is something which could be handled with simulations in the Redirected Walking Toolkit. 
+    \item How much users become entangled in their HMD tether cables when using Pause - Turn - Centre vs. existing resetters.
+\end{itemize}
+      
+\iffalse
    * Having people's first experience with VR be with redirected walking
       * They might normalise the redirected walking elements
          * \todo{Will have to look deeper into the data on people with no experience and how many detections they did}
-   * Effectiveness of disabling redirected walking towards the end of an experience to help the user get accustomed to normal head rotation before taking off the HMD
-   
-   * Looking deeper into why reorientations using S2C may be better off doing a reorientation that is parallel to walls at times rather than towards the room centre
-      * Could be simulated with the toolkit for example to see whether relative effectiveness increases compared to 
-      
-   * What is optimal in terms of cybersickness when using distractors? Stronger gains for short periods of time with no redirection breaks when aligned or lower gains throughout the entire distractor usage
-   
-   * How does temporarily disabling gains affect adaptation effects?
-   
-   * Looking deeper into how prior VR experience affects noticability. 
-   
-   * effective and short Individual DT calibration methods
-   
-   * Evaluating pause - turn - centre in respect to other resetters
-      * Cybersickness
-      * Safety
-      * Effective distance travelled between resets
-      * Cable tangling
+
+\subsection{Distractor Salience and Optical Flow}
+* How does salience impact optical flow? How does this then impact the noticeability of redirection?
+* Already covered by other sections I'd say
+\fi

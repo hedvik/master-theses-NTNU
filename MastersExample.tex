@@ -110,6 +110,21 @@
 \newcommand{\q}[1]{\leavevmode\marginpar{\small\em #1}}
 \renewcommand{\q}[1]{}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Line Commenting Code
+%define my variables
+\newcommand{\varParamA}{\varfont{ParamA}}
+\newcommand{\varParamB}{\varfont{ParamB}}
+\newcommand{\varNameVariable}{\varfont{nameVariable}}
+\newcommand{\assign}{\gets}
+
+% Algorithm definitions
+\newcommand{\commentsymbol}{//}% or \% or $\triangleright$
+\algrenewcommand\algorithmiccomment[1]{\hfill \commentsymbol{} #1}
+\makeatletter
+\newcommand{\LineComment}[2][\algorithmicindent]{\Statex \hspace{#1}\commentsymbol{} #2}
+\makeatother
+\newcommand{\varfont}{\texttt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
