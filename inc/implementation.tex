@@ -75,6 +75,7 @@ The ''Align Centre to Future'' (shortened to AC2F) redirector is based on what P
 
 \subsection{Algorithm Pseudocode}
 The AC2F algorithm could roughly be summarised in the following simplified pseudocode:
+\\
 \begin{algorithmic}
 \State chosenInjection = 0; \Comment{Check if the change in rotation exceeds the threshold for applying gains}
 \If {(deltaHeadRotationAngle >= rotationThreshold)}
@@ -90,6 +91,8 @@ The AC2F algorithm could roughly be summarised in the following simplified pseud
 \EndIf
 \State redirectionRoot.Inject(chosenInjection);
 \end{algorithmic}
+
+\vspace{0.3cm}
 The gist of the algorithm is that it checks which of the two types of rotation gains that result in the best alignment towards the future virtual walking direction. In this case, dot products are compared with an alignment goal of \textasciitilde-1. This is the dot product for when the the user's future virtual path points in the opposite direction of a vector between the centre of the room and the user's head. Once a gain has been decided for use, it is injected to the root of the redirected walking hierarchy. The angle of this injection consists of the change in head rotation between two frames multiplied by the chosen gain.
 
 Given that these calculations run every frame, it may not necessarily be the best solution in terms of performance. Despite this, the implementation was chosen to work this way for the sake of readability and simplicity as the performance cost was negligible. 
@@ -110,7 +113,7 @@ $$
 followerNewValue = \frac{targetNewValue - (targetNewValue - targetOldValue)}{(interpolationSpeed * t) + f * Exp(-interpolationSpeed * t)}
 $$
 \begin{description}
-    \item[followerOldValue:] The interpolated value this formula outputted during the prior frame.
+    \item[followerOldValue:] The interpolated value this formula output during the prior frame.
     \item[followerNewValue:] The new interpolated result which this formula outputs during the current frame.
     \item[targetOldValue:] The value of the target during the prior frame. 
     \item[targetNewValue:] The value of the target during the current frame.
