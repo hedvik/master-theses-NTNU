@@ -5,7 +5,7 @@ This part of the chapter provides the results of the experiment related to the t
 The first of the null hypotheses to be tested is effectiveness in terms of relative effectiveness. 
 
 \subsubsection{Minimum Time Needed to Defeat Distractors}
-As mentioned in Section~\ref{sec:ex2postprocessing}, in order to find a reasonable time period to discard unintentional resets in, it is first necessary to look at the minimum time needed to defeat any distractor. This can be seen in Figure~\ref{fig:minDistractorDefeatTime} where the minimum time is \textasciitilde18.23 seconds.
+As mentioned in Section~\ref{sec:ex2postprocessing}, in order to find a reasonable period to discard unintentional resets in, it is first necessary to look at the minimum time needed to defeat any distractor. This can be seen in Figure~\ref{fig:minDistractorDefeatTime} where the minimum time is \textasciitilde18.23 seconds.
 
 \begin{figure}[tbph]
     \centering
@@ -15,7 +15,7 @@ As mentioned in Section~\ref{sec:ex2postprocessing}, in order to find a reasonab
 \end{figure}
 
 \subsubsection{Time and Walking Speed Normalisation}
-Two variables that potentially could have some effect on the the reset counts between conditions is the time spent on walking and the walking speed of participants. It is thus necessary to first look at the mean movement speed and mean time spent on walking between the conditions before further analysis can take place. A boxplot on the time spent walking for participants between the two conditions can be seen in Figure~\ref{fig:TimeSpentWalkingBetweenConditions}. A boxplot on the mean metres per second that participants walked at between conditions can be seen in Figure~\ref{fig:ex2mps}.
+Two variables that potentially could have some effect on the reset counts between conditions is the time spent on walking and the walking speed of participants. It is thus necessary to first look at the mean movement speed and mean time spent on walking between the conditions before further analysis can take place. A boxplot on time spent walking for participants between the two conditions can be seen in Figure~\ref{fig:TimeSpentWalkingBetweenConditions}. A boxplot on the mean metres per second that participants walked at between conditions can be seen in Figure~\ref{fig:ex2mps}.
 
 \begin{figure}[tbph]
     \centering
@@ -31,14 +31,14 @@ Two variables that potentially could have some effect on the the reset counts be
     \label{fig:ex2mps}
 \end{figure}
 
-A Shapiro-Wilk test was employed to check the normal distribution of these two variables. For the time spent walking, the test provided $p = 0.195$ for S2C Only and $p = 0.490$ for S2C+AC2F. Both conditions are as such normally distributed and a independent samples t-test was employed to look for statistically significant differences. The independent samples t-test yielded $t = 0.262, p = 0.798$ which means there is no statistical significance in terms of time spent walking. For clarity's sake, the mean walking time for S2C Only was 209.2 seconds and 202.0 seconds for S2C+AC2F. 
+A Shapiro-Wilk test was employed to check the normal distribution of these two variables. For the time spent walking, the test provided $p = 0.195$ for S2C Only and $p = 0.490$ for S2C+AC2F. Both conditions are as such normally distributed, and an independent samples t-test was employed to look for statistically significant differences. The independent samples t-test yielded $t = 0.262, p = 0.798$, which means there is no statistical significance in terms of time spent walking. For clarity's sake, the mean walking time for S2C Only was 209.2 seconds and 202.0 seconds for S2C+AC2F. 
 
 In terms of the mean walking speed, the Shapiro-Wilk test provided $p = 0.472$ for S2C Only and $p = 0.847$ for S2C+AC2F, meaning that the data is normally distributed. As such, an independent samples t-test was employed to look for statistically significant differences. The independent samples t-test provided $t = -0.633, p = 0.540$ showing that there is no statistically significant difference for walking speeds either. For clarity's sake, the mean walking speed for S2C Only was 0.278 metres per second and 0.294 metres per second for S2C+AC2F.
 
-Since there is no statistically significant difference between the two conditions in terms of time spent walking or walking speed, further analysis will focus on the mean number of legitimate resets per participant. If there would have been a significant difference, a time or speed normalised variable would have needed to be calculated for comparisons. 
+Since there is no statistically significant difference between the two conditions in terms of time spent walking or walking speed, further analysis will focus on the mean number of legitimate resets per participant. If there had been a significant difference, a time or speed normalised variable would have needed to be calculated for comparisons. 
 
 \subsubsection{Number of Resets for Participants Between Conditions}
-The mean number of resets that participants experienced between conditions can be seen in Figure~\ref{fig:ex2resetMeans}. To supplement the means, a boxplot of the same data can be seen in Figure~\ref{fig:ex2resetboxplot}. As a reminder, the data sample used for these graphs consists of legitimate resets only. Unintentional resets have been removed using the data post processing step as mentioned in Section~\ref{sec:ex2postprocessing}.
+The mean number of resets that participants experienced between conditions can be seen in Figure~\ref{fig:ex2resetMeans}. To supplement the means, a boxplot of the same data can be seen in Figure~\ref{fig:ex2resetboxplot}. As a reminder, the data sample used for these graphs consists of legitimate resets only. Unintentional resets have been removed using the data post-processing step as mentioned in Section~\ref{sec:ex2postprocessing}.
 
 \begin{figure}[tbph]
     \centering
@@ -55,9 +55,9 @@ The mean number of resets that participants experienced between conditions can b
 \end{figure}
 
 \subsubsection{Hypothesis Testing}
-Finally, in order to test $H_{0_1}$ it is first necessary to test the normality of the data. Using a Shapiro-Wilk test, the S2C Only condition yielded $p = 0.036$ while S2C+AC2F yielded $p = 0.096$. As such, the S2C Only condition is not normally distributed and a non-parametric significance test is needed. In this case, the Mann-Whitney U non-parametric significance test is used. 
+Finally, in order to test $H_{0_1}$, it is first necessary to test the normality of the data. Using a Shapiro-Wilk test, the S2C Only condition yielded $p = 0.036$ while S2C+AC2F yielded $p = 0.096$. As such, the S2C Only condition is not normally distributed and a non-parametric significance test is needed. In this case, the Mann-Whitney U non-parametric significance test is used. 
 
-Looking at the boxplot in Figure~\ref{fig:ex2resetboxplot}, the overall shape of the distribution is fairly different between the two conditions. As such, the comparison in this case will be on mean ranks only. The Mann-Whitney U test results in $U = 12.500, p = 0.234$. As such, there is no statistically significant difference in terms of number of resets between the two conditions and $H_{0_1}$ is supported.
+Looking at the boxplot in Figure~\ref{fig:ex2resetboxplot}, the overall shape of the distribution is fairly different between the two conditions. As such, the comparison in this case will be on mean ranks only. The Mann-Whitney U test results in $U = 12.500, p = 0.234$. As such, there is no statistically significant difference in terms of the number of resets between the two conditions and $H_{0_1}$ is supported.
 
 Since there is no significant difference, the relative effectiveness between the two conditions has not been calculated.
 
@@ -65,7 +65,7 @@ Since there is no significant difference, the relative effectiveness between the
 The second null hypothesis to test is related to effectiveness in terms of time needed to align the user's future path towards the centre of the physical space. 
 
 \subsubsection{Alignment Failure Rates}
-Before looking at the processed data sample, it is first necessary to understand the differences in alignment failure rates between the two conditions. Participants in the S2C Only condition triggered 92 distractors in which 22 failed alignment. This results in a failure rate of $23.9\%$. Participants in the S2C+AC2F condition triggered 74 distractors in total and consisted of 6 failed alignments. This results in a failure rate of $8.1\%$. The time taken to defeat the distractor during these failed cases can be seen in Figure~\ref{fig:ex2failedDistractorTimeBoxplot} while the level of the participants' conducting baton during the failure can be seen in Figure~\ref{fig:ex2failedAlignmentBatonLevel}. As seen in Figure~\ref{fig:ex2failedAlignmentBatonLevel}, the S2C Only condition did fail in some cases where the participants' baton was at a lower level, meaning that some failures happened during longer battles. The S2C+AC2F condition on the other hand only failed when the participants' baton was at the maximum level, meaning the alignments failed during the shortest battles. 
+Before looking at the processed data sample, it is first necessary to understand the differences in alignment failure rates between the two conditions. Participants in the S2C Only condition triggered 92 distractors in which 22 failed alignment. This results in a failure rate of $23.9\%$. Participants in the S2C+AC2F condition triggered 74 distractors in total and consisted of 6 failed alignments. This results in a failure rate of $8.1\%$. The time taken to defeat the distractor during these failed cases can be seen in Figure~\ref{fig:ex2failedDistractorTimeBoxplot} while the level of the participants' conducting baton during the failure can be seen in Figure~\ref{fig:ex2failedAlignmentBatonLevel}. As seen in Figure~\ref{fig:ex2failedAlignmentBatonLevel}, the S2C Only condition did fail in some cases where the participants' baton was at a lower level, meaning that some failures happened during longer battles. The S2C+AC2F condition on the other hand, only failed when the participants' baton was at the maximum level, meaning the alignments failed during the shortest battles. 
 
 \begin{figure}[tbph]
     \centering
@@ -99,7 +99,7 @@ Before looking at the processed data sample, it is first necessary to understand
 Finally, the boxplot showcasing the spread of alignment times with failure penalties can be seen in Figure~\ref{fig:alignmentTimesWithPenalties}. The mean time taken to align the user towards the centre in this case is 30.91 seconds for S2C Only and 25.34 seconds for S2C+AC2F. As a supplement, the spread of alignment times for only successful cases can be seen in Figure~\ref{fig:AlignmentTimesWithoutPenalties}. If failure penalties are disregarded, the mean time needed for alignment is 22.55 seconds for S2C Only and 22.85 for S2C+AC2F. 
 
 \subsubsection{Hypothesis Testing}
-In order to test $H_{0_2}$, the data sample including failure penalties will be used. A Shapiro-Wilk normality test was first conducted on the alignment time data. This provided $p < 0.001$ for both conditions and as such, neither is normally distributed. As such, the non-parametric Mann-Whitney U test is used for significance testing. The comparison is done with mean ranks as the shapes in Figure~\ref{fig:alignmentTimesWithPenalties} are fairly different. This results in $U = 2948.500, p = 0.276$, meaning that the test cannot find any statistically significant difference in alignment times. This means that the $H_{0_2}$ null hypothesis is supported. Despite this, it should be noted that the alignment fail rates for the two conditions are different and that the S2C+AC2F condition consisted of $15.8\%$ more successful alignments compared to S2C Only. 
+In order to test $H_{0_2}$, the data sample including failure penalties will be used. A Shapiro-Wilk normality test was first conducted on the alignment time data. This provided $p < 0.001$ for both conditions and as such, neither is normally distributed. As such, the non-parametric Mann-Whitney U test is used for significance testing. The comparison is made with mean ranks as the shapes in Figure~\ref{fig:alignmentTimesWithPenalties} are fairly different. This results in $U = 2948.500, p = 0.276$, meaning that the test cannot find any statistically significant difference in alignment times. This means that the $H_{0_2}$ null hypothesis is supported. Despite this, it should be noted that the alignment fail rates for the two conditions are different and that the S2C+AC2F condition consisted of $15.8\%$ more successful alignments compared to S2C Only. 
 
 \subsection{Supplementary Graphs: Head Rotation for Participant 5}
 \begin{figure}[tbph]
@@ -116,7 +116,7 @@ In order to test $H_{0_2}$, the data sample including failure penalties will be 
     \label{fig:ex2DeltaTimeAuthor}
 \end{figure}
 
-To provide some supplementary illustration for a discussion in Section~\ref{sec:orbitalCases}, a graph showing the changes in head rotation for the author while taking part in Experiment 2 can be seen in Figure~\ref{fig:ex2headRotationAuthor}. Since large fluctuations in frame latency between walking and distractor battles could have an effect on Figure~\ref{fig:ex2headRotationAuthor} an additional graph showing the frame latencies throughout the experiment can be seen in Figure~\ref{fig:ex2DeltaTimeAuthor}.
+To provide some supplementary illustration for a discussion in Section~\ref{sec:orbitalCases}, a graph showing the changes in head rotation for the author while taking part in Experiment 2 can be seen in Figure~\ref{fig:ex2headRotationAuthor}. Since large fluctuations in frame latency between walking and distractor battles could affect Figure~\ref{fig:ex2headRotationAuthor}, an additional graph showing the frame latencies throughout the experiment can be seen in Figure~\ref{fig:ex2DeltaTimeAuthor}.
 
 \subsection{Supplementary Graph: Time Taken to Defeat Distractors and Player Baton Level}\label{sec:ex2distractorDefeatTimes}
 \begin{figure}[tbph]
@@ -135,10 +135,10 @@ To provide some supplementary information for a discussion in Section~\ref{sec:e
     \label{fig:meanWalkingSpeedAndPriorExperience}
 \end{figure}
 
-To illustrate one correlation that is discussed in Section~\ref{sec:ex2correlationAnalysis}, a boxplot on the mean walking speeds of participants in relation to prior VR experience can be seen in Figure~\ref{fig:meanWalkingSpeedAndPriorExperience}.
+To illustrate one correlation that is discussed in Section~\ref{sec:ex2correlationAnalysis}, a boxplot on the mean walking speeds of participants concerning prior VR experience can be seen in Figure~\ref{fig:meanWalkingSpeedAndPriorExperience}.
 
 \subsection{Demographic Insights}
-Two correlation matrices have been generated from the demographical data in relation to the primary data that is relevant for the hypotheses that have been tested. The Spearman's Rho correlation test has been used to generate the correlation matrices as some of the data is not normally distributed. These correlation matrices can be seen in Figure~\ref{fig:ex2correlation1} and \ref{fig:ex2correlation2}. The correlation test is split into two matrices primarily due to differences in data structure between some of the variables. 
+Two correlation matrices have been generated from the demographical data in relation to the primary data that is relevant for the hypotheses that have been tested. The Spearman's Rho correlation test has been used to generate the correlation matrices as some of the data is not normally distributed. These correlation matrices can be seen in Figure~\ref{fig:ex2correlation1} and \ref{fig:ex2correlation2}. The correlation test is split into two matrices, primarily due to differences in data structure between some of the variables. 
 
 \begin{sidewaysfigure}[tbph]
     \centering
@@ -158,7 +158,7 @@ Two correlation matrices have been generated from the demographical data in rela
 In terms of qualitative feedback, this section provides a summary of the feedback that participants provided in the questionnaire. The summary is structured after the questions that did receive answers.
 
 \paragraph{Whether the Participants Found Any Bugs or Glitches}
-In general, some participants noted that they experienced loss of controller tracking at times. Other than that, no major bugs were experienced by participants.
+In general, some participants noted that they experienced a loss of controller tracking at times. Other than that, no major bugs were experienced by participants.
 
 \paragraph{Whether the Participants Found the Experience Enjoyable}
 In general, the participants found the experience to be very enjoyable, although one noted that it was too long for their liking. 
@@ -173,7 +173,7 @@ The main feedback that was provided for this question was that the physical cabl
 The following paragraphs will summarise the results that have been presented in relation to their relevant hypotheses.  
 
 \subsubsection{$H_{0_1}$}
-There was no statistically significant difference between the two conditions in terms of mean number of resets per participant (Mann-Whitney U: $U = 12.500, p = 0.234$). As such, no relative effectiveness was calculated and the $H_{0_1}$ null hypothesis is supported.
+There was no statistically significant difference between the two conditions in terms of the mean number of resets per participant (Mann-Whitney U: $U = 12.500, p = 0.234$). As such, no relative effectiveness was calculated and the $H_{0_1}$ null hypothesis is supported.
 
 \subsubsection{$H_{0_2}$}
-There was no statistically significant difference between the two conditions in terms of mean time taken to align participants to the centre of the room (Mann-Whitney U: $U = 2948.500, p = 0.276$). Despite this, it should be noted that the alignment failure rates between the two conditions were different. Using S2C together with the AC2F algorithm resulted in $15.8\%$ less alignment failures compared to using only S2C. While the $H_{0_2}$ null hypothesis is supported, the difference in alignment failure rates should be considered.
+There was no statistically significant difference between the two conditions in terms of mean time taken to align participants to the centre of the room (Mann-Whitney U: $U = 2948.500, p = 0.276$). Despite this, it should be noted that the alignment failure rates between the two conditions were different. Using S2C together with the AC2F algorithm resulted in $15.8\%$ fewer alignment failures compared to using only S2C. While the $H_{0_2}$ null hypothesis is supported, the difference in alignment failure rates should be considered.

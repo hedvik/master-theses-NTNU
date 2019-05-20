@@ -1,14 +1,14 @@
 \chapter{Reproducing The Experiments} \label{app:reproduction}
-This appendix provides the necessary steps to reproduce the environment and experiments which were used in this thesis. The appendix is aimed to be fairly self contained so it may duplicate some already mentioned information from prior chapters. It is meant to function as a serial guide to how the experiments themselves can be reproduced. 
+This appendix provides the necessary steps to reproduce the environment and experiments which were used in this thesis. The appendix is aimed to be fairly self-contained, so it may duplicate some already mentioned information from previous chapters. It is meant to function as a serial guide to how the experiments themselves can be reproduced. 
 
 \section{Before Starting}
-Before providing information on how to reproduce the experiments, it is necessary to understand the environments that they were conducted in. This section summarises how the physical room was setup in conjunction with software and hardware.
+Before providing information on how to reproduce the experiments, it is necessary to understand the environments that they were conducted in. This section summarises how the physical room was set up in conjunction with software and hardware.
 
 \subsection{Room Setup}
 This thesis made use of a physical room with a 5m x 5.75m size. While reproducing the exact dimensions is not necessary, there are additional steps needed in case of other room dimensions. In general, a relatively square form is preferred due to how algorithms like S2C functions~\cite{azmandian2015physical}. 
 
 \subsection{Hardware Setup}
-On the hardware side a standard HTC Vive HMD was employed with its respective controllers. In order for the HMD to be able to reach through the entire physical space a 5m HDMI cable, 5m USB 2.0 cable extender and 5m power cable extender were used. It is important to note that USB and HDMI cables are close to their physical limits at 5m. Therefore, not all cables may work in this situation. As such, it is important to research and test whether the chosen cables and cable extenders are functioning with the HMD beforehand. In order to provide audio, a pair of Audio Technica ATH-MSR7BK headphones were connected to the HMD mini-jack port. 
+On the hardware side, a standard HTC Vive HMD was employed with its respective controllers. In order for the HMD to be able to reach through the entire physical space, a 5m HDMI cable, 5m USB 2.0 cable extender and 5m power cable extender were used. It is important to note that USB and HDMI cables are close to their physical limits at 5m. Therefore, not all cables may work in this situation. As such, it is important to research and test whether the chosen cables and cable extenders are functioning with the HMD beforehand. In order to provide audio, a pair of Audio Technica ATH-MSR7BK headphones were connected to the HMD mini-jack port. 
 
 The desktop computer which was used for both experiments consisted of the following technical specifications:
 \begin{description}
@@ -19,7 +19,7 @@ The desktop computer which was used for both experiments consisted of the follow
 \end{description}
 
 \subsection{Software Setup}
-On the software side it is necessary to have the following software installed:
+On the software side, it is necessary to have the following software installed:
 \begin{itemize}
     \item Unity Engine, version 2018.3.5f1.
     \item SteamVR, version 1.3.23. Using the newest version should not be an issue though. 
@@ -42,7 +42,7 @@ The ''ExperimentManager'' object contains the \lstinline{ExperimentDataManager} 
 
 \lstinline{ExperimentDataManager} is used to define which experiment that will be performed and the names of resulting data recording files. Furthermore, there are some experiment specific variables. The most important one is the length of the buffer window containing all applied gains. This is used for the calculation of various variables in Experiment 1 which are detailed in Section~\ref{sec:ex1dataformat}.
 
-\lstinline{GainIncrementer} allows the researcher to define start values for gains, their maximum/minimum values and various variables related to the randomness of the incrementer. A time step base is set in conjunction with time step noise. A time step base of 5 with a noise value of 2.5 means that gains will be incremented each 2.5-7.5 seconds. Similar variables exist for rotation and curvature gain increments.
+\lstinline{GainIncrementer} allows the researcher to define start values for gains, their maximum/minimum values and various variables related to the randomness of the incrementer. A time step base is set in conjunction with time step noise. A time step base of 5 with a noise value of 2.5 means that gains will be incremented every 2.5-7.5 seconds. Similar variables exist for rotation and curvature gain increments.
 
 \subsubsection{Redirected Walker (Debug) and Redirected Walker (VR)}
 There are two redirection root objects within each scene: ''Redirected Walker (Debug)'' and ''Redirected Walker (VR)''. At any given time, only one of these objects should be active. The debug version allows for keyboard controls with the following key-binds:
@@ -51,8 +51,8 @@ There are two redirection root objects within each scene: ''Redirected Walker (D
    \item[W, A, S, D:] Movement.
    \item[Arrow Keys:] Rotation/looking direction.
    \item[T:] Text box advancement.
-   \item[L:] Allows to choose the baton upgrade when leveling up.
-   \item[K:] Allows to choose the shield upgrade when leveling up.
+   \item[L:] Allows to choose the baton upgrade when levelling up.
+   \item[K:] Allows to choose the shield upgrade when levelling up.
    \item[Spacebar:] Shooting with the conductor baton when charged. 
    \item[O:] Enables the nearest objective pointer. 
 \end{description}
@@ -64,21 +64,21 @@ Outside of this, the roots contain the following parameters which can be modifie
    \item[Tracking Space Fade Speed:] The speed of the animation for fading the representation of the physical space out or in during resetting.
    \item[Always Display Tracking Floor:] Debug setting that will let the floor from the physical space representation stay outside of resets.
    \item[Switch To AC2F on Distractor Spawn:] Toggle to enable AC2F when a distractor is active. It is automatically set during Experiment 2 depending on what condition the participant is assigned to. 
-   \item[Alignment Threshold:] The dot product threshold for the amount of error is allowed in terms of aligning the future path towards physical centre during distractor battles. -1 would be a perfect alignment while increased values allow for more error. 
+   \item[Alignment Threshold:] The dot product threshold for the amount of error is allowed in terms of aligning the future path towards the physical centre during distractor battles. -1 would be a perfect alignment while increased values allow for more error. 
    \item[Distractor Magnitude Cooldown:] This variable defines how large of a distance in metres a user needs to travel before a new distractor can trigger. This value \textbf{needs} to be individually tested for different room sizes as it may be too long for smaller sizes. It should also be noted that counting towards this distance only starts once the death animation of a distractor has finished. 
    \item[Debug Distractor:] If this field has a distractor object assigned it will always spawn this distractor for the sake of debugging. 
    \item[Debug Gain Application Type:] When toggled, the objective arrow's material will correspond to the gain that is currently being applied. The materials to represent gains can be set right below this setting. This is a debug feature aimed at checking which gain is applied at any time. 
 \end{description}
 
-The attached AC2F redirector and Pause - Turn - Resetter also have some parameters:
+The attached AC2F redirector and Pause - Turn - Resetter also has some parameters:
 \begin{description}
-   \item[AC2F - Super Smoothing Enabled:] With this toggle active the AC2F will use the implemented smoothing solution. The algorithm will default back to Azmandian et al.'s smoothing solution from their S2C implementation otherwise. 
+   \item[AC2F - Super Smoothing Enabled:] With this toggle active, the AC2F will use the implemented smoothing solution. The algorithm will default back to Azmandian et al.'s smoothing solution from their S2C implementation otherwise. 
    \item[AC2F - Super Smooth Speed:] Parameter to tweak the speed in seconds of the implemented smoothing solution.
-   \item[Pause - Turn - Centre - Safety Mode:] A toggle that makes the resetter finalise once the user is looking towards the centre of the room and is back inside safe bounds. If disabled the resetter will finalise as long as the user is looking towards the room centre. This is not recommended as participants might hit a physical wall if moving backwards during battles. In this case they might be looking towards the centre and hit a physical wall as the reset will not activate since its condition for whether a reset is necessary or not is true. 
+   \item[Pause - Turn - Centre - Safety Mode:] A toggle that makes the resetter finalise once the user is looking towards the centre of the room and is back inside safe bounds. If disabled, the resetter will finalise as long as the user is looking towards the room centre. This is not recommended as participants might hit a physical wall if moving backwards during battles. In this case, they might be looking towards the centre and hit a physical wall as the reset will not activate since its condition for whether a reset is necessary or not is true. 
 \end{description}
 
 \subsubsection{GameManager}
-The ''GameManager'' object contains a large amount of game related parameters and data which is not necessary to detail for this section. Despite this, it is worth noting the ''Skip Tutorial'' and ''Debug Mode'' variables. The first of these toggles is self explanatory while the second opens a wide variety of functionality. With debug mode enabled the following functionality is available:
+The ''GameManager'' object contains a large amount of game-related parameters and data which is not necessary to detail for this section. Despite this, it is worth noting the ''Skip Tutorial'' and ''Debug Mode'' variables. The first of these toggles is self-explanatory while the second opens a wide variety of functionality. With debug mode enabled the following functionality is available:
 
 \begin{itemize}
     \item Pressing the grip buttons on the baton controller automatically puts the baton into a charged and attack ready state. If using the keyboard/debug redirected walker this functionality is available with the press of the ''P'' key.
@@ -88,49 +88,49 @@ The ''GameManager'' object contains a large amount of game related parameters an
 \subsubsection{Individual Room Calibration}
 Calibration of the physical space can be done on the ''Tracked Space'' object which is a child of the redirection root object. Azmandian et al. have provided a guide on how to do this on YouTube~\cite{toolkitSetup}. The previously mentioned distractor magnitude cooldown variable may also need to be modified for room sizes which are smaller than the one used for this thesis. 
 
-A recommended way to handle the calibration of the room itself is to run the Ensemble Retriever game and place each controller at one edge of the physical space. This way it is possible to modify and scale the physical space representation accordingly as the controllers will be mapped to where the physical boundaries are. 
+A recommended way to handle the calibration of the room itself is to run the Ensemble Retriever game and place each controller at one edge of the physical space. This way, it is possible to modify and scale the physical space representation accordingly as the controllers will be mapped to where the physical boundaries are. 
 
 \section{Experiment 1}
 In order to perform Experiment 1, there are a few things which should be in place first:
 
 \begin{itemize}
-    \item ''Experiment1Scene'' should be the current active scene.
+    \item ''Experiment1Scene'' should be the currently active scene.
     \item ''ExperimentDataManager'' should be set to perform a detection experiment.
     \item ''Redirected Walker (VR)'' is enabled and its debug counterpart is disabled.
 \end{itemize}
 
-The following sections will detail the exact information participants were given, the procedure of the experiment, the data recording format and the data post processing steps.
+The following sections will detail the exact information participants were given, the procedure of the experiment, the data recording format and the data post-processing steps.
 
 \subsection{Participant Information and Procedure}\label{sec:ex1information}
-The experiment starts with participants needing to provide consent. For this thesis, consent was handled on a written form. Once the participant has provided consent the following information is given:
+The experiment starts with participants needing to provide consent. For this thesis, consent was handled in a written form. Once the participant has provided consent, the following information is given:
 
 \begin{enumerate}
     \item Participants are told that they will be playing through a VR game that makes use of redirected walking for approximately 20-30 minutes. 
     \begin{itemize}
         \item If participants have not heard of redirected walking before they are given a brief introduction to the topic. Participants are informed that redirected walking will try to make small changes to the way they move and look around in VR so that they can be steered away from physical walls. 
     \end{itemize}  
-    \item Participants are informed that they should not walk too quickly as the reset boundaries only trigger 0.5m away from any physical boundaries. For the same reason they are discouraged from moving around too much during battles.
+    \item Participants are informed that they should not walk too quickly as the reset boundaries only trigger 0.5m away from any physical boundaries. For the same reason, they are discouraged from moving around too much during battles.
     \item Participants are informed that they should be mindful of the HMD tether cable as they move around. They may need to untangle themselves at times.
     \item Finally, participants are informed that if they at any times start to feel nauseous or cybersick, they should inform of this and stop the experiment immediately. 
 \end{enumerate}
 
-The participant is then allowed to put on the Vive HMD and is given their controllers and headphones. They are also encouraged to put their thumb on the detection button so they can quickly press it as soon as they notice any redirection. In this case, it is the menu button on their shield controller. The controls will be taught to the participant through the ingame tutorial. Once the participant has started the tutorial the lights in the physical room should be dimmed to limit any potential reference points which can be gleaned from under the HMD.
+The participant is then allowed to put on the Vive HMD and is given their controllers and headphones. They are also encouraged to put their thumb on the detection button so they can quickly press it as soon as they notice any redirection. In this case, it is the menu button on their shield controller. The controls will be taught to the participant through the ingame tutorial. Once the participant has started the tutorial, the lights in the physical room should be dimmed to limit any potential reference points which can be gleaned from under the HMD.
 
-The playthrough of Ensemble Retriever is finished when the participants' score has been displayed. At this point the game can be turned off as all related data has been recorded and participants can take of their HMD. The experiment ends with having participants answer the demographics questionnaire. 
+The playthrough of Ensemble Retriever is finished when the participants' score has been displayed. At this point, the game can be turned off as all related data has been recorded, and participants can take off their HMD. The experiment ends with having participants answer the demographics questionnaire. 
 
 \subsection{Data Recording/Data Format}\label{sec:ex1dataformat}
-The performance data for this experiment is recorded in a serial fashion per participant. In this case, each frame of Ensemble Retriever is recorded with a variety of different variables in a comma separated file format. This means that each row in the data can be considered as one frame with many column variables. This results in relatively large files and it becomes important to understand what each recorded variable represents. This section provides an overview on these variables.
+The performance data for this experiment is recorded in a serial fashion per participant. In this case, each frame of Ensemble Retriever is recorded with a variety of different variables in a comma separated file format. This means that each row in the data can be considered as one frame with many column variables. This results in relatively large files, and it becomes important to understand what each recorded variable represents. This section provides an overview of these variables.
 
 The first set of recorded variables are as follows:
 \begin{description}
-   \item[ParticipantID:] The unique identifier for the current participant. This is in a integer format and increments per participant. 
+   \item[ParticipantID:] The unique identifier for the current participant. This is in an integer format and increments per participant. 
    \item[GainDetected:] Whether a gain was detected this frame. In particular, this value is set to 1 on the frame that the participant has pressed the detection button on their controller. 
    \item[DeltaPosMagnitude:] The distance magnitude of movement in metres that the participant has moved between this and the prior frame. 
    \item[DeltaDir:] The angle that the participant's head has rotated on the vertical axis between this and the prior frame. 
    \item[DeltaTime:] The time that has passed in seconds between this and the prior frame. 
 \end{description}
 
-After these variables, there are a large variety of variables dedicated to whether specific elements of Ensemble Retriever are active or not on the given frame. If something is active it will have a value of 1 and 0 otherwise. These binary columns stop after the CurvatureGainApplied variable. 
+After these variables, there are a large variety of variables dedicated to whether specific elements of Ensemble Retriever are active or not on the given frame. If something is active, it will have a value of 1 and 0 otherwise. These binary columns stop after the CurvatureGainApplied variable. 
 
 The next set of variables is the current strength of redirection gains. These will increase and decrease throughout the experiment as they accumulate and participants detect them:
 \begin{description}
@@ -139,7 +139,7 @@ The next set of variables is the current strength of redirection gains. These wi
    \item[CurrentCurvatureRadius:] Current curvature radius. Read in metres. 
 \end{description}
 
-The next set of variables only contain data when the ''GainDetected'' variable has a value of 1. These make use of the aforementioned buffer window from Section~\ref{sec:ensembleRetrieverReproInfo} to provide the ratio of what gains were present as the participant detected a gain. By default this will be the ratio of gains that were applied over the last half second before the detection button was pressed. The ratios are in the numerical range of 0-1 and represent a percentage. These ratio variables are named as follows:
+The next set of variables only contain data when the ''GainDetected'' variable has a value of 1. These make use of the aforementioned buffer window from Section~\ref{sec:ensembleRetrieverReproInfo} to provide the ratio of what gains were present as the participant detected a gain. By default, this will be the ratio of gains that were applied over the last half second before the detection button was pressed. The ratios are in the numerical range of 0-1 and represent a percentage. These ratio variables are named as follows:
 
 \begin{itemize}
     \item NoGainRatioDuringDetection.
@@ -159,14 +159,14 @@ The remaining data columns/variables are as follows:
 \end{description}
 
 \subsection{Data Post Processing}\label{sec:ex1postprocessingdetails}
-In order to acquire the relevant data needed to finish Experiment 1, a post processing step on the recorded data is necessary. For this thesis, IBM SPSS Statistics 25 was used. This section will primarily focus on the thought process for how to acquire the relevant variables without going too deeply into software specific methods. 
+In order to acquire the relevant data needed to finish Experiment 1, a post-processing step on the recorded data is necessary. For this thesis, IBM SPSS Statistics 25 was used. This section will primarily focus on the thought process for how to acquire the relevant variables without going too deeply into software specific methods. 
 
-Section~\ref{sec:ex1postprocessing} mentions four potential cases for when the ''MostLikelyDetectedGain'' variable has a value of 0. The following paragraphs will focus on how to process cases 1 and 4 into useable detection data. It should be noted that this post processing step only is applied to rotation gain detections. It is recommended that this post processing is applied to a copy of the processed variables for the sake of keeping the history of the original data intact. 
+Section~\ref{sec:ex1postprocessing} mentions four potential cases for when the ''MostLikelyDetectedGain'' variable has a value of 0. The following paragraphs will focus on how to process cases 1 and 4 into useable detection data. It should be noted that this post-processing step only is applied to rotation gain detections. It is recommended that this post-processing is applied to a copy of the processed variables for the sake of keeping the history of the original data intact. 
 
 \subsubsection{Extracting Additional Rotation Gain Detections for Case 1}
-Case 1 scenarios are where the ''MostLikelyDetectedGain'' variable has a value of 0 for one specific reason. In this case, the participant has pressed the button to detect a rotation gain, but by the time they pressed the button the AC2F algorithm had already finished alignment. As a result, both rotation gains are disabled and set to a value of 0. 
+Case 1 scenarios are where the ''MostLikelyDetectedGain'' variable has a value of 0 for one specific reason. In this case, the participant has pressed the button to detect a rotation gain, but by the time they pressed the button, the AC2F algorithm had already finished the alignment. As a result, both rotation gains are disabled and set to a value of 0. 
 
-The fact that ''CurrentRotationGainAgainst'' and ''CurrentRotationGainWith'' are set to 0 during AC2F alignment is somewhat problematic for post processing. To deal with this, the first step of post processing is to create a copy of these variables that simply repeats the value of the previous frame during alignment rather than being a value of 0. This can be handled in a variety of ways, but for this thesis, values of 0 were set as missing values and replaced by a interpolation. Since the gain values are the same before and after alignment this interpolation will simply repeat the gain values. This simplifies the rest of the post processing steps. These generated variables will be referred to as the interpolated counterparts of ''CurrentRotationGainAgainst'' and ''CurrentRotationGainWith'' forwards. 
+The fact that ''CurrentRotationGainAgainst'' and ''CurrentRotationGainWith'' are set to 0 during AC2F alignment is somewhat problematic for post-processing. To deal with this, the first step of post-processing is to create a copy of these variables that simply repeats the value of the previous frame during alignment rather than being a value of 0. This can be handled in a variety of ways, but for this thesis, values of 0 were set as missing values and replaced by an interpolation. Since the gain values are the same before and after alignment, this interpolation will repeat the gain values. This simplifies the rest of the post-processing steps. These generated variables will be referred to as the interpolated counterparts of ''CurrentRotationGainAgainst'' and ''CurrentRotationGainWith'' forwards. 
 
 There are two different approaches which can be used to extract correct rotation gains during case 1 scenarios:
 
@@ -176,7 +176,7 @@ $$
 Selection: GainDetected = 1 \& MostLikelyDetectedGain = 0 \& CurrentRotationGainAgainst = 0 \& MostLikelyDetectedGainCategory != -1
 $$
 
-For this selection, either ''CurrentRotationGainAgainst'' or ''CurrentRotationGainWith'' can be used as both variables will be 0 at the same time. This selection identifies case 1 scenarios where ''MostLikelyDetectedGainCategory'' suggests that an actual gain was detected. By using this variable it is now possible to set the value of the extracted rotation gain with help from the interpolated variables that were created in the prior step. If $MostLikelyDetectedGainCategory = 0$, then we set the value to the interpolated counterpart of ''CurrentRotationGainAgainst''. If $MostLikelyDetectedGainCategory = 1$, then we set the value to the interpolated counterpart of ''CurrentRotationGainWith''. 
+For this selection, either ''CurrentRotationGainAgainst'' or ''CurrentRotationGainWith'' can be used as both variables will be 0 at the same time. This selection identifies case 1 scenarios where ''MostLikelyDetectedGainCategory'' suggests that an actual gain was detected. By using this variable, it is now possible to set the value of the extracted rotation gain with help from the interpolated variables that were created in the prior step. If $MostLikelyDetectedGainCategory = 0$, then we set the value to the interpolated counterpart of ''CurrentRotationGainAgainst''. If $MostLikelyDetectedGainCategory = 1$, then we set the value to the interpolated counterpart of ''CurrentRotationGainWith''. 
 
 \paragraph{Alternative 2: Using Ratio Variables} 
 The second approach to dealing with case 1 scenarios is a bit more detailed. It starts with the following selection: 
@@ -184,7 +184,7 @@ $$
 Selection: GainDetected = 1 \& MostLikelyDetectedGain = 0 \& CurrentRotationGainAgainst = 0 \& (NegativeRotationGainRatioDuringDetection != 0 \| PositiveRotationGainRatioDuringDetection != 0)
 $$
 
-With this selection we can check which of the two rotation gain ratios are highest. The extracted rotation gain can then be conditionally set to that of the interpolated counterpart to ''CurrentRotationGainAgainst'' or ''CurrentRotationGainWith'' depending on which ratio was highest. If $$NegativeRotationGainRatioDuringDetection > PositiveRotationGainRatioDuringDetection$$ then we set the value of the extracted rotation gain to the interpolated counterpart to ''CurrentRotationGainAgainst''. Else, it is set to the interpolated counterpart of ''CurrentRotationGainWith''.
+With this selection, we can check which of the two rotation gain ratios are highest. The extracted rotation gain can then be conditionally set to that of the interpolated counterpart to ''CurrentRotationGainAgainst'' or ''CurrentRotationGainWith'' depending on which ratio was highest. If $$NegativeRotationGainRatioDuringDetection > PositiveRotationGainRatioDuringDetection$$ then we set the value of the extracted rotation gain to the interpolated counterpart to ''CurrentRotationGainAgainst''. Else, it is set to the interpolated counterpart of ''CurrentRotationGainWith''.
      
 \subsubsection{Extracting Additional Rotation Gain Detections for Case 4}
 Case 4 scenarios are where the ''MostLikelyDetectedGain'' variable has a value of 0 for one specific reason. In this case, the participant has detected a rotation gain, but they pressed the button relatively late while their head was not moving. This results in the 0.5 ratio buffer to conclude that the dominant ratio was that no gains were applied and sets the value of ''MostLikelyDetectedGain'' to 0. 
@@ -200,15 +200,15 @@ Similarly to alternative 2 when processing case 1, the extracted rotation gain c
 In order to perform Experiment 2, there are a few things which should be in place first:
 
 \begin{itemize}
-    \item ''Experiment2Scene'' should be the current active scene.
-    \item ''ExperimentDataManager'' should be set to perform a effectiveness experiment.
+    \item ''Experiment2Scene'' should be the currently active scene.
+    \item ''ExperimentDataManager'' should be set to perform an effectiveness experiment.
     \item ''Redirected Walker (VR)'' is enabled and its debug counterpart is disabled.
 \end{itemize}
 
-The following sections will detail the exact information participants were given, the procedure of the experiment, the data recording format and the data post processing steps.
+The following sections will detail the exact information participants were given, the procedure of the experiment, the data recording format and the data post-processing steps.
 
 \subsection{Participant Information and Procedure}\label{sec:ex2information}
-The procedure and information given to participants is equivalent to that mentioned in Section~\ref{sec:ex1information} with some minor changes. The only differences is that the approximate time needed to finish the experiment is 15-20 minutes and no detection specific information is given. 
+The procedure and information given to participants is equivalent to that mentioned in Section~\ref{sec:ex1information} with some minor changes. The only differences are that the approximate time needed to finish the experiment is 15-20 minutes and no detection specific information is given. 
 
 \subsection{Data Recording/Data Format}\label{sec:ex2dataformat}
 The data collection and format in Experiment 2 is similar to Experiment 1 (detailed in Section~\ref{sec:ex1dataformat}). Data is recorded per frame throughout the Ensemble Retriever playthrough and consists of the following variables:
@@ -219,7 +219,7 @@ The data collection and format in Experiment 2 is similar to Experiment 1 (detai
    \item[TimeSinceExperimentStart:] The time in seconds since the participant finished the tutorial and started playing. Accumulates over time. 
    \item[TimeSpentWalking:] The time in seconds that the participant has spent walking. Accumulates over time while no distractors are active. 
    \item[NumberOfResets:] The number of resets that have happened so far. It is incremented on the frame that a reset has been triggered. 
-   \item[NumberOfDistractors:] The number of distractors that have been triggered so far. Works in a similar fashion to NumberOfResets.
+   \item[NumberOfDistractors:] The number of distractors that have been triggered so far. It works similarly to NumberOfResets.
    \item[IsResetActive:] A binary value that either is 0 if no reset was active on a given frame or a series of 1's for as long as a reset has been active. 
    \item[IsDistractorActive:] Similar to IsResetActive, but for distractors instead.
    \item[CurrentlyActiveDistractorType:] Categorical variable for what current distractor is active. (0 = None, 1 = Contrabass, 2 = Oboe, 3 = Harpsichord, 4 = Violin, 5 = Glockenspiel)
@@ -230,24 +230,24 @@ The data collection and format in Experiment 2 is similar to Experiment 1 (detai
    \item[TimeTakenToDefeatDistractor:] Consists of the time in seconds needed to defeat the currently active distractor. This variable only has a value other than 0 when DistractorDefeatedThisFrame is 1. 
    \item[CurrentPlayerShieldLevel:] The current level of the player's shield. 
    \item[CurrentPlayerBatonLevel:] The current level of the player's baton. 
-   \item[DeltaPos:] The distance in metres that the participant has moved between frames. To be more specific it is the magnitude of DeltaPos. 
+   \item[DeltaPos:] The distance in metres that the participant has moved between frames. To be more specific, it is the magnitude of DeltaPos. 
    \item[DeltaDir:] The angle that the participant's head has rotated on the vertical axis between frames.
    \item[DeltaTime:] The time between frames in seconds.
 \end{description}
 
 
 \subsection{Data Post Processing}\label{sec:ex2postprocessingdetails}
-The data post processing in Experiment 2 is divided into two major steps, one for each of the hypotheses that were tested. The first step is related to identifying all legitimate resets while discarding unintentional ones. The second step is related to finding legitimate alignments and adding penalties for failed alignments. Outside of these major steps, smaller aggregations were made on various variables for the sake of presentation. These are not detailed here as general aggregation is simple enough to not warrant a step by step process.
+The data post-processing in Experiment 2 is divided into two major steps, one for each of the hypotheses that were tested. The first step is related to identifying all legitimate resets while discarding unintentional ones. The second step is related to finding legitimate alignments and adding penalties for failed alignments. Outside of these major steps, smaller aggregations were made on various variables for the sake of presentation. These are not detailed here as general aggregation is simple enough to not warrant a step by step process.
  
-There are a variety of situations where it might be preferable to only select one row of data per participant. This is possible by selecting each row where ''TimeSinceExperimentStart'' has a value of 0 as it should uniquely contain this value at the start of each participants' data. There could of course be situations where this variable is not 0, so it is worth to check before doing further processing with this approach. It was consistent in the case of this thesis, but various hardware configurations and so on could have an effect on this.
+There are a variety of situations where it might be preferable to only select one row of data per participant. This is possible by selecting each row where ''TimeSinceExperimentStart'' has a value of 0 as it should uniquely contain this value at the start of each participants' data. There could of course be situations where this variable is not 0, so it is worth to check before doing further processing with this approach. It was consistent in the case of this thesis, but various hardware configurations and so on could affect this.
 
 \subsubsection{Finding Legitimate Resets}
-The post processing for finding legitimate resets is divided into several smaller steps:
+The post-processing for finding legitimate resets is divided into several smaller steps:
 
 \paragraph{Step 1: Creating a Timer During Distractor Spawns}
 The first step in identifying legitimate resets is to create a timer variable which counts from 0 each time a distractor spawns. This can be handled by initialising the timer variable to a value of 0 for all rows. Using a LAG function, it is possible to check the value of a previous row, allowing for pattern detection. For the sake of this example, the new variable is called ''TimeSinceDistractorSpawn''. 
 
-Before starting the calculation it is necessary to do a selection:
+Before starting the calculation, it is necessary to make a selection:
 $$
 Selection: IsDistractorActive = 1
 $$
@@ -255,35 +255,39 @@ The new timer variable can then be calculated in the following fashion:
 $$
 TimeSinceDistractorSpawn = LAG(TimeSinceDistractorSpawn) + DeltaTime
 $$
-This will process each frame where a distractor is active and accumulate a timer which resets back to 0 once the distractor is finished. 
+This will process each frame where a distractor is active and accumulate a timer which resets back to 0 once the distractor is finished. The selection can then be disabled.  
 
 \paragraph{Step 2: Finding Frames With Legitimate Resets}
-For this step, a new variable to store legitimate resets is created. For the sake of examples it will be called ''LegitimateResetHappenedThisFrame'' and initialised with a value of 0. This variable can then be set to 1 given the following condition:
+For this step, a new variable to store legitimate resets is created. For the sake of examples, it will be called ''LegitimateResetHappenedThisFrame'' and initialised with a value of 0. This variable can then be set to 1 given the following condition:
 $$
-If: (IsResetActive = 1 \& LAG(IsResetActive) = 0 \& TimeSinceDistractorSpawn >= 10)
+If: (IsResetActive = 1 \& LAG(IsResetActive) = 0)
 $$
-This will set the value of the new variable to 1 as long as the reset did not happen within the first 10 seconds of a distractor encounter. The reasoning for choosing a specific value of 10 is mentioned in Section~\ref{sec:ex2postprocessing}.
+This will set the value of the variable to 1 on the frame that a reset has activated. The next step is then to remove unintentional resets, which can be handled by taking the previously computed variable and conditionally setting it to 0:
+$$
+If: (IsResetActive = 1 \& LAG(IsResetActive) = 0 \& IsDistractorActive = 1 \& TimeSinceDistractorSpawn <= 10)
+$$
+This will remove all resets that happen within the first 10 seconds of a distractor spawn. The reasoning for choosing a specific value of 10 is mentioned in Section~\ref{sec:ex2postprocessing}.
 
 \paragraph{Step 3: Aggregate Legitimate Reset Sums}
-The final step is to aggregate the number of legitimate resets that each participant experienced. Using the previously computed ''LegitimateResetHappenedThisFrame'' variable it is possible to aggregate a sum of legitimate resets by breaking the aggregate on ''ParticipantID''. 
+The final step is to aggregate the number of legitimate resets that each participant experienced. Using the previously computed ''LegitimateResetHappenedThisFrame'' variable, it is possible to aggregate a sum of legitimate resets by breaking the aggregate on ''ParticipantID''. 
 
 \subsubsection{Finding Legitimate Alignments and Including Alignment Time Penalties}
-The second major post processing step relates to finding legitimate alignments and adding alignment time penalties. Legitimate alignments are in this case defined as all alignments that happen without the help of any resets.  
+The second major post-processing step relates to finding legitimate alignments and adding alignment time penalties. Legitimate alignments are in this case defined as all alignments that happen without the help of any resets.  
 
 \paragraph{Finding Legitimate Alignments}
-As with most post processing steps, this step starts with the creation of a new variable. For the sake of examples this will be called ''LegitimateAlignmentHappenedThisFrame'' and initialise it to a value of 0. This variable is set to 1 if:
+As with most post-processing steps, this step starts with the creation of a new variable. For the sake of examples, this will be called ''LegitimateAlignmentHappenedThisFrame'' and initialise it to a value of 0. This variable is set to 1 if:
 $$
 If: (AlignedThisFrame = 1 \& LAG(IsResetActive) != 1)
 $$
 This will yield a value of 1 for each frame where an alignment happened without the aid of a reset. 
 
 \paragraph{Identifying Failed Alignments and Including Penalties}
-In order to identify failed alignments a new variable is created and initialised to 0: ''AlignmentFailedThisFrame''. We can set this variable to a value of 1 in the following case:
+In order to identify failed alignments, a new variable is created and initialised to 0: ''AlignmentFailedThisFrame''. We can set this variable to a value of 1 in the following case:
 $$
 If: DistractorDefeatedThisFrame = 1 \& LAG(AlignmentComplete) = 0
 $$
-It is then possible to select all rows where ''AlignmentFailedThisFrame'' has a value of 1 and add a penalty time to ''TimeTakenUntilAlignment''. In case of this thesis, a penalty time of 23 seconds was used as mentioned in Section~\ref{sec:ex2postprocessing}. Including failure cases into the selection for the data sample then becomes as follows:
+It is then possible to select all rows where ''AlignmentFailedThisFrame'' has a value of 1 and add a penalty time to ''TimeTakenUntilAlignment''. In the case of this thesis, a penalty time of 23 seconds was used as mentioned in Section~\ref{sec:ex2postprocessing}. Including failure cases into the selection for the data sample then becomes as follows:
 $$
 Selection: LegitimateAlignmentHappenedThisFrame = 1 \| AlignmentFailedThisFrame = 1
 $$
-With this selection it is then possible to create aggregates or graphs out of the ''TimeTakenUntilAlignment'' variable. Since the selection includes failed alignments it will create a respective skew if one condition has a larger amount of failed alignments compared to another. 
+With this selection, it is then possible to create aggregates or graphs out of the ''TimeTakenUntilAlignment'' variable. Since the selection includes failed alignments, it will create a respective skew if one condition has a larger amount of failed alignments compared to another. 

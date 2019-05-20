@@ -12,7 +12,7 @@ As the main focus of Experiment 1 was on detection thresholds, these first few s
     \label{fig:rawRotationDetectionData}
 \end{figure}
 
-Before seeing the post processed sample of rotation gain detections it might be interesting to first see how the raw data looks like. This can be seen in Figure~\ref{fig:rawRotationDetectionData}. The various cases where detected gains are at a value of 0 is what the post processing step aimed to minimise. 
+Before seeing the post-processed sample of rotation gain detections, it might be interesting to first see how the raw data looks like. This can be seen in Figure~\ref{fig:rawRotationDetectionData}. The various cases where detected gains are at a value of 0 is what the post-processing step aimed to minimise. 
 
 \subsubsection{Finalised Rotation Detections Sample}
 \begin{figure}[tbph]
@@ -107,7 +107,7 @@ S2C: Curvature Radius & 3.0978m (N = 78) \\
 The aggregated mean detection thresholds which have been generated out of the previously presented data can be seen in Table~\ref{table:ex1DetectionThresholds}. 
 
 \subsection{Test for Normality and Choice of Significance Test}
-Before performing any statistical significance tests on the data it is first necessary to test the normality of it. For this, the Shapiro-Wilk test was used on positive and negative rotation gain detections. There is no possibility to compare different conditions for curvature gains, and as such no normality test was performed on this data. 
+Before performing any statistical significance tests on the data, it is first necessary to test the normality of it. For this, the Shapiro-Wilk test was used on positive and negative rotation gain detections. There is no possibility to compare different conditions for curvature gains, and as such, no normality test was performed on this data. 
 
 \subsubsection{Positive Rotation Gain Detection Normality}
 The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.295$ for the AC2F counterpart. The S2C category is thus not normally distributed while AC2F is. 
@@ -119,7 +119,7 @@ The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.01
 Since the data is not normally distributed, it is not possible to use standard tests like the independent samples t-test. Instead, the Mann-Whitney U non-parametric test is used as it does not have the same assumption of normally distributed data. 
    
 \subsection{Hypothesis Testing}
-Before performing the Mann-Whitney U test it is first necessary to determine whether the shapes of the data between conditions is similar or not. 
+Before performing the Mann-Whitney U test, it is first necessary to determine whether the shapes of the data between conditions is similar or not. 
 \subsubsection{Mann-Whitney U Shape Test}
 \begin{figure}[tbph]
     \centering
@@ -135,10 +135,10 @@ Before performing the Mann-Whitney U test it is first necessary to determine whe
     \label{fig:negRotEx1Boxplot}
 \end{figure}
 
-The shapes of the data can be seen in Figure~\ref{fig:posRotEx1Boxplot} and~\ref{fig:negRotEx1Boxplot}. In general, it does not seem as if the shape between the conditions is similar enough in either of the cases. As such, the Mann-Whitney U comparison will be on mean ranks. It should also be noted that the Mann-Whitney U test does have a assumption of independent observations that cannot be fulfilled due to the within subjects design of the experiment.
+The shapes of the data can be seen in Figure~\ref{fig:posRotEx1Boxplot} and~\ref{fig:negRotEx1Boxplot}. In general, it does not seem as if the shape between the conditions is similar enough in either of the cases. As such, the Mann-Whitney U comparison will be on mean ranks. It should also be noted that the Mann-Whitney U test does have an assumption of independent observations that cannot be fulfilled due to the within-subjects design of the experiment.
 
 \subsubsection{Mann-Whitney U Results}
-The results of the Mann-Whitney U provided a value of $U = 362.5, p = 0.478$ between S2C and AC2F conditions for positive rotation gains. This means that there is no significant differences between the states for these gains. For negative rotation gains, the statistical test resulted in $U = 1639, p < 0.001$, meaning that it is significantly harder to notice negative rotation gains in the walking state in Ensemble Retriever.
+The results of the Mann-Whitney U provided a value of $U = 362.5, p = 0.478$ between S2C and AC2F conditions for positive rotation gains. This means that there are no significant differences between the states for these gains. For negative rotation gains, the statistical test resulted in $U = 1639, p < 0.001$, meaning that it is significantly harder to notice negative rotation gains in the walking state in Ensemble Retriever.
 
 \subsection{Demographic Insights}
 \begin{figure}[tbph]
@@ -179,10 +179,10 @@ A scatterplot on the strength of rotation gain detections in relation to prior V
 The participants also provided some written qualitative feedback through the post-test questionnaire. This section summarises the feedback that was provided on a question by question basis. 
 
 \paragraph{Whether the Participants Found Any Bugs or Glitches}
-Some participants experienced minor controller tracking problems when standing is certain areas of the physical tracking space. These were quickly resolved by holding their controllers up in the air. 
+Some participants experienced minor controller tracking problems when standing in certain areas of the physical tracking space. These were quickly resolved by holding their controllers up in the air. 
 
 \paragraph{Whether the Participants Found the Experience Enjoyable}
-In general, participants found the experience to be very positive. Despite this, some mentioned that the experience was rather long so fighting the same distractors over and over got a bit annoying towards the end.
+In general, participants found the experience to be very positive. Despite this, some mentioned that the experience was rather long, so fighting the same distractors over and over got a bit annoying towards the end.
 
 \paragraph{How the Participants Felt About the Redirection Techniques}
 When noticed, participants mentioned that the redirection felt rather odd initially. After a while, some participants got used to the effect and found it to be effective while others mentioned it was a bit awkward and annoying. 
@@ -209,7 +209,7 @@ Hardware: HMD Field of View & HTC Vive. ~145 diagonal degrees FoV. \\
 \hline
 Speed of Walking & \textasciitilde$0.2576$ $m/s$ on average (Total distance travelled / Total time spent walking between participants). Static curvature gains employed. \\
 \hline
-Engagement/Distraction & The participants played through a VR game which consisted of walking around, collecting clues (working memory task) and fighting enemy distractors while exploring. General engagement levels based on feedback and observation of participants could be considered as high. \\
+Engagement/Distraction & The participants played through a VR game which consisted of walking around, collecting clues (working memory task) and fighting enemy distractors while exploring. Overall engagement levels based on feedback and observation of participants could be considered as high. \\
 \hline
 Awareness of Redirection & Participants were informed of redirection and the basics of redirected walking. The concept of distractors was not directly explained, but mentioned in the information/consent sheet. \\
 \hline
@@ -217,7 +217,7 @@ Gender & 20M, 2F (One among the 22 participants was excluded from the data analy
 \hline
 Estimation Method & Incrementally and randomly increasing one gain at random timesteps. Rotation gain is halved when detected, curvature radius is multiplied by 25\% when detected. \\
 \hline
-Adaptation: Curvature Gains & The experiment employed a incremental gains method for estimation. Gains would as such gradually increase over time. Some adaptation could be possible, but the curvature detection data cannot answer this. \\
+Adaptation: Curvature Gains & The experiment employed an incremental gains method for estimation. Gains would as such, gradually increase over time. Some adaptation could be possible, but the curvature detection data cannot answer this. \\
 \hline
 Adaptation: Positive Rotation Gains & The data does appear to point towards a potential adaptation towards positive rotation gains. The variability of negative rotation gain detections makes it hard to say whether this also is true for these. \\
 \hline
