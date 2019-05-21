@@ -2,7 +2,7 @@
 \label{chap:introduction}
 
 \section{Topic Covered by The Thesis}
-This thesis covers the topic of redirected walking and a particular subarea in this field known as virtual distractors (or simply distractors). A problem with current day room scale solutions in virtual reality is that we often do not have a large amount of space to move around in for these types of experiences. Redirected walking aims to mitigate this problem by unnoticeably redirecting the user while they walk around to create the illusion of a fully explorable virtual world~\cite{razzaque2001redirected}. By doing so, it is possible to make better use of the available physical space while still creating an immersive experience. Despite this, redirected walking by itself is not sufficient enough to properly redirect the user in smaller physical spaces~\cite{5072212,azmandian2015physical}. By engaging the user with distractors on the other hand, it is possible to increase the degree of unnoticeable redirection while still keeping a high subjective sense of presence~\cite{peck2009evaluation}. These could be anything from activities in the virtual world to objects that can keep the user's attention.  
+This thesis covers the topic of redirected walking and a particular subarea in this field known as virtual distractors (or simply distractors). A problem with current day room scale solutions in virtual reality is that users often do not have a large amount of space to move around in for these types of experiences. Redirected walking aims to mitigate this problem by unnoticeably redirecting the user while they walk around to create the illusion of a fully explorable virtual world~\cite{razzaque2001redirected}. By doing so, it is possible to make better use of the available physical space while still creating an immersive experience. Despite this, redirected walking by itself is not sufficient enough to properly redirect the user in smaller physical spaces~\cite{5072212,azmandian2015physical}. By engaging the user with distractors on the other hand, it is possible to increase the degree of unnoticeable redirection while still keeping a high subjective sense of presence~\cite{peck2009evaluation}. These could be anything from activities in the virtual world to objects that can keep the user's attention.  
 
 
 \section{Keywords}
@@ -17,30 +17,41 @@ The limitations of physical space mean that it is all the more important to make
 \section{Research Questions}\label{research:questions}
 One area in particular that research on distractors in redirected walking does not seem to have delved much into is measuring how they affect the noticeability of redirection. Furthermore, if the highest unnoticeable redirection gains with distractors were estimated, it would also be interesting to see how effective the redirection could be in the context of a virtual environment like a game. The reason for using games as a context is that their interactive nature allows to broaden the design space of distractors in a manner that could be more engaging for the user. As such, the following research questions have been established:
 \begin{description}
-\item[$R_1$: ] How noticeable is redirected walking with distractors in a playful virtual environment?
-\item[$R_2$: ] Given the highest unnoticeable gains, how effective is redirected walking with distractors in a playful virtual environment?
+\item[$RQ_1$: ] How noticeable is redirected walking with distractors in a playful virtual environment?
+\item[$RQ_2$: ] Given the highest unnoticeable gains, how effective is redirected walking with distractors in a playful virtual environment?
 \end{description}
 
 \section{Contributions}
-The master thesis has a variety of contributions to redirected walking research. The following paragraphs provide a summary of what the thesis contributes.
+The master thesis has yielded a variety of contributions to the space of redirected walking. The following paragraphs provide a summary of these, categorised by contributions to research and contributions to the redirected walking/VR community. It should be noted that some background from Chapter~\ref{chap:relatedWork} may be necessary to understand the finer details of the contributions.
 
-\subsection{Providing an Example of State of the Art Distractor Usage}
-First of all, the thesis aims to provide an example of how noticeable redirected walking is when using state of the art distractors. The reason for mentioning it will provide an example is that the design space for distractors is vast and as such, some implementations might be more effective than others. 
+\subsection{Research Contributions}
+For redirected walking research, this thesis has provided the following contributions: 
 
-\subsection{Contributing to a Young Field of Research}
-Furthermore, the thesis aims to contribute to a field of research that currently is reasonably small. Due to the size of this field, it would be beneficial to provide additional results that can point towards the effectiveness and noticeability of redirected walking with distractors. By doing so, it is possible to validate existing research as well as providing data that can be used for consideration by other researchers with interest in the topic. 
+\subsubsection{The Taxonomy of Distractors in Redirected Walking}
+As part of the literature review in Chapter~\ref{chap:relatedWork}, a taxonomy detailing components and elements of distractors seen in the literature has been generated. The taxonomy provides classification, discussion points and analysis for the research and development around distractors while allowing for extensions by future work. 
 
-\subsection{Providing New Insights With Exploratory Methods}
-Given that the research field on distractors is still relatively small, this study makes use of rather exploratory approaches and methods. This contributes a large amount of potential future work for researchers as well as insights which might not be possible to find with pre-established methods. As such, there is a significant focus on reproducibility to ensure that the exploratory methods that have been applied can be reproduced and reused by future research. 
+\subsubsection{Providing New Insights With Exploratory Methods}
+Given that the research field on distractors is still relatively small, this study has made use of rather exploratory approaches and methods. This has resulted in a large amount of potential future work for researchers as well as insights which might not have been possible to find with pre-established methods. Specifically for $RQ_1$, an incremental detection threshold estimation method has been developed with inspiration from Fuglestad's research~\cite{fuglestad2018redirected}. For $RQ_2$, a new effectiveness metric has been introduced, which consists of comparing the time taken for a distractor to align the user towards its goal relative to its active time. There has also been a significant focus on reproducibility to ensure that the exploratory methods that have been applied can be reproduced and reused by future research. 
 
-\subsection{An Openly Available VR Game: ''Ensemble Retriever''}
-This thesis also contributes an openly available VR game, titled ''Ensemble Retriever'' which makes use of redirected walking with distractors. The developed game has been used for two experiments which aim to provide some answers to the previously established research questions. In addition, a new redirection algorithm as well as a new forced reorientation technique has been developed for this thesis. Further information on these can be found in Chapter~\ref{chap:implementation}. 
+\subsubsection{Experiment Results}
+As part of providing answers to $RQ_1$ and $RQ_2$, two experiments have been conducted. The results from these experiments are considered as another contribution. The first of the experiments compared the differences in noticeability between two states: a walking state and a distractor battle state. No significant difference was found between the two for negative rotation gains. Despite this, it was significantly easier to notice positive rotation gains in the battle state. Furthermore, an adaptation effect towards positive rotation gains was observed.
 
-\subsection{The Taxonomy of Distractors in Redirected Walking}
-As part of the literature review in Chapter~\ref{chap:relatedWork}, a taxonomy detailing components and elements of distractors seen in the literature has been generated. The taxonomy is aimed towards providing classification, discussion points and analysis for research and development around distractors while allowing for extensions by future work. 
+The second experiment compared two effectiveness metrics between two separate conditions. The first of these consisted of using the ''Steer to Center'' (S2C) algorithm while walking and the developed ''Align Centre to Future'' (AC2F) algorithm during distractor battles. The second condition consisted of using S2C for both walking and battle states. No significant difference was found in terms of the mean number of resets or time taken to reach alignment towards physical room centre. Despite this, it should be noted that the first condition experienced $15.8\%$ fewer failure cases in terms of completing alignment before the distractor was defeated. 
+
+\subsection{Community Contributions}
+On the community side, this thesis has provided the following contributions:
+
+\subsubsection{Providing an Example of State of the Art Distractor Usage}
+The thesis has provided an example of how noticeable redirected walking is when using state of the art distractors. The reason for mentioning it has provided an example is that the design space for distractors is vast and as such, some implementations might be more effective than others. As more and more research into the field is generated, it is possible to improve the understanding of the effect that various variables might have on the results. 
+
+\subsubsection{Contributing to a Young Field of Research}
+Furthermore, the thesis has contributed to a field of research that currently is reasonably small. Due to the size of this field, it is beneficial to provide additional results that can point towards the effectiveness and noticeability of redirected walking with distractors. By doing so, it is possible to validate existing research as well as providing data that can be used for consideration by other researchers with interest in the topic. 
+
+\subsubsection{An Openly Available VR Game: ''Ensemble Retriever''}
+This thesis has also contributed an openly available VR game, titled ''Ensemble Retriever'' which makes use of redirected walking with distractors. The developed game has been used for two experiments to provide answers to the previously established research questions. The scope of the game can be considered as larger and more complex than existing work, making it a valuable example of redirected walking integration in larger projects. In addition, a new redirection algorithm, as well as a new resetting technique has been developed for this thesis. Further information on these can be found in Chapter~\ref{chap:implementation}. 
 
 \section{Thesis Structure}
-The thesis itself has a nested structure which corresponds to each research question. Each research question has an experiment dedicated to it and includes its own method, result and discussion components. The reasoning for this structure is that parts of the results for the experiment on noticeability are necessary for the second experiment which focuses on effectiveness. As such, it would be preferable to present the first experiment before moving on to the second. The overall structure of this thesis is as follows:
+The thesis itself has a nested structure which corresponds to each research question. Each research question has an experiment dedicated to it and includes its own method, result and discussion components. The reasoning for this structure is that parts of the results for the experiment on noticeability are necessary for the second experiment, which focuses on effectiveness. As such, it would be preferable to present the first experiment before moving on to the second. The overall structure of this thesis is as follows:
 
 \begin{enumerate}
     \item Introduction
