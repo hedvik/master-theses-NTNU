@@ -116,7 +116,7 @@ The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.29
 The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.015$ for AC2F. Both of these are thus not normally distributed.  
 
 \subsubsection{Choice of Significance Test}
-Since the data is not normally distributed, it is not possible to use standard tests like the independent samples t-test. Instead, the Mann-Whitney U non-parametric test is used as it does not have the same assumption of normally distributed data. 
+Since the data is not normally distributed, it is not possible to use standard tests like the independent samples t-test. Instead, the Mann-Whitney U non-parametric test is used as it does not assume normally distributed data. 
    
 \subsection{Hypothesis Testing}
 Before performing the Mann-Whitney U test, it is first necessary to determine whether the shapes of the data between conditions is similar or not. 
@@ -135,7 +135,7 @@ Before performing the Mann-Whitney U test, it is first necessary to determine wh
     \label{fig:negRotEx1Boxplot}
 \end{figure}
 
-The shapes of the data can be seen in Figure~\ref{fig:posRotEx1Boxplot} and~\ref{fig:negRotEx1Boxplot}. In general, it does not seem as if the shape between the conditions is similar enough in either of the cases. As such, the Mann-Whitney U comparison will be on mean ranks. It should also be noted that the Mann-Whitney U test does have an assumption of independent observations that cannot be fulfilled due to the within-subjects design of the experiment.
+The shapes of the data can be seen in Figure~\ref{fig:posRotEx1Boxplot} and~\ref{fig:negRotEx1Boxplot}. In general, it does not seem as if the shape between the conditions is similar enough in either of the cases. As such, the Mann-Whitney U comparison will be on mean ranks. It should also be noted that the Mann-Whitney U test's assumption of independent observations cannot be fulfilled due to the within-subjects design of the experiment.
 
 \subsubsection{Mann-Whitney U Results}
 The results of the Mann-Whitney U provided a value of $U = 362.5, p = 0.478$ between S2C and AC2F conditions for positive rotation gains. This means that there are no significant differences between the states for these gains. For negative rotation gains, the statistical test resulted in $U = 1639, p < 0.001$, meaning that it is significantly harder to notice negative rotation gains in the walking state in Ensemble Retriever.
@@ -148,7 +148,7 @@ The results of the Mann-Whitney U provided a value of $U = 362.5, p = 0.478$ bet
     \label{fig:ex1demogcorrelationmatrix}
 \end{figure}
 
-In order to look for demographic insights, a correlation analysis has been conducted. This analysis focuses on rotation gain detections and makes use of the Spearman's Rho correlation test as the detection data is not fully normally distributed. The correlation matrix can be seen in Figure~\ref{fig:ex1demogcorrelationmatrix}. The most interesting among these correlations is the positive correlation between prior VR experience and the strength of detected gains. As such, a deeper analysis has been conducted on this correlation to look for insights. 
+In order to look for demographic insights, a correlation analysis has been conducted. This analysis focuses on rotation gain detections and makes use of the Spearman's Rho correlation test as the detection data is not fully normally distributed. The correlation matrix can be seen in Figure~\ref{fig:ex1demogcorrelationmatrix}. The most interesting among these correlations is the positive correlation between prior VR experience and the strength of detected gains. As such, a deeper analysis has been conducted in Section zzz to gain insights as to why this is the case. 
 
 \subsubsection{Prior VR Experience and Rotation Gain Detections}
 \begin{figure}[tbph]
@@ -172,7 +172,7 @@ In order to look for demographic insights, a correlation analysis has been condu
     \label{fig:negRotDetectionBoxplotVRExperience}
 \end{figure}
 
-A scatterplot on the strength of rotation gain detections in relation to prior VR experience can be seen in Figure~\ref{fig:rotationGainDetectionScatterVRExperience}. Boxplots for positive and negative gains can be seen in Figure~\ref{fig:posRotDetectionBoxplotVRExperience} and~\ref{fig:negRotDetectionBoxplotVRExperience}.
+As a basis for the later discussion, a scatterplot on the strength of rotation gain detections in relation to prior VR experience can be seen in Figure~\ref{fig:rotationGainDetectionScatterVRExperience}. Boxplots for positive and negative gains can be seen in Figure~\ref{fig:posRotDetectionBoxplotVRExperience} and~\ref{fig:negRotDetectionBoxplotVRExperience}.
 
 
 \subsubsection{Qualitative Feedback}
@@ -182,7 +182,7 @@ The participants also provided some written qualitative feedback through the pos
 Some participants experienced minor controller tracking problems when standing in certain areas of the physical tracking space. These were quickly resolved by holding their controllers up in the air. 
 
 \paragraph{Whether the Participants Found the Experience Enjoyable}
-In general, participants found the experience to be very positive. Despite this, some mentioned that the experience was rather long, so fighting the same distractors over and over got a bit annoying towards the end.
+In general, participants found the experience to be very positive. Despite this, some mentioned that the experience was rather long, so fighting the same distractors repeatedly got a bit annoying towards the end.
 
 \paragraph{How the Participants Felt About the Redirection Techniques}
 When noticed, participants mentioned that the redirection felt rather odd initially. After a while, some participants got used to the effect and found it to be effective while others mentioned it was a bit awkward and annoying. 

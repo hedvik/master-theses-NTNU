@@ -73,7 +73,7 @@ A distractor's primary responsibility after being spawned is to notify the manag
 The ''Align Centre to Future'' (shortened to AC2F) redirector is based on what Peck et al.~\cite{peck2010improved} as well as Chen and Fuchs~\cite{chen2017towards, chen2017supporting} have mentioned in terms of a modified future path driven S2C algorithm. Neither of their research provided any source code for how they modified S2C and as such, AC2F is loosely based on Azmandian et al.'s S2C implementation, which is part of the redirected walking toolkit. AC2F relies on rotation gains and an alignment heuristic to align the user's future virtual path towards. The definition of the user's future virtual path in this case consists of sampling the last second of their positional changes. The alignment heuristic on the other hand is the centre of the physical space. An illustrated view on how the algorithm works can be seen in Figure~\ref{fig:ac2f}. The algorithm aims to choose between negative or positive rotation gains in a way that results in closer alignment towards the heuristic. The source code for the algorithm can be found in the project repository~\cite{ac2fScript}.
 
 \subsection{Algorithm Pseudocode}
-The AC2F algorithm could roughly be summarised in the following simplified pseudocode:
+The AC2F algorithm is summarised in the following simplified pseudocode:
 \\
 \begin{algorithmic}
 \State chosenInjection = 0; \LineComment{Check if the change in rotation exceeds the threshold for applying gains}
