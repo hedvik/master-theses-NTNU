@@ -22,7 +22,7 @@ While current research on distractors in redirected walking has focused on impro
 \end{description}
 
 \section{Contributions}
-With these research questions in mind, this master thesis has yielded a variety of contributions to the space of redirected walking. The following paragraphs provide a summary of these, categorised by contributions to research and contributions to the redirected walking/VR community. It should be noted that some background from Chapter~\ref{chap:relatedWork} may be necessary to understand the finer details of the contributions.
+With these research questions in mind, this master thesis has yielded a variety of contributions to the space of redirected walking. The following paragraphs provide a summary of these, categorised by contributions to research and secondary contributions to the redirected walking/VR communities. It should be noted that some background from Chapter~\ref{chap:relatedWork} may be necessary to understand the finer details of the contributions.
 
 \subsection{Research Contributions}
 For redirected walking research, this thesis has provided the following contributions: 
@@ -33,15 +33,15 @@ As part of the literature review in Chapter~\ref{chap:relatedWork}, a taxonomy d
 \subsubsection{Providing New Insights With Exploratory Methods}
 Given that the research field on distractors is still relatively small, this study has made use of rather exploratory approaches and methods. These methods have resulted in a large amount of potential future work for researchers as well as insights which might not have been possible to find with pre-established methods. Specifically for $RQ_1$, an incremental detection threshold estimation method has been developed with inspiration from Fuglestad's research~\cite{fuglestad2018redirected}. For $RQ_2$, a new effectiveness metric has been introduced, which consists of comparing the time taken for a distractor to align the user towards its goal relative to its active time. 
 
-In general, the developed experiment environment can be considered as having a larger scope than existing work. This scope means that there are far more potential variables in play as the scenario is closer to the real world and as such, less controlled. By taking this approach though, it is possible to gain insights and find questions which might not have been possible otherwise. There has also been a significant focus on reproducibility to ensure that the exploratory methods that have been applied can be reproduced and reused by future research. 
+In general, the developed experiment environment can be considered as having a larger scope than existing work. This scope means that there are far more potential variables in play as the scenario is closer to the real world and as such, less controlled. As a result, it does create some challenges in terms of mitigating the influence of potentially unaccounted variables. By taking this approach though, it is possible to gain insights and find questions which might not have been possible otherwise. There has also been a significant focus on reproducibility to ensure that the exploratory methods that have been applied can be reproduced and reused by future research. 
 
 \subsubsection{Experiment Results}
 As part of providing answers to $RQ_1$ and $RQ_2$, two experiments have been conducted. The results from these experiments are considered as another contribution. The first of the experiments compared the differences in noticeability between two states: a walking state and a distractor battle state. No significant difference was found between the two for negative rotation gains. Despite this, it was significantly easier to notice positive rotation gains in the battle state. Furthermore, an adaptation effect towards positive rotation gains was observed.
 
 The second experiment compared two effectiveness metrics between two separate conditions. The first of these consisted of using the ''Steer to Center'' (S2C) algorithm while walking and the developed ''Align Centre to Future'' (AC2F) algorithm during distractor battles. The second condition consisted of using S2C for both walking and battle states. No significant difference was found in terms of the mean number of resets or time taken to reach alignment towards physical room centre. Despite these results, it should be noted that the first condition experienced $15.8\%$ fewer failure cases in terms of completing alignment before the distractor was defeated. 
 
-\subsection{Community Contributions}
-On the community side, this thesis has provided the following contributions:
+\subsection{Secondary Contributions}
+Outside of the research contributions, there are a variety of secondary contributions which could be considered as beneficial to developers and researchers alike. These include:
 
 \subsubsection{Providing an Example of State of the Art Distractor Usage}
 The thesis has provided an example of how noticeable redirected walking is when using state of the art distractors. The reason for mentioning it has provided an example is that the design space for distractors is vast and as such, some implementations might be more effective than others. As more and more research into the field is generated, it is possible to improve the understanding of the effect that various variables might have on the results. 
@@ -53,25 +53,39 @@ Furthermore, the thesis has contributed to a field of research that currently is
 This thesis has also contributed an openly available VR game, titled ''Ensemble Retriever'' which makes use of redirected walking with distractors. The developed game has been used for two experiments to provide answers to the previously established research questions. The scope of the game can be considered as larger and more complex than existing work, making it a valuable example of redirected walking integration in larger projects. In addition, a new redirection algorithm, as well as a new resetting technique has been developed for this thesis. Further information on these can be found in Chapter~\ref{chap:implementation}. 
 
 \section{Thesis Structure}
-The thesis itself has a nested structure which corresponds to each research question. Each research question has an experiment dedicated to it and includes its own method, result and discussion components. The reasoning for this structure is that parts of the results for the experiment on noticeability are prerequisites for the second experiment, which focuses on effectiveness. As such, it would be preferable to present the first experiment before moving on to the second. The overall structure of this thesis is as follows:
+The thesis itself has a nested structure which corresponds to each research question. Each research question has an experiment dedicated to it and includes its own method, result and discussion components. The reasoning for this structure is that parts of the results for the experiment on noticeability are prerequisites for the second experiment, which focuses on effectiveness. The overall structure of this thesis is as follows:
 
 \begin{enumerate}
     \item Introduction
+    \begin{itemize}
+        \item This chapter is an introduction to the topic, problem space, associated research questions and contributions.
+    \end{itemize}
     \item Related Work and Background
+    \begin{itemize}
+        \item This chapter consists of a literature review which has been written with the established research questions in mind. It also provides the necessary background for understanding redirected walking.
+    \end{itemize}
     \item General Methods
+    \begin{itemize}
+        \item This chapter details general methods which apply to the thesis as a whole.
+    \end{itemize}
     \item Implementation of Ensemble Retriever
+    \begin{itemize}
+        \item This chapter provides abstracted implementation details for the developed Ensemble Retriever game, and its corresponding redirected walking functionality. The overarching game design of the game and its usage of distractors is also detailed.
+    \end{itemize}
     \item Experiment 1: Measuring the Noticeability of Distractors
     \begin{enumerate}
-        \item Experiment Methods
-        \item Experiment Results
-        \item Experiment Discussion
+        \item This chapter is focused on an experiment which tests for differences in noticeability between a walking state and a distractor battle state when playing Ensemble Retriever. 
     \end{enumerate}
     \item Experiment 2: Measuring the Effectiveness of Distractors
     \begin{enumerate}
-        \item Experiment Methods
-        \item Experiment Results
-        \item Experiment Discussion
+        \item This chapter is focused on an experiment that compares effectiveness metrics in terms of the mean number of resets and time taken for alignment towards physical room centre. This comparison is made between a control condition and an experimental one that employs a newly developed redirection algorithm. 
     \end{enumerate}
     \item Overarching Discussion
+    \begin{itemize}
+        \item This chapter takes a general look at the thesis as a whole and discusses various limitations, future improvements and challenges which have been observed throughout this research.
+    \end{itemize}
     \item Conclusion and Future Work
+    \begin{itemize}
+        \item The thesis then concludes on the research that has been conducted and ends with a large amount of future work which would benefit from further exploration.
+    \end{itemize}
 \end{enumerate}
