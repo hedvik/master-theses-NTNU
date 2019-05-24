@@ -83,7 +83,8 @@ The various curvature gain detection events that happened during the walking pha
 \centering
 \begin{tabularx}{\textwidth}{|X|S|X|}
 \hline
-Type of Gain & {Mean Detection Threshold} & N (Total Number of Detections) \\
+\textbf{Type of Gain} & \textbf{Mean Detection Threshold} & \textbf{N (Total Number of Detections)} \\
+\hline
 \hline
 S2C: Positive Rotation Gain & 0.6479 & N = 43 \\
 \hline
@@ -107,7 +108,7 @@ S2C: Curvature Radius & 3.0978m & N = 78 \\
 The aggregated mean detection thresholds which have been generated out of the previously presented data can be seen in Table~\ref{table:ex1DetectionThresholds}. 
 
 \subsection{Test for Normality and Choice of Significance Test}
-Before performing any statistical significance tests on the data, it is first necessary to test the normality of it. For this, the Shapiro-Wilk test was used on positive and negative rotation gain detections. There is no possibility to compare different conditions for curvature gains, and as such, no normality test was performed on this data. 
+Before performing any statistical significance tests on the data, it is first necessary to test the normality of it. For this, the Shapiro-Wilk~\cite{shapiroWilk} test was used on positive and negative rotation gain detections. There is no possibility to compare different conditions for curvature gains, and as such, no normality test was performed on this data. 
 
 \subsubsection{Positive Rotation Gain Detection Normality}
 The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.295$ for the AC2F counterpart. The S2C category is thus not normally distributed while AC2F is. 
@@ -116,7 +117,7 @@ The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.29
 The Shapiro-Wilk test resulted in $p < 0.001$ for the S2C category and $p = 0.015$ for AC2F. Both of these are thus not normally distributed.  
 
 \subsubsection{Choice of Significance Test}
-Since the data is not normally distributed, it is not possible to use standard tests like the independent samples t-test. Instead, the Mann-Whitney U non-parametric test is used as it does not assume normally distributed data. 
+Since the data is not normally distributed, it is not possible to use standard tests like the independent samples t-test. Instead, the Mann-Whitney U non-parametric test~\cite{MWUTest} is used as it does not assume normally distributed data. 
    
 \subsection{Hypothesis Testing}
 Before performing the Mann-Whitney U test, it is first necessary to determine whether the shapes of the data between conditions is similar or not. 
@@ -148,7 +149,7 @@ The results of the Mann-Whitney U provided a value of $U = 362.5, p = 0.478$ bet
     \label{fig:ex1demogcorrelationmatrix}
 \end{figure}
 
-In order to look for demographic insights, a correlation analysis has been conducted. This analysis focuses on rotation gain detections and makes use of the Spearman's Rho correlation test as the detection data is not fully normally distributed. The correlation matrix can be seen in Figure~\ref{fig:ex1demogcorrelationmatrix}. The most interesting among these correlations is the positive correlation between prior VR experience and the strength of detected gains. As such, a deeper analysis has been conducted in Section zzz to gain insights as to why this is the case. 
+In order to look for demographic insights, a correlation analysis has been conducted. This analysis focuses on rotation gain detections and makes use of the Spearman's Rho correlation test as the detection data is not fully normally distributed. The correlation matrix can be seen in Figure~\ref{fig:ex1demogcorrelationmatrix}. The most interesting among these correlations is the positive correlation between prior VR experience and the strength of detected gains. As such, a deeper analysis has been conducted in Section~\ref{sec:ex1demogDiscussion} to gain insights as to why this is the case. 
 
 \subsubsection{Prior VR Experience and Rotation Gain Detections}
 \begin{figure}[tbph]
