@@ -1,6 +1,8 @@
 \section{Results}\label{sec:ex1results}
 This part of the chapter provides the results of the experiment related to the established $H_0$ hypothesis as well as insights from demographical data. Data visualisation for these results is provided by SPSS due to the large data file sizes. A significance level of 0.05 was used for all statistical tests. For the sake of disclosure for any graphs that directly mention participant ID's, the author's ID is 16. It should also be noted that the participant with ID = 10 is excluded from the sample due to prior mentioned reasons. In terms of presentation, the majority of the graphs will be comparing the S2C and AC2F algorithms as they respectively represent the walking and battle states in Ensemble Retriever.
 
+It should be noted that this part of the chapter only consists of the experiment results. Discussion around these results can be found in Section~\ref{sec:ex1discussion}.
+
 \subsection{Rotation Detections}
 As the main focus of Experiment 1 was on detection thresholds, these first few sections are dedicated to presenting the graphs over detection events for participants as they played Ensemble Retriever. Detected rotation gains are initially presented with curvature radius detections following this.
 
@@ -15,6 +17,10 @@ As the main focus of Experiment 1 was on detection thresholds, these first few s
 Before seeing the post-processed sample of rotation gain detections, it might be interesting to first see how the raw data looks like. This raw data can be seen in Figure~\ref{fig:rawRotationDetectionData}. The various cases where detected gains are at a value of 0 is what the post-processing step aimed to minimise. 
 
 \subsubsection{Finalised Rotation Detections Sample}
+The post processing step which was mentioned in Section~\ref{sec:ex1postprocessing} resulted in 52 additional rotation gain detection events. This addition results in a total of 213 rotation gain detections throughout the entire sample. The processed data can be seen in Figure~\ref{fig:rotationDetectionDataByAlgorithm}, where it is grouped by algorithm and Figure~\ref{fig:rotationDetectionDataByParticipant}, where it is grouped by participant ID. To provide some additional visualisation, a line chart showing the progression of detections between participants can be seen in Figure~\ref{fig:negativeRotationDetectionLineChart} and Figure~\ref{fig:positiveRotationDetectionLineChart}.
+
+ A figure illustrating the incremental progression of rotation gains over time for participant 16 (the author) can be seen in Figure~\ref{fig:authorRotationProgression}. Finally, individual scatterplots for negative/positive rotation gain detections with an included regression line can be found in Figure~\ref{fig:negRotRegLine} and Figure~\ref{fig:posRotRegLine}. It should be noted that some participants are not shown in these graphs as they did not provide any detection events. 
+
 \begin{figure}[tbph]
     \centering
     \includegraphics[width=0.75\textwidth]{figures/graphs/ProcessedRotationDetections.png}
@@ -63,10 +69,6 @@ Before seeing the post-processed sample of rotation gain detections, it might be
     \caption[Line Chart Showing the Progression of Rotation Gains for Participant 16]{This line chart shows the progression of rotation gains over time for participant 16. Rotation gains gradually increase over time until they are detected, after which they are dropped by 50\%. Sections of time where gains are 0 are during distractor battles where the future virtual path has been aligned with the physical room centre.}
     \label{fig:authorRotationProgression}
 \end{figure}
-
-The post processing step which was mentioned in Section~\ref{sec:ex1postprocessing} resulted in 52 additional rotation gain detection events. This addition results in a total of 213 rotation gain detections throughout the entire sample. The processed data can be seen in Figure~\ref{fig:rotationDetectionDataByAlgorithm}, where it is grouped by algorithm and Figure~\ref{fig:rotationDetectionDataByParticipant}, where it is grouped by participant ID. To provide some additional visualisation, a line chart showing the progression of detections between participants can be seen in Figure~\ref{fig:negativeRotationDetectionLineChart} and Figure~\ref{fig:positiveRotationDetectionLineChart}.
-
- A figure illustrating the incremental progression of rotation gains over time for participant 16 (the author) can be seen in Figure~\ref{fig:authorRotationProgression}. Finally, individual scatterplots for negative/positive rotation gain detections with an included regression line can be found in Figure~\ref{fig:negRotRegLine} and Figure~\ref{fig:posRotRegLine}. It should be noted that some participants are not shown in these graphs as they did not provide any detection events. 
 
 \subsection{Curvature Detections}
 \begin{figure}[tbph]
