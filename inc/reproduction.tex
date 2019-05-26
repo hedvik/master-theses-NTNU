@@ -172,27 +172,28 @@ There are two different approaches which can be used to extract correct rotation
 
 \paragraph{Alternative 1: Using the ''MostLikelyDetectedGainCategory'' Variable}
 For the first and simple alternative it is first necessary to do a conditional data selection:
-$$
-Selection: GainDetected = 1 \& MostLikelyDetectedGain = 0 \& CurrentRotationGainAgainst = 0 \& MostLikelyDetectedGainCategory != -1
-$$
 
-For this selection, either ''CurrentRotationGainAgainst'' or ''CurrentRotationGainWith'' can be used as both variables will be 0 at the same time. This selection identifies case 1 scenarios where ''MostLikelyDetectedGainCategory'' suggests that an actual gain was detected. By using this variable, it is now possible to set the value of the extracted rotation gain with help from the interpolated variables that were created in the prior step. If $MostLikelyDetectedGainCategory = 0$, then we set the value to the interpolated counterpart of ''CurrentRotationGainAgainst''. If $MostLikelyDetectedGainCategory = 1$, then we set the value to the interpolated counterpart of ''CurrentRotationGainWith''. 
+\begin{align*}
+Selection: & GainDetected = 1 \ \land \ MostLikelyDetectedGain = 0 \ \land \nonumber \\ & CurrentRotationGainAgainst = 0 \ \land \ MostLikelyDetectedGainCategory \neq -1 \nonumber
+\end{align*}
+
+For this selection, either ''CurrentRotationGainAgainst'' or ''CurrentRotationGainWith'' can be used as both variables will be 0 at the same time. This selection identifies case 1 scenarios where  ''MostLikelyDetectedGainCategory'' suggests that an actual gain was detected. By using this variable, it is now possible to set the value of the extracted rotation gain with help from the interpolated variables that were created in the prior step. If $MostLikelyDetectedGainCategory = 0$, then we set the value to the interpolated counterpart of ''CurrentRotationGainAgainst''. If \\ $MostLikelyDetectedGainCategory = 1$, then we set the value to the interpolated counterpart of ''CurrentRotationGainWith''. 
 
 \paragraph{Alternative 2: Using Ratio Variables} 
 The second approach to dealing with case 1 scenarios is a bit more detailed. It starts with the following selection: 
-$$
-Selection: GainDetected = 1 \& MostLikelyDetectedGain = 0 \& CurrentRotationGainAgainst = 0 \& (NegativeRotationGainRatioDuringDetection != 0 \| PositiveRotationGainRatioDuringDetection != 0)
-$$
+\begin{align*}
+Selection: & GainDetected = 1 \ \land \nonumber \\ & MostLikelyDetectedGain = 0 \ \land \ CurrentRotationGainAgainst = 0 \ \land \nonumber \\ & (NegativeRotationGainRatioDuringDetection \neq 0 \ \lor \nonumber \\ & PositiveRotationGainRatioDuringDetection \neq 0) \nonumber
+\end{align*}
 
-With this selection, we can check which of the two rotation gain ratios are highest. The extracted rotation gain can then be conditionally set to that of the interpolated counterpart to ''CurrentRotationGainAgainst'' or ''CurrentRotationGainWith'' depending on which ratio was highest. If $$NegativeRotationGainRatioDuringDetection > PositiveRotationGainRatioDuringDetection$$ then we set the value of the extracted rotation gain to the interpolated counterpart to ''CurrentRotationGainAgainst''. Else, it is set to the interpolated counterpart of ''CurrentRotationGainWith''.
+With this selection, we can check which of the two rotation gain ratios are highest. The extracted rotation gain can then be conditionally set to that of the interpolated counterpart to ''CurrentRotationGainAgainst'' or ''CurrentRotationGainWith'' depending on which ratio was highest. If $NegativeRotationGainRatioDuringDetection > PositiveRotationGainRatioDuringDetection$ then we set the value of the extracted rotation gain to the interpolated counterpart to ''CurrentRotationGainAgainst''. Else, it is set to the interpolated counterpart of ''CurrentRotationGainWith''.
      
 \subsubsection{Extracting Additional Rotation Gain Detections for Case 4}
 Case 4 scenarios are where the ''MostLikelyDetectedGain'' variable has a value of 0 for one specific reason. In this case, the participant has detected a rotation gain, but they pressed the button relatively late while their head was not moving. This results in the 0.5 ratio buffer to conclude that the dominant ratio was that no gains were applied and sets the value of ''MostLikelyDetectedGain'' to 0. 
 
 This case can be processed by using the second highest ratio in hopes of finding a remaining trace of the correct rotation gain in the ratio buffer. The following selection is used for this processing step:
-$$
-Selection: Gain Detected = 1 \& MostLikelyDetectedGain = 0 \& CurrentRotationGainAgainst != 0 \& NoGainRatioDuringDetection != 1
-$$
+\begin{align*}
+Selection: & Gain Detected = 1 \ \land \ MostLikelyDetectedGain = 0 \ \land \nonumber \\ & CurrentRotationGainAgainst \neq 0 \ \land \ NoGainRatioDuringDetection \neq 1 \nonumber
+\end{align*}
 
 Similarly to alternative 2 when processing case 1, the extracted rotation gain can be set by looking at which of the two rotation gain ratios is the highest.
 
@@ -260,12 +261,12 @@ This will process each frame where a distractor is active and accumulate a timer
 \paragraph{Step 2: Finding Frames With Legitimate Resets}
 For this step, a new variable to store legitimate resets is created. For the sake of examples, it will be called ''LegitimateResetHappenedThisFrame'' and initialised with a value of 0. This variable can then be set to 1 given the following condition:
 $$
-If: (IsResetActive = 1 \& LAG(IsResetActive) = 0)
+If: (IsResetActive = 1 \land LAG(IsResetActive) = 0)
 $$
 This will set the value of the variable to 1 on the frame that a reset has activated. The next step is then to remove unintentional resets, which can be handled by taking the previously computed variable and conditionally setting it to 0:
-$$
-If: (IsResetActive = 1 \& LAG(IsResetActive) = 0 \& IsDistractorActive = 1 \& TimeSinceDistractorSpawn <= 10)
-$$
+\begin{align*}
+If: & (IsResetActive = 1 \ \land \ LAG(IsResetActive) = 0 \ \land \nonumber \\ & IsDistractorActive = 1 \ \land \ TimeSinceDistractorSpawn <= 10) \nonumber
+\end{align*}
 This will remove all resets that happen within the first 10 seconds of a distractor spawn. The reasoning for choosing a specific value of 10 is mentioned in Section~\ref{sec:ex2postprocessing}.
 
 \paragraph{Step 3: Aggregate Legitimate Reset Sums}
@@ -277,17 +278,17 @@ The second major post-processing step relates to finding legitimate alignments a
 \paragraph{Finding Legitimate Alignments}
 As with most post-processing steps, this step starts with the creation of a new variable. For the sake of examples, this will be called ''LegitimateAlignmentHappenedThisFrame'' and initialise it to a value of 0. This variable is set to 1 if:
 $$
-If: (AlignedThisFrame = 1 \& LAG(IsResetActive) != 1)
+If: (AlignedThisFrame = 1 \land LAG(IsResetActive) \neq 1)
 $$
 This will yield a value of 1 for each frame where an alignment happened without the aid of a reset. 
 
 \paragraph{Identifying Failed Alignments and Including Penalties}
 In order to identify failed alignments, a new variable is created and initialised to 0: ''AlignmentFailedThisFrame''. We can set this variable to a value of 1 in the following case:
 $$
-If: DistractorDefeatedThisFrame = 1 \& LAG(AlignmentComplete) = 0
+If: DistractorDefeatedThisFrame = 1 \land LAG(AlignmentComplete) = 0
 $$
 It is then possible to select all rows where ''AlignmentFailedThisFrame'' has a value of 1 and add a penalty time to ''TimeTakenUntilAlignment''. In the case of this thesis, a penalty time of 23 seconds was used as mentioned in Section~\ref{sec:ex2postprocessing}. Including failure cases into the selection for the data sample then becomes as follows:
 $$
-Selection: LegitimateAlignmentHappenedThisFrame = 1 \| AlignmentFailedThisFrame = 1
+Selection: LegitimateAlignmentHappenedThisFrame = 1 \lor AlignmentFailedThisFrame = 1
 $$
 With this selection, it is then possible to create aggregates or graphs out of the ''TimeTakenUntilAlignment'' variable. Since the selection includes failed alignments, it will create a respective skew if one condition has a larger amount of failed alignments compared to another. 
