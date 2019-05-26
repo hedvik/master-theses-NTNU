@@ -48,8 +48,9 @@ One potential issue that can arise with this type of method is that the particip
 \begin{itemize}
     \item Negative rotation gains cannot go lower than a value of -0.75. In this case, a gain of -1 would counteract any rotation on the y-axis and give the impression of this axis being frozen. If we use Steinicke et al.'s rotation gain semantics~\cite{5072212}, this would be the equivalent of a 0.25 multiplier. 
     \item Positive rotation gains cannot exceed a value of 1. This is the same as the strength that is applied when using the 2:1 Turn reset method. If we use Steinicke et al.'s rotation gain semantics~\cite{5072212}, this would be the equivalent of a 2.0 multiplier. 
-    \item Curvature radius cannot go lower than a value of 2.5m. A radius of 1m is the lowest that the Redirected Walking Toolkit can use in this scenario.\todo{Somewhat weak justification maybe? As far as I know, no other research have identified curvature gain thresholds lower than about 3m. Steinicke et al. mentions \textasciitilde3.3 being noticeable, but usable for example(not a threshold per se)}. 
+    \item Curvature radius cannot go lower than a value of 2.5m. A radius of 1m is the lowest that the Redirected Walking Toolkit can use in this scenario. From the sample of literature which was used in this thesis, no curvature thresholds below 3m were found. The closest would be Steinicke et al. mentioning that a curvature radius of \textasciitilde3.3m was slightly noticeable while still useable~\cite{5072212}. As such, a cap of 2.5m was deemed reasonable for the sake of mitigating cybersickness. 
 \end{itemize}
+
 
 Given the usage of caps in the experiment, there may be several detections which reach these limits during certain situations. In these cases, capped detection values point towards the possibility of being able to further increase redirection, but that the gain has been capped to avoid possible increases in cybersickness.
    
