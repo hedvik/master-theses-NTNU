@@ -1,6 +1,11 @@
 \section{Discussion}\label{sec:ex2discussion}
 This section focuses on discussing the presented results in Experiment 2.
 
+\subsection{Effectiveness of Employed Alignment Failure Time Penalty}\label{sec:failurePenaltyRetrospect}
+As part of testing $H_{0_2}$, no statistically significant difference was found in terms of mean alignment times between the two conditions. Despite the result not being significant, there was a $15.8\%$ difference in terms of alignment failure rates between the two conditions. Given that this percentage difference is not reflected in the results of the statistical test, it may be that the chosen alignment failure time penalty was too generous. If we take a look at Figure~\ref{fig:ex2failedDistractorTimeBoxplot}, we can see that most failed alignment cases consisted of distractor defeats, which were slightly lower than the chosen penalty. The primary issue here is the three outliers in the control condition, which were above the time penalty value. In the case of these outliers, their unsuccessful alignment times would get skewed downwards by the penalty rather than upwards as intended. As such, using the mean time taken to defeat a distractor might have been too generous to provide a statistically significant skew in the results. 
+
+It is, of course, possible to choose a more substantial penalty to attempt providing more significant results, but this would likely be too arbitrary. Another option would be to use the maximum time taken to defeat a distractor rather than the mean time. This choice would result in a far harsher penalty, but it would still be grounded in the results of the experiment itself. In the end, it may be best to primarily focus on the percentage difference in failure ratios, rather than the results from the statistical test for this hypothesis. This percentage difference is not affected by the potential limitations of a too generous time penalty and would as such, be a better focus for discussion for the rest of this section.
+
 \subsection{Relationships Between Alignment Fail Rates and Mean Number of Resets}\label{sec:orbitalCases}
 \begin{figure}[tbph]
     \centering
@@ -32,6 +37,8 @@ Another side of Experiment 2 that could be substantially improved is to streamli
 In the current approach it is possible to for example have a distractor last for 50 seconds and have a type 2 unintentional reset at 25 seconds due to large amounts of engaged movement. With the current approach, this reset would have been recorded as legitimate instead of unintentional. Fixing this in post-processing would be rather challenging due to the time-serial data format, but doing so on the software side of the recording should be rather feasible. 
 
 The need to perform this post-processing in the first place came from observing human factors and behaviour that were attempted to be mitigated from Experiment 1. In particular, mitigating type 1 unintentional resets was the main reasoning behind increasing the buffer between reset and distractor trigger bounds. While this change in general likely mitigated a good amount of unintentional resets, it did not entirely stop them from happening. It would of course be possible to further increase the buffer, but this would risk having the actual walkable space become smaller and more annoying for participants as distractors would trigger with higher frequency. Providing more accuracy in terms of being able to remove unintentional resets would likely help with providing more valid and accurate results. 
+
+Another element of the post-processing step that could be improved would be the choice for the failed alignment time penalty as already mentioned in Section~\ref{sec:failurePenaltyRetrospect}. Choosing a harsher penalty could result in more statistically significant results when testing $H_{0_2}$.
 
 \subsection{Minimising the Risk of Cybersickness Buildup With Distractors}\label{sec:ex2MinimisingCybersickness}
 
