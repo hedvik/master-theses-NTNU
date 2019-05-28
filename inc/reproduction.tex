@@ -67,7 +67,7 @@ Outside of this, the roots contain the following parameters which can be modifie
    \item[Alignment Threshold:] The dot product threshold for the amount of error is allowed in terms of aligning the future path towards the physical centre during distractor battles. -1 would be a perfect alignment while increased values allow for more error. 
    \item[Distractor Magnitude Cooldown:] This variable defines how large of a distance in metres a user needs to travel before a new distractor can trigger. This value \textbf{needs} to be individually tested for different room sizes as it may be too long for smaller sizes. It should also be noted that counting towards this distance only starts once the death animation of a distractor has finished. 
    \item[Debug Distractor:] If this field has a distractor object assigned it will always spawn this distractor for the sake of debugging. 
-   \item[Debug Gain Application Type:] When toggled, the objective arrow's material will correspond to the gain that is currently being applied. The materials to represent gains can be set right below this setting. This is a debug feature aimed at checking which gain is applied at any time. 
+   \item[Debug Gain Application Type:] When toggled, the objective pointer's material will correspond to the gain that is currently being applied. The materials to represent gains can be set right below this setting. This is a debug feature aimed at checking which gain is applied at any time. 
 \end{description}
 
 The attached AC2F redirector and Pause - Turn - Resetter also has some parameters:
@@ -130,7 +130,7 @@ The first set of recorded variables are as follows:
    \item[DeltaTime:] The time that has passed in seconds between this and the prior frame. 
 \end{description}
 
-After these variables, there are a large variety of variables dedicated to whether specific elements of Ensemble Retriever are active or not on the given frame. If something is active, it will have a value of 1 and 0 otherwise. These binary columns stop after the CurvatureGainApplied variable. 
+After these variables, there are a large variety of variables dedicated to whether specific elements of Ensemble Retriever are active or not on the given frame. If something is active, it will have a value of 1, and 0 otherwise. These binary columns stop after the CurvatureGainApplied variable. 
 
 The next set of variables is the current strength of redirection gains. These will increase and decrease throughout the experiment as they accumulate and participants detect them:
 \begin{description}
@@ -287,7 +287,7 @@ In order to identify failed alignments, a new variable is created and initialise
 $$
 If: DistractorDefeatedThisFrame = 1 \land LAG(AlignmentComplete) = 0
 $$
-It is then possible to select all rows where ''AlignmentFailedThisFrame'' has a value of 1 and add a penalty time to ''TimeTakenUntilAlignment''. In the case of this thesis, a penalty time of 23 seconds was used as mentioned in Section~\ref{sec:ex2postprocessing}. Including failure cases into the selection for the data sample then becomes as follows:
+It is then possible to select all rows where ''AlignmentFailedThisFrame'' has a value of 1 and add a penalty time to ''TimeTakenUntilAlignment''. In the case of this thesis, a penalty time of 54.86 seconds was used as mentioned in Section~\ref{sec:ex2postprocessing}. Including failure cases into the selection for the data sample then becomes as follows:
 $$
 Selection: LegitimateAlignmentHappenedThisFrame = 1 \lor AlignmentFailedThisFrame = 1
 $$
